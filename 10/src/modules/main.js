@@ -1,5 +1,14 @@
-import { Car } from './car.js';
+import {Clock} from "./clock.js";
+import {Tabs} from "./tabs.js";
 
-let car = new Car();
 
-console.log(car);
+const clock = new Clock();
+const tabs = new Tabs();
+
+
+function init() {
+    clock.init();
+    tabs.init();
+}
+
+init();

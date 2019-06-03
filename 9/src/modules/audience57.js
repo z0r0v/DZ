@@ -1,4 +1,5 @@
-
+/* В модуле до обьявления функции конструктора */
+/* let time = 0; */
 
 /* инструкция по созданию обьекта audience57*/
 function Audience57(timeAir){
@@ -16,6 +17,9 @@ function Audience57(timeAir){
     /* на основе функц. выраж.  создаю новый метод*/
     this.checkAvailablePlaces = checkAvailablePlaces;
 }
+
+/* После обьявления функции конструктора  */
+/* let time = 2; */
 
 /* Функция проветривания через прототип в обьект */
 Audience57.prototype.ventilate = function(time){
