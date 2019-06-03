@@ -1,12 +1,24 @@
 const htmlElements = {
-    output:document.querySelector('.container [data-mode = "timer"] .output'),
-    buttonStart:document.querySelector('.container [data-mode = "timer"] .buttons .start'),
-    buttonStop:document.querySelector('.container [data-mode = "timer"] .buttons .stop'),
-    buttonReset:document.querySelector('.container [data-mode = "timer"] .buttons .reset'),
+    output:document.querySelector('.container [data-mode = "stopwatch"] .output'),
+    buttonStart:document.querySelector('.container [data-mode = "stopwatch"] .buttons .start'),
+    buttonStop:document.querySelector('.container [data-mode = "stopwatch"] .buttons .stop'),
+    buttonReset:document.querySelector('.container [data-mode = "stopwatch"] .buttons .reset'),
 };
 
+    let stopwatchInterval;
+    let startTime;
 
-let  timerGo = function (){
+    htmlElements.buttonStart.addEventListener('click', timerStartButton);
+    htmlElements.buttonReset.addEventListener('click', resetStopwatch);
+    htmlElements.buttonStop.addEventListener('click', timerStopButton);
+
+function timerStartButton(){
+    htmlElements.buttonStart.setAttribute('disabled', 'disabled');
+    startTime = new Date().getTime();
+    stopwatchInterval = setInterval(timerGo, 1000);
+}
+
+function timerGo(){
     let difference = (new Date().getTime() - startTime) / 1000;
     let seconds = parseInt(difference % 60);
     let minutes = parseInt((difference / 60) % 60);
@@ -14,21 +26,22 @@ let  timerGo = function (){
     if(seconds < 10){seconds = '0' + seconds;}
     if(minutes < 10){minutes = '0' + minutes;}
     if(hours < 10){hours = '0' + hours;}
-    htmlElements.output.innerText = `${hours}:${minutes}:${seconds}`;   
-} 
-
-function timerStartButton(){
-    const startTime = new Date().getTime();
-    timerGo();
+    htmlElements.output.innerText = `${hours}:${minutes}:${seconds}`; 
 }
 
-function Stopwatch(){};
-
-/* тут нужно подумать */
-Stopwatch.prototype.init = function() {
-    setInterval(timerStartButton, 1000);
-    timerStartButton();
+function timerStopButton (){
+    clearInterval(stopwatchInterval);
+    htmlElements.buttonStart.removeAttribute('disabled', 'disabled');
 };
 
+function resetStopwatch(){
+    timerStopButton();
+    htmlElements.output.innerText = '00:00:00';
+}
+
+
+/* тут магия как работает не понимаю */
+function Stopwatch(){};
+Stopwatch.prototype.init = function(){};
 
 export {Stopwatch};
