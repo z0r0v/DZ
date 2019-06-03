@@ -1,12 +1,12 @@
-import {Audience57} from "./audience57.js.js";
-import {CharAud} from "./charAud.js.js";
-import {WindowCharacter} from "./windowCharacter.js.js";
-import {Door} from "./door.js.js";
-import {Projector} from "./projector.js.js";
-import {Table} from "./table.js.js";
-import {Sensei} from "./sensei.js.js";
-import {Computer} from "./computer.js.js";
-import {VideoCard} from "./videoCard.js.js";
+import {Audience57} from "./audience57.js";
+import {CharAud} from "./charAud.js";
+import {WindowCharacter} from "./windowCharacter.js";
+import {Door} from "./door.js";
+import {Projector} from "./projector.js";
+import {Table} from "./table.js";
+import {Sensei} from "./sensei.js";
+import {Computer} from "./computer.js";
+import {VideoCard} from "./videoCard.js";
 
 const audience57 = new Audience57(0);/* Создано помещение  задан парметр проветривания 0*/
 audience57.ventilate(5);/* Проветрили 5 минут*/
