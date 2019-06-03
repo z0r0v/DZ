@@ -1,5 +1,6 @@
 /* В модуле до обьявления функции конструктора */
-/* let time = 0; */
+/* Область видимости переменной ограниченна модулем audience57*/
+let timeNew = 0;
 
 /* инструкция по созданию обьекта audience57*/
 function Audience57(timeAir){
@@ -18,8 +19,10 @@ function Audience57(timeAir){
     this.checkAvailablePlaces = checkAvailablePlaces;
 }
 
+
 /* После обьявления функции конструктора  */
-/* let time = 2; */
+/* Область видимости переменной ограничена модулем  audience57*/
+let timeSecondNew = 2;
 
 /* Функция проветривания через прототип в обьект */
 Audience57.prototype.ventilate = function(time){
