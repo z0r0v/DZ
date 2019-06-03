@@ -8,6 +8,8 @@ import {Sensei} from "./sensei.js";
 import {Computer} from "./computer.js";
 import {VideoCard} from "./videoCard.js";
 
+/* Все объявленные переменные являются глобальными их область видимости ограничена модулем main.js */
+
 const audience57 = new Audience57(0, 30, 15);/* Создано помещение  задан парметр проветривания 0*/
 audience57.ventilate(5);/* Проветрили 5 минут*/
 audience57.ventilate(5);/* Проветрили еще раз 5 минут итого оно проветривалось 10минут*/

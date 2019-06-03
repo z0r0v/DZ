@@ -7,9 +7,13 @@ function Sensei(senName, senLastName, qualification, character){
     /* создаю новое свойство и инициирую его любым значением */
     this.shirtСolor = "blue";
     /* инициализурую переменную функциональным выражением */
+    /* область видимости  cheerUpSensei ограничена конструктором Sensei*/
     const cheerUpSensei = function(scoreOnTheStandings) {
-        let cheer = 5;
+        /* Область видиомтси  cheer ограничена функц выражением cheerUpSensei*/
+        let cheer= 6;
         if(scoreOnTheStandings >= 7) {
+            /* Область видимости cheer(ограничена if(true)) */
+            let cheer = 5;
         cheer++;
     }
     else {
@@ -25,6 +29,7 @@ function Sensei(senName, senLastName, qualification, character){
 Sensei.prototype.anwserQuestions = function(){
     /* изменяю значение одного из свойств */
     this.shirtСolor = "white";
+    /* область видимости speak ограничена  методом anwserQuestions*/
     const speak = "Who doesn\'t understand?";
     return speak;
 }

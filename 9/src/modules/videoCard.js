@@ -8,6 +8,7 @@ function VideoCard(graphicsProcessor, typeVideoMemory, videoMemoryBus, cooling){
     /* создаю новое свойство и инициирую его любым значением */
     this.corePerformance = "1750 МГц";
     /* инициализурую переменную функциональным выражением */
+    /* Область видимости  runApplication ограничена конструктором VideoCard*/
     const runApplication = function() {
         return "Metro Exodus Run";
     }
@@ -19,6 +20,8 @@ function VideoCard(graphicsProcessor, typeVideoMemory, videoMemoryBus, cooling){
 VideoCard.prototype.showSpecification = function(){
         /* изменяю значение одного из свойств */
         this.corePerformance = "1018 МГц";
+        /* Область видимости переменных produced, producedСountry, model, memoryType, power, type
+        ограничена методом showSpecification*/
         const produced = "Produced by";
         let producedСountry;
         const model = "model";

@@ -4,9 +4,12 @@ function Projector(trademark, model, quality){
     this.model = model;
     this.quality = quality;
     /* создаю новое свойство и инициирую его любым значением */
-    this.operationTime = 2;
+    this.operationTime = 1;
+
     /* инициализурую переменную функциональным выражением */
+    /* область видимости showTimeOperation ограничена конструктором Projector */
     const showTimeOperation = function() {
+        /* область видимости time ограничена функц. выраж. showTimeOperation */
         let time = this.operationTime;
         return `${time} h`;
     }
@@ -15,8 +18,15 @@ function Projector(trademark, model, quality){
 }
 
 Projector.prototype.showFeatures = function(){
+    /*  создается хотя бы одна переменная или константа в цикле*/
+   
+    for(let i = 0; i<5; i++){
+         /* i область видимости i ограничевается циклом for */
+        this.operationTime = i;
+    }
     /* изменяю значение одного из свойств */
-    this.operationTime =3;
+    this.operationTime =5;
+    /* Область видимости переменных branText, modelText, qualityText ограничена методом showFeatures */
     const branText = "Device mark";
     const modelText = "model";
     const qualityText =  "quality";

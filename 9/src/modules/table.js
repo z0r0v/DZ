@@ -6,6 +6,7 @@ function Table(manufacturer, color, type){
      /* создаю новое свойство и инициирую его любым значением */
      this.numberShelves = 2;
      /* инициализурую переменную функциональным выражением */
+     /* область видимост closeShelf ограничена конструктором Table */
      const closeShelf = function() {
          return "The shelf closes smoothly";
      }
@@ -17,6 +18,7 @@ function Table(manufacturer, color, type){
 Table.prototype.pushShelf = function(){
     /* изменяю значение одного из свойств */
     this.numberShelves = 1;
+    /* Область видимости  shelf ограничена методом pushShelf*/
     const shelf = "Push shelf";
     return shelf;
 }

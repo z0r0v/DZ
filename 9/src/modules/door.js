@@ -5,6 +5,7 @@ function Door(material, doorHandle){
     /* создаю новое свойство и инициирую его любым значением */
     this.typeHinge = "on top";
     /* инициализурую переменную функциональным выражением */
+    /* Область видимости doorClose ограничена конструктором Door */
     const doorClose = function() {
         return  `Krch, Krch, Krch`;
     }
@@ -16,6 +17,7 @@ function Door(material, doorHandle){
 Door.prototype.openDoor = function(){
     /* изменяю значение одного из свойств */
     this.typeHinge="imbed";
+    /* Область видимости open и  sound ограничена методом openDoor*/
     const open = `Makes a sound`;
     const sound = `Krch, Krch, Krch`;
     return `${open}: ${sound}`;

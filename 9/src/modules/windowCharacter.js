@@ -8,6 +8,7 @@ function WindowCharacter(fiveChamberProfile, doubleGlazingThickness, sealColor){
      /* создаю новое свойство и инициирую его любым значением */
      this.pressureInsideGlasses = 2;
      /* инициализурую переменную функциональным выражением */
+     /* область видимости closeWindow ограничена конструктором  WindowCharacter*/
      const closeWindow = function() {
         return "closing";
      }
@@ -20,13 +21,20 @@ WindowCharacter.prototype.openWindow = function(handlePosition){
     this.pressureInsideGlasses = 1;
     switch (handlePosition){
         case 'up':
-            return "ventilation";
+            /* Область видимости up ограничена  case */
+            const up = "ventilation";
+            return up;
         case 'horizontally':
-            return "full opening";
+             /* Область видимости horizontally ограничена  case */
+            const horizontally = "full opening";
+            return horizontally;
         case 'down':
-            return "closing";
+            /* Область видимости down ограничена  down */
+            const down = "closing";
+            return down;
         default:
             return "Window closed";
     }
 }
+
 export {WindowCharacter};

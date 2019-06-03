@@ -1,3 +1,5 @@
+
+
 /* инструкция по созданию обьекта audience57*/
 function Audience57(timeAir){
     /* создаю новое свойство и инициирую его значением, полученным через входной параметр (при помощи this)*/
@@ -6,6 +8,8 @@ function Audience57(timeAir){
     this.lux = 400;
     this.illumination = `${this.lux}lx`;
     /* инициализурую переменную функциональным выражением */
+    
+    /*  область видимости checkAvailablePlaces ограниченна конструктором Audience57() локальная переменная*/
     const checkAvailablePlaces = function(chairs, people) {
         return chairs - people;
     }
