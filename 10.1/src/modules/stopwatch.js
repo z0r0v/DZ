@@ -15,10 +15,10 @@ const htmlElements = {
 function timerStartButton(){
     htmlElements.buttonStart.setAttribute('disabled', 'disabled');
     startTime = new Date().getTime();
-    stopwatchInterval = setInterval(timerGo, 1000);
+    stopwatchInterval = setInterval(runStopwatch, 1000);
 }
 
-function timerGo(){
+function runStopwatch(){
     let difference = (new Date().getTime() - startTime) / 1000;
     let seconds = parseInt(difference % 60);
     let minutes = parseInt((difference / 60) % 60);
