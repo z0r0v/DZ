@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>JS Boilerplace</title>
+    <link rel="stylesheet" href="../src/style.css" />
+  </head>
+  <body>
+      <div class="rowFather">
+          <img alt="Logotip" src="http://svdsecurity.by/alexFiles/logo/logoZhorov.png" /><br />
+          <h1>Here you can choose the corporate color of your site.</h1>
+          <div class="row">
+              <h2 class="textChoose">Enter the color you want in the body<br/>(in style task number 1)</h2> <br/>
+              <label>
+                  <input class="inColor" type="text" placeholder="Enter color like 'Coral'" />
+              </label><br/>
+              <input type="button" class="btn cheColor" value="apply"/>
+          </div>
+          <div class="row">
+              <h2 class="textChoose">Choose a color from the list:<br/>(in style & list - task number 2)</h2>
+              <label>
+                  <select class="myList" title="color selection">
+                      <option>White</option>
+                      <option>AliceBlue</option>
+                      <option>Azure</option>
+                      <option>Chartreuse</option>
+                      <option>Cornsilk</option>
+                      <option>Cyan</option>
+                      <option>GhostWhite</option>
+                  </select>
+              </label><br/>
+              <input type="button" class="btn listSelect" value="apply"/>
+          </div>
+      
+          <div class="row">
+              <h2 class="textChoose">Choose a color from the list:<br />(in class & list - task number 3)</h2>
+              <label>
+                  <select class="myListClass" title="color selection">
+                      <option>White</option>
+                      <option>AliceBlue</option>
+                      <option>Azure</option>
+                      <option>Chartreuse</option>
+                      <option>Cornsilk</option>
+                      <option>Cyan</option>
+                      <option>GhostWhite</option>
+                  </select>
+              </label><br />
+                  <input type="button" class="btn myListClass" value="apply"/>
+          </div><!--№3-->
+          <div class="row">
+              <h2 class="textChoose">Enter the color you want in the body<br />(in CSS number 4)</h2> <br />
+              <label>
+                  <input class="inColorCss" type="color" placeholder="Enter color like 'Coral'" />
+              </label><br />
+              <input type="button" class="btn applyColor" value="apply"/><br />
+          </div><!--№4-->
+          <div class="row">
+              <h2 class="textChoose">Select a color from the list through "this" in CSS:<br />(list + CSS + this + onch - task 5)</h2>
+              <label>
+                  <select class="myListChangeThis" title="color selection">
+                      <option value="No value">Choose color from the list </option>
+                      <option>White</option>
+                      <option>AliceBlue</option>
+                      <option>Azure</option>
+                      <option>Chartreuse</option>
+                      <option>Cornsilk</option>
+                      <option>Cyan</option>
+                      <option>GhostWhite</option>
+                  </select>
+              </label><br />
+          </div><!--№5-->
+          <p>Do you want to support this project click here: <a href="https://codepen.io/z0r0v/collections/popular/">AlexProdaction</a></p>
+      </div>
+    <script type="module" src="../src/modules/main.js"></script>
+  </body>
+</html>
