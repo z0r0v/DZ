@@ -57,21 +57,31 @@ function validateHhMm(inputElemetn) {
     }
     return isValid;
 }
+let newTime;
 
-/* преобразование из полученного значения */
+/* Косячина гдето тут */
 function calculateTime() {
         htmlElements.output.classList.remove('hidden');
         inputElemetn.classList.add('hidden');
         inputButtonAplay.classList.add('hidden');
 
     if (validateHhMm(inputElemetn) === true) {
-        let arrayInputElemetn = inputElemetn.value.split(':');
-        difference = arrayInputElemetn[0] * (3, 6e+6) + arrayInputElemetn[1] * 60000 + arrayInputElemetn[2] * 1000;
-        console.log(difference);
+    let arrayInputElemetn = inputElemetn.value.split(':');
+    newTime = arrayInputElemetn[0] * (3, 6e+6) + arrayInputElemetn[1] * 60000 + arrayInputElemetn[2] * 1000;
     }
+    return newTime;
+}
+
+/* Косячина гдето тут */
+function differenceNotDefined(time) {
+    if(time === undefined){
+        difference = 5*60;}
+    else{difference = time;}
+
+    console.log(difference);
     return difference;
 }
-console.log(difference);
+
 
 
 function resrtsHidden() {
@@ -82,8 +92,9 @@ function resrtsHidden() {
 }
 
 
+
 function defaultTime() {
-    difference = 5*60;
+    differenceNotDefined(calculateTime());
     /* Должно поменяться заначение тут */
     let seconds = parseInt(difference % 60);
     let minutes = parseInt((difference / 60) % 60);
