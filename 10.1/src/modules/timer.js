@@ -3,15 +3,45 @@ const htmlElements = {
     buttonStart:document.querySelector('.container [data-mode = "timer"] .buttons .start'),
     buttonStop:document.querySelector('.container [data-mode = "timer"] .buttons .stop'),
     buttonReset:document.querySelector('.container [data-mode = "timer"] .buttons .reset'),
+    divTimer:document.querySelector('.container [data-mode = "timer"]'),
 }
 
 htmlElements.buttonStart.addEventListener('click', startTimer);
 htmlElements.buttonReset.addEventListener('click', resetTimer);
 htmlElements.buttonStop.addEventListener('click', timerStopButton);
-
+htmlElements.output.addEventListener('dblclick', callInputField);
 
 let difference;
 let startInterval;
+
+function callInputField(){
+    /* Вешаем хайден на оутпут */
+    htmlElements.output.classList.add('hidden');
+    /* создаем елемент инпут */
+    let inputElemetn = document.createElement('input');
+    inputElemetn.type = 'text';
+    inputElemetn.placeholder='00:00:00';
+    /* Вставляем его в див */
+    htmlElements.divTimer.appendChild(inputElemetn);
+
+    
+    /* Созадем кнопку */
+    let inputButtonAplay = document.createElement('input');
+    inputButtonAplay.type = 'button';
+    inputButtonAplay.value = 'APLAY';
+    /* вешаем клас для стилизации */
+    inputButtonAplay.classList.add('aplayButton');
+    /* Вешаем функуию которая будет принимать значение */
+    inputButtonAplay.addEventListener('click', aplayTime);
+    /* Вставляем кнопку в див */
+    htmlElements.divTimer.appendChild(inputButtonAplay);
+
+    /* функция принимающая значение инпута */
+function aplayTime(){
+    console.log(inputElemetn.value);
+}
+
+}
 
 function defaultTime(){
     difference = 5*60;
