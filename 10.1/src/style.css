@@ -57,3 +57,11 @@ body {
 .aplayButton{
   width: 150px;
 }
+
+.borderRed{
+  border: solid 1px red;
+}
+
+.borderGreen{
+  border: solid 1px green;
+}
