@@ -1,0 +1,56 @@
+:root{
+  --color:white;
+}
+body {
+  background-color: var(--color);
+}
+*{
+  color: rebeccapurple;
+}
+.rowFather {
+  margin-top: 100px;
+  margin-left: 20px;
+}
+.row {
+  margin: 20px auto;
+  text-align: center;
+}
+a {
+  font-size: 20px;
+  text-transform: uppercase;
+  font-weight:400;
+  color: black;
+  margin: 0 auto;
+  width: 578px;
+}
+
+h1 {
+  width: 587px;
+  cursor: pointer;
+}
+.Logo {
+  width: 587px;
+  margin: 0 auto;
+}
+p {
+  font-size: 18px;
+  margin: 0 auto;
+}
+.Pink{
+  background-color: Pink;
+}
+.LightPink{
+  background-color: LightPink;
+}
+.HotPink{
+  background-color: HotPink ;
+}
+.DeepPink{
+  background-color: DeepPink;
+}
+.MediumVioletRed{
+  background-color: MediumVioletRed ;
+}
+.PaleVioletRed{
+  background-color: PaleVioletRed;
+}
