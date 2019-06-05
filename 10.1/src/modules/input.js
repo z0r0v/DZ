@@ -1,11 +1,14 @@
 /* Переработать */
-const inputElemetn = document.createElement('input');
-inputElemetn.type = 'text';
-inputElemetn.placeholder = '00:00:00';
-inputElemetn.classList.add('hidden');
-inputElemetn.addEventListener('focusout', function () {
-    validateHhMm(inputElemetn);
-});
+const htmlElements = {
+    input: document.querySelector('.tabs [data-mode = "input"] .input'),
+};
+
+
+
+
+htmlElements.input = document.createElement('input');
+
+inputElemetn.addEventListener('focusout', function () {validateHhMm(inputElemetn);});
 
 const inputButtonAplay = document.createElement('input');
 inputButtonAplay.addEventListener('click', aplayTime);
