@@ -1,6 +1,5 @@
 /* объект с масивами кнопок линков и дивов */
 const htmlElements = {
-    button:document.querySelectorAll('.container .buttons button'),
     links:document.querySelectorAll('.container .links a'),
     tabs:document.querySelectorAll('.container .tabs > div')
 }
