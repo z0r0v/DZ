@@ -107,7 +107,7 @@ function addBorder() {
   const itemArray = Array.from(item.querySelectorAll('div.item'));
   for (let i = 0; i < items.length; i++) {
     if (items[i].selected === true) {
-      index = items.indexOf(items[i]);
+      let index = items.indexOf(items[i]);
       for (let i = 0; i < itemArray.length; i++) {
         itemArray[index].classList.add('selected');
           if(items[i].selected && itemArray[index].style.backgroundColor === 'black'){
@@ -125,7 +125,7 @@ function addBgColor() {
   const itemArray = Array.from(item.querySelectorAll('div.item'));
   for (let i = 0; i < items.length; i++) {
     if (items[i].selected === true) {
-      index = items.indexOf(items[i]);
+      let index = items.indexOf(items[i]);
       for (let i = 0; i < itemArray.length; i++) {
         document.body.style.backgroundColor = items[index].bgColor;
         document.querySelector('div.hello-world').style.color = items[index].color;
