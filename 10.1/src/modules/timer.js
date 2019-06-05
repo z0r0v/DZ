@@ -10,10 +10,7 @@ htmlElements.buttonStart.addEventListener('click', startTimer);
 htmlElements.buttonReset.addEventListener('click', resetTimer);
 htmlElements.buttonStop.addEventListener('click', timerStopButton);
 htmlElements.output.addEventListener('dblclick', callInputField);
-inputButtonAplay.addEventListener('click', aplayTime);
-inputElemetn.addEventListener('focusout', function () {
-    validateHhMm(inputElemetn);
-});
+
 
 let difference, newTime, startInterval;
 
@@ -21,8 +18,12 @@ const inputElemetn = document.createElement('input');
 inputElemetn.type = 'text';
 inputElemetn.placeholder = '00:00:00';
 inputElemetn.classList.add('hidden');
+inputElemetn.addEventListener('focusout', function () {
+    validateHhMm(inputElemetn);
+});
 
 const inputButtonAplay = document.createElement('input');
+inputButtonAplay.addEventListener('click', aplayTime);
 inputButtonAplay.type = 'button';
 inputButtonAplay.value = 'APLAY';
 inputButtonAplay.classList.add('aplayButton');
@@ -67,8 +68,6 @@ function calculateTime() {
     }
 }
 
-console.log(newTime);
-
 /* Косячина гдето тут */
 function differenceNotDefined(time) {
     if(time === undefined){difference = 5*60;}
@@ -83,8 +82,6 @@ function resrtsHidden() {
     inputElemetn.value = '';
     inputElemetn.classList.remove('borderRed', 'borderGreen');
 }
-
-
 
 function defaultTime() {
     differenceNotDefined(newTime);
@@ -103,7 +100,6 @@ function defaultTime() {
     }
     htmlElements.output.innerText = `${hours}:${minutes}:${seconds}`;
 }
-defaultTime();
 
 
 function runTimer() {
@@ -142,10 +138,14 @@ function resetTimer() {
 }
 
 
-/* тут магия как работает не понимаю */
 function Timer() {};
-Timer.prototype.init = function () {};
 
-export {
-    Timer
+Timer.prototype.init = function () {
+    defaultTime();
+    resetTimer();
+    startTimer();
+    timerStopButton();
+    aplayTime();
 };
+
+export {Timer};

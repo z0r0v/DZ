@@ -19,7 +19,7 @@ function timerStartButton(){
 }
 
 function runStopwatch(){
-    let difference = (new Date().getTime() - startTime) / 1000;
+    const difference = (new Date().getTime() - startTime) / 1000;
     let seconds = parseInt(difference % 60);
     let minutes = parseInt((difference / 60) % 60);
     let hours = parseInt(((difference / 60) % 60)/60 % 60);
@@ -40,8 +40,13 @@ function resetStopwatch(){
 }
 
 
-/* тут магия как работает не понимаю */
 function Stopwatch(){};
-Stopwatch.prototype.init = function(){};
+
+Stopwatch.prototype.init = function(){
+    runStopwatch();
+    timerStartButton();
+    timerStopButton ();
+    resetStopwatch()
+};
 
 export {Stopwatch};
