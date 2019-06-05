@@ -10,27 +10,26 @@ htmlElements.buttonStart.addEventListener('click', startTimer);
 htmlElements.buttonReset.addEventListener('click', resetTimer);
 htmlElements.buttonStop.addEventListener('click', timerStopButton);
 htmlElements.output.addEventListener('dblclick', callInputField);
+inputButtonAplay.addEventListener('click', aplayTime);
+inputElemetn.addEventListener('focusout', function () {
+    validateHhMm(inputElemetn);
+});
 
-let difference;
-let startInterval;
+let difference, newTime, startInterval;
 
 const inputElemetn = document.createElement('input');
 inputElemetn.type = 'text';
 inputElemetn.placeholder = '00:00:00';
-inputElemetn.addEventListener('focusout', function () {
-    validateHhMm(inputElemetn);
-});
 inputElemetn.classList.add('hidden');
-htmlElements.divTimer.appendChild(inputElemetn);
-
 
 const inputButtonAplay = document.createElement('input');
 inputButtonAplay.type = 'button';
 inputButtonAplay.value = 'APLAY';
 inputButtonAplay.classList.add('aplayButton');
 inputButtonAplay.classList.add('hidden');
+
+htmlElements.divTimer.appendChild(inputElemetn);
 htmlElements.divTimer.appendChild(inputButtonAplay);
-inputButtonAplay.addEventListener('click', aplayTime);
 
 
 function callInputField() {
@@ -40,7 +39,6 @@ function callInputField() {
 
 /* функция принимающая значение инпута */
 function aplayTime() {
-    validateHhMm(inputElemetn);
     calculateTime();
 }
 
@@ -48,7 +46,6 @@ function aplayTime() {
 /* Валидация */
 function validateHhMm(inputElemetn) {
     const isValid = /^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$/.test(inputElemetn.value);
-
     if (isValid) {
         inputElemetn.classList.add('borderGreen');
 
@@ -57,7 +54,6 @@ function validateHhMm(inputElemetn) {
     }
     return isValid;
 }
-let newTime;
 
 /* Косячина гдето тут */
 function calculateTime() {
@@ -69,19 +65,16 @@ function calculateTime() {
     let arrayInputElemetn = inputElemetn.value.split(':');
     newTime = arrayInputElemetn[0] * (3, 6e+6) + arrayInputElemetn[1] * 60000 + arrayInputElemetn[2] * 1000;
     }
-    return newTime;
 }
+
+console.log(newTime);
 
 /* Косячина гдето тут */
 function differenceNotDefined(time) {
-    if(time === undefined){
-        difference = 5*60;}
+    if(time === undefined){difference = 5*60;}
     else{difference = time;}
-
-    console.log(difference);
     return difference;
 }
-
 
 
 function resrtsHidden() {
@@ -94,7 +87,7 @@ function resrtsHidden() {
 
 
 function defaultTime() {
-    differenceNotDefined(calculateTime());
+    differenceNotDefined(newTime);
     /* Должно поменяться заначение тут */
     let seconds = parseInt(difference % 60);
     let minutes = parseInt((difference / 60) % 60);
