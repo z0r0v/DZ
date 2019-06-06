@@ -1,4 +1,4 @@
-import {objTime} from './timer.js';
+/* import {objTime} from './timer.js'; */
 
 const htmlElements = {
     divTimer: document.querySelector('.tabs [data-mode = "timer"]'),

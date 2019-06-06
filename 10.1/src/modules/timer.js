@@ -87,3 +87,4 @@ Timer.prototype.init = function() {
 };
 
 export {Timer};
+
