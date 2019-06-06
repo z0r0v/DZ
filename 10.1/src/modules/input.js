@@ -56,7 +56,8 @@ function onAplayButtonCliced() {
             htmlElements.inputButtonAplay.classList.add('hidden');
             let arrayInputElemetn = htmlElements.input.value.split(':');
             objTime.difference = arrayInputElemetn[0] * (3, 6e+6) + arrayInputElemetn[1] * 60000 + arrayInputElemetn[2] * 1000;
-        }
+}
+
 
 /* Чет намутил */
 
