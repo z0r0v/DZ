@@ -83,5 +83,7 @@ function resetTimer() {
 
 function Timer() {};
 
+Timer.prototype.init = function() {
+};
+
 export {Timer};
-export {objTime};
