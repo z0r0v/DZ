@@ -1,14 +1,17 @@
+import {Input} from "./input.js";
+
 const htmlElements = {
     output: document.querySelector('.tabs [data-mode = "timer"] .output'),
     buttonStart: document.querySelector('.tabs [data-mode = "timer"] .buttons .start'),
     buttonStop: document.querySelector('.tabs [data-mode = "timer"] .buttons .stop'),
     buttonReset: document.querySelector('.tabs [data-mode = "timer"] .buttons .reset'),
-    divTimer: document.querySelector('.tabs [data-mode = "timer"]'),
 }
 
 htmlElements.buttonStart.addEventListener('click', startTimer);
 htmlElements.buttonReset.addEventListener('click', resetTimer);
 htmlElements.buttonStop.addEventListener('click', timerStopButton);
+
+
 
 let startInterval, difference, newDifference;
 

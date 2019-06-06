@@ -1,67 +1,71 @@
-/* Переработать */
-const htmlElements = {
-    input: document.querySelector('.tabs [data-mode = "input"] .input'),
-};
+
+const htmlElements = {};
+htmlElements.divTimer = document.querySelector('.tabs [data-mode = "timer"]');
+htmlElements.output = document.querySelector('.tabs [data-mode = "timer"] .output'),
+htmlElements.output.addEventListener('dblclick', onOutputDbCleced);
 
 
 
 
-htmlElements.input = document.createElement('input');
+function createElementsInput(){
+    htmlElements.input = document.createElement('input');
+    htmlElements.input.placeholder = '00:00:00';
+    htmlElements.input.type ='text';
+    htmlElements.input.classList.add('hidden');
 
-inputElemetn.addEventListener('focusout', function () {validateHhMm(inputElemetn);});
+    htmlElements.inputButtonAplay = document.createElement('input');
+    htmlElements.inputButtonAplay.type = 'button';
+    htmlElements.inputButtonAplay.value = 'APLAY';
+    htmlElements.inputButtonAplay.classList.add('aplayButton');
+    htmlElements.inputButtonAplay.classList.add('hidden');
 
-const inputButtonAplay = document.createElement('input');
-inputButtonAplay.addEventListener('click', aplayTime);
-inputButtonAplay.type = 'button';
-inputButtonAplay.value = 'APLAY';
-inputButtonAplay.classList.add('aplayButton');
-inputButtonAplay.classList.add('hidden');
-
-htmlElements.divTimer.prepend(inputElemetn);
-htmlElements.divTimer.prepend(inputButtonAplay);
-
-/* Переработать */
-htmlElements.output.addEventListener('dblclick', callInputField);
-
-
-/* Валидация */
-function validateHhMm(inputElemetn) {
-    const isValid = /^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$/.test(inputElemetn.value);
-    if (isValid) {
-        inputElemetn.classList.add('borderGreen');
-
-    } else {
-        inputElemetn.classList.add('borderRed');
-    }
-    return isValid;
+    htmlElements.divTimer.prepend(htmlElements.inputButtonAplay);
+    htmlElements.divTimer.prepend(htmlElements.input);
+    htmlElements.input.addEventListener('focusout', validateHhMm);
 }
 
-/* функция принимающая значение инпута */
-function aplayTime() {
-    if (validateHhMm(inputElemetn) === true) {
-    htmlElements.output.classList.remove('hidden');
-    inputElemetn.classList.add('hidden');
-    inputButtonAplay.classList.add('hidden');
-    let arrayInputElemetn = inputElemetn.value.split(':');
-    ojDifference.difference = arrayInputElemetn[0] * (3, 6e+6) + arrayInputElemetn[1] * 60000 + arrayInputElemetn[2] * 1000;
-    }
-}
 
-/* Косячина гдето тут */
-function differenceNotDefined(time) {
-    if(time === undefined|| time === NaN){difference = 5*60;}
-    else{difference = time;}
-    return difference;
-}
-/* Скорее всего будет не нужна */
 function resrtsHidden() {
-    inputElemetn.classList.remove('hidden');
-    inputButtonAplay.classList.remove('hidden');
-    inputElemetn.value = '';
-    inputElemetn.classList.remove('borderRed', 'borderGreen');
+    htmlElements.input.classList.remove('hidden');
+    htmlElements.inputButtonAplay.classList.remove('hidden');
+    htmlElements.input.value = '';
+    htmlElements.input.classList.remove('borderRed', 'borderGreen');
 }
-/* Скорее всего будет не нужна */
-function callInputField() {
+
+function onOutputDbCleced(){
+    /* Создаю элементы */
+    createElementsInput();
+    /* Сбрасываю  hidden */
     resrtsHidden();
+    /* Ваешаю хайден на output */
     htmlElements.output.classList.add('hidden');
 }
+
+/* Валидация */
+function validateHhMm() {
+    const isValid = /^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$/.test(htmlElements.input.value);
+    if (isValid && htmlElements.input.value !== '00:00:00') {
+        htmlElements.input.classList.add('borderGreen'); 
+        htmlElements.inputButtonAplay.addEventListener('click', onAplayButtonCliced);
+    } else {
+        htmlElements.input.classList.add('borderRed');
+    }
+    return isValid;
+    
+}
+
+
+
+function onAplayButtonCliced() {
+            htmlElements.input.classList.add('hidden');
+            htmlElements.output.classList.remove('hidden');
+            htmlElements.inputButtonAplay.classList.add('hidden');
+            let arrayInputElemetn = htmlElements.input.value.split(':');
+            difference = arrayInputElemetn[0] * (3, 6e+6) + arrayInputElemetn[1] * 60000 + arrayInputElemetn[2] * 1000;
+}
+console.log(difference);
+
+
+
+function Input() {};
+export {Input};
