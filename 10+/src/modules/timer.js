@@ -1,6 +1,6 @@
-/* import {addButtunsEvent} from './input.js'
+import {addButtunsEvent} from './input.js'
 import {checkTimeValue} from './input.js'
-addButtunsEvent(); */
+addButtunsEvent();
 
 const htmlElements = {
     output: document.querySelector('.tabs [data-mode = "timer"] .output'),
@@ -16,11 +16,10 @@ htmlElements.buttonStop.addEventListener('click', timerStopButton);
 let startInterval;
 
 export const objTime ={};
-console.log(objTime);
+console.log(objTime.difference);
 
 function showTime() {
-    /* checkTimeValue(objTime.difference); */
-    objTime.difference = 5*60;
+    checkTimeValue(objTime.difference);
     let seconds = parseInt(objTime.difference % 60);
     let minutes = parseInt((objTime.difference / 60) % 60);
     let hours = parseInt(((objTime.difference / 60) % 60) / 60 % 60);
@@ -35,6 +34,7 @@ function showTime() {
     }
     htmlElements.output.innerText = `${hours}:${minutes}:${seconds}`;
 }
+showTime();
 
 
 /* function defaultTime(){

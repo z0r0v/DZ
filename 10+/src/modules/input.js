@@ -55,6 +55,7 @@ function validateHhMm() {
 
 
 function onAplayButtonCliced() {
+    
             htmlElements.input.classList.add('hidden');
             htmlElements.inputButtonAplay.classList.add('hidden');
             htmlElements.output.classList.remove('hidden');
@@ -65,10 +66,12 @@ function onAplayButtonCliced() {
 }
 
 export function checkTimeValue(value){
-    if(value !== null){
-    return objTime.difference = value;
+    if(value !== undefined){
+     objTime.difference = value;
+     return objTime.difference;
     }
     else{
-    return objTime.difference = 5*60;
+     objTime.difference = 5*60;
+     return objTime.difference;
     }
 }
