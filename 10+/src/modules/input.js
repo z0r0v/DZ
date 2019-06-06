@@ -54,8 +54,9 @@ function validateHhMm() {
 }
 
 
+/* Вот хоть убей не понимаю как мне передать переменную  objTime.difference после проверки
+checkTimeValue() в функцию showTime() чтобы она подменила значение в htmlElements.output.innerText*/
 function onAplayButtonCliced() {
-    
             htmlElements.input.classList.add('hidden');
             htmlElements.inputButtonAplay.classList.add('hidden');
             htmlElements.output.classList.remove('hidden');
