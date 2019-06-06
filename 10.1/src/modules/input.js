@@ -1,4 +1,4 @@
-import * as exportTimerModule from './timer.js';
+import {objTime} from './timer.js';
 
 const htmlElements = {
     divTimer: document.querySelector('.tabs [data-mode = "timer"]'),
@@ -8,8 +8,12 @@ const htmlElements = {
 
 };
 
-htmlElements.output.addEventListener('dblclick', onOutputDbCleced);
-htmlElements.input.addEventListener('focusout', validateHhMm);
+export function addButtunsEvent(){
+    htmlElements.output.addEventListener('dblclick', onOutputDbCleced);
+    htmlElements.input.addEventListener('focusout', validateHhMm);
+}
+addButtunsEvent();
+
 
     htmlElements.input.placeholder = '00:00:00';
     htmlElements.input.type ='text';
@@ -49,16 +53,22 @@ function validateHhMm() {
     return isValid;
 }
 
-const newObjTime = {};
-
 
 function onAplayButtonCliced() {
             htmlElements.input.classList.add('hidden');
             htmlElements.inputButtonAplay.classList.add('hidden');
-            let arrayInputElemetn = htmlElements.input.value.split(':');
             htmlElements.output.classList.remove('hidden');
-            newObjTime.difference = arrayInputElemetn[0] * (3, 6e+6) + arrayInputElemetn[1] * 60000 + arrayInputElemetn[2] * 1000;
-          /* Нужно разобраться */
-            /*  exportTimerModule.checkTimeValue(); */
-            return newObjTime.difference;
+            let arrayInputElemetn = htmlElements.input.value.split(':');
+            let difference = arrayInputElemetn[0] * (3, 6e+6) + arrayInputElemetn[1] * 60000 + arrayInputElemetn[2] * 1000;
+            checkTimeValue(difference);
+            return objTime.difference;
+}
+
+export function checkTimeValue(value){
+    if(value !== null){
+    return objTime.difference = value;
+    }
+    else{
+    return objTime.difference = 5*60;
+    }
 }
