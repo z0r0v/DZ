@@ -1,7 +1,6 @@
-import {Input} from './input.js';
+import * as exportInputModule from './input.js';
 
-const objTime ={};
-
+const exportInputModule ={};
 const htmlElements = {
     output: document.querySelector('.tabs [data-mode = "timer"] .output'),
     buttonStart: document.querySelector('.tabs [data-mode = "timer"] .buttons .start'),
@@ -13,15 +12,21 @@ htmlElements.buttonStart.addEventListener('click', startTimer);
 htmlElements.buttonReset.addEventListener('click', resetTimer);
 htmlElements.buttonStop.addEventListener('click', timerStopButton);
 
+let startInterval;
 
+/* Проверка должна происходить после аплая*/
+function checkTimeValue(){
+    if(newObjTime.difference){
+        objTime.difference = newObjTime.difference;
+    }else{
+        objTime.difference = 5*60;
+    }
+    return objTime.difference;
+}
 
-let startInterval, newDifference;
 
 function showTime() {
-    defaultTime();
-
-        /* Тут if который буде менять */
-
+    checkTimeValue();
     let seconds = parseInt(objTime.difference % 60);
     let minutes = parseInt((objTime.difference / 60) % 60);
     let hours = parseInt(((objTime.difference / 60) % 60) / 60 % 60);
@@ -36,17 +41,14 @@ function showTime() {
     }
     htmlElements.output.innerText = `${hours}:${minutes}:${seconds}`;
 }
-showTime();
 
 
-
-function defaultTime(){
-    /* Тут что то */
-     objTime.difference = 5*60;
-}
+/* function defaultTime(){
+    objTime.difference = 5*60;
+} */
 
 function runTimer() {
-    newDifference = --objTime.difference;
+    let newDifference = --objTime.difference;
     let seconds = parseInt(newDifference % 60);
     let minutes = parseInt((newDifference / 60) % 60);
     let hours = parseInt(((newDifference / 60) % 60) / 60 % 60);
@@ -84,7 +86,7 @@ function resetTimer() {
 function Timer() {};
 
 Timer.prototype.init = function() {
+    showTime();
 };
 
 export {Timer};
-
