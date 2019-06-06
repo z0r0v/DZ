@@ -1,4 +1,6 @@
-import {Input} from "./input.js";
+import {Input} from './input.js';
+
+const objTime ={};
 
 const htmlElements = {
     output: document.querySelector('.tabs [data-mode = "timer"] .output'),
@@ -13,13 +15,16 @@ htmlElements.buttonStop.addEventListener('click', timerStopButton);
 
 
 
-let startInterval, difference, newDifference;
+let startInterval, newDifference;
 
-function defaultTime() {
-    difference = 5*60;
-    let seconds = parseInt(difference % 60);
-    let minutes = parseInt((difference / 60) % 60);
-    let hours = parseInt(((difference / 60) % 60) / 60 % 60);
+function showTime() {
+    defaultTime();
+
+        /* Тут if который буде менять */
+
+    let seconds = parseInt(objTime.difference % 60);
+    let minutes = parseInt((objTime.difference / 60) % 60);
+    let hours = parseInt(((objTime.difference / 60) % 60) / 60 % 60);
     if (seconds < 10) {
         seconds = '0' + seconds;
     }
@@ -31,11 +36,17 @@ function defaultTime() {
     }
     htmlElements.output.innerText = `${hours}:${minutes}:${seconds}`;
 }
-defaultTime();
+showTime();
 
+
+
+function defaultTime(){
+    /* Тут что то */
+     objTime.difference = 5*60;
+}
 
 function runTimer() {
-    newDifference = --difference;
+    newDifference = --objTime.difference;
     let seconds = parseInt(newDifference % 60);
     let minutes = parseInt((newDifference / 60) % 60);
     let hours = parseInt(((newDifference / 60) % 60) / 60 % 60);
@@ -66,14 +77,11 @@ function timerStopButton() {
 
 function resetTimer() {
     timerStopButton();
-    defaultTime();
+    showTime();
 }
 
 
 function Timer() {};
 
-Timer.prototype.init = function () {
-
-};
-
 export {Timer};
+export {objTime};

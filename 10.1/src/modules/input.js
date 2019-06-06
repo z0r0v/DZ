@@ -1,19 +1,20 @@
+import {objTime} from './timer.js';
 
-const htmlElements = {};
-htmlElements.divTimer = document.querySelector('.tabs [data-mode = "timer"]');
-htmlElements.output = document.querySelector('.tabs [data-mode = "timer"] .output'),
+const htmlElements = {
+    divTimer: document.querySelector('.tabs [data-mode = "timer"]'),
+    output: document.querySelector('.tabs [data-mode = "timer"] .output'),
+    input: document.createElement('input'),
+    inputButtonAplay: document.createElement('input'),
+
+};
+
 htmlElements.output.addEventListener('dblclick', onOutputDbCleced);
+htmlElements.input.addEventListener('focusout', validateHhMm);
 
-
-
-
-function createElementsInput(){
-    htmlElements.input = document.createElement('input');
     htmlElements.input.placeholder = '00:00:00';
     htmlElements.input.type ='text';
     htmlElements.input.classList.add('hidden');
 
-    htmlElements.inputButtonAplay = document.createElement('input');
     htmlElements.inputButtonAplay.type = 'button';
     htmlElements.inputButtonAplay.value = 'APLAY';
     htmlElements.inputButtonAplay.classList.add('aplayButton');
@@ -21,9 +22,6 @@ function createElementsInput(){
 
     htmlElements.divTimer.prepend(htmlElements.inputButtonAplay);
     htmlElements.divTimer.prepend(htmlElements.input);
-    htmlElements.input.addEventListener('focusout', validateHhMm);
-}
-
 
 function resrtsHidden() {
     htmlElements.input.classList.remove('hidden');
@@ -33,8 +31,6 @@ function resrtsHidden() {
 }
 
 function onOutputDbCleced(){
-    /* Создаю элементы */
-    createElementsInput();
     /* Сбрасываю  hidden */
     resrtsHidden();
     /* Ваешаю хайден на output */
@@ -54,18 +50,23 @@ function validateHhMm() {
     
 }
 
-
-
 function onAplayButtonCliced() {
             htmlElements.input.classList.add('hidden');
             htmlElements.output.classList.remove('hidden');
             htmlElements.inputButtonAplay.classList.add('hidden');
             let arrayInputElemetn = htmlElements.input.value.split(':');
-            difference = arrayInputElemetn[0] * (3, 6e+6) + arrayInputElemetn[1] * 60000 + arrayInputElemetn[2] * 1000;
+            objTime.difference = arrayInputElemetn[0] * (3, 6e+6) + arrayInputElemetn[1] * 60000 + arrayInputElemetn[2] * 1000;
+        }
+
+/* Чет намутил */
+
+function Input(){};
+
+Input.prototype.init = function(){
 }
-console.log(difference);
 
 
-
-function Input() {};
 export {Input};
+
+
+    
