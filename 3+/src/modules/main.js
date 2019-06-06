@@ -51,7 +51,7 @@ function matFunction() {
     switch (currentValue) {
         case "Pink":
             htmlElements.span.innerHTML = "Java Script has a development trend!";
-            htmlElements.imgJs.src ="http://pluspng.com/img-png/logo-javascript-png-js-logo-png-512.png";
+            htmlElements.imgJs.src ="https://raw.githubusercontent.com/z0r0v/Hometasks/master/%E2%84%961%20Calculete/img/logo-javascript-png-js-logo-png-512.png";
             break;
         case "LightPink":
             htmlElements.span.innerHTML = "JavaScript сompiles and interpreted in many programming languages!";
@@ -59,7 +59,7 @@ function matFunction() {
             break;
         case "HotPink":
             htmlElements.span.innerHTML = "Available on all devices and browsers!";
-            htmlElements.imgJs.src ="http://pluspng.com/img-png/logo-javascript-png-js-logo-png-512.png";
+            htmlElements.imgJs.src ="https://raw.githubusercontent.com/z0r0v/Hometasks/master/%E2%84%961%20Calculete/img/logo-javascript-png-js-logo-png-512.png";
             break;
         case "DeepPink":
             htmlElements.span.innerHTML = "Has the ability to immediately see the result and manage multimedia space!";
