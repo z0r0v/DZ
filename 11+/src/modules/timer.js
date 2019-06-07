@@ -1,5 +1,6 @@
 import {addButtunsEvent} from './input.js'
 import {checkTimeValue} from './input.js'
+
 addButtunsEvent();
 
 const htmlElements = {
@@ -16,7 +17,6 @@ htmlElements.buttonStop.addEventListener('click', timerStopButton);
 let startInterval;
 
 export const objTime ={};
-console.log(objTime.difference);
 
 function showTime() {
     checkTimeValue(objTime.difference);
@@ -35,11 +35,6 @@ function showTime() {
     htmlElements.output.innerText = `${hours}:${minutes}:${seconds}`;
 }
 showTime();
-
-
-/* function defaultTime(){
-    objTime.difference = 5*60;
-} */
 
 function runTimer() {
     let difference = --objTime.difference;

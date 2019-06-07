@@ -5,7 +5,6 @@ const htmlElements = {
     output: document.querySelector('.tabs [data-mode = "timer"] .output'),
     input: document.createElement('input'),
     inputButtonAplay: document.createElement('input'),
-
 };
 
 export function addButtunsEvent(){
@@ -63,8 +62,10 @@ function onAplayButtonCliced() {
             let arrayInputElemetn = htmlElements.input.value.split(':');
             let difference = arrayInputElemetn[0] * (3, 6e+6) + arrayInputElemetn[1] * 60000 + arrayInputElemetn[2] * 1000;
             checkTimeValue(difference);
-            return objTime.difference;
+            objTime.difference = difference;
+            return objTime;
 }
+
 
 export function checkTimeValue(value){
     if(value !== undefined){
