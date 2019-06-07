@@ -1,5 +1,13 @@
-import { Car } from './car.js';
-
-let car = new Car();
-
-console.log(car);
+function onButtonClicked(){
+    if (checkPassword() === true){
+      alert("OK");
+    }
+  }
+  
+  function checkPassword(){
+    let a = prompt("password");
+    if (a !== 'mypassword'){
+      return checkPassword();
+    }
+    return true;
+  }
