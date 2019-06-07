@@ -1,4 +1,4 @@
-export const htmlElements = {
+const htmlElements = {
     output:document.querySelector('.container [data-mode = "stopwatch"] .output'),
     buttonStart:document.querySelector('.container [data-mode = "stopwatch"] .buttons .start'),
     buttonStop:document.querySelector('.container [data-mode = "stopwatch"] .buttons .stop'),
