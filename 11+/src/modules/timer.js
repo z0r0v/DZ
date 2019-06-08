@@ -45,6 +45,7 @@ function resrtsHidden() {
     htmlElements.input.value = '';
     htmlElements.input.classList.remove('borderRed', 'borderGreen');
     htmlElements.output.classList.add('hidden');
+   
 }
 
 let startInterval, difference, startTime;
@@ -129,6 +130,7 @@ function timerStopButton() {
 };
 
 function resetTimer() {
+    isStarted = true;
     timerStopButton();
     showTime();
 }

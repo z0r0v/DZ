@@ -1,3 +1,5 @@
+import {ClassHelper} from './classHelper.js';
+
 /* объект с масивами кнопок линков и дивов */
 const htmlElements = {
     links:document.querySelectorAll('.container .links a'),
@@ -28,37 +30,22 @@ function enableTab(mode) {
 
 /* удаляет selected с элементов в нутри links  вешает selected выбранному*/
 function enableLink(mode) {
-    removeClass('selected', htmlElements.links);
+    ClassHelper.removeClass('selected', htmlElements.links);
     htmlElements.links.forEach(function(link) {
         if(link.dataset.mode === mode){
-           addClass('selected', [link]);
+            ClassHelper.addClass('selected', [link]);
         }
     });
 }
 
 /* Добавляет всем елементам внутри  tabs - hidden и снимает hidden с выбранного*/
 function enableContent(mode) {
-    addClass('hidden', htmlElements.tabs);
+    ClassHelper.addClass('hidden', htmlElements.tabs);
     htmlElements.tabs.forEach(function(tab){
         if(tab.dataset.mode === mode) {
-            removeClass('hidden', [tab]);
+            ClassHelper.removeClass('hidden', [tab]);
         }
     });
 }
-
-
-function addClass(className, elements) {
-    for(let i = 0; i<elements.length; i++) {
-        elements[i].classList.add(className);
-    }
-}
-
-
-function removeClass(className, elements) {
-    elements.forEach(function(elements){
-        elements.classList.remove(className);
-    });
-}
-
 
 export {Tabs};

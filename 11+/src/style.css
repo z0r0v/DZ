@@ -65,3 +65,7 @@ body {
 .borderGreen{
   border: solid 1px green;
 }
+.disabled{
+  pointer-events: none;
+  color: grey;
+}

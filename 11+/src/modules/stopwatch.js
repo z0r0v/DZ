@@ -1,28 +1,45 @@
+import {ClassHelper} from './classHelper.js';
+
 const htmlElements = {
     output:document.querySelector('.container [data-mode = "stopwatch"] .output'),
     buttonStart:document.querySelector('.container [data-mode = "stopwatch"] .buttons .start'),
     buttonStop:document.querySelector('.container [data-mode = "stopwatch"] .buttons .stop'),
     buttonReset:document.querySelector('.container [data-mode = "stopwatch"] .buttons .reset'),
+    buttons: document.querySelectorAll('.container .tabs [data-mode="stopwatch"] .buttons button'),
 };
 
-    let stopwatchInterval;
+    
     let startTime;
+    let stopwatchInterval;
+    let totalSecondsDifference = 0;
+    let differenceSeconds = 0;
+
     let array = [];
     
+   
+function onStartTimerButtonClict(){
+    ClassHelper.removeClass('disabled', htmlElements.buttons);
+    ClassHelper.addClass('disabled', [htmlElements.buttonStart]);
+    stopwatchInterval = setInterval(/* Тут интервал моей запуск таймера */, 1000);
+    startTime = new Date().getTime();
+}
 
-    htmlElements.buttonStart.addEventListener('click', timerStartButton);
-    htmlElements.buttonReset.addEventListener('click', resetStopwatch);
-    htmlElements.buttonStop.addEventListener('click', timerStopButton);
+function timerStopButton (){
+    ClassHelper.removeClass('disabled', htmlElements.buttons);
+    ClassHelper.addClass('disabled', [htmlElements.buttonStop]);
+    clearInterval(stopwatchInterval);
+    totalSecondsDifference = differenceSeconds;
+};
 
-function timerStartButton(){
-    htmlElements.buttonStart.setAttribute('disabled', 'disabled');
-    if(startTime === undefined){
-        startTime = new Date().getTime();
-    }
-    else{
-        startTime = new Date().getTime() - array[array.length - 1];
-    }
-    stopwatchInterval = setInterval(runStopwatch, 1000);
+function resetStopwatch(){
+    ClassHelper.removeClass('disabled', htmlElements.buttons);
+    ClassHelper.addClass('disabled', [htmlElements.buttonReset]);
+    totalSecondsDifference = 0;
+    startTime = new Date().getTime();
+    clearInterval(stopwatchInterval);
+    // Эта функция вызова функции в которой тикают часики
+    // остановился тут
+    onIntervalTick();
 }
 
 
@@ -37,26 +54,16 @@ function runStopwatch(){
     htmlElements.output.innerText = `${hours}:${minutes}:${seconds}`;
 }
 
-function timerStopButton (){
-    clearInterval(stopwatchInterval);
-    htmlElements.buttonStart.removeAttribute('disabled', 'disabled');
-    let arrayThisTimeElemetn = htmlElements.output.innerText.split(':');
-    let time = arrayThisTimeElemetn[0] * (3, 6e+6) + arrayThisTimeElemetn[1] * 60000 + arrayThisTimeElemetn[2] * 1000;
-    array.push(time);
-};
 
-function resetStopwatch(){
-    timerStopButton();
-    htmlElements.output.innerText = '00:00:00';
-    startTime = undefined;
-}
+
+
 
 function Stopwatch(){};
 
 Stopwatch.prototype.init = function() {
-    timerStartButton();
-    resetStopwatch();
-    timerStopButton ();
+    htmlElements.buttonStart.addEventListener('click', onStartTimerButtonClict);
+    htmlElements.buttonReset.addEventListener('click', resetStopwatch);
+    htmlElements.buttonStop.addEventListener('click', timerStopButton);
 };
 
 export {Stopwatch};
