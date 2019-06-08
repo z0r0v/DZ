@@ -21,15 +21,15 @@ WindowCharacter.prototype.openWindow = function(handlePosition){
     this.pressureInsideGlasses = 1;
     switch (handlePosition){
         case 'up':
-            /* Область видимости up ограничена  case */
+            /* Область видимости up ограничена  switch */
             const up = "ventilation";
             return up;
         case 'horizontally':
-             /* Область видимости horizontally ограничена  case */
+             /* Область видимости horizontally ограничена  switch */
             const horizontally = "full opening";
             return horizontally;
         case 'down':
-            /* Область видимости down ограничена  down */
+            /* Область видимости down ограничена  switch */
             const down = "closing";
             return down;
         default:
