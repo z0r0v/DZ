@@ -48,7 +48,8 @@ function resrtsHidden() {
 }
 
 let startInterval, difference, startTime;
-const array = [];
+let userValue = null;
+let isStarted = false;
 
 
 /* Валидация */
@@ -63,32 +64,43 @@ function validateHhMm() {
     return isValid;
 }
 
+/* От суда новое значение */
 function onAplayButtonCliced() {
     htmlElements.input.classList.add('hidden');
     htmlElements.inputButtonAplay.classList.add('hidden');
     htmlElements.output.classList.remove('hidden');
     let arrayInputElemetn = htmlElements.input.value.split(':');
-    let difference = arrayInputElemetn[0] * (3, 6e+6) + arrayInputElemetn[1] * 60000 + arrayInputElemetn[2] * 1000;
-    array.push(difference);
+    let difference = arrayInputElemetn[0] * 60*60*1000 + arrayInputElemetn[1] * 60000 + arrayInputElemetn[2] * 1000;
+    userValue = difference;
+    showTime();
 }
 
+/* Отсуда забрать */
 export function checkTimeValue(){
-    if(isNaN(array[array.length - 1]) && array[array.length - 1] !==0) {
-        startTime = new Date().getTime();
-        difference = new Date().getTime() + 5*60 - startTime;
+    if (!isStarted) startTime = new Date().getTime();
+        let current = new Date().getTime();
+    if(userValue === null) {
+        
+        difference =  5*60*1000 + startTime - current;
     }
     else{
-        difference = array[array.length - 1];
+        difference = userValue + startTime - current;
+        
+    }
+    if (difference <= 0) {
+        clearInterval(startInterval);
+        isStarted = false;
+        
     }
     return difference;
 }
 
-
+/* Суда передать */
 function showTime() {
-    checkTimeValue();
+    let difference = checkTimeValue() / 1000;
     let seconds = parseInt(difference % 60);
     let minutes = parseInt((difference / 60) % 60);
-    let hours = parseInt(((difference / 60) % 60) / 60 % 60);
+    let hours = parseInt((difference / 3600) % 60);
     if (seconds < 10) {
         seconds = '0' + seconds;
     }
@@ -101,23 +113,24 @@ function showTime() {
     htmlElements.output.innerText = `${hours}:${minutes}:${seconds}`;
 }
 
+/* Тут опять проверить */
 function runTimer() {
-  /*   difference = difference--;
-    startInterval = setInterval(runTimer, 1000);
+    startTime = new Date().getTime();
+    isStarted = true;
+    startInterval = setInterval(showTime, 50);
     htmlElements.buttonStart.setAttribute('disabled', 'disabled');
-        if (difference === 0) {
-        clearInterval(startInterval);
-        } */
+  
+
 }
 
 function timerStopButton() {
-/*     clearInterval(startInterval);
-    htmlElements.buttonStart.removeAttribute('disabled', 'disabled'); */
+    clearInterval(startInterval);
+    htmlElements.buttonStart.removeAttribute('disabled', 'disabled');
 };
 
 function resetTimer() {
-   /*  timerStopButton();
-    showTime(); */
+    timerStopButton();
+    showTime();
 }
 
 

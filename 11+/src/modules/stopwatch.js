@@ -30,7 +30,7 @@ function runStopwatch(){
     let difference = (new Date().getTime() - startTime) / 1000;
     let seconds = parseInt(difference % 60);
     let minutes = parseInt((difference / 60) % 60);
-    let hours = parseInt(((difference / 60) % 60)/60 % 60);
+    let hours = parseInt((difference / 3600) % 60);
     if(seconds < 10){seconds = '0' + seconds;}
     if(minutes < 10){minutes = '0' + minutes;}
     if(hours < 10){hours = '0' + hours;}
