@@ -13,7 +13,6 @@ const htmlElements = {
     let stopwatchInterval;
     let totalSecondsDifference = 0;
     let differenceSeconds = 0;
-
     let array = [];
     
    
