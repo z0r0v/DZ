@@ -30,7 +30,7 @@ function onClickedButtonStop(){
 function onClickedResetButtom(){
     ClassHelper.removeClass('disabled', htmlElements.buttons);
     ClassHelper.addClass('disabled', [htmlElements.buttonReset]);
-    totalSecondsDifference = 0;
+    totalSecondsDifference = 300;
     startTime = new Date().getTime();
     totalSecondsDifference = 300;
     clearInterval(stopwatchInterval);

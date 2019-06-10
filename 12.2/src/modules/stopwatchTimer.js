@@ -1,24 +1,26 @@
 import {ClassHelper} from './classHelper.js';
 
-const htmlElements = {
-    output:document.querySelector('.container [data-mode = "stopwatch"] .output'),
-    buttonStart:document.querySelector('.container [data-mode = "stopwatch"] .buttons .start'),
-    buttonStop:document.querySelector('.container [data-mode = "stopwatch"] .buttons .stop'),
-    buttonReset:document.querySelector('.container [data-mode = "stopwatch"] .buttons .reset'),
-    buttons: document.querySelectorAll('.container .tabs [data-mode= "stopwatch"] .buttons button'),
+let startTime;
+let stopwatchInterval;
+let differenceSeconds;
+let totalSecondsDifference;
+
+let dynamicFunc = function(a,b,c) {};
+
+
+let dynamicFuncStopWotch = function(differenceMilliseconds,startTime) {
+    const differenceMilliseconds = new Date().getTime() - startTime;
+    differenceSeconds = differenceMilliseconds / 1000 + totalSecondsDifference;
 };
 
-function eventButtons(){
-    htmlElements.buttonStart.addEventListener('click', onStartTimerButtonClict);
-    htmlElements.buttonReset.addEventListener('click', onClickedResetButtom);
-    htmlElements.buttonStop.addEventListener('click', onClickedButtonStop);
-}
+let dynamicFuncTimer = function(differenceMilliseconds,startTime) {
+    const differenceMilliseconds = new Date().getTime() - startTime;
+    differenceSeconds = totalSecondsDifference - differenceMilliseconds / 1000;
+};
 
-    let startTime;
-    let stopwatchInterval;
-    let totalSecondsDifference = 0;
-    let differenceSeconds = 0;
-   
+
+
+
 function onStartTimerButtonClict(){
     ClassHelper.removeClass('disabled', htmlElements.buttons);
     ClassHelper.addClass('disabled', [htmlElements.buttonStart]);
@@ -33,31 +35,17 @@ function onClickedButtonStop(){
     totalSecondsDifference = differenceSeconds;
 };
 
-/* тут лажа */
-function onClickedResetButtom(startValue){
+function onClickedResetButtom(){
     ClassHelper.removeClass('disabled', htmlElements.buttons);
     ClassHelper.addClass('disabled', [htmlElements.buttonReset]);
-    // Тут лажа 
-    totalSecondsDifference = function (startValue){
-        return totalSecondsDifference = startValue;
-    };
+    totalSecondsDifference = 0;
     startTime = new Date().getTime();
     clearInterval(stopwatchInterval);
     runTime();
 }
 
-
-/* Тут лажа */
-function runTime(mode){
-    const differenceMilliseconds = new Date().getTime() - startTime;
-    /* Лажа */
-    differenceSeconds = function() {
-        if(mode === 'stopwatch'){
-            return differenceMilliseconds / 1000 + totalSecondsDifference;
-       }else{
-            return totalSecondsDifference - differenceMilliseconds / 1000;   
-       }
-    }
+function runTime(){
+    
     let seconds = parseInt(differenceSeconds % 60);
     let minutes = parseInt((differenceSeconds / 60) % 60);
     let hours = parseInt((differenceSeconds / 3600) % 60);
@@ -66,12 +54,3 @@ function runTime(mode){
     if(hours < 10){hours = `0${hours}`}
     htmlElements.output.innerText = `${hours}:${minutes}:${seconds}`;
 }
-
-function StopwatchTimer(){};
-
-StopwatchTimer.prototype.init = function(initMode, initSeconds){
-    eventButtons();
-}
-
-
-export {StopwatchTimer};
