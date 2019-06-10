@@ -6,9 +6,13 @@ const htmlElements = {
     buttonStop:document.querySelector('.container [data-mode = "stopwatch"] .buttons .stop'),
     buttonReset:document.querySelector('.container [data-mode = "stopwatch"] .buttons .reset'),
     buttons: document.querySelectorAll('.container .tabs [data-mode= "stopwatch"] .buttons button'),
-
-    
 };
+
+function eventButtons(){
+    htmlElements.buttonStart.addEventListener('click', onStartTimerButtonClict);
+    htmlElements.buttonReset.addEventListener('click', onClickedResetButtom);
+    htmlElements.buttonStop.addEventListener('click', onClickedButtonStop);
+}
 
     let startTime;
     let stopwatchInterval;
@@ -29,19 +33,31 @@ function onClickedButtonStop(){
     totalSecondsDifference = differenceSeconds;
 };
 
-function onClickedResetButtom(){
+/* тут лажа */
+function onClickedResetButtom(startValue){
     ClassHelper.removeClass('disabled', htmlElements.buttons);
     ClassHelper.addClass('disabled', [htmlElements.buttonReset]);
-    totalSecondsDifference = 0;
+    // Тут лажа 
+    totalSecondsDifference = function (startValue){
+        return totalSecondsDifference = startValue;
+    };
     startTime = new Date().getTime();
     clearInterval(stopwatchInterval);
     runTime();
 }
 
 
-function runTime(){
+/* Тут лажа */
+function runTime(mode){
     const differenceMilliseconds = new Date().getTime() - startTime;
-    differenceSeconds = differenceMilliseconds / 1000 + totalSecondsDifference;
+    /* Лажа */
+    differenceSeconds = function() {
+        if(mode === 'stopwatch'){
+            return differenceMilliseconds / 1000 + totalSecondsDifference;
+       }else{
+            return totalSecondsDifference - differenceMilliseconds / 1000;   
+       }
+    }
     let seconds = parseInt(differenceSeconds % 60);
     let minutes = parseInt((differenceSeconds / 60) % 60);
     let hours = parseInt((differenceSeconds / 3600) % 60);
@@ -51,14 +67,11 @@ function runTime(){
     htmlElements.output.innerText = `${hours}:${minutes}:${seconds}`;
 }
 
+function StopwatchTimer(){};
+
+StopwatchTimer.prototype.init = function(initMode, initSeconds){
+    eventButtons();
+}
 
 
-function Stopwatch(){};
-
-Stopwatch.prototype.init = function() {
-    htmlElements.buttonStart.addEventListener('click', onStartTimerButtonClict);
-    htmlElements.buttonReset.addEventListener('click', onClickedResetButtom);
-    htmlElements.buttonStop.addEventListener('click', onClickedButtonStop);
-};
-
-export {Stopwatch};
+export {StopwatchTimer};
