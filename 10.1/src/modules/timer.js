@@ -10,16 +10,12 @@ htmlElements.buttonReset.addEventListener('click', resetTimer);
 htmlElements.buttonStop.addEventListener('click', timerStopButton);
 
 let startInterval;
-
-export const objTime ={};
-
+let difference = 5*60;
 
 function showTime() {
-   
-    objTime.difference = 5*60;
-    let seconds = parseInt(objTime.difference % 60);
-    let minutes = parseInt((objTime.difference / 60) % 60);
-    let hours = parseInt(((objTime.difference / 60) % 60) / 60 % 60);
+    let seconds = parseInt(difference % 60);
+    let minutes = parseInt((difference / 60) % 60);
+    let hours = parseInt(((difference / 60) % 60) / 60 % 60);
     if (seconds < 10) {
         seconds = '0' + seconds;
     }
@@ -33,7 +29,7 @@ function showTime() {
 }
 
 function runTimer() {
-    let difference = --objTime.difference;
+    difference = --difference;
     let seconds = parseInt(difference % 60);
     let minutes = parseInt((difference / 60) % 60);
     let hours = parseInt(((difference / 60) % 60) / 60 % 60);
@@ -63,6 +59,7 @@ function timerStopButton() {
 };
 
 function resetTimer() {
+    difference = 5*60;
     timerStopButton();
     showTime();
 }
