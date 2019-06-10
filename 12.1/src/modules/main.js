@@ -1,56 +1,60 @@
-let arr = [];
+let buttonArray = [];
 
-function objectCopy(object) {
-    debugger;
-  if (arr.indexOf(object) > -1) {
-    return 'circular reference is detected';
+function copyResultingObject(button) {
+  const objectCopied = {};
+  if (buttonArray.indexOf(button) > -1) {
+    return 'ATTENTION! Cyclic link!';
   }
 
-  arr.push(object);
+  buttonArray.push(button);
 
-  const clon = {};
-
-  if (object === null || typeof object !== 'object' || typeof object === undefined) {
-    return object;
+  if (
+    typeof button === undefined ||
+    button === null ||
+    typeof button !== "object"
+  ) {
+    return button;
   }
 
-  for (let key in object) {
-    if (typeof object[key] === 'object') {
-      clon[key] = objectCopy(object[key]);
+  for (let key in button) {
+    if (typeof button[key] === 'object') {
+      const checkProperty = copyResultingObject(button[key]);
+      objectCopied[key] = checkProperty;
     } else {
-      clon[key] = object[key];
+      objectCopied[key] = button[key];
     }
   }
 
-  return clon;
+  return objectCopied;
 }
 
-const obj = {
-  size: 123,
-  coords: {
-    x: 1,
-    y: {
-      value: 111,
-      direction: 'top'
-    },
-    showDirection() {
-      console.log(`coords: ${this.y.direction}`);
-    }
+const myButton = {
+  property: {
+    width: 250,
+    height: 150,
+    color: "white",
+    backgroundColor: "green",
+    fontSize: 16,
   },
-  showSize() {
-    console.log(`size: ${this.size}`);
+  howManyButtons: 2,
+
+  showWidthButton() {
+    console.log(`Width button: ${this.property.width}px;`);
+  },
+  showLengthButtons() {
+    const Length2Buttons = this.property.width * this.howManyButtons;
+    console.log(`length of 2 buttons: ${Length2Buttons}px;`);
   }
 };
 
-//obj.size = obj;
+// Проверка на циклическую ссылку
+myButton.add = myButton; 
+const newButton = copyResultingObject(myButton);
+myButton.showWidthButton();
+newButton.showWidthButton();
+//Проверка изменения свойства на новом обьекте свойства
+newButton.color = 'silver'; 
+myButton.showLengthButtons();
+newButton.showLengthButtons();
 
-const obj2 = objectCopy(obj);
-obj2.coords.y.direction = 'bottom';
-// obj2.size = '234';
-obj.showSize();
-obj2.showSize();
-obj.coords.showDirection();
-obj2.coords.showDirection();
-
-console.log(obj2);
-console.log(arr);
+console.log(newButton);
