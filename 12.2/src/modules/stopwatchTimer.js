@@ -2,35 +2,13 @@ import { ClassHelper } from "./classHelper.js";
 
 let htmlElements = {};
 
-/* Тут значения */
 let startTime;
 let stopwatchInterval;
-
 let differenceSeconds;
 let totalSecondsDifference = 0;
-
 let differenceMilliseconds;
-
-
-let dynamicFunc = function(totalSecondsDifference, startTime){};
-
-
-let dynamicFuncStopWotch = function(totalSecondsDifference, startTime) {
-  differenceMilliseconds = new Date().getTime() - startTime;
-  differenceSeconds = differenceMilliseconds / 1000 + totalSecondsDifference;
-  return differenceSeconds;
-};
-console.log(dynamicFuncStopWotch);
-
-let dynamicFuncTimer = function(totalSecondsDifference, startTime) {
-  differenceMilliseconds = new Date().getTime() - startTime;
-  differenceSeconds = totalSecondsDifference - differenceMilliseconds / 1000; 
-  return differenceSeconds;
-};
-console.log(dynamicFuncTimer);
-
-
-
+let dynamicFunc;
+let secondTake;
 
 function onStartTimerButtonClict() {
   ClassHelper.removeClass("disabled", htmlElements.buttons);
@@ -49,18 +27,18 @@ function onClickedButtonStop() {
 function onClickedResetButton() {
   ClassHelper.removeClass("disabled", htmlElements.buttons);
   ClassHelper.addClass("disabled", [htmlElements.buttonReset]);
-  // Тут нужно поменять значение 
-  totalSecondsDifference = 0;
+  // Принимает переданное значение secondTake
+  totalSecondsDifference = secondTake;
   startTime = new Date().getTime();
   clearInterval(stopwatchInterval);
   runTime();
 }
 
-
 function runTime() {
-    // Суда сгенерить функцию расчета
-    dynamicFunc();
-    
+  differenceMilliseconds = new Date().getTime() - startTime;
+  // Передаю значение по ссылке
+  differenceSeconds = dynamicFunc(secondTake); /* Выводит NaN */
+
   let seconds = parseInt(differenceSeconds % 60);
   let minutes = parseInt((differenceSeconds / 60) % 60);
   let hours = parseInt((differenceSeconds / 3600) % 60);
@@ -76,10 +54,19 @@ function runTime() {
   htmlElements.output.innerText = `${hours}:${minutes}:${seconds}`;
 }
 
+let dynamicFuncStopWotch = function(initSeconds) {
+  differenceSeconds = differenceMilliseconds / 1000 + totalSecondsDifference;
+  return differenceSeconds;
+};
+
+let dynamicFuncTimer = function() {
+  differenceSeconds = totalSecondsDifference - differenceMilliseconds / 1000;
+  return differenceSeconds;
+};
 
 function StopwatchTimer(initMode, initSeconds) {
-
   let mode = initMode;
+  secondTake = initSeconds;
 
   htmlElements = {
     output: document.querySelector(
@@ -99,23 +86,22 @@ function StopwatchTimer(initMode, initSeconds) {
     )
   };
 
-    htmlElements.buttonStart.addEventListener("click", onStartTimerButtonClict);
-    htmlElements.buttonReset.addEventListener("click", onClickedResetButton);
-    htmlElements.buttonStop.addEventListener("click", onClickedButtonStop);
+  htmlElements.buttonStart.addEventListener("click", onStartTimerButtonClict);
+  htmlElements.buttonReset.addEventListener("click", onClickedResetButton);
+  htmlElements.buttonStop.addEventListener("click", onClickedButtonStop);
+
+  totalSecondsDifference = initSeconds;
 
   switch (mode) {
     case "stopwatch":
-    // Вот тут какаято херня
-      totalSecondsDifference = initSeconds;
-      dynamicFunc = dynamicFuncStopWotch(initSeconds, startTime);
+      // ссылка на функцию в в переменной dynamicFunc
+      dynamicFunc = dynamicFuncStopWotch;
       break;
 
     case "timer":
-      totalSecondsDifference = initSeconds;
-      dynamicFunc = dynamicFuncTimer(initSeconds, startTime);
+      dynamicFunc = dynamicFuncTimer;
       break;
   }
-
 }
 
 export { StopwatchTimer };
