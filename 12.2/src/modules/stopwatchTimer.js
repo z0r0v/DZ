@@ -38,7 +38,6 @@ function runTime() {
   differenceMilliseconds = new Date().getTime() - startTime;
   // Передаю значение по ссылке
   differenceSeconds = dynamicFunc(secondTake); /* Выводит NaN */
-
   let seconds = parseInt(differenceSeconds % 60);
   let minutes = parseInt((differenceSeconds / 60) % 60);
   let hours = parseInt((differenceSeconds / 3600) % 60);
