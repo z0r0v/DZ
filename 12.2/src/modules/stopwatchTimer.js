@@ -1,70 +1,36 @@
 import { ClassHelper } from "./classHelper.js";
 
+let htmlElements = {};
+
 /* Тут значения */
 let startTime;
 let stopwatchInterval;
+
 let differenceSeconds;
-let totalSecondsDifference;
+let totalSecondsDifference = 0;
+
 let differenceMilliseconds;
-let htmlElements = {};
-/* разобраться */
-let dynamicFunc;
 
-let dynamicElementsStopWotch = function(){
-    htmlElements = {
-        output: document.querySelector(
-          '.container [data-mode = "stopwatch"] .output'
-        ),
-        buttonStart: document.querySelector(
-          '.container [data-mode = "stopwatch"] .buttons .start'
-        ),
-        buttonStop: document.querySelector(
-          '.container [data-mode = "stopwatch"] .buttons .stop'
-        ),
-        buttonReset: document.querySelector(
-          '.container [data-mode = "stopwatch"] .buttons .reset'
-        ),
-        buttons: document.querySelectorAll(
-          '.container .tabs [data-mode= "stopwatch"] .buttons button'
-        )
-      };
-      event = eventElemtnts;
-}
 
-let dynamicFuncStopWotch = function(differenceMilliseconds, startTime) {
+let dynamicFunc = function(totalSecondsDifference, startTime){};
+
+
+let dynamicFuncStopWotch = function(totalSecondsDifference, startTime) {
   differenceMilliseconds = new Date().getTime() - startTime;
   differenceSeconds = differenceMilliseconds / 1000 + totalSecondsDifference;
+  return differenceSeconds;
 };
+console.log(dynamicFuncStopWotch);
 
-
-let dynamicElementsTimer = function(){
-    htmlElements = {
-        output: document.querySelector(
-          '.container [data-mode = "timer"] .output'
-        ),
-        buttonStart: document.querySelector(
-          '.container [data-mode = "timer"] .buttons .start'
-        ),
-        buttonStop: document.querySelector(
-          '.container [data-mode = "timer"] .buttons .stop'
-        ),
-        buttonReset: document.querySelector(
-          '.container [data-mode = "timer"] .buttons .reset'
-        ),
-        buttons: document.querySelectorAll(
-          '.container .tabs [data-mode= "timer"] .buttons button'
-        )
-      };
-    
-      event = eventElemtnts;
-}
-
-let dynamicFuncTimer = function(differenceMilliseconds, startTime) {
+let dynamicFuncTimer = function(totalSecondsDifference, startTime) {
   differenceMilliseconds = new Date().getTime() - startTime;
-  differenceSeconds = totalSecondsDifference - differenceMilliseconds / 1000;
-  
-  
+  differenceSeconds = totalSecondsDifference - differenceMilliseconds / 1000; 
+  return differenceSeconds;
 };
+console.log(dynamicFuncTimer);
+
+
+
 
 function onStartTimerButtonClict() {
   ClassHelper.removeClass("disabled", htmlElements.buttons);
@@ -80,19 +46,21 @@ function onClickedButtonStop() {
   totalSecondsDifference = differenceSeconds;
 }
 
-function onClickedResetButtom() {
+function onClickedResetButton() {
   ClassHelper.removeClass("disabled", htmlElements.buttons);
   ClassHelper.addClass("disabled", [htmlElements.buttonReset]);
-  /* Тут подиннп значения */
+  // Тут нужно поменять значение 
   totalSecondsDifference = 0;
   startTime = new Date().getTime();
   clearInterval(stopwatchInterval);
   runTime();
 }
 
+
 function runTime() {
-  /* Тут не ясно */
-  differenceSeconds = dynamicFunc;
+    // Суда сгенерить функцию расчета
+    dynamicFunc();
+    
   let seconds = parseInt(differenceSeconds % 60);
   let minutes = parseInt((differenceSeconds / 60) % 60);
   let hours = parseInt((differenceSeconds / 3600) % 60);
@@ -107,40 +75,47 @@ function runTime() {
   }
   htmlElements.output.innerText = `${hours}:${minutes}:${seconds}`;
 }
-/* у меня не работает клик {Хуйня*/
-let eventElemtnts = function() {
+
+
+function StopwatchTimer(initMode, initSeconds) {
+
+  let mode = initMode;
+
+  htmlElements = {
+    output: document.querySelector(
+      `.container [data-mode = "${mode}"] .output`
+    ),
+    buttonStart: document.querySelector(
+      `.container [data-mode = "${mode}"] .buttons .start`
+    ),
+    buttonStop: document.querySelector(
+      `.container [data-mode = "${mode}"] .buttons .stop`
+    ),
+    buttonReset: document.querySelector(
+      `.container [data-mode = ${mode}] .buttons .reset`
+    ),
+    buttons: document.querySelectorAll(
+      `.container .tabs [data-mode= "${mode}"] .buttons button`
+    )
+  };
+
     htmlElements.buttonStart.addEventListener("click", onStartTimerButtonClict);
-    htmlElements.buttonReset.addEventListener("click", onClickedResetButtom);
+    htmlElements.buttonReset.addEventListener("click", onClickedResetButton);
     htmlElements.buttonStop.addEventListener("click", onClickedButtonStop);
-}
-  
 
-function doSomeGenericLogic() {
-  /* у меня не работает клик {Хуйня*/
-  onStartTimerButtonClict();
-  onClickedButtonStop();
-  onClickedResetButtom();
-}
-
-function StopwatchTimer() {}
-
-/* Разобраться */
-StopwatchTimer.prototype.init = function initialize(initMode, initSeconds) {
-  switch (initMode) {
-    case "stopWotch":
+  switch (mode) {
+    case "stopwatch":
+    // Вот тут какаято херня
       totalSecondsDifference = initSeconds;
-      dynamicElements = dynamicElementsStopWotch;
-      dynamicFunc = dynamicFuncStopWotch;
-      doSomeGenericLogic();
+      dynamicFunc = dynamicFuncStopWotch(initSeconds, startTime);
       break;
 
     case "timer":
-        dynamicElements = dynamicElementsTimer;
       totalSecondsDifference = initSeconds;
-      dynamicFunc = dynamicFuncTimer;
-      doSomeGenericLogic();
+      dynamicFunc = dynamicFuncTimer(initSeconds, startTime);
       break;
   }
-};
+
+}
 
 export { StopwatchTimer };
