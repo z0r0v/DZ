@@ -6,24 +6,64 @@ let startTime;
 let stopwatchInterval;
 let differenceSeconds;
 let totalSecondsDifference;
+let differenceMilliseconds;
+const htmlElements = {};
 
 
 /* разобраться */
-let dynamicFunc = function(a,b,c) {};
+let dynamicFunc = function(differenceMilliseconds, startTime) {};
+
 
 let dynamicFuncStopWotch = function(differenceMilliseconds, startTime) {
-    const differenceMilliseconds = new Date().getTime() - startTime;
+    differenceMilliseconds = new Date().getTime() - startTime;
     differenceSeconds = differenceMilliseconds / 1000 + totalSecondsDifference;
+    
+    htmlElements = {
+    output: document.querySelector(
+      '.container [data-mode = "stopwatch"] .output'
+    ),
+    buttonStart: document.querySelector(
+      '.container [data-mode = "stopwatch"] .buttons .start'
+    ),
+    buttonStop: document.querySelector(
+      '.container [data-mode = "stopwatch"] .buttons .stop'
+    ),
+    buttonReset: document.querySelector(
+      '.container [data-mode = "stopwatch"] .buttons .reset'
+    ),
+    buttons: document.querySelectorAll(
+      '.container .tabs [data-mode= "stopwatch"] .buttons button'
+    )
+  };
 };
 
 let dynamicFuncTimer = function(differenceMilliseconds,startTime) {
-    const differenceMilliseconds = new Date().getTime() - startTime;
+    differenceMilliseconds = new Date().getTime() - startTime;
     differenceSeconds = totalSecondsDifference - differenceMilliseconds / 1000;
+    
+    htmlElements = {
+        output: document.querySelector('.container [data-mode = "timer"] .output'),
+        buttonStart: document.querySelector(
+          '.container [data-mode = "timer"] .buttons .start'
+        ),
+        buttonStop: document.querySelector(
+          '.container [data-mode = "timer"] .buttons .stop'
+        ),
+        buttonReset: document.querySelector(
+          '.container [data-mode = "timer"] .buttons .reset'
+        ),
+        buttons: document.querySelectorAll(
+          '.container .tabs [data-mode= "timer"] .buttons button'
+        )
+      };
 };
 
-htmlElements.buttonStart.addEventListener("click", onStartTimerButtonClict);
-htmlElements.buttonReset.addEventListener("click", onClickedResetButtom);
-htmlElements.buttonStop.addEventListener("click", onClickedButtonStop);
+function eventModule(){
+    htmlElements.buttonStart.addEventListener("click", onStartTimerButtonClict);
+    htmlElements.buttonReset.addEventListener("click", onClickedResetButtom);
+    htmlElements.buttonStop.addEventListener("click", onClickedButtonStop);
+}
+
 
 
 function onStartTimerButtonClict(){
@@ -52,7 +92,6 @@ function onClickedResetButtom(){
 
 function runTime(){
     /* разобраться */
-    let result = dynamicFunc();
     let seconds = parseInt(differenceSeconds % 60);
     let minutes = parseInt((differenceSeconds / 60) % 60);
     let hours = parseInt((differenceSeconds / 3600) % 60);
@@ -62,10 +101,26 @@ function runTime(){
     htmlElements.output.innerText = `${hours}:${minutes}:${seconds}`;
 }
 
+
+
+  function StopwatchTimer(){};
+
 /* Разобраться */
-function initialize(mode) {
-    switch(mode) {
-    case 'stopWotch':  dynamicFunc = dynamicFuncStopWotch; break;
-    case 'timer': dynamicFunc = dynamicFuncTimer; break;
+StopwatchTimer.prototype.init = function initialize(initMode, initSeconds){
+    
+        switch(initMode) {
+            case 'stopWotch':  
+            eventModule();
+            totalSecondsDifference = initSeconds;
+            dynamicFunc = dynamicFuncStopWotch; 
+            break;
+
+            case 'timer': 
+            eventModule();
+            totalSecondsDifference = initSeconds;
+            dynamicFunc = dynamicFuncTimer; 
+            break;
+            }
     }
-  }
+  
+  export {StopwatchTimer};
