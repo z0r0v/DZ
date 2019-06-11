@@ -3,6 +3,7 @@ import {Tabs} from "./tabs.js";
 /* import {Stopwatch} from "./stopwatch.js";
 import {Timer} from "./timer.js"; */
 import {StopwatchTimer} from "./stopwatchTimer.js";
+import {ClassHelper} from './classHelper.js';
 
 
 /* const clock = new Clock(); */
