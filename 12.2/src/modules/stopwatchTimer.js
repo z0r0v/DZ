@@ -10,53 +10,60 @@ let htmlElements = {};
 /* разобраться */
 let dynamicFunc;
 
+let dynamicElementsStopWotch = function(){
+    htmlElements = {
+        output: document.querySelector(
+          '.container [data-mode = "stopwatch"] .output'
+        ),
+        buttonStart: document.querySelector(
+          '.container [data-mode = "stopwatch"] .buttons .start'
+        ),
+        buttonStop: document.querySelector(
+          '.container [data-mode = "stopwatch"] .buttons .stop'
+        ),
+        buttonReset: document.querySelector(
+          '.container [data-mode = "stopwatch"] .buttons .reset'
+        ),
+        buttons: document.querySelectorAll(
+          '.container .tabs [data-mode= "stopwatch"] .buttons button'
+        )
+      };
+      event = eventElemtnts;
+}
+
 let dynamicFuncStopWotch = function(differenceMilliseconds, startTime) {
   differenceMilliseconds = new Date().getTime() - startTime;
   differenceSeconds = differenceMilliseconds / 1000 + totalSecondsDifference;
-
-  htmlElements = {
-    output: document.querySelector(
-      '.container [data-mode = "stopwatch"] .output'
-    ),
-    buttonStart: document.querySelector(
-      '.container [data-mode = "stopwatch"] .buttons .start'
-    ),
-    buttonStop: document.querySelector(
-      '.container [data-mode = "stopwatch"] .buttons .stop'
-    ),
-    buttonReset: document.querySelector(
-      '.container [data-mode = "stopwatch"] .buttons .reset'
-    ),
-    buttons: document.querySelectorAll(
-      '.container .tabs [data-mode= "stopwatch"] .buttons button'
-    )
-  };
-  event = eventElemtnts;
 };
+
+
+let dynamicElementsTimer = function(){
+    htmlElements = {
+        output: document.querySelector(
+          '.container [data-mode = "timer"] .output'
+        ),
+        buttonStart: document.querySelector(
+          '.container [data-mode = "timer"] .buttons .start'
+        ),
+        buttonStop: document.querySelector(
+          '.container [data-mode = "timer"] .buttons .stop'
+        ),
+        buttonReset: document.querySelector(
+          '.container [data-mode = "timer"] .buttons .reset'
+        ),
+        buttons: document.querySelectorAll(
+          '.container .tabs [data-mode= "timer"] .buttons button'
+        )
+      };
+    
+      event = eventElemtnts;
+}
 
 let dynamicFuncTimer = function(differenceMilliseconds, startTime) {
   differenceMilliseconds = new Date().getTime() - startTime;
   differenceSeconds = totalSecondsDifference - differenceMilliseconds / 1000;
   
-  htmlElements = {
-    output: document.querySelector(
-      '.container [data-mode = "timer"] .output'
-    ),
-    buttonStart: document.querySelector(
-      '.container [data-mode = "timer"] .buttons .start'
-    ),
-    buttonStop: document.querySelector(
-      '.container [data-mode = "timer"] .buttons .stop'
-    ),
-    buttonReset: document.querySelector(
-      '.container [data-mode = "timer"] .buttons .reset'
-    ),
-    buttons: document.querySelectorAll(
-      '.container .tabs [data-mode= "timer"] .buttons button'
-    )
-  };
   
-  event = eventElemtnts;
 };
 
 function onStartTimerButtonClict() {
@@ -110,7 +117,6 @@ let eventElemtnts = function() {
 
 function doSomeGenericLogic() {
   /* у меня не работает клик {Хуйня*/
-  event = eventElements;
   onStartTimerButtonClict();
   onClickedButtonStop();
   onClickedResetButtom();
@@ -122,14 +128,14 @@ function StopwatchTimer() {}
 StopwatchTimer.prototype.init = function initialize(initMode, initSeconds) {
   switch (initMode) {
     case "stopWotch":
-     
-      doSomeGenericLogic();
       totalSecondsDifference = initSeconds;
+      dynamicElements = dynamicElementsStopWotch;
       dynamicFunc = dynamicFuncStopWotch;
+      doSomeGenericLogic();
       break;
 
     case "timer":
-     
+        dynamicElements = dynamicElementsTimer;
       totalSecondsDifference = initSeconds;
       dynamicFunc = dynamicFuncTimer;
       doSomeGenericLogic();
