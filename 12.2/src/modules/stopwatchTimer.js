@@ -52,6 +52,7 @@ function runTime() {
   htmlElements.output.innerText = `${hours}:${minutes}:${seconds}`;
 }
 
+// Динамические элементы
 const runDynamicFuncStopWotch = function() {
   differenceSeconds = differenceMilliseconds / 1000 + totalSecondsDifference;
   return differenceSeconds;
@@ -63,27 +64,7 @@ const runDynamicFuncTimer = function() {
 };
 
 
-function StopwatchTimer(initMode, initSeconds) {
-  
-  let mode = initMode;
-  secondTake = initSeconds;
-
-  totalSecondsDifference = initSeconds;
-
-  switch (mode) {
-    case "stopwatch":
-      // ссылка на функцию в в переменной dynamicFunc
-      runDynamicFunction = runDynamicFuncStopWotch;
-      break;
-
-    case "timer":
-      runDynamicFunction = runDynamicFuncTimer;
-      break;
-
-    default:
-      break;
-  }
-
+const elements = function(mode){
   htmlElements = {
     output: document.querySelector(
       `.container [data-mode = "${mode}"] .output`
@@ -101,10 +82,53 @@ function StopwatchTimer(initMode, initSeconds) {
       `.container .tabs [data-mode= "${mode}"] .buttons button`
     )
   };
+  return htmlElements;
+}
 
+const addEvents = function(){
+  // Может сначала удалить кнопки?
+  htmlElements.buttonStart.removeEventListener("click", onStartTimerButtonClict);
+  htmlElements.buttonReset.removeEventListener("click", onClickedResetButton);
+  htmlElements.buttonStop.removeEventListener("click", onClickedButtonStop);
+  
   htmlElements.buttonStart.addEventListener("click", onStartTimerButtonClict);
   htmlElements.buttonReset.addEventListener("click", onClickedResetButton);
   htmlElements.buttonStop.addEventListener("click", onClickedButtonStop);
+}
+
+function StopwatchTimer(initMode, initSeconds) {
+
+  let mode = initMode;
+
+  let event; // кнопки твари
+ 
+  secondTake = initSeconds;
+  totalSecondsDifference = initSeconds;
+ 
+  switch (mode) {
+    case "stopwatch":
+        runDynamicFunction = runDynamicFuncStopWotch; 
+      mode = initMode;
+      // тут появляються елементы
+      elements(mode);
+      console.log('events', addEvents);
+      // ссылка на функцию addEvents в в переменной event
+      event = addEvents;
+      console.log('event', event);
+      // почему результатом функции undefined?
+      event();
+      console.log('event', event());
+       // ссылка на функцию в в переменной dynamicFunc
+      break;
+
+    case "timer":
+        runDynamicFunction = runDynamicFuncTimer;
+        mode = initMode;
+        elements(mode);
+        event = addEvents;
+        event();
+      break;
+  }
 }
 
 export { StopwatchTimer };
