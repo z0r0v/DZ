@@ -16,4 +16,4 @@ function ClassHelper(){};
 ClassHelper.addClass = addClass;
 ClassHelper.removeClass = removeClass;
 
-export {addClass, removeClass, ClassHelper};
+export { ClassHelper };
