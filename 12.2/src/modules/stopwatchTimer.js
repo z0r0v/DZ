@@ -6,7 +6,7 @@ let stopwatchInterval;
 let differenceSeconds;
 let totalSecondsDifference = 0;
 let differenceMilliseconds;
-let dynamicFunc;
+let runDynamicFunction;
 let secondTake;
 
 function onStartTimerButtonClict() {
@@ -36,7 +36,7 @@ function onClickedResetButton() {
 function runTime() {
   differenceMilliseconds = new Date().getTime() - startTime;
   // Передаю значение по ссылке
-  differenceSeconds = dynamicFunc();
+  differenceSeconds = runDynamicFunction();
   let seconds = parseInt(differenceSeconds % 60);
   let minutes = parseInt((differenceSeconds / 60) % 60);
   let hours = parseInt((differenceSeconds / 3600) % 60);
@@ -52,12 +52,12 @@ function runTime() {
   htmlElements.output.innerText = `${hours}:${minutes}:${seconds}`;
 }
 
-const dynamicFuncStopWotch = function() {
+const runDynamicFuncStopWotch = function() {
   differenceSeconds = differenceMilliseconds / 1000 + totalSecondsDifference;
   return differenceSeconds;
 };
 
-const dynamicFuncTimer = function() {
+const runDynamicFuncTimer = function() {
   differenceSeconds = totalSecondsDifference - differenceMilliseconds / 1000;
   return differenceSeconds;
 };
@@ -93,11 +93,11 @@ function StopwatchTimer(initMode, initSeconds) {
   switch (mode) {
     case "stopwatch":
       // ссылка на функцию в в переменной dynamicFunc
-      dynamicFunc = dynamicFuncStopWotch;
+      runDynamicFunction = runDynamicFuncStopWotch;
       break;
 
     case "timer":
-      dynamicFunc = dynamicFuncTimer;
+      runDynamicFunction = runDynamicFuncTimer;
       break;
   }
 }
