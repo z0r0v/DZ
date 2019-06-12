@@ -36,7 +36,7 @@ function onClickedResetButton() {
 function runTime() {
   differenceMilliseconds = new Date().getTime() - startTime;
   // Передаю значение по ссылке
-  differenceSeconds = dynamicFunc(secondTake);
+  differenceSeconds = dynamicFunc();
   let seconds = parseInt(differenceSeconds % 60);
   let minutes = parseInt((differenceSeconds / 60) % 60);
   let hours = parseInt((differenceSeconds / 3600) % 60);
@@ -52,12 +52,12 @@ function runTime() {
   htmlElements.output.innerText = `${hours}:${minutes}:${seconds}`;
 }
 
-const dynamicFuncStopWotch = function(initSeconds) {
+const dynamicFuncStopWotch = function() {
   differenceSeconds = differenceMilliseconds / 1000 + totalSecondsDifference;
   return differenceSeconds;
 };
 
-const dynamicFuncTimer = function(initSeconds) {
+const dynamicFuncTimer = function() {
   differenceSeconds = totalSecondsDifference - differenceMilliseconds / 1000;
   return differenceSeconds;
 };
