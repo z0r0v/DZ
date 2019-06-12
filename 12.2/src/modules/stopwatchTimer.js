@@ -65,6 +65,7 @@ function StopwatchTimer(initMode, initSeconds) {
           totalSecondsDifference - Math.round(differenceMilliseconds / 1000);
         if (differenceSeconds === 0) {
           clearInterval(stopwatchInterval);
+          ClassHelper.removeClass("disabled", htmlElements.buttons);
         }
         break;
       default:

@@ -4,10 +4,9 @@ import { StopwatchTimer } from "./stopwatchTimer.js";
 
 const clock = new Clock();
 const tabs = new Tabs();
-// Включаем stopwatch
-/* const stopwatch = new StopwatchTimer("stopwatch", 0); */
-// Включаем timer
-const timer = new StopwatchTimer("timer", 300);
+
+const timer = new StopwatchTimer("timer", 5);
+const stopwatch = new StopwatchTimer('stopwatch', 0);
 
 
 function init() {
