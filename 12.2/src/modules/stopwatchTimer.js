@@ -1,7 +1,6 @@
 import { ClassHelper } from "./classHelper.js";
 
 let htmlElements = {};
-
 let startTime;
 let stopwatchInterval;
 let differenceSeconds;
@@ -53,12 +52,12 @@ function runTime() {
   htmlElements.output.innerText = `${hours}:${minutes}:${seconds}`;
 }
 
-let dynamicFuncStopWotch = function(initSeconds) {
+const dynamicFuncStopWotch = function(initSeconds) {
   differenceSeconds = differenceMilliseconds / 1000 + totalSecondsDifference;
   return differenceSeconds;
 };
 
-let dynamicFuncTimer = function() {
+const dynamicFuncTimer = function(initSeconds) {
   differenceSeconds = totalSecondsDifference - differenceMilliseconds / 1000;
   return differenceSeconds;
 };
