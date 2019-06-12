@@ -68,10 +68,6 @@ function StopwatchTimer(initMode, initSeconds) {
   let mode = initMode;
   secondTake = initSeconds;
 
-
-  
-
-
   totalSecondsDifference = initSeconds;
 
   switch (mode) {
@@ -87,6 +83,7 @@ function StopwatchTimer(initMode, initSeconds) {
     default:
       break;
   }
+
   htmlElements = {
     output: document.querySelector(
       `.container [data-mode = "${mode}"] .output`
@@ -104,7 +101,7 @@ function StopwatchTimer(initMode, initSeconds) {
       `.container .tabs [data-mode= "${mode}"] .buttons button`
     )
   };
-  
+
   htmlElements.buttonStart.addEventListener("click", onStartTimerButtonClict);
   htmlElements.buttonReset.addEventListener("click", onClickedResetButton);
   htmlElements.buttonStop.addEventListener("click", onClickedButtonStop);
