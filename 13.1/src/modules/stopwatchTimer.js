@@ -8,6 +8,24 @@ function StopwatchTimer(initMode, initSeconds) {
   let differenceMilliseconds;
   let mode = initMode;
 
+  this.htmlElements = {
+    output: document.querySelector(
+      `.container [data-mode = "${mode}"] .output`
+    ),
+    buttonStart: document.querySelector(
+      `.container [data-mode = "${mode}"] .buttons .start`
+    ),
+    buttonStop: document.querySelector(
+      `.container [data-mode = "${mode}"] .buttons .stop`
+    ),
+    buttonReset: document.querySelector(
+      `.container [data-mode = ${mode}] .buttons .reset`
+    ),
+    buttons: document.querySelectorAll(
+      `.container .tabs [data-mode= "${mode}"] .buttons button`
+    )
+  };
+
   const htmlElements = {
     output: document.querySelector(
       `.container [data-mode = "${mode}"] .output`
@@ -29,6 +47,7 @@ function StopwatchTimer(initMode, initSeconds) {
   htmlElements.buttonStart.addEventListener("click", onStartTimerButtonClict);
   htmlElements.buttonReset.addEventListener("click", onClickedResetButton);
   htmlElements.buttonStop.addEventListener("click", onClickedButtonStop);
+
 
   function onStartTimerButtonClict() {
     ClassHelper.removeClass("disabled", htmlElements.buttons);
@@ -86,6 +105,8 @@ function StopwatchTimer(initMode, initSeconds) {
     }
     htmlElements.output.innerText = `${hours}:${minutes}:${seconds}`;
   }
+  
+  
 }
 
 export { StopwatchTimer };
