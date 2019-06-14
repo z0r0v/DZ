@@ -5,7 +5,7 @@ import { StopwatchTimer } from "./stopwatchTimer.js";
 const clock = new Clock();
 const tabs = new Tabs();
 
-const timer = new StopwatchTimer("timer", 5);
+const timer = new StopwatchTimer("timer", 300);
 const stopwatch = new StopwatchTimer('stopwatch', 0);
 
 
