@@ -48,7 +48,6 @@ function StopwatchTimer(initMode, initSeconds) {
   htmlElements.buttonReset.addEventListener("click", onClickedResetButton);
   htmlElements.buttonStop.addEventListener("click", onClickedButtonStop);
 
-
   function onStartTimerButtonClict() {
     ClassHelper.removeClass("disabled", htmlElements.buttons);
     ClassHelper.addClass("disabled", [htmlElements.buttonStart]);
@@ -105,8 +104,6 @@ function StopwatchTimer(initMode, initSeconds) {
     }
     htmlElements.output.innerText = `${hours}:${minutes}:${seconds}`;
   }
-  
-  
 }
 
 export { StopwatchTimer };
