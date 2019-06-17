@@ -1,20 +1,20 @@
 const htmlElements = {
-    output:document.querySelector('.container [data-mode = "clock"] .output')};
+  output: document.querySelector('.container [data-mode = "clock"] .output')
+};
 
 /*Часы */
 function onClockNextTick() {
-    const cirrentTime = new Date();
-    const timeStrong = cirrentTime.toTimeString();
-    const timeShort = timeStrong.split(' ')[0];
-    htmlElements.output.innerText = timeShort;
+  const cirrentTime = new Date();
+  const timeStrong = cirrentTime.toTimeString();
+  const timeShort = timeStrong.split(" ")[0];
+  htmlElements.output.innerText = timeShort;
 }
 
-function Clock(){}
-
-/* Запускаем часы */
-Clock.prototype.init = function() {
+class Clock {
+  init() {
     setInterval(onClockNextTick, 1000);
     onClockNextTick();
-};
+  }
+}
 
-export {Clock};
+export { Clock };
