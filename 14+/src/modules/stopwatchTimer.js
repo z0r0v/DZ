@@ -1,5 +1,4 @@
 import { ClassHelper } from "./classHelper.js";
-import { InputClick } from "./inputClick.js";
 
 class StopwatchTimer {
   constructor(initMode, initSeconds) {
@@ -25,7 +24,9 @@ class StopwatchTimer {
       ),
       buttons: document.querySelectorAll(
         `.container .tabs [data-mode= "${mode}"] .buttons button`
-      )
+      ),
+      divTimer: document.querySelector(`.tabs [data-mode = "${mode}"]`
+      ),
     };
 
     const htmlElements = {
@@ -43,7 +44,9 @@ class StopwatchTimer {
       ),
       buttons: document.querySelectorAll(
         `.container .tabs [data-mode= "${mode}"] .buttons button`
-      )
+      ),
+      divTimer: document.querySelector(`.tabs [data-mode = "${mode}"]`
+      ),
     };
 
     htmlElements.buttonStart.addEventListener("click", onStartTimerButtonClict);
