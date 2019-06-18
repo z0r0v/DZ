@@ -1,7 +1,9 @@
 
 function Processor(){}
-//создание Processor, создание обьекта 7 на основе базового объекта 5, свойство __proto__ объекта 7 указывает на объект 5,
-//Processor.prototype указывает на объект 7, свойство constructor объекта 7 указывает на Processor.prototype.
+//создание Processor, создание обьекта 7 на основе базового объекта 5, 
+//свойство __proto__ объекта 7 указывает на объект 5,
+//Processor.prototype указывает на объект 7, свойство 
+//constructor объекта 7 указывает на Processor.prototype.
 
 Processor.prototype = Object.create(Computer.prototype);
 //создание обьект 3, свойство __proto__ указывает на обьекта 3 указывает на обьект 4,
@@ -13,6 +15,8 @@ Processor.prototype.constructor = Processor;
 function MicroChip(){}
 //создание MicroChip(объект 6), на основе объекта 5.
 //свойство __proto__ объекта 6 указывает на объект 5
+//MicroChip.prototype указывает на обьект 6
+//constructor объекта 6 указывает на MicroChip.prototype.
 
 MicroChip.prototype = Object.create(Processor.prototype);
 //создание объект 2, свойство __proto__ обьекта 2 указывает на обьект 3.
@@ -22,10 +26,11 @@ MicroChip.prototype = Object.create(Processor.prototype);
 MicroChip.prototype.constructor = MicroChip;
 //свойство constructor обьекта 2 указывает на MicroChip
 
-const microChip = new MicroChip; //создание обьект 1 на основании обьекта 2, 
+const microChip = new MicroChip(); //создание обьект 1 на основании обьекта 2, 
 //константа microChip указывает на обьект 1.
 
 function Computer(){}
-//создание контструктора родительского елемента, __proto__ указывает на объект 5, constructor указывает на Object
+//создание контструктора родительского елемента, __proto__ указывает на объект 5, 
+//constructor объекта 5 указывает на Object, свойство __proto__ объекта 5 указывает на null
 
 console.log(microChip);
