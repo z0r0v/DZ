@@ -5,8 +5,8 @@ function InputClick() {
     const htmlElements = {
         outputTimer: document.querySelector('.container [data-mode = "timer"] .output'),
         divTimer: document.querySelector('.tabs [data-mode = "timer"]'),
+        buttons: document.querySelectorAll(`.container .tabs [data-mode= "timer"] .buttons button`),
     }
-
         htmlElements.outputTimer.addEventListener('dblclick', onClictInOutput);
  
         
@@ -29,9 +29,11 @@ function InputClick() {
         htmlElements.inputButtonAplay.classList.add('aplayButton');
         }
         
-        //Рисует 2 штуки разобраться
+       
         function onClictInOutput(){
-        clearInterval(stopwatchInterval);
+
+         /*  //как мне получить доступ?
+        clearInterval(stopwatchInterval); */
         ClassHelper.addClass("disabled", htmlElements.buttons);
         createElement();
         }
@@ -43,9 +45,11 @@ function InputClick() {
         htmlElements.outputTimer.classList.remove('hidden');
         ClassHelper.removeClass("disabled", htmlElements.buttons);
         let arrayInputElemetn = htmlElements.input.value.split(':');
-        totalSecondsDifference = (arrayInputElemetn[0] * (3,6e+6) + arrayInputElemetn[1] * 60000 + arrayInputElemetn[2] * 1000)/1000;
         
-        // Можно переиспользовать
+        
+        /* как получить доступ? */
+        totalSecondsDifference = (arrayInputElemetn[0] * (3,6e+6) + arrayInputElemetn[1] * 60000 + arrayInputElemetn[2] * 1000)/1000;
+      
         let differenceSeconds = totalSecondsDifference;
         let seconds = parseInt(differenceSeconds % 60);
           let minutes = parseInt((differenceSeconds / 60) % 60);
