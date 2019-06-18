@@ -31,6 +31,9 @@ const microChip = new MicroChip(); //создание обьект 1 на осн
 
 function Computer(){}
 //создание контструктора родительского елемента, __proto__ указывает на объект 5, 
-//constructor объекта 5 указывает на Object, свойство __proto__ объекта 5 указывает на null
+//constructor объекта 4  указывает на Computer, Computer.prototype указывает на объект 4 
+//свойство __proto__ объекта 5 указывает на null, свойство __proto__ объекта 4
+// указывает на объекта 5
+//constructor объекта 5 указывает на Object, Object.prototype указывает на объект 5
 
 console.log(microChip);
