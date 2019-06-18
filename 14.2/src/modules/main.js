@@ -13,10 +13,10 @@ Processor.prototype.constructor = Processor;
 //свойство constructor обьекта 3 указывает на Processor.
 
 function MicroChip(){}
-//создание MicroChip(объект 6), на основе объекта 5.
+//создание MicroChip, на основе объекта 5.
 //свойство __proto__ объекта 6 указывает на объект 5
 //MicroChip.prototype указывает на обьект 6
-//constructor объекта 6 указывает на MicroChip.prototype.
+//constructor объекта 6 указывает на MicroChip.
 
 MicroChip.prototype = Object.create(Processor.prototype);
 //создание объект 2, свойство __proto__ обьекта 2 указывает на обьект 3.
@@ -28,6 +28,7 @@ MicroChip.prototype.constructor = MicroChip;
 
 const microChip = new MicroChip(); //создание обьект 1 на основании обьекта 2, 
 //константа microChip указывает на обьект 1.
+//__proto__ объекта 1 указывает на объект 2
 
 function Computer(){}
 //создание контструктора родительского елемента, __proto__ указывает на объект 5, 

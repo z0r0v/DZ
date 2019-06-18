@@ -6,7 +6,6 @@ function Timer() {
 Timer.prototype = Object.create(StopwatchTimer.prototype);
 
 Timer.prototype.showInfo = function() {
-  // Сразу был Timer Задать вопрос а разница ?
   console.log(this);
 };
 

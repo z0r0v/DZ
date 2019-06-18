@@ -83,11 +83,10 @@ function StopwatchTimer(initMode, initSeconds) {
           totalSecondsDifference - Math.round(differenceMilliseconds / 1000);
         if (differenceSeconds === 0) {
           clearInterval(stopwatchInterval);
-          ClassHelper.removeClass("disabled", htmlElements.buttons);
+          htmlElements.buttonStop.classList.add("disabled");
         }
         break;
       default:
-        //Если catch блоков среди вызванных функций нет, выполнение программы будет остановлено.
         throw new Error("is mode don't come");
     }
     let seconds = parseInt(differenceSeconds % 60);

@@ -9,5 +9,6 @@ class Timer extends StopwatchTimer {
   }
 }
 
+
 export { Timer };
 
