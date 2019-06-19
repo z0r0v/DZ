@@ -26,7 +26,7 @@ onDubleClictInOutput(){
   htmlElements.divTimer.prepend(htmlElements.input);
   
   
-  htmlElements.outpu.classList.add('hidden');
+  htmlElements.output.classList.add('hidden');
   htmlElements.input.placeholder = '00:00:00';
   htmlElements.input.type ='text';
   htmlElements.inputButtonAplay.type = 'button';
@@ -35,29 +35,16 @@ onDubleClictInOutput(){
   }
 
 
-  // тут получаю доступ
-  console.log(this.htmlElements.buttons);
+
 
   function onClictInOutput(){
-  //тут не получаю доступ
-    console.log(this.htmlElements.buttons);
-
-    // тут не получаю доступ
     clearInterval(this.stopwatchInterval);
-
-  // this.htmlElements.buttons.classList.add('disabled');
-
-  //Соответственно тут не получаю доступ
-   ClassHelper.addClass("disabled", this.htmlElements.buttons);
-
-  // ClassHelper.addClass("disabled", this.htmlElements.buttons);
- 
-  // ClassHelper.addClass("disabled", buttons);
-  createElement(this.htmlElements);
+    ClassHelper.addClass("disabled", this.htmlElements.buttons);
+    createElement(this.htmlElements);
   }
   
   function onAplayButtonCliced() {
-  validateHhMm();
+  validateHhMm(htmlElements.input.value).bind(this);
   htmlElements.input.classList.add('hidden');
   htmlElements.inputButtonAplay.classList.add('hidden');
   htmlElements.outputTimer.classList.remove('hidden');
@@ -82,8 +69,8 @@ onDubleClictInOutput(){
     htmlElements.output.innerText = `${hours}:${minutes}:${seconds}`;
   }
   
-  function validateHhMm() {
-    const isValid = /^([0-1]?[0-9]|2[0-4]):([0-5][0-9]):([0-5][0-9])?$/.test(htmlElements.input.value);
+  function validateHhMm(value) {
+    const isValid = /^([0-1]?[0-9]|2[0-4]):([0-5][0-9]):([0-5][0-9])?$/.test(value);
     if (isValid && htmlElements.input.value !== '00:00:00') {
         htmlElements.input.classList.add('borderGreen'); 
         htmlElements.inputButtonAplay.addEventListener('click', onAplayButtonCliced);
