@@ -14,9 +14,9 @@ class Timer extends StopwatchTimer {
 
   
 onDubleClictInOutput(){
-  this.htmlElements.output.addEventListener('dblclick', onClictInOutput);
+  this.htmlElements.output.addEventListener('dblclick', onClictInOutput.bind(this));
 
-  function createElement(){
+  function createElement(htmlElements){
   htmlElements.inputButtonAplay = document.createElement('input'),
   htmlElements.input = document.createElement('input'),
   
@@ -48,12 +48,12 @@ onDubleClictInOutput(){
   // this.htmlElements.buttons.classList.add('disabled');
 
   //Соответственно тут не получаю доступ
-   ClassHelper.addClass("disabled", htmlElements.buttons);
+   ClassHelper.addClass("disabled", this.htmlElements.buttons);
 
   // ClassHelper.addClass("disabled", this.htmlElements.buttons);
  
   // ClassHelper.addClass("disabled", buttons);
-  createElement();
+  createElement(this.htmlElements);
   }
   
   function onAplayButtonCliced() {
