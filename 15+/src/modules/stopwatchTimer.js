@@ -2,11 +2,11 @@ import { ClassHelper } from "./classHelper.js";
 
 function StopwatchTimer(initMode, initSeconds) {
   let startTime;
-  let stopwatchInterval;
-  let differenceSeconds = 0;
-  let totalSecondsDifference = initSeconds;
-  let differenceMilliseconds;
+  this.stopwatchInterval;
+  this.totalSecondsDifference = initSeconds;
+  this.differenceMilliseconds;
   let mode = initMode;
+  this.differenceSeconds = 0;
 
   this.htmlElements = {
     output: document.querySelector(
@@ -44,43 +44,38 @@ function StopwatchTimer(initMode, initSeconds) {
     )
   };
 
-  htmlElements.buttonStart.addEventListener("click", onStartTimerButtonClict);
-  htmlElements.buttonReset.addEventListener("click", onClickedResetButton);
-  htmlElements.buttonStop.addEventListener("click", onClickedButtonStop);
-
-  function onStartTimerButtonClict() {
+  this.onStartTimerButtonClict = function(){
     ClassHelper.removeClass("disabled", htmlElements.buttons);
     ClassHelper.addClass("disabled", [htmlElements.buttonStart]);
-    stopwatchInterval = setInterval(runTime, 1000);
+    this.stopwatchInterval = setInterval(this.runTime, 1000);
     startTime = new Date().getTime();
-  }
+  }.bind(this);
 
-  function onClickedButtonStop() {
-    ClassHelper.removeClass("disabled", htmlElements.buttons);
-    ClassHelper.addClass("disabled", [htmlElements.buttonStop]);
-    clearInterval(stopwatchInterval);
-    totalSecondsDifference = differenceSeconds;
-  }
+this.onClickedButtonStop = function(){
+  ClassHelper.removeClass("disabled", htmlElements.buttons);
+  ClassHelper.addClass("disabled", [htmlElements.buttonStop]);
+  clearInterval(this.stopwatchInterval);
+  this.totalSecondsDifference = this.differenceSeconds;
+}.bind(this);
 
-  function onClickedResetButton() {
-    ClassHelper.removeClass("disabled", htmlElements.buttons);
-    ClassHelper.addClass("disabled", [htmlElements.buttonReset]);
-    totalSecondsDifference = initSeconds;
-    startTime = new Date().getTime();
-    clearInterval(stopwatchInterval);
-    runTime();
-  }
 
-  function defineMilliseconds() {
-    differenceMilliseconds = new Date().getTime() - startTime;
-  }
+this.onClickedResetButton = function(){
+  ClassHelper.removeClass("disabled", htmlElements.buttons);
+  ClassHelper.addClass("disabled", [htmlElements.buttonReset]);
+  this.totalSecondsDifference = initSeconds;
+  startTime = new Date().getTime();
+  clearInterval(this.stopwatchInterval);
+  this.runTime();
+}.bind(this);
 
- 
 
-  function drawTime() {
-    let seconds = parseInt(differenceSeconds % 60);
-    let minutes = parseInt((differenceSeconds / 60) % 60);
-    let hours = parseInt((differenceSeconds / 3600) % 60);
+this.runTime = function(){
+  this.differenceMilliseconds = new Date().getTime() - startTime;
+  this.setSeconds();
+  
+  let seconds = parseInt(this.differenceSeconds % 60);
+    let minutes = parseInt((this.differenceSeconds / 60) % 60);
+    let hours = parseInt((this.differenceSeconds / 3600) % 60);
     if (seconds < 10) {
       seconds = `0${seconds}`;
     }
@@ -91,37 +86,11 @@ function StopwatchTimer(initMode, initSeconds) {
       hours = `0${hours}`;
     }
     htmlElements.output.innerText = `${hours}:${minutes}:${seconds}`;
-  }
+}.bind(this);
 
-
-  function runTime() {
-    defineMilliseconds();
-    setSeconds();
-    drawTime();
-  }
-
-  
-  function setSeconds() {
-    switch (mode) {
-      case "stopwatch":
-        differenceSeconds =
-          Math.round(differenceMilliseconds / 1000) + totalSecondsDifference;
-        break;
-      case "timer":
-        differenceSeconds =
-          totalSecondsDifference - Math.round(differenceMilliseconds / 1000);
-        if (differenceSeconds === 0) {
-          clearInterval(stopwatchInterval);
-          htmlElements.buttonStop.classList.add("disabled");
-        }
-        break;
-      default:
-        throw new Error("is mode don't come");
-    }
-  }
-
-
-
+  htmlElements.buttonStart.addEventListener("click", this.onStartTimerButtonClict);
+  htmlElements.buttonReset.addEventListener("click", this.onClickedResetButton);
+  htmlElements.buttonStop.addEventListener("click", this.onClickedButtonStop);
 
 }
 
