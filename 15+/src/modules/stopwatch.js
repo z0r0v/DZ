@@ -9,8 +9,6 @@ function Stopwatch() {
 Stopwatch.prototype = Object.create(StopwatchTimer.prototype);
 
 
-
-
 Stopwatch.prototype.showInfo = function() {
   console.log(this);
 };

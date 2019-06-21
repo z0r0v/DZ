@@ -71,10 +71,28 @@ function StopwatchTimer(initMode, initSeconds) {
     runTime();
   }
 
+  function defineMilliseconds() {
+    differenceMilliseconds = new Date().getTime() - startTime;
+  }
 
-function defineMilliseconds(){
-  differenceMilliseconds = new Date().getTime() - startTime;
-}
+ 
+
+  function drawTime() {
+    let seconds = parseInt(differenceSeconds % 60);
+    let minutes = parseInt((differenceSeconds / 60) % 60);
+    let hours = parseInt((differenceSeconds / 3600) % 60);
+    if (seconds < 10) {
+      seconds = `0${seconds}`;
+    }
+    if (minutes < 10) {
+      minutes = `0${minutes}`;
+    }
+    if (hours < 10) {
+      hours = `0${hours}`;
+    }
+    htmlElements.output.innerText = `${hours}:${minutes}:${seconds}`;
+  }
+
 
   function runTime() {
     defineMilliseconds();
@@ -82,46 +100,29 @@ function defineMilliseconds(){
     drawTime();
   }
 
-function drawTime(){
-  let seconds = parseInt(differenceSeconds % 60);
-  let minutes = parseInt((differenceSeconds / 60) % 60);
-  let hours = parseInt((differenceSeconds / 3600) % 60);
-  if (seconds < 10) {
-    seconds = `0${seconds}`;
+  
+  function setSeconds() {
+    switch (mode) {
+      case "stopwatch":
+        differenceSeconds =
+          Math.round(differenceMilliseconds / 1000) + totalSecondsDifference;
+        break;
+      case "timer":
+        differenceSeconds =
+          totalSecondsDifference - Math.round(differenceMilliseconds / 1000);
+        if (differenceSeconds === 0) {
+          clearInterval(stopwatchInterval);
+          htmlElements.buttonStop.classList.add("disabled");
+        }
+        break;
+      default:
+        throw new Error("is mode don't come");
+    }
   }
-  if (minutes < 10) {
-    minutes = `0${minutes}`;
-  }
-  if (hours < 10) {
-    hours = `0${hours}`;
-  }
-  htmlElements.output.innerText = `${hours}:${minutes}:${seconds}`;
-}
 
 
-function setSeconds(){
-  switch (mode) {
-    case "stopwatch":
-      differenceSeconds =
-        Math.round(differenceMilliseconds / 1000) + totalSecondsDifference;
-      break;
-    case "timer":
-      differenceSeconds =
-        totalSecondsDifference - Math.round(differenceMilliseconds / 1000);
-      if (differenceSeconds === 0) {
-        clearInterval(stopwatchInterval);
-        htmlElements.buttonStop.classList.add("disabled");
-      }
-      break;
-    default:
-      throw new Error("is mode don't come");
-  }
-}
 
 
 }
-
-
-
 
 export { StopwatchTimer };
