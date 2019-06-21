@@ -1,5 +1,6 @@
 body{
-  background-image:url(путь к файлу);
+  background-image:url(https://i.ytimg.com/vi/BwBhaQoiV94/maxresdefault.jpg) ;
+  opacity:0.95;
 }
 section {
   margin: 2% 5%;
@@ -61,6 +62,9 @@ article {
   background-color: #dcdcdc;
   height: 4em;
   padding: 2em;
+}
+
+article > h2{
   color: white;
 }
 
