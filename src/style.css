@@ -1,5 +1,5 @@
 section {
-  margin:0 10%;
+  margin: 0 10%;
 }
 .container {
   display: inline-block;
@@ -20,18 +20,18 @@ header {
   text-align: justify;
   margin: 0 10%;
 }
-header>h1{
+header > h1 {
   font-size: 2.5em;
 }
 
 header > nav > a.header {
-    cursor: pointer;
-    text-decoration: underline;
-    color: white;
-    padding: 0.3em;
+  cursor: pointer;
+  text-decoration: underline;
+  color: white;
+  padding: 0.3em;
 }
-header >p{
-font-size: 2em;
+header > p {
+  font-size: 2em;
 }
 
 header > nav > a:hover {
@@ -62,7 +62,7 @@ article {
   margin: 1%;
 }
 
-article > h2{
+article > h2 {
   color: white;
 }
 
@@ -174,14 +174,13 @@ a.btn::after {
   }
 }
 
-.portfolio{
+.portfolio {
   background-image: url(https://raw.githubusercontent.com/z0r0v/Hometasks/master/%E2%84%961%20Calculete/img/bagroundPartp.jpg);
-  background-size:cover;
-  background-position:bottom;
+  background-size: cover;
+  background-position: bottom;
 }
 .portfolio > h2 {
   text-align: center;
   font-size: 50px;
   margin: 1px;
 }
-
