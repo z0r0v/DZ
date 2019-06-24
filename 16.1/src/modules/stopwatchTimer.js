@@ -44,9 +44,9 @@ function StopwatchTimer(initMode, initSeconds) {
     )
   };
 
-  htmlElements.buttonStart.addEventListener("click", onStartTimerButtonClict);
-  htmlElements.buttonReset.addEventListener("click", onClickedResetButton);
-  htmlElements.buttonStop.addEventListener("click", onClickedButtonStop);
+  this.htmlElements.buttonStart.addEventListener("click", onStartTimerButtonClict);
+  this.htmlElements.buttonReset.addEventListener("click", onClickedResetButton);
+  this.htmlElements.buttonStop.addEventListener("click", onClickedButtonStop);
 
   function onStartTimerButtonClict() {
     ClassHelper.removeClass("disabled", htmlElements.buttons);
@@ -73,9 +73,9 @@ function StopwatchTimer(initMode, initSeconds) {
 
   function runTime() {
     differenceMilliseconds = new Date().getTime() - startTime;
-    
+
     //не ворк
-	  this.calculateDifferenceSeconds(differenceMilliseconds, totalSecondsDifference, stopwatchInterval);
+    this.calculateDifferenceSeconds(differenceMilliseconds, totalSecondsDifference, stopwatchInterval);
     
     // switch (mode) {
     //   case "stopwatch":

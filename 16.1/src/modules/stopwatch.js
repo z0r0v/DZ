@@ -6,7 +6,8 @@ function Stopwatch() {
   StopwatchTimer.apply(this, array);
   
 //не ворк
-  function calculateDifferenceSeconds(differenceMilliseconds, totalSecondsDifference, stopwatchInterval){
+
+const calculateDifferenceSeconds = function (differenceMilliseconds, totalSecondsDifference, stopwatchInterval){
     differenceSeconds = Math.round(differenceMilliseconds / 1000) + totalSecondsDifference;
     return differenceSeconds;
   }
