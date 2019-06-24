@@ -27,7 +27,6 @@ function StopwatchTimer(initMode, initSeconds) {
     )
   };
 
-
   this.htmlElements = {
     output: document.querySelector(
       `.container [data-mode = "${mode}"] .output`
@@ -47,7 +46,6 @@ function StopwatchTimer(initMode, initSeconds) {
   };
 
   this.htmlElements = htmlElements;
-  
 
   htmlElements.buttonStart.addEventListener("click", onStartTimerButtonClict);
   htmlElements.buttonReset.addEventListener("click", onClickedResetButton);

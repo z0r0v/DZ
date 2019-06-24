@@ -12,9 +12,11 @@ Stopwatch.prototype.showInfo = function() {
   console.log(this);
 };
 
-Stopwatch.prototype.calculateDifferenceSeconds = function(differenceMilliseconds,
-  totalSecondsDifference) {
-    return Math.round(differenceMilliseconds / 1000) + totalSecondsDifference;
+Stopwatch.prototype.calculateDifferenceSeconds = function(
+  differenceMilliseconds,
+  totalSecondsDifference
+) {
+  return Math.round(differenceMilliseconds / 1000) + totalSecondsDifference;
 };
 
 export { Stopwatch };
