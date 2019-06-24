@@ -1,9 +1,11 @@
 section {
-  margin: 0 10%;
+  margin:0 10%;
 }
 .container {
   display: inline-block;
+  width: 24.5%;
 }
+
 .box {
   float: right;
 }
@@ -14,24 +16,27 @@ section {
 header {
   background-color: var(--main-color);
   letter-spacing: 1px;
-  height: 13em;
-  padding: 3em 10%;
+  height: 11em;
+  padding: 0.5em 10%;
   color: white;
   text-align: justify;
   margin: 0 10%;
 }
-header > h1 {
+header>h1{
   font-size: 2.5em;
+  margin: 2%;
 }
 
 header > nav > a.header {
-  cursor: pointer;
-  text-decoration: underline;
-  color: white;
-  padding: 0.3em;
+    cursor: pointer;
+    text-decoration: underline;
+    color: white;
+    padding: 0.3em;
 }
-header > p {
-  font-size: 2em;
+
+header >p{
+font-size: 2em;
+margin: 2%;
 }
 
 header > nav > a:hover {
@@ -59,27 +64,13 @@ article {
   background-color: #dcdcdc;
   height: 4em;
   padding: 2em;
-  margin: 1%;
+  margin: 1% 0;
 }
 
-article > h2 {
+article > h2{
   color: white;
 }
 
-@media screen and (max-width: 820px) {
-  header {
-    height: auto;
-  }
-
-  header > div,
-  header > div h1,
-  header nav {
-    height: auto;
-    width: auto;
-    display: block;
-    text-align: center;
-  }
-}
 
 footer {
   background-color: var(--main-color);
@@ -116,15 +107,9 @@ a.btn:visited {
   background: var(--main-color);
   color: white;
   margin: 5px 0;
-  width: 10.1em;
   border: 1px solid var(--main-color);
 }
 
-@media (max-width: 770px) {
-  .aWhite {
-    font-size: 14px;
-  }
-}
 
 .aWhite:hover {
   box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.2), inset 0 0 1px 10px white;
@@ -174,13 +159,18 @@ a.btn::after {
   }
 }
 
-.portfolio {
+.portfolio{
   background-image: url(https://raw.githubusercontent.com/z0r0v/Hometasks/master/%E2%84%961%20Calculete/img/bagroundPartp.jpg);
-  background-size: cover;
-  background-position: bottom;
+  background-size:cover;
+  background-position:bottom;
 }
 .portfolio > h2 {
   text-align: center;
   font-size: 50px;
   margin: 1px;
 }
+.scills{
+  transition: 20s;
+}
+
+
