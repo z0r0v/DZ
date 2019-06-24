@@ -1,9 +1,5 @@
-body{
-  background-image:url(https://i.ytimg.com/vi/BwBhaQoiV94/maxresdefault.jpg) ;
-  opacity:0.95;
-}
 section {
-  margin: 2% 5%;
+  margin:0 10%;
 }
 .container {
   display: inline-block;
@@ -22,6 +18,7 @@ header {
   padding: 3em 10%;
   color: white;
   text-align: justify;
+  margin: 0 10%;
 }
 header>h1{
   font-size: 2.5em;
@@ -62,6 +59,7 @@ article {
   background-color: #dcdcdc;
   height: 4em;
   padding: 2em;
+  margin: 1%;
 }
 
 article > h2{
@@ -90,6 +88,7 @@ footer {
   padding: 1em 10%;
   color: white;
   text-align: justify;
+  margin: 0 10%;
 }
 footer > p {
   padding: 1em;
@@ -174,3 +173,15 @@ a.btn::after {
     transform: translateY(0);
   }
 }
+
+.portfolio{
+  background-image: url(https://raw.githubusercontent.com/z0r0v/Hometasks/master/%E2%84%961%20Calculete/img/bagroundPartp.jpg);
+  background-size:cover;
+  background-position:bottom;
+}
+.portfolio > h2 {
+  text-align: center;
+  font-size: 50px;
+  margin: 1px;
+}
+

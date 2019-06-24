@@ -51,7 +51,8 @@ function StopwatchTimer(initMode, initSeconds) {
   function onStartTimerButtonClict() {
     ClassHelper.removeClass("disabled", htmlElements.buttons);
     ClassHelper.addClass("disabled", [htmlElements.buttonStart]);
-    stopwatchInterval = setInterval(runTime, 1000);
+    stopwatchInterval = setInterval(runTime.bind(this), 1000);
+    //Тут  this указывает на кнопку
     startTime = new Date().getTime();
   }
 
@@ -73,26 +74,12 @@ function StopwatchTimer(initMode, initSeconds) {
 
   function runTime() {
     differenceMilliseconds = new Date().getTime() - startTime;
-
-    //не ворк
-    this.calculateDifferenceSeconds(differenceMilliseconds, totalSecondsDifference, stopwatchInterval);
-    
-    // switch (mode) {
-    //   case "stopwatch":
-    //     differenceSeconds =
-    //       Math.round(differenceMilliseconds / 1000) + totalSecondsDifference;
-    //     break;
-    //   case "timer":
-    //     differenceSeconds =
-    //       totalSecondsDifference - Math.round(differenceMilliseconds / 1000);
-    //     if (differenceSeconds === 0) {
-    //       clearInterval(stopwatchInterval);
-    //       htmlElements.buttonStop.classList.add("disabled");
-    //     }
-    //     break;
-    //   default:
-    //     throw new Error("is mode don't come");
-    // }
+    // тут this указвыает на window
+    differenceSeconds = this.calculateDifferenceSeconds(
+      differenceMilliseconds,
+      totalSecondsDifference,
+      stopwatchInterval
+    );
 
     let seconds = parseInt(differenceSeconds % 60);
     let minutes = parseInt((differenceSeconds / 60) % 60);
