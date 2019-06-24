@@ -7,24 +7,7 @@ function StopwatchTimer(initMode, initSeconds) {
   let totalSecondsDifference = initSeconds;
   let differenceMilliseconds;
   let mode = initMode;
-
-  this.htmlElements = {
-    output: document.querySelector(
-      `.container [data-mode = "${mode}"] .output`
-    ),
-    buttonStart: document.querySelector(
-      `.container [data-mode = "${mode}"] .buttons .start`
-    ),
-    buttonStop: document.querySelector(
-      `.container [data-mode = "${mode}"] .buttons .stop`
-    ),
-    buttonReset: document.querySelector(
-      `.container [data-mode = ${mode}] .buttons .reset`
-    ),
-    buttons: document.querySelectorAll(
-      `.container .tabs [data-mode= "${mode}"] .buttons button`
-    )
-  };
+  const self = this;
 
   const htmlElements = {
     output: document.querySelector(
@@ -44,15 +27,36 @@ function StopwatchTimer(initMode, initSeconds) {
     )
   };
 
-  this.htmlElements.buttonStart.addEventListener("click", onStartTimerButtonClict);
-  this.htmlElements.buttonReset.addEventListener("click", onClickedResetButton);
-  this.htmlElements.buttonStop.addEventListener("click", onClickedButtonStop);
+
+  this.htmlElements = {
+    output: document.querySelector(
+      `.container [data-mode = "${mode}"] .output`
+    ),
+    buttonStart: document.querySelector(
+      `.container [data-mode = "${mode}"] .buttons .start`
+    ),
+    buttonStop: document.querySelector(
+      `.container [data-mode = "${mode}"] .buttons .stop`
+    ),
+    buttonReset: document.querySelector(
+      `.container [data-mode = ${mode}] .buttons .reset`
+    ),
+    buttons: document.querySelectorAll(
+      `.container .tabs [data-mode= "${mode}"] .buttons button`
+    )
+  };
+
+  this.htmlElements = htmlElements;
+  
+
+  htmlElements.buttonStart.addEventListener("click", onStartTimerButtonClict);
+  htmlElements.buttonReset.addEventListener("click", onClickedResetButton);
+  htmlElements.buttonStop.addEventListener("click", onClickedButtonStop);
 
   function onStartTimerButtonClict() {
     ClassHelper.removeClass("disabled", htmlElements.buttons);
     ClassHelper.addClass("disabled", [htmlElements.buttonStart]);
-    stopwatchInterval = setInterval(runTime.bind(this), 1000);
-    //Тут  this указывает на кнопку
+    stopwatchInterval = setInterval(runTime.bind(self), 1000);
     startTime = new Date().getTime();
   }
 
@@ -69,13 +73,12 @@ function StopwatchTimer(initMode, initSeconds) {
     totalSecondsDifference = initSeconds;
     startTime = new Date().getTime();
     clearInterval(stopwatchInterval);
-    runTime();
+    runTime.call(self);
   }
 
   function runTime() {
     differenceMilliseconds = new Date().getTime() - startTime;
-    // тут this указвыает на window
-    differenceSeconds = this.calculateDifferenceSeconds(
+    differenceSeconds = self.calculateDifferenceSeconds(
       differenceMilliseconds,
       totalSecondsDifference,
       stopwatchInterval

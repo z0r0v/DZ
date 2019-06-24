@@ -1,4 +1,5 @@
 import { StopwatchTimer } from "./stopwatchTimer.js";
+
 function Timer() {
   const callTimer = StopwatchTimer.bind(this, "timer", 300);
   callTimer();
@@ -11,10 +12,10 @@ Timer.prototype.showInfo = function() {
 };
 
 Timer.prototype.calculateDifferenceSeconds = function(differenceMilliseconds, totalSecondsDifference, stopwatchInterval){
-  differenceSeconds = totalSecondsDifference - Math.round(differenceMilliseconds / 1000);
+ const differenceSeconds = totalSecondsDifference - Math.round(differenceMilliseconds / 1000);
       if (differenceSeconds === 0) {
         clearInterval(stopwatchInterval);
-        htmlElements.buttonStop.classList.add("disabled");
+        this.htmlElements.buttonStop.classList.add("disabled");
       }
       return differenceSeconds;
 };

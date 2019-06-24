@@ -11,6 +11,8 @@ const stopwatch = new Stopwatch();
 stopwatch.showInfo();
 timer.showInfo();
 
+
+
 function init() {
   clock.init();
   tabs.init();
