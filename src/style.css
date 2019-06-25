@@ -71,7 +71,6 @@ article > h2{
   color: white;
 }
 
-
 footer {
   background-color: var(--main-color);
   letter-spacing: 1px;
@@ -81,6 +80,7 @@ footer {
   text-align: justify;
   margin: 0 10%;
 }
+
 footer > p {
   padding: 1em;
 }
@@ -164,13 +164,29 @@ a.btn::after {
   background-size:cover;
   background-position:bottom;
 }
+
 .portfolio > h2 {
   text-align: center;
   font-size: 50px;
   margin: 1px;
 }
+
 .scills{
   transition: 20s;
 }
 
+/* добавить в медиа свойства h2 и p */
+@media (max-width: 800px) {
+  .container{
+    width: 49.5%;
+  }
+}
 
+@media (max-width: 510px) {
+  .aWhite{
+    width: 100%;
+  }
+  .container{
+    width: 88.9%;
+  }
+}
