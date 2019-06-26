@@ -47,21 +47,23 @@ function StopwatchTimer(initMode, initSeconds) {
 
   this.htmlElements = htmlElements;
 
-  htmlElements.buttonStart.addEventListener("click", onStartTimerButtonClict);
-  htmlElements.buttonReset.addEventListener("click", onClickedResetButton);
-  htmlElements.buttonStop.addEventListener("click", onClickedButtonStop);
+  htmlElements.buttonStart.addEventListener("click", () => {onStartTimerButtonClict()});
+  htmlElements.buttonReset.addEventListener("click", () => {onClickedResetButton()});
+  htmlElements.buttonStop.addEventListener("click", () => {onClickedButtonStop()});
 
   function onStartTimerButtonClict() {
     ClassHelper.removeClass("disabled", htmlElements.buttons);
     ClassHelper.addClass("disabled", [htmlElements.buttonStart]);
-    stopwatchInterval = setInterval(runTime.bind(self), 1000);
+    let tick = () =>{ runTime();
+      stopwatchInterval = setTimeout(tick, 1000);}
+    stopwatchInterval = setTimeout(() =>{tick()}, 1000);
     startTime = new Date().getTime();
   }
 
   function onClickedButtonStop() {
     ClassHelper.removeClass("disabled", htmlElements.buttons);
     ClassHelper.addClass("disabled", [htmlElements.buttonStop]);
-    clearInterval(stopwatchInterval);
+    clearTimeout(stopwatchInterval);
     totalSecondsDifference = differenceSeconds;
   }
 
@@ -70,7 +72,7 @@ function StopwatchTimer(initMode, initSeconds) {
     ClassHelper.addClass("disabled", [htmlElements.buttonReset]);
     totalSecondsDifference = initSeconds;
     startTime = new Date().getTime();
-    clearInterval(stopwatchInterval);
+    clearTimeout(stopwatchInterval);
     runTime.call(self);
   }
 
