@@ -1,13 +1,29 @@
+@import url('https://fonts.googleapis.com/css?family=Chonburi&display=swap');
 @import "css/default.css" screen;
 @import "css/header.css" screen;
+@import "css/portfolio.css" screen;
+@import "css/tasks.css" screen;
+@import "css/footer.css" screen;
+
+
 
 :root{
-  --main-color:#98FB9;
+  --main-color:#B0C4DE;
+  --main-color2:black;
+  --main-color3:black;
 }
 
 body{
   width: 100%;
-  max-width: 1000px;
-  margin-left: auto;
-  margin-right: auto;
+  max-width: 900px;
+  border: 0 solid transparent;
+  border-width: 0 5px;
+  margin: 0 auto 5px;
+  box-sizing: border-box;
+  font-family: 'Chonburi', cursive;
 }
+
+/* .block_inner {
+  height: 40px;
+  background-color: green;
+} */

@@ -1,0 +1,11 @@
+section.portfolio{
+  background-color: var(--main-color);
+  padding: 0.1em;
+  margin: 0.5em 0;
+}
+
+.portfolio h2{
+  color: var(--main-color2);
+  text-align: center;
+  font-size: 2em;
+}

@@ -1,0 +1,48 @@
+section.tasks > ul > li > a{
+  border: 2px solid var(--main-color);
+  display: inline-block;
+  padding: 20px;
+ 
+  font-size: 1.5em;
+  color: var(--main-color3);
+
+  width: 100px;
+  height: 80px;
+  margin: 0.85em;
+
+  background-repeat:no-repeat;
+  background-size: 120px;
+
+  text-align: center;
+
+  overflow:hidden;
+}
+
+section.tasks> ul{
+  display: flex;
+}
+
+.dz1{
+  background-image: url(https://github.com/z0r0v/Hometasks/blob/master/%E2%84%961%20Calculete/img/calculator.png?raw=true);
+  }
+  .dz2{
+    background-image: url();
+    }
+    .dz3{
+      background-image: url();
+      }
+      .dz3-2{
+        background-image: url();
+        }
+        .dz3Plus{
+          background-image: url();
+          }
+          .dz3-4-5{
+            background-image: url();
+            }
+            .dz4Plus{
+              background-image: url();
+              }
+              .dz4-1-2dz5-1-2zd6-1-2{
+                background-image: url();
+                }

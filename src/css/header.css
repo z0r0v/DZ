@@ -1,11 +1,32 @@
-header{
 
+header{
+width: auto;
+background-color: var(--main-color);
+padding: 3em;
+}
+
+header> nav>a, h1, p{
+  color: var(--main-color2);
 }
 
 header>h1{
-
+  margin: 0.5em;
+  font-size:4em;
 }
 
 header>p{
-
+font-size: 2em;
 }
+
+nav{
+  display: block;
+  float: right;
+}
+
+nav > a{
+  cursor: pointer;
+  padding: 0.5em;
+  text-decoration: none;
+  font-size: 1.5em;
+}
+
