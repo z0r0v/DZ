@@ -4,21 +4,22 @@
 @import "css/portfolio.css" screen;
 @import "css/tasks.css" screen;
 @import "css/footer.css" screen;
+@import "css/Skils.css" screen;
 
 
 
 :root{
   --main-color:#B0C4DE;
-  --main-color2:black;
-  --main-color3:black;
+  --main-text:black;
+  --main--block:black;
 }
 
 body{
   width: 100%;
-  max-width: 900px;
+  max-width: 1000px;
   border: 0 solid transparent;
-  border-width: 0 5px;
-  margin: 0 auto 5px;
+  border-width: 0 50px;
+  margin: 0 auto 50px;
   box-sizing: border-box;
   font-family: 'Chonburi', cursive;
 }

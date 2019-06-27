@@ -5,7 +5,7 @@ section.portfolio{
 }
 
 .portfolio h2{
-  color: var(--main-color2);
+  color: var(--main-text);
   text-align: center;
   font-size: 2em;
 }

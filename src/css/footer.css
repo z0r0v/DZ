@@ -5,7 +5,7 @@ footer{
 }
 
 footer > p{
-  color: var(--main-color2);
+  color: var(--main-text);
   text-align: center;
   font-size: 1em;
 }
