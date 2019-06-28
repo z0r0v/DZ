@@ -1,0 +1,9 @@
+@import 'css/default.css' screen;
+
+body{
+  background-color: silver;
+}
+.container{
+  background-color: white;
+}
+

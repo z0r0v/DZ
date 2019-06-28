@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>project</title>
+    <link rel="stylesheet" href="../src/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="links">
+        <a data-mode="masterInfo" class="masterInfo selected" href="#"
+          >Master Info</a
+        >
+        <a data-mode="autoInfo" class="autoInfo" href="#">Auto Info</a>
+        <a data-mode="workPlan" class="workPlan" href="#">Work Plan</a>
+      </div>
+      <div class="tabs">
+        <div data-mode="masterInfo" class="hidden">
+          <form action="" id="login">
+            <h2>Master Info</h2>
+            <span>Login:</span>
+            <input type="text" placeholder="Enter you Name" />
+            <span>Password:</span>
+            <input type="password" placeholder="Enter you password" />
+            <button type="submit" form="login">Log in</button>
+          </form>
+        </div>
+
+        <div data-mode="masterInfoBook" class="hidden">
+          <h2>Мастер: Василий Кшиштыков.</h2>
+          <span>Разряд 5</span>
+          <form action="" id="Book">
+            <input type="text" placeholder="Enter owner name" />
+            <input type="text" placeholder="Enter register sign" />
+            <input type="text" placeholder="Enter owner's phone number" />
+            <input type="text" placeholder="Enter car mileage" />
+            <input type="text" placeholder="Enter car mileage" />
+            <input type="text" placeholder="Enter car brand" />
+            <input type="text" placeholder="Enter book time" />
+            <input type="text" placeholder="Enter the type of work performed" />
+            <button type="submit" form="login">to Book</button>
+          </form>
+
+          <div class="output">
+            <div class="Book">
+              <span>Time:16:00</span>
+              <span>Brand:Lada</span>
+              <span>Phone:+375 29 376 70 82</span>
+              <span>Name:Genadiy Petrovitch</span>
+              <span>Work performed</span>
+              <span>Еiming belt replacement</span>
+            </div>
+            <button>+</button>
+            <button>X</button>
+          </div>
+        </div>
+
+        <div data-mode="autoInfo" class="hidden"></div>
+
+        <div data-mode="workPlan" class="hidden"></div>
+      </div>
+    </div>
+    <script type="module" src="../src/modules/main.js"></script>
+  </body>
+</html>

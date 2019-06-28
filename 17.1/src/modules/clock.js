@@ -11,7 +11,11 @@ function onClockNextTick() {
 function Clock(){}
 
 Clock.prototype.init = function() {
-    setInterval(onClockNextTick, 1000);
+    //upload recursy
+    let tic = ()=>{
+        setTimeout(tic, 1000);
+    }
+    setInterval(tic, 1000);
     onClockNextTick();
 };
 

@@ -47,16 +47,26 @@ function StopwatchTimer(initMode, initSeconds) {
 
   this.htmlElements = htmlElements;
 
-  htmlElements.buttonStart.addEventListener("click", () => {onStartTimerButtonClict()});
-  htmlElements.buttonReset.addEventListener("click", () => {onClickedResetButton()});
-  htmlElements.buttonStop.addEventListener("click", () => {onClickedButtonStop()});
+  htmlElements.buttonStart.addEventListener("click", () => {
+    onStartTimerButtonClict();
+  });
+  htmlElements.buttonReset.addEventListener("click", () => {
+    onClickedResetButton();
+  });
+  htmlElements.buttonStop.addEventListener("click", () => {
+    onClickedButtonStop();
+  });
 
   function onStartTimerButtonClict() {
     ClassHelper.removeClass("disabled", htmlElements.buttons);
     ClassHelper.addClass("disabled", [htmlElements.buttonStart]);
-    let tick = () =>{ runTime();
-      stopwatchInterval = setTimeout(tick, 1000);}
-    stopwatchInterval = setTimeout(() =>{tick()}, 1000);
+    let tick = () => {
+      runTime();
+      stopwatchInterval = setTimeout(tick, 1000);
+    };
+    stopwatchInterval = setTimeout(() => {
+      tick();
+    }, 1000);
     startTime = new Date().getTime();
   }
 
