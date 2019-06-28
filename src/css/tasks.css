@@ -1,26 +1,27 @@
+
+section{
+  width: 100%;
+  max-width: 1000px;
+}
 section.tasks > ul > li > a{
   border: 2px solid var(--main-color);
   display: inline-block;
-  padding: 1.15em;
- 
-  font-size: 1.5em;
+  padding: 1.34em;
+  font-size: 1.3em;
   color: var(--main-color-block);
-
   width: 100px;
   height: 80px;
   margin: 0.2em;
-
   background-repeat:no-repeat;
   background-size: 120px;
-
   text-align: center;
-
   overflow:hidden;
 }
 
 section.tasks> ul{
   display: flex;
   padding: 0;
+  
 }
 section.tasks>ul>li{
   list-style-type:none;
