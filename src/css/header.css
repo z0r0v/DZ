@@ -1,7 +1,9 @@
 
 header{
+
 width: auto;
 background-color: var(--main-color);
+margin-top: 2em;
 padding: 1.6em;
 }
 

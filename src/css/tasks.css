@@ -1,5 +1,5 @@
 
-section{
+section.tasks{
   width: 100%;
   max-width: 1000px;
   background-color: var(--main-color);
@@ -11,8 +11,8 @@ section.tasks > ul > li > a{
   padding: 1.34em;
   font-size: 1.3em;
   color: var(--main--block);
-  width: 100px;
-  height: 80px;
+  width: 3.5em;
+  height: 4em;
   margin: 0.2em;
   background-repeat:no-repeat;
   background-size: 180px;
@@ -22,7 +22,7 @@ section.tasks > ul > li > a{
 
 section.tasks> ul{
   display: flex;
-  padding: 0;
+  padding: 1%;
   
 }
 section.tasks>ul>li{
