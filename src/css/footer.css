@@ -9,3 +9,24 @@ footer > p{
   text-align: center;
   font-size: 1em;
 }
+footer>ul{
+  padding: 0;
+  text-align: center;
+  font-size: 2em;
+}
+
+footer>ul>li{
+  list-style-type:none;
+  display: inline-block;
+  
+}
+
+footer>ul>li>a{
+  color:rgba(63, 191, 136, 0.40);
+  
+}
+
+.mailto{
+  text-decoration: none;
+  color:rgba(63, 191, 136, 0.70);
+};

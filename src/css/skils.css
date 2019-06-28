@@ -2,7 +2,7 @@ section.skills{
   margin:1em 0;
   width: auto;
   background-color: var(--main-color);
-  padding: 3em;
+  padding: 1em;
   }
   
 section.skills>article> h2, p{
@@ -11,10 +11,6 @@ section.skills>article> h2, p{
   
 section.skills>article>h2{
     margin: 0.5em;
-    font-size:3em;
-  }
-  
-section.skills> article> p{
-  font-size: 2em;
-  text-align: center;
+    font-size:1.5em;
+    text-align: center;
   }

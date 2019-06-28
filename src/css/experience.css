@@ -1,0 +1,27 @@
+section.experience{
+  margin:1em 0;
+  width: auto;
+  background-color: var(--main-color);
+  padding: 1em;
+  }
+  
+section.experience>article> h2, p{
+    color: var(--main-text);
+  }
+  
+section.experience>article>h2{
+    margin: 0.5em;
+    font-size:1.5em;
+    text-align: center;
+  }
+
+section.experience>article>p{
+    margin: 0.5em;
+    font-size:1em;
+
+  }
+
+  section.experience>article>p>a{
+    /* display: inline-block; */
+
+  }

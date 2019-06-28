@@ -1,15 +1,16 @@
 @import url('https://fonts.googleapis.com/css?family=Chonburi&display=swap');
-@import 'css/default.css' screen;
+/* @import 'css/default.css' screen; */
 @import 'css/header.css' screen;
 @import 'css/portfolio.css' screen;
 @import 'css/tasks.css' screen;
 @import 'css/footer.css' screen;
-@import 'css/Skils.css' screen;
+@import 'css/skils.css' screen;
+@import 'css/experience.css' screen;
 
 
 
 :root{
-  --main-color:#B0C4DE;
+  --main-color: rgba(63, 191, 136, 0.12);
   --main-text:black;
   --main--block:black;
 }
