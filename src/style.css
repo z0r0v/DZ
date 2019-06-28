@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Chonburi&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Comfortaa&display=swap');
 /* @import 'css/default.css' screen; */
 @import 'css/header.css' screen;
 @import 'css/portfolio.css' screen;
@@ -10,9 +10,11 @@
 
 
 :root{
-  --main-color: rgba(63, 191, 136, 0.12);
-  --main-text:black;
-  --main--block:black;
+  --main-color: rgba(0, 0, 0, 0.3);
+  --main-text:white;
+  --main--block:white;
+  --main--footer:white;
+
 }
 
 body{
@@ -22,7 +24,8 @@ body{
   border-width: 0 50px;
   margin: 0 auto 50px;
   box-sizing: border-box;
-  font-family: 'Chonburi', cursive;
+  font-family: 'Comfortaa', cursive;
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
 /* .block_inner {

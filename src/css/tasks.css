@@ -2,18 +2,20 @@
 section{
   width: 100%;
   max-width: 1000px;
+  background-color: var(--main-color);
+  padding: 2em 0;
 }
 section.tasks > ul > li > a{
-  border: 2px solid var(--main-color);
+  border: 2px solid var(--main--block);
   display: inline-block;
   padding: 1.34em;
   font-size: 1.3em;
-  color: var(--main-color-block);
+  color: var(--main--block);
   width: 100px;
   height: 80px;
   margin: 0.2em;
   background-repeat:no-repeat;
-  background-size: 120px;
+  background-size: 180px;
   text-align: center;
   overflow:hidden;
 }
@@ -27,9 +29,9 @@ section.tasks>ul>li{
   list-style-type:none;
 }
 
-.dz1{
-  background-image: url(https://github.com/z0r0v/Hometasks/blob/master/%E2%84%961%20Calculete/img/calculator.png?raw=true);
-  }
+.dz1:hover{
+  background-image: url(https://github.com/z0r0v/Hometasks/blob/master/%E2%84%961%20Calculete/img/calculator.png?raw=true); 
+}
   .dz2{
     background-image: url();
     }

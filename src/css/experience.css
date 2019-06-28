@@ -22,6 +22,6 @@ section.experience>article>p{
   }
 
   section.experience>article>p>a{
-    /* display: inline-block; */
+    color: #800080;
 
   }
