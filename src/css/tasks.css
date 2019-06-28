@@ -1,5 +1,5 @@
 section.tasks > ul > li > a{
-  border: 2px solid var(--main-color);
+  /* border: 2px solid var(--main-color); */
   display: inline-block;
   padding: 20px;
  
