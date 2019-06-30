@@ -1,4 +1,7 @@
 
+@import 'css/masterinfo.css' screen;
+@import 'css/tabs.css' screen;
+
 .hidden{
   /* display: none; */
 }
