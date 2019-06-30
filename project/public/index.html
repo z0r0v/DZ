@@ -1,122 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>project</title>
-    <link rel="stylesheet" href="../src/style.css" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  </head>
-  <body>
-      <div class="container">
-        <div class="links">
-          <div class="btn-group col-12 shadow-sm p-3 mb-5 bg-white rounded" data-mode="masterInfo" role="group" aria-label="Basic example">
-              <button type="button" data-mode="autoInfo" class="btn btn-primary">Master Info</button>
-              <button type="button" class="btn btn-primary">Auto Info</button>
-              <button type="button" data-mode="workPlan" class="btn btn-primary">Work Plan</button>
-          </div>
-        </div>
-        <div class="container tabs">
-        <div data-mode="masterInfo" class="col-md-auto hidden">
-        <form class="col-md-8 offset-md-2 shadow-sm p-3 mb-5 bg-white rounded">
-            <div class="form-group">
-                <h2 class="text-center">Master Info</h2>
-              <label for="exampleInputEmail1">Login:</label>
-              <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter you Name">
-            </div>
-            <div class="form-group">
-              <label for="exampleInputPassword1">Password:</label>
-              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter you password">
-            </div>
-            <button type="submit" class="btn btn-primary col-md-12">Submit</button>
-        </form>
-        </div>
-        <div data-mode="masterInToBook" class="hidden shadow-sm p-3 mb-5 bg-white rounded">
-          <h2>Master In To Book</h2>
-          <form>
-              <div class="form-group">
-                <label for="formGroupExampleInput">Owner name</label>
-                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter owner name">
-              </div>
-              <div class="form-group">
-                <label for="formGroupExampleInput2">Register sign</label>
-                <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Enter register sign">
-              </div>
-              <div class="form-group">
-                  <label for="formGroupExampleInput2">Owner's phone number</label>
-                  <input type="text" class="form-control" id="formGroupExampleInput3" placeholder="Enter owner's phone number">
-                </div>
-                <div class="form-group">
-                    <label for="formGroupExampleInput2">Car mileage</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput4" placeholder="Enter car mileage">
-                  </div>
-                  <div class="form-group">
-                      <label for="formGroupExampleInput2">Car brand</label>
-                      <input type="text" class="form-control" id="formGroupExampleInput5" placeholder="Enter car brand">
-                    </div>
-                    <div class="form-group">
-                        <label for="formGroupExampleInput2">Book time</label>
-                        <input type="text" class="form-control" id="formGroupExampleInput6" placeholder="Enter book time">
-                      </div>
-                      <div class="form-group">
-                          <label for="formGroupExampleInput2">Type of work performed</label>
-                          <input type="text" class="form-control" id="formGroupExampleInput6" placeholder="Enter the type of work performed">
-                        </div>
-                        <button type="submit" class="btn btn-primary">to Book</button>
-          </form>
-            <div class="output">
-              <h2>Master: Vasily Ksin. <span>Разряд 5</span></h2>
-              <table class="table">
-                  <thead>
-                    <tr>
-                      <th scope="col">#</th>
-                      <th scope="col">Time</th>
-                      <th scope="col">Brand</th>
-                      <th scope="col">Phone</th>
-                      <th scope="col">Name</th>
-                      <th scope="col">Work</th>
-                      <th scope="col">Submit</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>16:00</td>
-                      <td>Lada</td>
-                      <td>+375293767082</td>
-                      <td>Genadiy Petrovitch</td>
-                      <td>Еiming belt replacement</td>
-                      <td><button type="button" class="btn btn-primary btn-sm">+</button>
-                        <button type="button" class="btn btn-danger btn-sm">-</button></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>16:00</td>
-                        <td>Lada</td>
-                        <td>+375293767082</td>
-                        <td>Genadiy Petrovitch</td>
-                        <td>Еiming belt replacement</td>
-                        <td><button type="button" class="btn btn-primary btn-sm">+</button>
-                          <button type="button" class="btn btn-danger btn-sm">-</button></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>16:00</td>
-                        <td>Lada</td>
-                        <td>+375293767082</td>
-                        <td>Genadiy Petrovitch</td>
-                        <td>Еiming belt replacement</td>
-                        <td><button type="button" class="btn btn-primary btn-sm">+</button>
-                          <button type="button" class="btn btn-danger btn-sm">-</button></td>
-                    </tr>
-                  </tbody>
-                </table>
-            </div>
-        </div>
-        <div data-mode="autoInfo" class="hidden">123</div>
-        <div data-mode="workPlan" class="hidden">123</div>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>project</title>
+  <link rel="stylesheet" href="../src/style.css" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+  <div class="container">
+
+    <div class="links">
+      <div class="btn-group col-12 shadow-sm p-3 mb-5 bg-white rounded" data-mode="masterInfo" role="group"
+        aria-label="Basic example">
+        <button type="button" data-mode="autoInfo" class="btn btn-primary">Master Info</button>
+        <button type="button" class="btn btn-primary">Auto Info</button>
+        <button type="button" data-mode="workPlan" class="btn btn-primary">Work Plan</button>
       </div>
-      <script type="module" src="../src/modules/main.js"></script>
-  </body>
+    </div>
+
+
+
+    <div class="tabs">
+
+      <div data-mode="masterInfo" class="col-md-auto hidden">
+
+        <form class="col-md-8 offset-md-2 shadow-sm p-3 mb-5 bg-white rounded">
+          <div class="form-group">
+            <h2 class="text-center">Master Info</h2>
+            <label for="exampleInputEmail1">Login:</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+              placeholder="Enter you Name">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Password:</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter you password">
+          </div>
+          <button type="submit" class="btn btn-primary col-md-12">Submit</button>
+        </form>
+      </div>
+
+      
+      <div data-mode="masterInToBook" class="hidden shadow-sm p-3 mb-5 bg-white rounded">
+        <h2>Master In To Book</h2>
+        <form>
+          <div class="form-group">
+            <label for="formGroupExampleInput">Owner name</label>
+            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter owner name">
+          </div>
+          <div class="form-group">
+            <label for="formGroupExampleInput2">Register sign</label>
+            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Enter register sign">
+          </div>
+          <div class="form-group">
+            <label for="formGroupExampleInput2">Owner's phone number</label>
+            <input type="text" class="form-control" id="formGroupExampleInput3"
+              placeholder="Enter owner's phone number">
+          </div>
+          <div class="form-group">
+            <label for="formGroupExampleInput2">Car mileage</label>
+            <input type="text" class="form-control" id="formGroupExampleInput4" placeholder="Enter car mileage">
+          </div>
+          <div class="form-group">
+            <label for="formGroupExampleInput2">Car brand</label>
+            <input type="text" class="form-control" id="formGroupExampleInput5" placeholder="Enter car brand">
+          </div>
+          <div class="form-group">
+            <label for="formGroupExampleInput2">Book time</label>
+            <input type="text" class="form-control" id="formGroupExampleInput6" placeholder="Enter book time">
+          </div>
+          <div class="form-group">
+            <label for="formGroupExampleInput2">Type of work performed</label>
+            <input type="text" class="form-control" id="formGroupExampleInput6"
+              placeholder="Enter the type of work performed">
+          </div>
+          <button type="submit" class="btn btn-primary">to Book</button>
+        </form>
+        <div class="output">
+          <h2>Master: Vasily Ksin. <span>Разряд 5</span></h2>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Time</th>
+                <th scope="col">Brand</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Name</th>
+                <th scope="col">Work</th>
+                <th scope="col">Submit</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>16:00</td>
+                <td>Lada</td>
+                <td>+375293767082</td>
+                <td>Genadiy Petrovitch</td>
+                <td>Еiming belt replacement</td>
+                <td><button type="button" class="btn btn-primary btn-sm">+</button>
+                  <button type="button" class="btn btn-danger btn-sm">-</button></td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>16:00</td>
+                <td>Lada</td>
+                <td>+375293767082</td>
+                <td>Genadiy Petrovitch</td>
+                <td>Еiming belt replacement</td>
+                <td><button type="button" class="btn btn-primary btn-sm">+</button>
+                  <button type="button" class="btn btn-danger btn-sm">-</button></td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>16:00</td>
+                <td>Lada</td>
+                <td>+375293767082</td>
+                <td>Genadiy Petrovitch</td>
+                <td>Еiming belt replacement</td>
+                <td><button type="button" class="btn btn-primary btn-sm">+</button>
+                  <button type="button" class="btn btn-danger btn-sm">-</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div data-mode="autoInfo" class="hidden">123</div>
+      <div data-mode="workPlan" class="hidden">123</div>
+    </div>
+  </div>
+  <script type="module" src="../src/modules/main.js"></script>
+</body>
+
 </html>
