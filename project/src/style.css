@@ -1,15 +1,4 @@
 
-@import 'css/masterinfo.css' screen;
-@import 'css/tabs.css' screen;
-
 .hidden{
-  /* display: none; */
+  display: none;
 }
-
-body{
-  background-color: silver;
-}
-.container{
-  background-color: white;
-}
-
