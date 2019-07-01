@@ -49,9 +49,6 @@ function Masterbooking(){
     const divGruup6 = new CreatingGroupElements(6, "Book time");
     const divGruup7 = new CreatingGroupElements(7, "Type of work performed");
 
-    
-
-
     htmlElements.tabs.appendChild(htmlElements.divMasterInToBook);
     htmlElements.divMasterInToBook.appendChild(htmlElements.h2MasterInToBook);
     htmlElements.divMasterInToBook.appendChild(htmlElements.form);
