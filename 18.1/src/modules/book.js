@@ -25,13 +25,15 @@ function Book() {
     htmlElements.bookTable = document.createElement("table");
     htmlElements.output.classList.add("table");
 
-    function creatthead() {
       htmlElements.thead = document.createElement("thead");
       htmlElements.tr = document.createElement("tr");
-
       htmlElements.th = document.createElement("th");
       htmlElements.th.scope = "col";
-      // Доделать
+      // тут элементы должны быть заветрсаны жестко с привязкой
+
+    function creatthead() {
+      
+      // тут элементы отрисовки из масива
     }
   }
 }
