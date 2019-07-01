@@ -12,21 +12,22 @@
 </head>
 
 <body>
+  <ul class="nav justify-content-center text-uppercase font-weight-bold">
+    <li class="nav-item">
+      <a class="nav-link  disabled" href="#">Master Info</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link active" href="#">Auto Info</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link active" href="#">Work Plan</a>
+    </li>
+  </ul>
+
   <div class="container">
-
-    <div class="links">
-      <div class="btn-group col-12 shadow-sm p-3 mb-5 bg-white rounded" data-mode="masterInfo" role="group"
-        aria-label="Basic example">
-        <button type="button" data-mode="autoInfo" class="btn btn-primary">Master Info</button>
-        <button type="button" class="btn btn-primary">Auto Info</button>
-        <button type="button" data-mode="workPlan" class="btn btn-primary">Work Plan</button>
-      </div>
-    </div>
-
-
     <div class="tabs">
 
-        <!-- <div class="output">
+      <!-- <div class="output">
           <h2>Master: Vasily Ksin. <span>Разряд 5</span></h2>
           <table class="table">
             <thead>
@@ -50,7 +51,8 @@
                 <td>Genadiy Petrovitch</td>
                 <td>Еiming belt replacement</td>
                 <td><button type="button" class="btn btn-primary btn-sm">+</button>
-                  <button type="button" class="btn btn-danger btn-sm">-</button></td>
+                  <button type="button" class="btn btn-danger btn-sm">-</button>
+                </td>
               </tr>
               <tr>
                 <th scope="row">2</th>
@@ -78,11 +80,12 @@
 
 
 
-      </div>
-      <div data-mode="autoInfo" class="hidden">123</div>
-      <div data-mode="workPlan" class="hidden">123</div>
     </div>
+    <div data-mode="autoInfo" class="hidden">123</div>
+    <div data-mode="workPlan" class="hidden">123</div>
+  </div>
   </div>
   <script type="module" src="../src/modules/main.js"></script>
 </body>
+
 </html>
