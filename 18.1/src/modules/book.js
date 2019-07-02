@@ -1,3 +1,6 @@
+import {masterNameCategogy} from "./login.js";
+
+
 const bookArray = [
   {
     time:"16:00",
@@ -28,6 +31,7 @@ const bookArray = [
   }
 ];
 
+
 function Book() {
 
   const htmlElement = {
@@ -40,7 +44,7 @@ function Book() {
     htmlElement.output.classList.add("output");
 
     htmlElement.h2MasterInfo = document.createElement("h2");
-    htmlElement.h2MasterInfo.innerText = `Vasily Ksin. Сategory 5`;
+    htmlElement.h2MasterInfo.innerText = masterNameCategogy;
 
     htmlElement.bookTable = document.createElement("table");
     htmlElement.bookTable.classList.add("table");
@@ -96,20 +100,12 @@ function Book() {
 
         htmlElement.tdButtons = document.createElement("td");
 
-        htmlElement.buttonAdd = document.createElement("button");
-        
-        htmlElement.buttonAdd.classList.add("btn", "btn-primary", "btn-sm");
-
         htmlElement.buttonIcoCheck = document.createElement("i");
-        htmlElement.buttonIcoCheck.classList.add("fa", "fa-check");
+        htmlElement.buttonIcoCheck.classList.add("fa", "fa-check-circle","fa-lg", "text-success");
         
-
-        htmlElement.buttonClear = document.createElement("button");
-      
-        htmlElement.buttonClear.classList.add("btn", "btn-danger", "btn-sm");
 
         htmlElement.buttonIcoClear = document.createElement("i");
-        htmlElement.buttonIcoClear.classList.add("fa","fa-times");
+        htmlElement.buttonIcoClear.classList.add("fa", "fa-times-circle","fa-lg", "text-danger");
    
 
         htmlElement.trBookInfo = document.createElement("tr");
@@ -125,11 +121,9 @@ function Book() {
        htmlElement.trBookInfo.appendChild(htmlElement.tdWork);
      
 
-      htmlElement.buttonAdd.appendChild(htmlElement.buttonIcoCheck);
-      htmlElement.buttonClear.appendChild(htmlElement.buttonIcoClear);
-
-      htmlElement.tdButtons.appendChild(htmlElement.buttonAdd);
-      htmlElement.tdButtons.appendChild(htmlElement.buttonClear);
+      htmlElement.tdButtons.appendChild(htmlElement.buttonIcoClear);
+      htmlElement.tdButtons.appendChild(htmlElement.buttonIcoCheck);
+      
 
        htmlElement.trBookInfo.appendChild(htmlElement.tdButtons);
       }
@@ -144,4 +138,5 @@ function Book() {
   }
   creatElement();
 }
+
 export { Book };
