@@ -1,6 +1,6 @@
 const bookArray = [
   {
-    time: "16:00",
+    time:"16:00",
     brand:"Lada",
     phone:"+375293767082",
     name:"Vasiliy Petrovich",
