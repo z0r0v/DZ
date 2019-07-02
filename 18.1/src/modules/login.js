@@ -1,4 +1,7 @@
-function Loggin(){
+
+
+
+function Login(){
 
 const htmlElements = {
   container:document.querySelector(".container"),
@@ -17,10 +20,10 @@ function createElement(){
   htmlElements.formLogin = document.createElement("form");
   htmlElements.formLogin.classList.add("col-md-8", "offset-md-2", "shadow-sm", "p-3", "mb-5", "bg-white", "rounded");
   
-  htmlElements.fotmBtn = document.createElement("button");
-  htmlElements.fotmBtn.type = "submit";
-  htmlElements.fotmBtn.classList.add("btn", "btn-primary", "col-md-12");
-  htmlElements.fotmBtn.innerText = "Submit";
+  htmlElements.formButton = document.createElement("button");
+  htmlElements.formButton.type = "submit";
+  htmlElements.formButton.classList.add("btn", "btn-primary", "col-md-12");
+  htmlElements.formButton.innerText = "Submit";
 
   function CreatingGroupElements(innerText, type){
     htmlElements.divFormgroup = document.createElement("div");
@@ -50,11 +53,36 @@ function createElement(){
   const divGroupLoggin = new CreatingGroupElements("Loggin", "text");
   const divGroupPassword = new CreatingGroupElements("Password","password");
 
-  htmlElements.formLogin.appendChild(htmlElements.fotmBtn);
+  htmlElements.formLogin.appendChild(htmlElements.formButton);
+  htmlElements.formButton.addEventListener('click', onButtonlogInClicked);
+}
+
+
+function onButtonlogInClicked(){
+  if(checkPassword() === true){
+    alert('OK');
+    // тут функция хайден класс
+  }
+  else{
+    //тут функция которая красит цветомв красный
+  }
+}
+
+function checkPassword(){
+  // Принимаем занчание из фалью лгин и пароль
+  let loginName;
+  let pasword;
+  // масссив с логинами и паролями мастеров нужен будет перебор масива
+  if(pasword !== 'q1w2e3' && loginName !== "master"){
+    return checkPassword()
+  }
+  else{
+    return true;
+  }
 }
 
 createElement();
 
 }
 
-export {Loggin};
+export {Login};
