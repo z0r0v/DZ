@@ -1,5 +1,6 @@
+import {masterArray} from "./materDataBase.js";
 
-
+let masterName;
 
 function Login(){
 
@@ -20,10 +21,10 @@ function createElement(){
   htmlElements.formLogin = document.createElement("form");
   htmlElements.formLogin.classList.add("col-md-8", "offset-md-2", "shadow-sm", "p-3", "mb-5", "bg-white", "rounded");
   
-  htmlElements.formButton = document.createElement("button");
-  htmlElements.formButton.type = "submit";
+  htmlElements.formButton = document.createElement("input");
+  htmlElements.formButton.type = "button";
   htmlElements.formButton.classList.add("btn", "btn-primary", "col-md-12");
-  htmlElements.formButton.innerText = "Submit";
+  htmlElements.formButton.value = "Submit";
 
   function CreatingGroupElements(innerText, type){
     htmlElements.divFormgroup = document.createElement("div");
@@ -54,34 +55,45 @@ function createElement(){
   const divGroupPassword = new CreatingGroupElements("Password","password");
 
   htmlElements.formLogin.appendChild(htmlElements.formButton);
-  htmlElements.formButton.addEventListener('click', onButtonlogInClicked);
-}
-
-
-function onButtonlogInClicked(){
-  if(checkPassword() === true){
-    alert('OK');
-    // тут функция хайден класс
-  }
-  else{
-    //тут функция которая красит цветомв красный
-  }
-}
-
-function checkPassword(){
-  // Принимаем занчание из фалью лгин и пароль
-  let loginName;
-  let pasword;
-  // масссив с логинами и паролями мастеров нужен будет перебор масива
-  if(pasword !== 'q1w2e3' && loginName !== "master"){
-    return checkPassword()
-  }
-  else{
-    return true;
-  }
+  htmlElements.formButton.addEventListener('click', onButtonCheckPassword);
 }
 
 createElement();
+
+
+
+
+function onButtonCheckPassword(){
+
+  const loginName = document.getElementById("exampleInputLoggin");
+  const pasword = document.getElementById("exampleInputPassword");
+
+
+  loginName.classList.remove("border-danger", "border-success");
+  pasword.classList.remove("border-danger", "border-success");
+
+  masterArray.forEach(function(item){
+    //Разобраться выдает сначала тру потом фелс
+    if(pasword.value !== item.pasword && loginName.value !== item.login){
+      loginName.classList.add("border", "border-danger");
+      pasword.classList.add("border", "border-danger");
+    }
+    else{
+      loginName.classList.remove("border-danger");
+    pasword.classList.remove("border-danger");
+    loginName.classList.add("border-success");
+    pasword.classList.add("border-success");
+    // masterName = `${masterArray[i].firstName} ${masterArray[i].LastName}`
+    }
+  });
+
+
+
+}
+  
+
+
+    
 
 }
 

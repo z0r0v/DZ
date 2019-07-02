@@ -1,7 +1,7 @@
 const masterArray = [
    {
-  login:"Kshishtykov123",
-  pasword:"123321",
+  login:"a",
+  pasword:"123",
   firstName: "Vasiliy",
   LastName: "Kshishtykov",
   dateEmployment:new Date('February 22, 2016 14:24:00'),

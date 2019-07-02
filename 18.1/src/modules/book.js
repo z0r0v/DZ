@@ -97,25 +97,40 @@ function Book() {
         htmlElement.tdButtons = document.createElement("td");
 
         htmlElement.buttonAdd = document.createElement("button");
-        htmlElement.buttonAdd.innerText = "V";
+        
         htmlElement.buttonAdd.classList.add("btn", "btn-primary", "btn-sm");
 
+        htmlElement.buttonIcoCheck = document.createElement("i");
+        htmlElement.buttonIcoCheck.classList.add("fa", "fa-check");
+        
+
         htmlElement.buttonClear = document.createElement("button");
-        htmlElement.buttonClear.innerText = "X";
+      
         htmlElement.buttonClear.classList.add("btn", "btn-danger", "btn-sm");
+
+        htmlElement.buttonIcoClear = document.createElement("i");
+        htmlElement.buttonIcoClear.classList.add("fa","fa-times");
+   
+
         htmlElement.trBookInfo = document.createElement("tr");
 
 
         htmlElement.bookTable.appendChild(htmlElement.bookTbody);
         htmlElement.bookTbody.appendChild(htmlElement.trBookInfo);
-       htmlElement.trBookInfo.appendChild(htmlElement.thNumber);
-       htmlElement.trBookInfo.appendChild(htmlElement.tdTime);
-       htmlElement.trBookInfo.appendChild(htmlElement.tdBrand);
+        htmlElement.trBookInfo.appendChild(htmlElement.thNumber);
+         htmlElement.trBookInfo.appendChild(htmlElement.tdTime);
+        htmlElement.trBookInfo.appendChild(htmlElement.tdBrand);
        htmlElement.trBookInfo.appendChild(htmlElement.tdPhone);
        htmlElement.trBookInfo.appendChild(htmlElement.tdName);
        htmlElement.trBookInfo.appendChild(htmlElement.tdWork);
+     
+
+      htmlElement.buttonAdd.appendChild(htmlElement.buttonIcoCheck);
+      htmlElement.buttonClear.appendChild(htmlElement.buttonIcoClear);
+
       htmlElement.tdButtons.appendChild(htmlElement.buttonAdd);
       htmlElement.tdButtons.appendChild(htmlElement.buttonClear);
+
        htmlElement.trBookInfo.appendChild(htmlElement.tdButtons);
       }
 
