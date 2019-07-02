@@ -74,15 +74,16 @@ function onButtonCheckPassword(){
 
   masterArray.forEach(function(item){
     //Разобраться выдает сначала тру потом фелс
-    if(pasword.value !== item.pasword && loginName.value !== item.login){
+    if(pasword.value === item.pasword && loginName.value === item.login){
+      loginName.classList.remove("border-danger");
+      pasword.classList.remove("border-danger");
+      loginName.classList.add("border-success");
+      pasword.classList.add("border-success");
+    }
+
+    else{
       loginName.classList.add("border", "border-danger");
       pasword.classList.add("border", "border-danger");
-    }
-    else{
-      loginName.classList.remove("border-danger");
-    pasword.classList.remove("border-danger");
-    loginName.classList.add("border-success");
-    pasword.classList.add("border-success");
     // masterName = `${masterArray[i].firstName} ${masterArray[i].LastName}`
     }
   });
