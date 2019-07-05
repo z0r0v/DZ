@@ -2,3 +2,10 @@
 .hidden{
   display: none;
 }
+
+.fa-times-circle, .fa-check-circle{
+  cursor: pointer;
+}
+.outputClock{
+  font-size: 25px;
+}

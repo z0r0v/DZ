@@ -1,5 +1,4 @@
 import { masterArray } from "./materDataBase.js";
-import {Masterbooking} from './masterbooking.js'
 import {Book} from './book.js'
 
 export let masterNameCategogy;
@@ -86,7 +85,6 @@ function Login() {
         return isLogged;
       }
     });
-
     if (isLogged) {
       loginName.classList.remove("border-danger");
       pasword.classList.remove("border-danger");
@@ -94,7 +92,7 @@ function Login() {
       pasword.classList.add("border-success");
       htmlElements.divMasterInfo.classList.add("hidden");
       const newBook = new Book();
-      const newMasterbooking = new Masterbooking();
+    
     } else {
       loginName.classList.add("border", "border-danger");
       pasword.classList.add("border", "border-danger");
