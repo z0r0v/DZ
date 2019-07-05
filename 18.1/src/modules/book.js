@@ -1,7 +1,6 @@
 import { masterNameCategogy } from "./login.js";
 import { bookArray } from "./carDatabase.js";
 
-
 function Book() {
   const htmlElement = {
     container: document.querySelector(".container"),
@@ -12,24 +11,20 @@ function Book() {
     htmlElement.output = document.createElement("div");
     htmlElement.output.classList.add("output");
 
-   
     htmlElement.h2MasterInfo = document.createElement("h2");
     htmlElement.h2MasterInfo.innerText = masterNameCategogy;
 
     htmlElement.outputClock = document.createElement("div");
     htmlElement.outputClock.classList.add("outputClock");
 
-   
-
     function onClockNextTick() {
       const cirrentTime = new Date();
       const timeStrong = cirrentTime.toTimeString();
-      const timeShort = timeStrong.split(' ')[0];
+      const timeShort = timeStrong.split(" ")[0];
       htmlElement.outputClock.innerText = timeShort;
-  }
+    }
 
     const timerId = setInterval(onClockNextTick, 1000);
-
 
     htmlElement.bookTable = document.createElement("table");
     htmlElement.bookTable.classList.add("table");
@@ -60,7 +55,6 @@ function Book() {
     const th7 = new CreatTh("Submit");
 
     htmlElement.bookTbody = document.createElement("tbody");
-   
 
     function creatBoofing(number, time, brand, phone, name, work) {
       htmlElement.thNumber = document.createElement("th");
@@ -119,6 +113,38 @@ function Book() {
       htmlElement.tdButtons.appendChild(htmlElement.buttonIcoCheck);
 
       htmlElement.trBookInfo.appendChild(htmlElement.tdButtons);
+
+      ///перекраска тайма
+      function onANavClicked() {
+        const cirrentTime = new Date();
+        const timeStrong = cirrentTime.toTimeString();
+        const timeShort = timeStrong.split(" ")[0];
+        const arrayThisTime = timeShort.split(":");
+
+        let timeThis = arrayThisTime[0] * 3600000 + arrayThisTime[1] * 60000;
+
+        const arrayBokeTime = htmlElement.tdTime.innerText.split(":");
+
+        let bookTime = arrayBokeTime[0] * 3600000 + arrayBokeTime[1] * 60000;
+
+        let difference = bookTime - timeThis;
+        console.log(difference);
+
+        switch (true) {
+          case difference <= 0:
+            htmlElement.tdTime.classList.add("text-danger");
+            break;
+          case difference <= 1800000:
+            htmlElement.tdTime.classList.add("text-warning");
+            break;
+          case difference <= 3600000:
+            htmlElement.tdTime.classList.add("text-success");
+            break;
+          default:
+            htmlElement.tdTime.classList.add("text-body");
+        }
+      }
+      onANavClicked();
     }
 
     function renderBook() {
@@ -134,24 +160,6 @@ function Book() {
           element.work
         );
       });
-
-        ///перекраска тайма
-      function onANavClicked(){
-        console.log(htmlElement.bookTbody);
-        
-        console.log(htmlElement.tdTime);
-        console.log(htmlElement.bookTbody);
-        let array = htmlElement.bookTbody.getElementsByTagName('td');
-        let  newArray = Array.from(array);
-        console.log(newArray);
-
-        //   newArray.forEach(function(elements){
-        //     elements.classList.remove("activMenu");
-        // });
-        // event.path[0].classList.add('activMenu');
-        }
-        onANavClicked();
-
     }
     renderBook();
 
@@ -243,7 +251,7 @@ function Book() {
         price
       });
 
-      bookArray.sort(function (a, b) {
+      bookArray.sort(function(a, b) {
         if (a.time > b.time) {
           return 1;
         }
