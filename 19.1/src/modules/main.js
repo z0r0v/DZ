@@ -1,11 +1,9 @@
-const ms = 1000;
-
 function delay(ms) {
   return new Promise(function(resolve) {
-    setTimeout(resolve, ms);
+    setTimeout(resolve(ms), ms);
   });
 }
 
-delay(ms).then(function() {
+delay(1000).then(function(ms) {
   console.log(ms);
 });
