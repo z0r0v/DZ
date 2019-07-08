@@ -128,7 +128,6 @@ function Book() {
         let bookTime = arrayBokeTime[0] * 3600000 + arrayBokeTime[1] * 60000;
 
         let difference = bookTime - timeThis;
-        console.log(difference);
 
         switch (true) {
           case difference <= 0:
@@ -170,6 +169,7 @@ function Book() {
       bookArray.splice(index, 1);
       renderBook();
     }
+    
     function renderMasterInToBook() {
       htmlElement.divMasterInToBook = document.createElement("div");
       htmlElement.divMasterInToBook.classList.add(

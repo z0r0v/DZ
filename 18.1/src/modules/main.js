@@ -1,5 +1,9 @@
 import {Login} from './login.js'
-const newLogin = new Login();
+//
+import { Book } from "./book.js";
 
+const newLogin = new Login();
+//
+const newBook = new Book();
 
 

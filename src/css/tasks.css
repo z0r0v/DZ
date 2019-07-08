@@ -1,32 +1,27 @@
 
-section.tasks{
-  width: 100%;
-  max-width: 1000px;
-  background-color: var(--main-color);
-  padding: 2em 0;
+section{
+  display: grid;
+  grid-template-columns:1fr;
+  grid-template-rows: 1rf;
 }
-section.tasks > ul > li > a{
-  border: 2px solid var(--main--block);
-  display: inline-block;
-  padding: 1.34em;
-  font-size: 1.3em;
-  color: var(--main--block);
-  width: 3.5em;
-  height: 4em;
-  margin: 0.2em;
-  background-repeat:no-repeat;
-  background-size: 180px;
-  text-align: center;
-  overflow:hidden;
-}
-
-section.tasks> ul{
-  display: flex;
-  padding: 1%;
-  
+section.tasks>ul{
+  padding-inline-start: 0;
+  display: grid;
+  grid-template-columns:5fr 5fr 5fr 5fr 5fr;
+  grid-template-rows: 150px;
+  grid-column-gap:10px;
+  grid-row-gap:10px;
 }
 section.tasks>ul>li{
+ 
   list-style-type:none;
+  padding: 40px;
+  border: 1px solid var(--main-text);
+}
+
+section.tasks>ul>li>a{
+  color: var(--main-text);
+
 }
 
 .dz1:hover{
