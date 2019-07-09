@@ -1,11 +1,15 @@
 import { masterNameCategogy } from "./login.js";
 import { bookArray } from "./carDatabase.js";
 
+
+const htmlElement = {
+  container: document.querySelector(".container"),
+  tabs: document.querySelector(".tabs")
+};
+
+
+
 function Book() {
-  const htmlElement = {
-    container: document.querySelector(".container"),
-    tabs: document.querySelector(".tabs")
-  };
 
   function creatElement() {
     htmlElement.output = document.createElement("div");
@@ -39,6 +43,8 @@ function Book() {
       htmlElement.tr.appendChild(htmlElement.th);
     }
 
+    
+
     htmlElement.tabs.appendChild(htmlElement.output);
     htmlElement.output.appendChild(htmlElement.h2MasterInfo);
     htmlElement.output.appendChild(htmlElement.outputClock);
@@ -46,13 +52,14 @@ function Book() {
     htmlElement.bookTable.appendChild(htmlElement.thead);
     htmlElement.thead.appendChild(htmlElement.tr);
 
-    const th1 = new CreatTh("№");
-    const th2 = new CreatTh("Time");
-    const th3 = new CreatTh("Brand");
-    const th4 = new CreatTh("Phone");
-    const th5 = new CreatTh("Name");
-    const th6 = new CreatTh("Work");
-    const th7 = new CreatTh("Submit");
+
+    new CreatTh("№");
+    new CreatTh("Time");
+    new CreatTh("Brand");
+    new CreatTh("Phone");
+    new CreatTh("Name");
+    new CreatTh("Work");
+    new CreatTh("Submit");
 
     htmlElement.bookTbody = document.createElement("tbody");
 
@@ -74,6 +81,8 @@ function Book() {
 
       htmlElement.tdWork = document.createElement("td");
       htmlElement.tdWork.innerText = work;
+     
+      htmlElement.tdWork.addEventListener('dblclick', chengeWork);
 
       htmlElement.tdButtons = document.createElement("td");
 
@@ -113,6 +122,30 @@ function Book() {
       htmlElement.tdButtons.appendChild(htmlElement.buttonIcoCheck);
 
       htmlElement.trBookInfo.appendChild(htmlElement.tdButtons);
+
+      // Изменение контена для Work value
+        function chengeWork(){
+          
+          htmlElement.cheInputWorke = document.createElement('input');
+          htmlElement.cheButtontWorke = document.createElement('button');
+          htmlElement.cheButtontWorke.innerText = "aplay";
+          htmlElement.cheButtontWorke.classList.add("btn", "btn-outline-primary", "btn-sm", "col-md-12")
+          htmlElement.cheButtontWorke.addEventListener('click', aplayChengeWork);
+
+          htmlElement.cheInputWorke.value = event.path[0].innerText;
+          event.path[0].innerText = '';
+          event.path[0].appendChild(htmlElement.cheInputWorke);
+          event.path[0].appendChild(htmlElement.cheButtontWorke);
+          event.path[0].removeEventListener('dblclick', chengeWork);
+
+          function aplayChengeWork(){
+            const elements = htmlElement.bookTbody.getElementsByTagName("tr");
+            const array = Array.from(elements);
+            const index = array.indexOf(event.path[2]);
+            bookArray[index].work = htmlElement.cheInputWorke.value;
+            renderBook();
+          }
+        }
 
       ///перекраска тайма
       function onANavClicked() {
@@ -181,6 +214,7 @@ function Book() {
         "col-6",
         "offset-3"
       );
+
       htmlElement.divMasterInToBook.dataMode = "masterInToBook";
       htmlElement.h2MasterInToBook = document.createElement("h2");
       htmlElement.h2MasterInToBook.innerText = "Master In To Book";
@@ -211,14 +245,14 @@ function Book() {
         htmlElement.form.appendChild(htmlElement.divFormGroup);
       }
 
-      creatingGroupElements("Time", "Book time", "time");
-      creatingGroupElements("Brand", "Car brand", "text");
-      creatingGroupElements("Phone", "Owner's phone number", "tel");
-      creatingGroupElements("Name", "Owner name", "text");
-      creatingGroupElements("Work", "Type of work performed", "text");
-      creatingGroupElements("RegisterSign", "Register sign", "number");
-      creatingGroupElements("CarMileage", "Car mileage", "number");
-      creatingGroupElements("Price", "Price", "number");
+      new creatingGroupElements("Time", "Book time", "time");
+      new creatingGroupElements("Brand", "Car brand", "text");
+      new creatingGroupElements("Phone", "Owner's phone number", "tel");
+      new creatingGroupElements("Name", "Owner name", "text");
+      new creatingGroupElements("Work", "Type of work performed", "text");
+      new creatingGroupElements("RegisterSign", "Register sign", "number");
+      new creatingGroupElements("CarMileage", "Car mileage", "number");
+      new creatingGroupElements("Price", "Price", "number");
 
       htmlElement.tabs.appendChild(htmlElement.divMasterInToBook);
       htmlElement.divMasterInToBook.appendChild(htmlElement.h2MasterInToBook);

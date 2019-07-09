@@ -58,8 +58,8 @@ function Login() {
     htmlElements.divMasterInfo.appendChild(htmlElements.formLogin);
     htmlElements.formLogin.appendChild(htmlElements.h2MasterInfo);
 
-    const divGroupLoggin = new CreatingGroupElements("Loggin", "text");
-    const divGroupPassword = new CreatingGroupElements("Password", "password");
+    new CreatingGroupElements("Loggin", "text");
+    new CreatingGroupElements("Password", "password");
 
     htmlElements.formLogin.appendChild(htmlElements.formButton);
     htmlElements.formButton.addEventListener("click", onButtonCheckPassword);
