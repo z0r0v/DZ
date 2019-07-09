@@ -9,9 +9,6 @@ const htmlElement = {
 };
 
 
-
-
-
 function Book() {
 
   function creatElement() {
