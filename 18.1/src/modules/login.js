@@ -17,7 +17,7 @@ function Login() {
   function createElement() {
 
     htmlElements.divMasterInfo = document.createElement("div");
-    htmlElements.divMasterInfo.classList.add("col-md-auto");
+    htmlElements.divMasterInfo.classList.add("col-md-auto", "mt-5");
     htmlElements.divMasterInfo.dataMode = "masterInfo";
     htmlElements.tabs.appendChild(htmlElements.divMasterInfo);
 

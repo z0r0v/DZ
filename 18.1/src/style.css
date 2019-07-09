@@ -18,9 +18,6 @@ var(--may-color-bg2); */
   font-size: 25px;
 }
 
-form.col-md-8 {
-  margin:20%;
-}
 
 .output {
   background-color: var(--white);
@@ -28,12 +25,7 @@ form.col-md-8 {
   border-radius: 5px;
 }
 .shadow-sm {
-  margin-top: 10px;
-}
 
-.nav {
-  /* background-color: var(--primary);
-  color:var(--white); */
 }
 
 .slide {

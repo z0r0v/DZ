@@ -13,7 +13,7 @@ function Book() {
 
   function creatElement() {
     htmlElement.output = document.createElement("div");
-    htmlElement.output.classList.add("output");
+    htmlElement.output.classList.add("output","mt-5");
 
     htmlElement.h2MasterInfo = document.createElement("h2");
     htmlElement.h2MasterInfo.innerText = masterNameCategogy;
@@ -217,7 +217,8 @@ function Book() {
         "bg-white",
         "rounded",
         "col-6",
-        "offset-3"
+        "offset-3",
+        "mt-5"
       );
 
       htmlElement.divMasterInToBook.dataMode = "masterInToBook";
