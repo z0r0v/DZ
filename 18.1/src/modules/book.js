@@ -4,7 +4,8 @@ import { bookArray } from "./carDatabase.js";
 
 const htmlElement = {
   container: document.querySelector(".container"),
-  tabs: document.querySelector(".tabs")
+  tabs: document.querySelector(".tabs"),
+ 
 };
 
 
@@ -47,6 +48,7 @@ function Book() {
 
     htmlElement.tabs.appendChild(htmlElement.output);
     htmlElement.output.appendChild(htmlElement.h2MasterInfo);
+
     htmlElement.output.appendChild(htmlElement.outputClock);
     htmlElement.output.appendChild(htmlElement.bookTable);
     htmlElement.bookTable.appendChild(htmlElement.thead);
@@ -166,9 +168,11 @@ function Book() {
           case difference <= 0:
             htmlElement.tdTime.classList.add("text-danger");
             break;
+            //30 Minets
           case difference <= 1800000:
             htmlElement.tdTime.classList.add("text-warning");
             break;
+            //60 Minets
           case difference <= 3600000:
             htmlElement.tdTime.classList.add("text-success");
             break;
@@ -194,6 +198,9 @@ function Book() {
       });
     }
     renderBook();
+    //переодически нужно рендерить renderBook чтобы перекрашивался
+    let renderBookInterval = setInterval(renderBook, 300000);
+    
 
     function onButtonIcoClearClicked() {
       const elements = htmlElement.bookTbody.getElementsByTagName("tr");
@@ -217,7 +224,9 @@ function Book() {
 
       htmlElement.divMasterInToBook.dataMode = "masterInToBook";
       htmlElement.h2MasterInToBook = document.createElement("h2");
-      htmlElement.h2MasterInToBook.innerText = "Master In To Book";
+      htmlElement.h2MasterInToBook.innerText = "Book To Master";
+      htmlElement.h2MasterInToBook.classList.add('text-center');
+
       htmlElement.form = document.createElement("form");
       htmlElement.buttonToBook = document.createElement("input");
       htmlElement.buttonToBook.type = "button";
@@ -259,6 +268,7 @@ function Book() {
       htmlElement.divMasterInToBook.appendChild(htmlElement.form);
       htmlElement.form.appendChild(htmlElement.buttonToBook);
     }
+    
     renderMasterInToBook();
 
     function onButtonToBookClicked() {
@@ -305,7 +315,7 @@ function Book() {
         "col-6",
         "offset-3"
       );
-
+      
       renderMasterInToBook();
       renderBook();
     }

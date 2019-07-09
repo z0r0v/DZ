@@ -1,12 +1,56 @@
-
-.hidden{
+.hidden {
   display: none;
 }
 
-.fa-times-circle, .fa-check-circle{
+.fa-times-circle,
+.fa-check-circle {
   cursor: pointer;
 }
-.outputClock{
+.outputClock {
   font-size: 25px;
 }
 
+form.col-md-8 {
+  margin: 20%;
+}
+
+.output {
+  background-color: var(--white);
+  padding: 5%;
+  border-radius: 5px;
+}
+.shadow-sm {
+  margin-top: 10px;
+}
+
+
+.slide {
+  background-image: url(http://www.1366x768.net/large/201301/12779.jpg);
+  background-attachment: fixed;
+  transition: background-image 2s linear;
+}
+.slide1 {
+  background-image: url(https://nps.ucoz.org/_ph/18/16652650.jpg);
+  background-attachment: fixed;
+  transition: background-image 2s linear;
+}
+.slide2 {
+  background-image: url(http://wallpapers-images.ru/1920x1080/cars/wallpapers/wallpapers-cars-60.jpg);
+  background-attachment: fixed;
+  transition: background-image 2s linear;
+}
+.slide3 {
+  background-image: url(http://fanoboi.com/auto/128/Audi-wallpaper-1366x768.jpg);
+  background-attachment: fixed;
+  transition: background-image 2s linear;
+}
+.slide4 {
+  background-image: url(https://img2.goodfon.ru/wallpaper/nbig/5/76/bmw-khyzyl-saleem-mashina-avto.jpg);
+  background-attachment: fixed;
+  transition: background-image 2s linear;
+}
+.slide5 {
+  background-image: url(http://www.gandex.ru/upl/oboi/gandex.ru-19837_3bf1ef32fd1d3d754ba4edcdf4e2252e.jpg);
+  background-attachment: fixed;
+  transition: background-image 2s linear;
+}

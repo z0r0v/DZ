@@ -1,9 +1,9 @@
-import {Login} from './login.js'
-//
-// import { Book } from "./book.js";
+// import {Login} from './login.js'
+import {Slider} from './slider.js'
+const slider = new Slider();
+// const newLogin = new Login();
 
-const newLogin = new Login();
-//
-// const newBook = new Book();
+import { Book } from "./book.js";
+const newBook = new Book();
 
 
