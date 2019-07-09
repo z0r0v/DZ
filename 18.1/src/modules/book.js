@@ -70,6 +70,8 @@ function Book() {
 
       htmlElement.tdTime = document.createElement("td");
       htmlElement.tdTime.innerText = time;
+      // перекраска таймера должна сейчас произойти
+      onANavClicked();
 
       htmlElement.tdBrand = document.createElement("td");
       htmlElement.tdBrand.innerText = brand;
@@ -146,40 +148,36 @@ function Book() {
             renderBook();
           }
         }
-
-      ///перекраска тайма
-      function onANavClicked() {
-        const cirrentTime = new Date();
-        const timeStrong = cirrentTime.toTimeString();
-        const timeShort = timeStrong.split(" ")[0];
-        const arrayThisTime = timeShort.split(":");
-
-        let timeThis = arrayThisTime[0] * 3600000 + arrayThisTime[1] * 60000;
-
-        const arrayBokeTime = htmlElement.tdTime.innerText.split(":");
-
-        let bookTime = arrayBokeTime[0] * 3600000 + arrayBokeTime[1] * 60000;
-
-        let difference = bookTime - timeThis;
-
-        switch (true) {
-          case difference <= 0:
-            htmlElement.tdTime.classList.add("text-danger");
-            break;
-            //30 Minets
-          case difference <= 1800000:
-            htmlElement.tdTime.classList.add("text-warning");
-            break;
-            //60 Minets
-          case difference <= 3600000:
-            htmlElement.tdTime.classList.add("text-success");
-            break;
-          default:
-            htmlElement.tdTime.classList.add("text-body");
-        }
-      }
-      onANavClicked();
     }
+
+   ///перекраска тайма
+   function onANavClicked() {
+    const cirrentTime = new Date();
+    const timeStrong = cirrentTime.toTimeString();
+    const timeShort = timeStrong.split(" ")[0];
+    const arrayThisTime = timeShort.split(":");
+    let timeThis = arrayThisTime[0] * 3600000 + arrayThisTime[1] * 60000;
+    const arrayBokeTime = htmlElement.tdTime.innerText.split(":");
+    let bookTime = arrayBokeTime[0] * 3600000 + arrayBokeTime[1] * 60000;
+    let difference = bookTime - timeThis;
+
+    switch (true) {
+      case difference <= 0:
+        htmlElement.tdTime.classList.add("text-danger");
+        break;
+        //30 Minets
+      case difference <= 1800000:
+        htmlElement.tdTime.classList.add("text-warning");
+        break;
+        //60 Minets
+      case difference <= 3600000:
+        htmlElement.tdTime.classList.add("text-success");
+        break;
+      default:
+        htmlElement.tdTime.classList.add("text-body");
+    }
+  }
+
 
     function renderBook() {
       htmlElement.bookTbody.innerText = "";
@@ -197,7 +195,8 @@ function Book() {
     }
     renderBook();
     //переодически нужно рендерить renderBook чтобы перекрашивался
-    let renderBookInterval = setInterval(renderBook, 300000);
+    let renderBookInterval = setInterval(renderBook, 180000);
+    
     
 
     function onButtonIcoClearClicked() {
