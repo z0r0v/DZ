@@ -3,16 +3,23 @@ import {Book} from './book.js'
 
 export let masterNameCategogy;
 
-function Login() {
-  const htmlElements = {
-    container: document.querySelector(".container"),
-    tabs: document.querySelector(".tabs")
-  };
 
+const htmlElements = {
+  container: document.querySelector(".container"),
+  tabs: document.querySelector(".tabs"),
+ 
+};
+
+
+
+function Login() {
+ 
   function createElement() {
+
     htmlElements.divMasterInfo = document.createElement("div");
     htmlElements.divMasterInfo.classList.add("col-md-auto");
     htmlElements.divMasterInfo.dataMode = "masterInfo";
+    htmlElements.tabs.appendChild(htmlElements.divMasterInfo);
 
     htmlElements.h2MasterInfo = document.createElement("h2");
     htmlElements.h2MasterInfo.classList.add("text-center");
@@ -54,7 +61,7 @@ function Login() {
       htmlElements.divFormgroup.appendChild(htmlElements.inputLogin);
     }
 
-    htmlElements.tabs.appendChild(htmlElements.divMasterInfo);
+    
     htmlElements.divMasterInfo.appendChild(htmlElements.formLogin);
     htmlElements.formLogin.appendChild(htmlElements.h2MasterInfo);
 

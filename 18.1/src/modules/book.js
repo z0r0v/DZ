@@ -10,6 +10,8 @@ const htmlElement = {
 
 
 
+
+
 function Book() {
 
   function creatElement() {
@@ -127,7 +129,6 @@ function Book() {
 
       // Изменение контена для Work value
         function chengeWork(){
-          
           htmlElement.cheInputWorke = document.createElement('input');
           htmlElement.cheButtontWorke = document.createElement('button');
           htmlElement.cheButtontWorke.innerText = "aplay";
