@@ -1,4 +1,3 @@
-
 function getJSON(url) {
   return new Promise(function(resolve, reject) {
     var xhr = new XMLHttpRequest();
@@ -13,7 +12,12 @@ function getJSON(url) {
   function Data() {}
   
   Data.prototype.getUsefulContents = function(url) {
-    getJSON(url);
+    return getJSON(url);
+  };
+  
+  // callback для getUsefulContents
+  Data.prototype.printFunc = function(res) {
+    console.log(JSON.parse(res))
   };
 
 
