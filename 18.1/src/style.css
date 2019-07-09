@@ -1,3 +1,11 @@
+
+/* var(--may-color-bg1);
+var(--may-color-bg2); */
+:root{
+  --may-color-bg1:ghostwhite;
+  --may-color-bg2:black;
+}
+
 .hidden {
   display: none;
 }
@@ -11,7 +19,7 @@
 }
 
 form.col-md-8 {
-  margin: 20%;
+  margin:20%;
 }
 
 .output {
@@ -23,34 +31,55 @@ form.col-md-8 {
   margin-top: 10px;
 }
 
-
+.nav {
+  /* background-color: var(--primary);
+  color:var(--white); */
+}
 .slide {
-  background-image: url(http://www.1366x768.net/large/201301/12779.jpg);
+  background-image: url(https://i.pinimg.com/originals/47/10/c8/4710c8d5e2533ab1065de232a51c3a7a.jpg), linear-gradient(to bottom right, var(--may-color-bg1), var(--may-color-bg2));
   background-attachment: fixed;
   transition: background-image 2s linear;
+  background-position:center;
+  background-size:100%;
+  background-repeat: no-repeat;
 }
 .slide1 {
-  background-image: url(https://nps.ucoz.org/_ph/18/16652650.jpg);
+  background-image: url(https://www.larutadelsorigens.cat/wallpic/full/12-122667_-iphone-6..jpg), linear-gradient(to bottom right, var(--may-color-bg1),  var(--may-color-bg2));
   background-attachment: fixed;
   transition: background-image 2s linear;
+  background-position:center;
+  background-size:100%;
+  background-repeat: no-repeat;
 }
 .slide2 {
-  background-image: url(http://wallpapers-images.ru/1920x1080/cars/wallpapers/wallpapers-cars-60.jpg);
+  background-image: url(https://images.wallpaperscraft.ru/image/bmw_avtomobil_chb_124257_800x1420.jpg), linear-gradient(to bottom right, var(--may-color-bg1),  var(--may-color-bg2));
   background-attachment: fixed;
   transition: background-image 2s linear;
+  background-position:center;
+  background-size:100%;
+  background-repeat: no-repeat;
 }
 .slide3 {
-  background-image: url(http://fanoboi.com/auto/128/Audi-wallpaper-1366x768.jpg);
+  background-image: url(https://img2.akspic.ru/image/35494-chernyj_i_belyj-bmw_5_series-avtomobil-bmv_m5-bmw_3_series_e46-750x1334.jpg), linear-gradient(to bottom right, var(--may-color-bg1),  var(--may-color-bg2));
   background-attachment: fixed;
   transition: background-image 2s linear;
+  background-position:center;
+  background-size:100%;
+  background-repeat: no-repeat;
 }
 .slide4 {
-  background-image: url(https://img2.goodfon.ru/wallpaper/nbig/5/76/bmw-khyzyl-saleem-mashina-avto.jpg);
+  background-image: url(http://www.sclance.com/wallpapers/bmw-wallpaper-hd/bmw-wallpaper-hd_354117.jpg), linear-gradient(to bottom right, var(--may-color-bg1),  var(--may-color-bg2));
   background-attachment: fixed;
   transition: background-image 2s linear;
+  background-position:center;
+  background-size:100%;
+  background-repeat: no-repeat;
 }
 .slide5 {
-  background-image: url(http://www.gandex.ru/upl/oboi/gandex.ru-19837_3bf1ef32fd1d3d754ba4edcdf4e2252e.jpg);
+  background-image: url(https://img2.akspic.ru/image/35494-chernyj_i_belyj-bmw_5_series-avtomobil-bmv_m5-bmw_3_series_e46-750x1334.jpg), linear-gradient(to bottom right, var(--may-color-bg1),  var(--may-color-bg2));
   background-attachment: fixed;
   transition: background-image 2s linear;
+  background-position:center;
+  background-size:100%;
+  background-repeat: no-repeat;
 }
