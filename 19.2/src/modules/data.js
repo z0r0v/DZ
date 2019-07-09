@@ -1,6 +1,7 @@
 function getJSON(url, callback) {
   const xhr = new XMLHttpRequest();
   xhr.onload = function() {
+    // функция асинхронного обратного вызова
     callback(this.responseText);
   };
   xhr.open("GET", url, true);
