@@ -1,106 +1,24 @@
-
-section{
-  display: grid;
-  grid-template-columns:1fr;
-  grid-template-rows: 1rf;
+.tasks{
+  margin: 1% 7%;
+  background-color: var(--main-color);
+  
 }
-section.tasks>ul{
-  padding-inline-start: 0;
+.tasks>ul{
+  padding-inline-start: 0;  /* Убран отступ у Ul */
+  padding: 50px;
   display: grid;
-  grid-template-columns:5fr 5fr 5fr 5fr 5fr;
-  grid-template-rows: 150px;
+  grid-template-columns:5fr 5fr 5fr 5fr;
+  grid-template-rows: 1fr;
   grid-column-gap:10px;
   grid-row-gap:10px;
 }
-section.tasks>ul>li{
- 
+
+.tasks>ul>li{
   list-style-type:none;
-  padding: 40px;
-  border: 1px solid var(--main-text);
+  
 }
 
-section.tasks>ul>li>a{
+.tasks>ul>li>a{
   color: var(--main-text);
 
 }
-
-.dz1:hover{
-  background-image: url(https://github.com/z0r0v/Hometasks/blob/master/%E2%84%961%20Calculete/img/calculator.png?raw=true); 
-}
-  .dz2{
-    background-image: url();
-    }
-    .dz3{
-      background-image: url();
-      }
-      .dz3-2{
-        background-image: url();
-        }
-        .dz3Plus{
-          background-image: url();
-          }
-          .dz3-4-5{
-            background-image: url();
-            }
-            .dz4Plus{
-              background-image: url();
-              }
-              .dz4-1-2dz5-1-2zd6-1-2{
-                background-image: url();
-                }
-                .dz6-3{
-                  background-image: url();
-                  }
-                  .dz7-1{
-                    background-image: url();
-                    }
-                    .dz7-2{
-                      background-image: url();
-                      }
-                      .dz8-1{
-                        background-image: url();
-                        }
-                        .dz9-1dz10-3{
-                          background-image: url();
-                          }
-                          .dz10-1{
-                            background-image: url();
-                            }
-                            .dz11-1{
-                              background-image: url();
-                              }
-                              .dz12-1{
-                                background-image: url();
-                                }
-                                .dz12-2{
-                                  background-image: url();
-                                  }
-                                  .dz13-1{
-                                    background-image: url();
-                                    }
-                                    .dz14-1{
-                                      background-image: url();
-                                      }
-                                      .dz14-2{
-                                        background-image: url();
-                                        }
-                                        .dz15-1{
-                                          background-image: url();
-                                          }
-                                          .dz15-2{
-                                            background-image: url();
-                                            }
-                                            .dz15Plus{
-                                              background-image: url();
-                                              }
-                                              .dz16-1{
-                                                background-image: url();
-                                                }
-                                                .dz16Plus{
-                                                  background-image: url();
-                                                  }
-                                                  .dz16Plus-2{
-                                                    background-image: url();
-                                                    }
-    
-  

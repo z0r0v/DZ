@@ -1,31 +1,28 @@
-section.experience{
-  height: 200px;
-  margin:1em 0;
-  width: auto;
+.experience{
+  margin: 0 7%;
   background-color: var(--main-color);
-  padding: 1em;
+  color:var(--main-text);
+  display: grid;
+  grid-template-columns: 5fr;
+  grid-template-rows: 5fr;
   }
   
-section.experience>article> h2, p{
-    color: var(--main-text);
-  }
-  
-section.experience>article>h2{
+.experience>article>h2{
     margin: 0.5em;
     font-size:1.5em;
     text-align: center;
   }
 
-section.experience>article>p{
+.experience>article>p{
     margin: 0.5em;
     font-size:1em;
 
   }
 
-  section.experience>article>p>a{
+.experience>article>p>a{
     color: #800080;
     font-size: 1.2em;
   }
-  section.experience>article{
+.experience>article{
     padding: 1.5em;
   }

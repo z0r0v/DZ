@@ -9,4 +9,5 @@ import './css/footer.css';
 import './css/skils.css';
 import './css/experience.css';
 import './css/slider.css';
+import './css/about.css';
 

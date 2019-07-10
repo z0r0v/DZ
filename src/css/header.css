@@ -9,13 +9,19 @@ grid-template-rows: 5fr;
 }
 
 .info{
-  padding: 10% 20%;
+  padding: 5% 10%;
 }
 
 nav {
-padding-top: 35%;
+  display: grid;
+  grid-template-columns:1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr; 
 }
 
+nav>div{
+  grid-row-start: 4;
+  grid-row-end: 4;
+}
 nav a{
   padding-left: 3%;
   color:var(--main-text);

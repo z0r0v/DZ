@@ -1,0 +1,29 @@
+.about{
+  margin: 1% 7%;
+  background-color: var(--main-color);
+  color:var(--main-text);
+  display: grid;
+  grid-template-columns: 5fr;
+  grid-template-rows: 1fr;
+  }
+  
+.about>article> h2, p{
+    color: var(--main-text);
+  }
+
+.about>article>p{
+  text-align: left;
+  }
+ 
+  
+.about > article> h2 {
+    margin: 0.5em;
+    font-size:1.5em;
+    text-align: left;
+  }
+
+  .about>article{
+   padding: 1% 5%;
+  }
+
+ 

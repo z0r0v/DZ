@@ -1,6 +1,5 @@
 .slide {
- 
-  background-image: url(https://i.pinimg.com/originals/47/10/c8/4710c8d5e2533ab1065de232a51c3a7a.jpg);
+  background-image: url(https://raw.githubusercontent.com/z0r0v/DZ/master/img/slide1.jpg);
   background-attachment: fixed;
   transition: background-image 2s linear;
   background-position:center;
@@ -8,8 +7,7 @@
   background-repeat: no-repeat;
 }
 .slide1 {
- 
-  background: url(https://cherno-beliy-kot.free-online.gratis/%D0%A4%D0%BE%D0%BD-1440-2560/%D0%91%D0%B5%D1%81%D0%BF%D0%BB%D0%B0%D1%82%D0%BD%D1%8B%D0%B5-%D0%BE%D0%B1%D0%BE%D0%B8-%D0%BD%D0%B0-%D1%80%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B9-%D1%81%D1%82%D0%BE%D0%BB-16.jpg);
+  background: url(https://raw.githubusercontent.com/z0r0v/DZ/master/img/slide2.jpg);
   background-attachment: fixed;
   transition: background-image 2s linear;
   background-position:center;
@@ -17,8 +15,7 @@
   background-repeat: no-repeat;
 }
 .slide2 {
-  
-  background-image: url(https://images.wallpaperscraft.ru/image/bmw_avtomobil_chb_124257_800x1420.jpg);
+  background-image: url(https://raw.githubusercontent.com/z0r0v/DZ/master/img/slide3.jpg);
   background-attachment: fixed;
   transition: background-image 2s linear;
   background-position:center;
@@ -26,8 +23,7 @@
   background-repeat: no-repeat;
 }
 .slide3 {
-
-  background-image: url(https://img2.akspic.ru/image/35494-chernyj_i_belyj-bmw_5_series-avtomobil-bmv_m5-bmw_3_series_e46-750x1334.jpg);
+  background-image: url(https://raw.githubusercontent.com/z0r0v/DZ/master/img/slide4.jpg);
   background-attachment: fixed;
   transition: background-image 2s linear;
   background-position:center;
@@ -35,8 +31,7 @@
   background-repeat: no-repeat;
 }
 .slide4 {
- 
-  background-image: url(http://www.sclance.com/wallpapers/bmw-wallpaper-hd/bmw-wallpaper-hd_354117.jpg);
+  background-image: url(https://raw.githubusercontent.com/z0r0v/DZ/master/img/slide5.jpg);
   background-attachment: fixed;
   transition: background-image 2s linear;
   background-position:center;
@@ -44,7 +39,7 @@
   background-repeat: no-repeat;
 }
 .slide5 {
-  background-image: url(https://img2.akspic.ru/image/35494-chernyj_i_belyj-bmw_5_series-avtomobil-bmv_m5-bmw_3_series_e46-750x1334.jpg);
+  background-image: url(https://raw.githubusercontent.com/z0r0v/DZ/master/img/slide1.jpg);
   background-attachment: fixed;
   transition: background-image 2s linear;
   background-position:center;
