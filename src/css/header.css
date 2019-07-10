@@ -1,34 +1,22 @@
 
-header{
-
-width: auto;
+header {
+margin: 0 7%;
 background-color: var(--main-color);
-margin-top: 2em;
-padding: 1.6em;
+color:var(--main-text);
+display: grid;
+grid-template-columns: 5fr 5fr;
+grid-template-rows: 5fr;
 }
 
-header> nav>a, h1, p{
-  color: var(--main-text);
+.info{
+  padding: 10% 20%;
 }
 
-header>h1{
-  margin: 0.5em;
-  font-size:2em;
+nav {
+padding-top: 35%;
 }
 
-header>p{
-font-size: 1em;
+nav a{
+  padding-left: 3%;
+  color:var(--main-text);
 }
-
-nav{
-  display: block;
-  float: right;
-}
-
-nav > a{
-  cursor: pointer;
-  padding: 0.5em;
-  text-decoration: none;
-  font-size: 1em;
-}
-
