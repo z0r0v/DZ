@@ -6,15 +6,20 @@
 .tasks>ul{
   padding-inline-start: 0;  /* Убран отступ у Ul */
   padding: 50px;
+  /* display: inline-grid; */
   display: grid;
   grid-template-columns:5fr 5fr 5fr 5fr;
   grid-template-rows: 1fr;
   grid-column-gap:10px;
   grid-row-gap:10px;
+  
 }
 
 .tasks>ul>li{
   list-style-type:none;
+  text-align: center;
+  grid-auto-flow: column;
+
   
 }
 

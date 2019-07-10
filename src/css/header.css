@@ -4,7 +4,7 @@ margin: 0 7%;
 background-color: var(--main-color);
 color:var(--main-text);
 display: grid;
-grid-template-columns: 5fr 5fr;
+grid-template-columns: 5fr 8fr;
 grid-template-rows: 5fr;
 }
 
@@ -16,6 +16,8 @@ nav {
   display: grid;
   grid-template-columns:1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr; 
+  text-align: right;
+  padding-right: 2%;
 }
 
 nav>div{
@@ -23,6 +25,6 @@ nav>div{
   grid-row-end: 4;
 }
 nav a{
-  padding-left: 3%;
+  padding:0 3%;
   color:var(--main-text);
 }
