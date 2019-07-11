@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Comfortaa&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 @import 'css/header.css' screen;
 @import 'css/portfolio.css' screen;
 @import 'css/tasks.css' screen;
@@ -13,7 +13,7 @@
 
 
 *{
-  font-family: 'Comfortaa', cursive;
+  font-family: 'Roboto', sans-serif;
   scroll-behavior: smooth;
  
 }
@@ -21,16 +21,16 @@
 body{
   background-color: var(--main-color);
   display: grid;
-  grid-row-gap:2%;
+  /* grid-row-gap:2%; */
 }
 @media screen and (min-width: 1240px)  {
  
 }
 
 :root{
-  --bg-color-one-gradient:rgba(255,255,255, 0.1);
-  --main-color: rgba(0, 0, 0, 0.7);
-  --main-text:white;
+  --bg-color-one-gradient:white;
+  --main-color: white;
+  --main-text:black;
   --main--block:white;
   --main--footer:white;
   --main--href:#800080;
@@ -39,5 +39,5 @@ body{
 .skills, .tasks, .experience, .about, footer, header{
   background:linear-gradient(to right, var(--bg-color-one-gradient), var( --main-color));
   color:var(--main-text);
-  border-radius: 5px;
+  /* border-radius: 5px; */
 }

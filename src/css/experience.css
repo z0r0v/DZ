@@ -21,10 +21,6 @@
 .experience>article>p>a{
     color: #800080;
     font-size: 1.2em;
-    /* effect */
-    animation-duration: 5s;
-    animation-name: slidein;
-    animation-iteration-count: infinite;
   }
 .experience>article{
     padding: 1.5em;
