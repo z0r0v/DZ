@@ -13,11 +13,20 @@
 
 *{
   font-family: 'Comfortaa', cursive;
+  scroll-behavior: smooth;
+ 
+}
+
+body{
+  margin: 0 7%;
+  display: grid;
+  grid-row-gap:2%;
 }
 
 :root{
-  --main-color: rgba(0, 0, 0, 0.8);
+  --main-color: rgba(0, 0, 0, 0.5);
   --main-text:white;
   --main--block:white;
   --main--footer:white;
+  --main--href:#800080;
 }

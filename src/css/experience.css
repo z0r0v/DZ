@@ -1,10 +1,10 @@
 .experience{
-  margin: 0 7%;
   background-color: var(--main-color);
   color:var(--main-text);
   display: grid;
   grid-template-columns: 5fr;
   grid-template-rows: 5fr;
+ 
   }
   
 .experience>article>h2{
@@ -22,6 +22,10 @@
 .experience>article>p>a{
     color: #800080;
     font-size: 1.2em;
+    /* effect */
+    animation-duration: 5s;
+    animation-name: slidein;
+    animation-iteration-count: infinite;
   }
 .experience>article{
     padding: 1.5em;

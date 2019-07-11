@@ -1,5 +1,4 @@
 .about{
-  margin: 1% 7%;
   background-color: var(--main-color);
   color:var(--main-text);
   display: grid;
@@ -26,4 +25,13 @@
    padding: 1% 5%;
   }
 
- 
+ .about>article >p> a{
+color: var(--main--href);
+font-size: 19px;
+font-weight: bold;
+text-decoration: none;
+
+animation-duration: 5s;
+animation-name: slidein;
+animation-iteration-count: infinite;
+ }

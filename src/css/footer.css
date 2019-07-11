@@ -1,5 +1,4 @@
 footer{
-  margin: 0 7%;
   background-color: var(--main-color);
   color:var(--main-text);
   display: grid;
@@ -41,7 +40,15 @@ footer>ul>li>a{
   color:var(--main--footer);
 }
 
+footer>ul>li>a:hover{
+  color: var(--main--href);
+}
+
 .mailto{
   text-decoration: none;
   color:var(--main--footer);
 };
+
+.mailto:hover{
+  color: var(--main--href);
+}

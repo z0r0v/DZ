@@ -1,6 +1,5 @@
 
 header {
-margin: 0 7%;
 background-color: var(--main-color);
 color:var(--main-text);
 display: grid;
@@ -10,6 +9,24 @@ grid-template-rows: 5fr;
 
 .info{
   padding: 5% 10%;
+}
+
+.info p{
+  animation-duration: 5s;
+  animation-name: slidein;
+  animation-iteration-count: infinite;
+}
+
+@keyframes slidein {
+  from {
+    font-weight: normal;
+    color:var(--main--href);
+  }
+
+  to {
+    color:white;
+    font-weight: bold;
+  }
 }
 
 nav {
@@ -24,7 +41,21 @@ nav>div{
   grid-row-start: 4;
   grid-row-end: 4;
 }
+
 nav a{
   padding:0 3%;
   color:var(--main-text);
+  text-decoration: none;
+}
+
+nav a:hover{
+  text-decoration: underline;
+  text-shadow: 0 -7px 7px var(--main--href);
+}
+
+nav a:active{
+  margin-top: 4%;
+  color:var(--main--href);
+  font-weight: bold;
+  text-decoration: none;
 }

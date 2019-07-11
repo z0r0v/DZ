@@ -1,48 +1,27 @@
-.slide {
-  background-image: url(https://raw.githubusercontent.com/z0r0v/DZ/master/img/slide1.jpg);
+
+.slide, .slide1, .slide2, .slide3, .slide4, .slide5{
   background-attachment: fixed;
-  transition: background-image 2s linear;
+  transition: background-image 5s linear;
   background-position:center;
   background-size:100%;
   background-repeat: no-repeat;
+}
+
+.slide {
+  background-image: url(https://raw.githubusercontent.com/z0r0v/DZ/master/img/slide1.jpg);
 }
 .slide1 {
   background: url(https://raw.githubusercontent.com/z0r0v/DZ/master/img/slide2.jpg);
-  background-attachment: fixed;
-  transition: background-image 2s linear;
-  background-position:center;
-  background-size:100%;
-  background-repeat: no-repeat;
 }
 .slide2 {
   background-image: url(https://raw.githubusercontent.com/z0r0v/DZ/master/img/slide3.jpg);
-  background-attachment: fixed;
-  transition: background-image 2s linear;
-  background-position:center;
-  background-size:100%;
-  background-repeat: no-repeat;
 }
 .slide3 {
   background-image: url(https://raw.githubusercontent.com/z0r0v/DZ/master/img/slide4.jpg);
-  background-attachment: fixed;
-  transition: background-image 2s linear;
-  background-position:center;
-  background-size:100%;
-  background-repeat: no-repeat;
 }
 .slide4 {
   background-image: url(https://raw.githubusercontent.com/z0r0v/DZ/master/img/slide5.jpg);
-  background-attachment: fixed;
-  transition: background-image 2s linear;
-  background-position:center;
-  background-size:100%;
-  background-repeat: no-repeat;
 }
 .slide5 {
   background-image: url(https://raw.githubusercontent.com/z0r0v/DZ/master/img/slide1.jpg);
-  background-attachment: fixed;
-  transition: background-image 2s linear;
-  background-position:center;
-  background-size:100%;
-  background-repeat: no-repeat;
 }
