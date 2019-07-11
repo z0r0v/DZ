@@ -1,15 +1,9 @@
 .about{
-  background-color: var(--main-color);
-  color:var(--main-text);
   display: grid;
   grid-template-columns: 5fr;
   grid-template-rows: 1fr;
   }
   
-.about>article> h2, p{
-    color: var(--main-text);
-  }
-
 .about>article>p{
   text-align: left;
   }

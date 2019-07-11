@@ -1,6 +1,5 @@
 .experience{
-  background-color: var(--main-color);
-  color:var(--main-text);
+
   display: grid;
   grid-template-columns: 5fr;
   grid-template-rows: 5fr;

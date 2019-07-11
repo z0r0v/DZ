@@ -1,6 +1,4 @@
-
 @import url('https://fonts.googleapis.com/css?family=Comfortaa&display=swap');
-
 @import 'css/header.css' screen;
 @import 'css/portfolio.css' screen;
 @import 'css/tasks.css' screen;
@@ -10,6 +8,9 @@
 @import 'css/slider.css' screen;
 @import 'css/about.css' screen;
 
+@import 'css/media.css' screen;
+
+
 
 *{
   font-family: 'Comfortaa', cursive;
@@ -18,15 +19,25 @@
 }
 
 body{
-  margin: 0 7%;
+ 
   display: grid;
   grid-row-gap:2%;
 }
+@media screen and (min-width: 1240px)  {
+ 
+}
 
 :root{
-  --main-color: rgba(0, 0, 0, 0.5);
+  --bg-color-one-gradient:rgba(255,255,255, 0.1);
+  --main-color: rgba(0, 0, 0, 0.7);
   --main-text:white;
   --main--block:white;
   --main--footer:white;
   --main--href:#800080;
+}
+
+.skills, .tasks, .experience, .about, footer, header{
+  background:linear-gradient(to right, var(--bg-color-one-gradient), var( --main-color));
+  color:var(--main-text);
+  border-radius: 5px;
 }

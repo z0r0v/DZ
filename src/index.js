@@ -11,3 +11,5 @@ import './css/experience.css';
 import './css/slider.css';
 import './css/about.css';
 
+import './css/media.css';
+
