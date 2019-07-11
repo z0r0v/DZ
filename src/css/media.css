@@ -58,10 +58,37 @@ and (-webkit-min-device-pixel-ratio: 2) {}
 @media only screen and (min-device-width : 320px) and (max-device-width : 568px) {}
 
 /* iPhone 5 in landscape */
-@media only screen and (min-device-width : 320px) and (max-device-width : 568px) and (orientation : landscape) {}
+@media only screen and (min-device-width : 320px) and (max-device-width : 568px) and (orientation : landscape) {
+
+}
 
 /* iPhone 5 in portrait */
-@media only screen and (min-device-width : 320px) and (max-device-width : 568px) and (orientation : portrait) {}
+@media only screen and (min-device-width : 320px) and (max-device-width : 568px) and (orientation : portrait) {
+  body{
+    /* background-color: var(--main-color); */
+    font-size:0.8em;
+    grid-row-gap:1px;
+  }
+  /* .skills, .tasks, .experience, .about, footer, header{
+    background-color: var(--main-color);
+  } */
+  header{
+    grid-template-columns: 1fr;
+  }
+  nav{
+    grid-template-rows: 1fr; 
+    text-align: center;
+  }
+  
+  nav>div{
+    grid-row-start: 1;
+    grid-row-end: 1;
+  }
+
+  nav a{
+    padding:0 4px;
+  }
+}
 
 /* iPhone 2G-4S in portrait & landscape */
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {}

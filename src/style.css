@@ -19,7 +19,7 @@
 }
 
 body{
- 
+  background-color: var(--main-color);
   display: grid;
   grid-row-gap:2%;
 }
