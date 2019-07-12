@@ -5,13 +5,14 @@ import { bookArray } from "./carDatabase.js";
 const htmlElement = {
   container: document.querySelector(".container"),
   tabs: document.querySelector(".tabs"),
- 
+  divMaster: document.querySelector(".masterInfo"),
 };
 
 
 function Book() {
 
   function creatElement() {
+
     htmlElement.output = document.createElement("div");
     htmlElement.output.classList.add("output","mt-5");
 
@@ -45,7 +46,8 @@ function Book() {
 
     
 
-    htmlElement.tabs.appendChild(htmlElement.output);
+    htmlElement.divMaster.appendChild(htmlElement.output);
+
     htmlElement.output.appendChild(htmlElement.h2MasterInfo);
 
     htmlElement.output.appendChild(htmlElement.outputClock);
@@ -261,7 +263,7 @@ function Book() {
       new creatingGroupElements("CarMileage", "Car mileage", "number");
       new creatingGroupElements("Price", "Price", "number");
 
-      htmlElement.tabs.appendChild(htmlElement.divMasterInToBook);
+      htmlElement.divMaster.appendChild(htmlElement.divMasterInToBook);
       htmlElement.divMasterInToBook.appendChild(htmlElement.h2MasterInToBook);
       htmlElement.divMasterInToBook.appendChild(htmlElement.form);
       htmlElement.form.appendChild(htmlElement.buttonToBook);

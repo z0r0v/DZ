@@ -14,20 +14,51 @@
 <body>
   <ul class="nav justify-content-center text-uppercase font-weight-bold">
     <li class="nav-item">
-      <a class="nav-link  disabled" href="#">Master Info</a>
+      <a class="nav-link disabled" data-mode="Master" href="#">Master Info</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link active" href="#">Auto Info</a>
+      <a class="nav-link" data-mode="Auto" href="#">Auto Info</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link active" href="#">Work Plan</a>
+      <a class="nav-link" data-mode="Work" href="#">Work Plan</a>
     </li>
   </ul>
   <div class="container">
     <div class="tabs">
-    </div>
-    <div data-mode="autoInfo" class="hidden">123</div>
-    <div data-mode="workPlan" class="hidden">123</div>
+      <div class="masterInfo"></div>
+      <div class="autoInfo hidden">
+        <h2>Марка: Фольквален Гольф 2005 год. </br>
+          Пробег: 205 тыс.км </br>
+          Вдаделец: Игорь Константинович </br>
+          тел:+375 29 376 70 82</h2>
+          <button class="btn btn-outline-primary col-3 offset-9">Распечатать</button>
+          <h2>Выполняемый заказ:</h2>
+        <p>
+        Выполняемый заказ: Замена ремня ГРМ <span>00:40:01</span></br>
+        К ОПЛАТЕ: 150$
+      </p>
+        <h4>Требует замены:</h2>
+        <p>
+        198тыс - Реемень ГРМ - Цена запчасти 180$ - Работы:100$;</br>
+        198тыс - Наконечники тяги - Цена запчасти 33$ - Работы:10$;
+      </p>
+
+      <h4>Ближайшая замена:</h2>
+      <p>
+      205тыс - Масло - Цена запчасти 40$ - Работы:10$;</br>
+      205тыс - Наконечники тяги - Цена запчасти 33$ - Работы:10$;
+      </p>
+
+      <h4>Планируемая замена:</h2>
+      <p>
+      300тыс - Стойки стабилизатора - Цена запчасти 40$ - Работы:10$;</br>
+      300тыс - Фрион кондиционера - Цена запчасти 5$ - Работы:10$;
+      </p>
+      </div>
+      <div class="workPlan hidden">
+
+      </div>
+    </div> 
   </div>
   </div>
   <script type="module" src="../src/modules/main.js"></script>

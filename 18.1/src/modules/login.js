@@ -7,6 +7,7 @@ export let masterNameCategogy;
 const htmlElements = {
   container: document.querySelector(".container"),
   tabs: document.querySelector(".tabs"),
+  divMaster:document.querySelector('.masterInfo'),
  
 };
 
@@ -15,11 +16,13 @@ const htmlElements = {
 function Login() {
  
   function createElement() {
-
     htmlElements.divMasterInfo = document.createElement("div");
     htmlElements.divMasterInfo.classList.add("col-md-auto", "mt-5");
     htmlElements.divMasterInfo.dataMode = "masterInfo";
-    htmlElements.tabs.appendChild(htmlElements.divMasterInfo);
+
+    htmlElements.tabs.appendChild(htmlElements.divMaster);
+    htmlElements.divMaster.appendChild(htmlElements.divMasterInfo);
+
 
     htmlElements.h2MasterInfo = document.createElement("h2");
     htmlElements.h2MasterInfo.classList.add("text-center");
