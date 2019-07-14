@@ -1,35 +1,22 @@
 import { masterNameCategogy } from "./login.js";
 import { bookArray } from "./carDatabase.js";
-
+import {Clock} from "./clock.js"; 
 
 const htmlElement = {
   container: document.querySelector(".container"),
   tabs: document.querySelector(".tabs"),
   divMaster: document.querySelector(".masterInfo"),
+  output:document.querySelector(".output"),
+  h2MasterInfo:document.querySelector("div>h2")
 };
+
 
 
 function Book() {
 
   function creatElement() {
-
-    htmlElement.output = document.createElement("div");
-    htmlElement.output.classList.add("output","mt-5");
-
-    htmlElement.h2MasterInfo = document.createElement("h2");
     htmlElement.h2MasterInfo.innerText = masterNameCategogy;
-
-    htmlElement.outputClock = document.createElement("div");
-    htmlElement.outputClock.classList.add("outputClock");
-
-    function onClockNextTick() {
-      const cirrentTime = new Date();
-      const timeStrong = cirrentTime.toTimeString();
-      const timeShort = timeStrong.split(" ")[0];
-      htmlElement.outputClock.innerText = timeShort;
-    }
-
-    const timerId = setInterval(onClockNextTick, 1000);
+    Clock.prototype.init();
 
     htmlElement.bookTable = document.createElement("table");
     htmlElement.bookTable.classList.add("table");
@@ -45,12 +32,6 @@ function Book() {
     }
 
     
-
-    htmlElement.divMaster.appendChild(htmlElement.output);
-
-    htmlElement.output.appendChild(htmlElement.h2MasterInfo);
-
-    htmlElement.output.appendChild(htmlElement.outputClock);
     htmlElement.output.appendChild(htmlElement.bookTable);
     htmlElement.bookTable.appendChild(htmlElement.thead);
     htmlElement.thead.appendChild(htmlElement.tr);
@@ -74,7 +55,7 @@ function Book() {
       htmlElement.tdTime.innerText = time;
       // перекраска таймера должна сейчас произойти
       onANavClicked();
-
+      
       htmlElement.tdBrand = document.createElement("td");
       htmlElement.tdBrand.innerText = brand;
 
@@ -132,7 +113,7 @@ function Book() {
         function chengeWork(){
           htmlElement.cheInputWorke = document.createElement('input');
           htmlElement.cheButtontWorke = document.createElement('button');
-          htmlElement.cheButtontWorke.innerText = "aplay";
+          htmlElement.cheButtontWorke.innerText = "apply";
           htmlElement.cheButtontWorke.classList.add("btn", "btn-outline-primary", "btn-sm", "col-md-12")
           htmlElement.cheButtontWorke.addEventListener('click', aplayChengeWork);
 
@@ -222,6 +203,8 @@ function Book() {
         "mt-5"
       );
 
+
+
       htmlElement.divMasterInToBook.dataMode = "masterInToBook";
       htmlElement.h2MasterInToBook = document.createElement("h2");
       htmlElement.h2MasterInToBook.innerText = "Book To Master";
@@ -231,7 +214,7 @@ function Book() {
       htmlElement.buttonToBook = document.createElement("input");
       htmlElement.buttonToBook.type = "button";
       htmlElement.buttonToBook.classList.add("btn", "btn-primary");
-      htmlElement.buttonToBook.value = "To Book";
+      htmlElement.buttonToBook.value = "Book";
       htmlElement.buttonToBook.addEventListener("click", onButtonToBookClicked);
 
       function creatingGroupElements(value, innerText, type) {
