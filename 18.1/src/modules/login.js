@@ -8,6 +8,7 @@ const htmlElements = {
   container: document.querySelector(".container"),
   tabs: document.querySelector(".tabs"),
   divMaster:document.querySelector('.masterInfo'),
+  output:document.querySelector(".output"),
  
 };
 
@@ -88,7 +89,7 @@ function Login() {
 
     masterArray.forEach(function(item) {
       if (pasword.value === item.pasword && loginName.value === item.login) {
-        masterNameCategogy = `Master: ${item.firstName} ${
+        masterNameCategogy = `Master : ${item.firstName} ${
           item.LastName
         }. Category: ${item.category}`;
         isLogged = true;
@@ -101,6 +102,8 @@ function Login() {
       loginName.classList.add("border-success");
       pasword.classList.add("border-success");
       htmlElements.divMasterInfo.classList.add("hidden");
+      htmlElements.output.classList.remove("hidden");
+
       const newBook = new Book();
     
     } else {

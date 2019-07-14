@@ -3,19 +3,19 @@
 *{
   font-family: 'Roboto', sans-serif;
 }
-/* var(--may-color-bg1);
-var(--may-color-bg2); */
+
 :root{
   --may-color-bg1:ghostwhite;
   --may-color-bg2:black;
 }
 .nav{
+  margin-top: 20px;
   background-color: white;
+  border-radius: 5px;
+  padding: 10px;
 }
 
-/* .container{
-background-color: white;
-} */
+
 
 .fa-times-circle,
 .fa-check-circle {
@@ -24,6 +24,9 @@ background-color: white;
 
 .outputClock {
   font-size: 25px;
+}
+.masterInfo, .workPlan, .autoInfo {
+  margin-top: 100px;
 }
 
 .output {

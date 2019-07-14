@@ -2,12 +2,14 @@ const htmlElement = {
   body: document.querySelector("body")
 };
 
-function Slider() {
+
+function renderSlider(){
+  // requestAnimationFrame(cheSlideBG);
   htmlElement.body.classList.add("slide");
 
   const slider = setInterval(cheSlideBG, 7000);
-
   let slide = 0;
+
   function cheSlideBG() {
     slide++;
     if (slide >= 6) {
@@ -24,4 +26,9 @@ function Slider() {
     htmlElement.body.classList.add(`slide${slide}`);
   }
 }
+
+function Slider() {
+  renderSlider();
+}
+
 export { Slider };

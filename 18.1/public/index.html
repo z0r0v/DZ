@@ -9,26 +9,33 @@
   <link rel="stylesheet" href="../src/style.css" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-  </head>
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+
 <body>
   <ul class="nav justify-content-center text-uppercase font-weight-bold fixed-top col-8 offset-2">
-    <li class="nav-item">
+    <li class="nav-item col-sm-4 col-lg-4 col-md-4 text-center">
       <a class="nav-link disabled" data-mode="Master" href="#">Master Info</a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item col-sm-4 col-lg-4 col-md-4 text-center">
       <a class="nav-link" data-mode="Auto" href="#">Auto Info</a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item col-sm-4 col-lg-4 col-md-4 text-center">
       <a class="nav-link" data-mode="Work" href="#">Work Plan</a>
     </li>
   </ul>
   <div class="container">
     <div class="tabs">
       <div class="masterInfo col-sm-12 col-md-12 col-lg-12">
-        <div class="output">
+        <div class="output col-sm-12 col-md-12 col-lg-12 hidden">
           <h2></h2>
           <div class="outputClock"></div>
+          <table class="table col-sm-12 col-md-12 col-lg-12">
+            <thead class="col-sm-12 col-md-12 col-lg-12">
+              <tr class="col-sm-12 col-md-12 col-lg-12"></tr>
+            </thead>
+            <tbody></tbody>
+          </table>
         </div>
       </div>
       <div class="autoInfo hidden">
@@ -36,34 +43,33 @@
           Пробег: 205 тыс.км </br>
           Вдаделец: Игорь Константинович </br>
           тел:+375 29 376 70 82</h2>
-          <button class="btn btn-outline-primary col-3 offset-9">Распечатать</button>
-          <h2>Выполняемый заказ:</h2>
+        <button class="btn btn-outline-primary col-3 offset-9">Распечатать</button>
+        <h2>Выполняемый заказ:</h2>
         <p>
-        Выполняемый заказ: Замена ремня ГРМ <span>00:40:01</span></br>
-        К ОПЛАТЕ: 150$
-      </p>
+          Выполняемый заказ: Замена ремня ГРМ <span>00:40:01</span></br>
+          К ОПЛАТЕ: 150$
+        </p>
         <h4>Требует замены:</h2>
-        <p>
-        198тыс - Реемень ГРМ - Цена запчасти 180$ - Работы:100$;</br>
-        198тыс - Наконечники тяги - Цена запчасти 33$ - Работы:10$;
-      </p>
+          <p>
+            198тыс - Реемень ГРМ - Цена запчасти 180$ - Работы:100$;</br>
+            198тыс - Наконечники тяги - Цена запчасти 33$ - Работы:10$;
+          </p>
 
-      <h4>Ближайшая замена:</h2>
-      <p>
-      205тыс - Масло - Цена запчасти 40$ - Работы:10$;</br>
-      205тыс - Наконечники тяги - Цена запчасти 33$ - Работы:10$;
-      </p>
+          <h4>Ближайшая замена:</h2>
+            <p>
+              205тыс - Масло - Цена запчасти 40$ - Работы:10$;</br>
+              205тыс - Наконечники тяги - Цена запчасти 33$ - Работы:10$;
+            </p>
 
-      <h4>Планируемая замена:</h2>
-      <p>
-      300тыс - Стойки стабилизатора - Цена запчасти 40$ - Работы:10$;</br>
-      300тыс - Фрион кондиционера - Цена запчасти 5$ - Работы:10$;
-      </p>
+            <h4>Планируемая замена:</h2>
+              <p>
+                300тыс - Стойки стабилизатора - Цена запчасти 40$ - Работы:10$;</br>
+                300тыс - Фрион кондиционера - Цена запчасти 5$ - Работы:10$;
+              </p>
       </div>
-      <div class="workPlan hidden">
-
-      </div>
-    </div> 
+      <div class="workPlan hidden"></div>
+    </div>
+  </div>
   </div>
   </div>
   <script type="module" src="../src/modules/main.js"></script>

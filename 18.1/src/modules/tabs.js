@@ -20,7 +20,9 @@ function Tabs() {
     event.path[0].classList.add("disabled");
 
     const mode = event.path[0].dataset.mode;
+
     const master = htmlElement.tabs[0].children[2];
+    console.log(htmlElement.tabs[0]);
     const auto = htmlElement.tabs[0].children[0];
     const work = htmlElement.tabs[0].children[1];
     const arrayTabs = Array.from(htmlElement.tabs[0].children);
@@ -31,6 +33,7 @@ function Tabs() {
 
     switch (mode) {
       case "Master":
+        console.log(master);
           master.classList.remove('hidden');
         break;
       case "Auto":
