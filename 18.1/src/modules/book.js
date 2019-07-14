@@ -1,7 +1,5 @@
 import { masterNameCategogy } from "./login.js";
 import { masterBook } from "./login.js";
-
-// import { bookArray1, bookArray2,} from "./carDatabase.js";
 import { Clock } from "./clock.js";
 
 const htmlElement = {
@@ -13,8 +11,11 @@ const htmlElement = {
   bookTable: document.querySelector(".table"),
   thead: document.querySelector(".table > thead"),
   bookTbody: document.querySelector(".table > tbody"),
-  tr: document.querySelector("thead > tr")
+  tr: document.querySelector("thead > tr"),
+
 };
+
+
 
 function CreatTh(text) {
   htmlElement.th = document.createElement("th");
@@ -26,7 +27,6 @@ function CreatTh(text) {
 function renderBook() {
   htmlElement.bookTbody.innerText = "";
   let i = 0;
- 
   masterBook.forEach(function(element) {
     creatBoofing(
       ++i,

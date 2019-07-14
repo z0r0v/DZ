@@ -4,18 +4,22 @@ import {Book} from './book.js'
 export let masterNameCategogy;
 export let masterBook;
 
-
 const htmlElements = {
   container: document.querySelector(".container"),
   tabs: document.querySelector(".tabs"),
   divMaster:document.querySelector('.masterInfo'),
   output:document.querySelector(".output"),
+  buttonLogout:document.querySelector(".masterInfo>.output>.row>input"),
  
 };
 
 
+htmlElements.buttonLogout.addEventListener('click', onLogoutCuttonclick);
+function onLogoutCuttonclick(){
+console.log(123);
+}
+
 function Login() {
- 
   function createElement() {
     htmlElements.divMasterInfo = document.createElement("div");
     htmlElements.divMasterInfo.classList.add("col-md-auto", "mt-5");
@@ -104,8 +108,7 @@ function Login() {
       pasword.classList.add("border-success");
       htmlElements.divMasterInfo.classList.add("hidden");
       htmlElements.output.classList.remove("hidden");
-
-      const newBook = new Book();
+      new Book();
     
     } else {
       loginName.classList.add("border", "border-danger");
