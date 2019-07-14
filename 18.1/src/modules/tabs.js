@@ -1,13 +1,12 @@
-const htmlElement = {
+const htmlElements = {
   nav: document.querySelectorAll("ul>li>a"),
   link: document.querySelector("ul>li>a"),
-  divMaster:document.querySelector('.masterInfo'),
-  tabs:document.querySelectorAll(".tabs"),
+  divMaster: document.querySelector(".masterInfo"),
+  tabs: document.querySelectorAll(".tabs")
 };
 
-
 function Tabs() {
-  const arrayElements = Array.from(htmlElement.nav);
+  const arrayElements = Array.from(htmlElements.nav);
   arrayElements.forEach(element => {
     element.addEventListener("click", onTabsClick);
   });
@@ -21,25 +20,25 @@ function Tabs() {
 
     const mode = event.path[0].dataset.mode;
 
-    const master = htmlElement.tabs[0].children[2];
- 
-    const auto = htmlElement.tabs[0].children[0];
-    const work = htmlElement.tabs[0].children[1];
-    const arrayTabs = Array.from(htmlElement.tabs[0].children);
-    
+    const master = htmlElements.tabs[0].children[2];
+
+    const auto = htmlElements.tabs[0].children[0];
+    const work = htmlElements.tabs[0].children[1];
+    const arrayTabs = Array.from(htmlElements.tabs[0].children);
+
     arrayTabs.forEach(element => {
-      element.classList.add('hidden');
-    })
+      element.classList.add("hidden");
+    });
 
     switch (mode) {
       case "Master":
-          master.classList.remove('hidden');
+        master.classList.remove("hidden");
         break;
       case "Auto":
-          auto.classList.remove('hidden');
+        auto.classList.remove("hidden");
         break;
       case "Work":
-          work.classList.remove('hidden');
+        work.classList.remove("hidden");
         break;
     }
   }

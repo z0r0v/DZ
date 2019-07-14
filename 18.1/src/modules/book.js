@@ -2,7 +2,7 @@ import { masterNameCategogy } from "./login.js";
 import { masterBook } from "./login.js";
 import { Clock } from "./clock.js";
 
-const htmlElement = {
+const htmlElements = {
   container: document.querySelector(".container"),
   tabs: document.querySelector(".tabs"),
   divMaster: document.querySelector(".masterInfo"),
@@ -11,21 +11,18 @@ const htmlElement = {
   bookTable: document.querySelector(".table"),
   thead: document.querySelector(".table > thead"),
   bookTbody: document.querySelector(".table > tbody"),
-  tr: document.querySelector("thead > tr"),
-
+  tr: document.querySelector("thead > tr")
 };
 
-
-
 function CreatTh(text) {
-  htmlElement.th = document.createElement("th");
-  htmlElement.th.scope = "col";
-  htmlElement.th.innerText = text;
-  htmlElement.tr.appendChild(htmlElement.th);
+  htmlElements.th = document.createElement("th");
+  htmlElements.th.scope = "col";
+  htmlElements.th.innerText = text;
+  htmlElements.tr.appendChild(htmlElements.th);
 }
 
 function renderBook() {
-  htmlElement.bookTbody.innerText = "";
+  htmlElements.bookTbody.innerText = "";
   let i = 0;
   masterBook.forEach(function(element) {
     creatBoofing(
@@ -40,58 +37,61 @@ function renderBook() {
 }
 
 function creatBoofing(number, time, brand, phone, name, work) {
-  htmlElement.thNumber = document.createElement("th");
-  htmlElement.thNumber.innerText = number;
+  htmlElements.thNumber = document.createElement("th");
+  htmlElements.thNumber.innerText = number;
 
-  htmlElement.tdTime = document.createElement("td");
-  htmlElement.tdTime.innerText = time;
+  htmlElements.tdTime = document.createElement("td");
+  htmlElements.tdTime.innerText = time;
   // перекраска таймера должна сейчас произойти
   onANavClicked();
 
-  htmlElement.tdBrand = document.createElement("td");
-  htmlElement.tdBrand.innerText = brand;
+  htmlElements.tdBrand = document.createElement("td");
+  htmlElements.tdBrand.innerText = brand;
 
-  htmlElement.tdPhone = document.createElement("td");
-  htmlElement.tdPhone.innerText = phone;
+  htmlElements.tdPhone = document.createElement("td");
+  htmlElements.tdPhone.innerText = phone;
 
-  htmlElement.tdName = document.createElement("td");
-  htmlElement.tdName.innerText = name;
+  htmlElements.tdName = document.createElement("td");
+  htmlElements.tdName.innerText = name;
 
-  htmlElement.tdWork = document.createElement("td");
-  htmlElement.tdWork.innerText = work;
+  htmlElements.tdWork = document.createElement("td");
+  htmlElements.tdWork.innerText = work;
 
-  htmlElement.tdWork.addEventListener("dblclick", chengeWork);
+  htmlElements.tdWork.addEventListener("dblclick", chengeWork);
 
-  htmlElement.tdButtons = document.createElement("td");
+  htmlElements.tdButtons = document.createElement("td");
 
-  htmlElement.buttonIcoCheck = document.createElement("i");
-  htmlElement.buttonIcoCheck.classList.add(
+  htmlElements.buttonIcoCheck = document.createElement("i");
+  htmlElements.buttonIcoCheck.classList.add(
     "fa",
     "fa-check-circle",
     "fa-lg",
     "text-success"
   );
 
-  htmlElement.buttonIcoClear = document.createElement("i");
-  htmlElement.buttonIcoClear.classList.add(
+  htmlElements.buttonIcoClear = document.createElement("i");
+  htmlElements.buttonIcoClear.classList.add(
     "fa",
     "fa-times-circle",
     "fa-lg",
     "text-danger"
   );
-  htmlElement.buttonIcoClear.addEventListener("click", onButtonIcoClearClicked);
+  htmlElements.buttonIcoClear.addEventListener(
+    "click",
+    onButtonIcoClearClicked
+  );
 
-  htmlElement.trBookInfo = document.createElement("tr");
-  htmlElement.bookTbody.appendChild(htmlElement.trBookInfo);
-  htmlElement.trBookInfo.appendChild(htmlElement.thNumber);
-  htmlElement.trBookInfo.appendChild(htmlElement.tdTime);
-  htmlElement.trBookInfo.appendChild(htmlElement.tdBrand);
-  htmlElement.trBookInfo.appendChild(htmlElement.tdPhone);
-  htmlElement.trBookInfo.appendChild(htmlElement.tdName);
-  htmlElement.trBookInfo.appendChild(htmlElement.tdWork);
-  htmlElement.tdButtons.appendChild(htmlElement.buttonIcoClear);
-  htmlElement.tdButtons.appendChild(htmlElement.buttonIcoCheck);
-  htmlElement.trBookInfo.appendChild(htmlElement.tdButtons);
+  htmlElements.trBookInfo = document.createElement("tr");
+  htmlElements.bookTbody.appendChild(htmlElements.trBookInfo);
+  htmlElements.trBookInfo.appendChild(htmlElements.thNumber);
+  htmlElements.trBookInfo.appendChild(htmlElements.tdTime);
+  htmlElements.trBookInfo.appendChild(htmlElements.tdBrand);
+  htmlElements.trBookInfo.appendChild(htmlElements.tdPhone);
+  htmlElements.trBookInfo.appendChild(htmlElements.tdName);
+  htmlElements.trBookInfo.appendChild(htmlElements.tdWork);
+  htmlElements.tdButtons.appendChild(htmlElements.buttonIcoClear);
+  htmlElements.tdButtons.appendChild(htmlElements.buttonIcoCheck);
+  htmlElements.trBookInfo.appendChild(htmlElements.tdButtons);
 }
 
 ///перекраска тайма
@@ -101,58 +101,58 @@ function onANavClicked() {
   const timeShort = timeStrong.split(" ")[0];
   const arrayThisTime = timeShort.split(":");
   let timeThis = arrayThisTime[0] * 3600000 + arrayThisTime[1] * 60000;
-  const arrayBokeTime = htmlElement.tdTime.innerText.split(":");
+  const arrayBokeTime = htmlElements.tdTime.innerText.split(":");
   let bookTime = arrayBokeTime[0] * 3600000 + arrayBokeTime[1] * 60000;
   let difference = bookTime - timeThis;
 
   switch (true) {
     case difference <= 0:
-      htmlElement.tdTime.classList.add("text-danger");
+      htmlElements.tdTime.classList.add("text-danger");
       break;
     //30 Minets
     case difference <= 1800000:
-      htmlElement.tdTime.classList.add("text-warning");
+      htmlElements.tdTime.classList.add("text-warning");
       break;
     //60 Minets
     case difference <= 3600000:
-      htmlElement.tdTime.classList.add("text-success");
+      htmlElements.tdTime.classList.add("text-success");
       break;
     default:
-      htmlElement.tdTime.classList.add("text-body");
+      htmlElements.tdTime.classList.add("text-body");
   }
 }
 
 // Изменение контена для Work value
 function chengeWork() {
-  htmlElement.cheInputWorke = document.createElement("input");
-  htmlElement.cheInputWorke.classList.add("col-md-12");
-  htmlElement.cheButtontWorke = document.createElement("button");
-  htmlElement.cheButtontWorke.innerText = "apply";
-  htmlElement.cheButtontWorke.classList.add(
+  htmlElements.cheInputWorke = document.createElement("input");
+  htmlElements.cheInputWorke.classList.add("col-md-12");
+  htmlElements.cheButtontWorke = document.createElement("button");
+  htmlElements.cheButtontWorke.innerText = "apply";
+  htmlElements.cheButtontWorke.classList.add(
     "btn",
     "btn-outline-primary",
     "btn-sm",
     "col-md-12"
   );
-  htmlElement.cheButtontWorke.addEventListener("click", aplayChengeWork);
+  htmlElements.cheButtontWorke.addEventListener("click", aplayChengeWork);
 
-  htmlElement.cheInputWorke.value = event.path[0].innerText;
+  htmlElements.cheInputWorke.value = event.path[0].innerText;
   event.path[0].innerText = "";
-  event.path[0].appendChild(htmlElement.cheInputWorke);
-  event.path[0].appendChild(htmlElement.cheButtontWorke);
+  event.path[0].appendChild(htmlElements.cheInputWorke);
+  event.path[0].appendChild(htmlElements.cheButtontWorke);
   event.path[0].removeEventListener("dblclick", chengeWork);
 
   function aplayChengeWork() {
-    const elements = htmlElement.bookTbody.getElementsByTagName("tr");
+    const elements = htmlElements.bookTbody.getElementsByTagName("tr");
     const array = Array.from(elements);
     const index = array.indexOf(event.path[2]);
-    masterBook[index].work = htmlElement.cheInputWorke.value;
+    masterBook[index].work = htmlElements.cheInputWorke.value;
     renderBook();
   }
 }
 
 function onButtonIcoClearClicked() {
-  const elements = htmlElement.bookTbody.getElementsByTagName("tr");
+  const elements = htmlElements.bookTbody.getElementsByTagName("tr");
   const array = Array.from(elements);
   const index = array.indexOf(event.path[2]);
   masterBook.splice(index, 1);
@@ -161,28 +161,28 @@ function onButtonIcoClearClicked() {
 
 //Нужно вынести в другой модуль
 function CreatingGroupElements(value, innerText, type) {
-  htmlElement.divFormGroup = document.createElement("div");
-  htmlElement.divFormGroup.classList.add("form-group");
+  htmlElements.divFormGroup = document.createElement("div");
+  htmlElements.divFormGroup.classList.add("form-group");
 
-  htmlElement.labelFormGroup = document.createElement("label");
-  htmlElement.labelFormGroup.htmlFor = `formGroupExampleInput${value}`;
-  htmlElement.labelFormGroup.innerText = innerText;
+  htmlElements.labelFormGroup = document.createElement("label");
+  htmlElements.labelFormGroup.htmlFor = `formGroupExampleInput${value}`;
+  htmlElements.labelFormGroup.innerText = innerText;
 
-  htmlElement.inputFormGroup = document.createElement("input");
-  htmlElement.inputFormGroup.type = type;
-  htmlElement.inputFormGroup.classList.add("form-control");
-  htmlElement.inputFormGroup.id = `formGroupExampleInput${value}`;
-  htmlElement.inputFormGroup.placeholder = `Enter ${innerText.toLowerCase()}`;
-  htmlElement.inputFormGroup.value = null;
+  htmlElements.inputFormGroup = document.createElement("input");
+  htmlElements.inputFormGroup.type = type;
+  htmlElements.inputFormGroup.classList.add("form-control");
+  htmlElements.inputFormGroup.id = `formGroupExampleInput${value}`;
+  htmlElements.inputFormGroup.placeholder = `Enter ${innerText.toLowerCase()}`;
+  htmlElements.inputFormGroup.value = null;
 
-  htmlElement.divFormGroup.appendChild(htmlElement.labelFormGroup);
-  htmlElement.divFormGroup.appendChild(htmlElement.inputFormGroup);
-  htmlElement.form.appendChild(htmlElement.divFormGroup);
+  htmlElements.divFormGroup.appendChild(htmlElements.labelFormGroup);
+  htmlElements.divFormGroup.appendChild(htmlElements.inputFormGroup);
+  htmlElements.form.appendChild(htmlElements.divFormGroup);
 }
 
 function renderMasterInToBook() {
-  htmlElement.divMasterInToBook = document.createElement("div");
-  htmlElement.divMasterInToBook.classList.add(
+  htmlElements.divMasterInToBook = document.createElement("div");
+  htmlElements.divMasterInToBook.classList.add(
     "shadow-sm",
     "p-3",
     "mb-5",
@@ -193,17 +193,17 @@ function renderMasterInToBook() {
     "mt-5"
   );
 
-  htmlElement.divMasterInToBook.dataMode = "masterInToBook";
-  htmlElement.h2MasterInToBook = document.createElement("h2");
-  htmlElement.h2MasterInToBook.innerText = "Book To Master";
-  htmlElement.h2MasterInToBook.classList.add("text-center");
+  htmlElements.divMasterInToBook.dataMode = "masterInToBook";
+  htmlElements.h2MasterInToBook = document.createElement("h2");
+  htmlElements.h2MasterInToBook.innerText = "Book To Master";
+  htmlElements.h2MasterInToBook.classList.add("text-center");
 
-  htmlElement.form = document.createElement("form");
-  htmlElement.buttonToBook = document.createElement("input");
-  htmlElement.buttonToBook.type = "button";
-  htmlElement.buttonToBook.classList.add("btn", "btn-primary");
-  htmlElement.buttonToBook.value = "Book";
-  htmlElement.buttonToBook.addEventListener("click", onButtonToBookClicked);
+  htmlElements.form = document.createElement("form");
+  htmlElements.buttonToBook = document.createElement("input");
+  htmlElements.buttonToBook.type = "button";
+  htmlElements.buttonToBook.classList.add("btn", "btn-primary");
+  htmlElements.buttonToBook.value = "Book";
+  htmlElements.buttonToBook.addEventListener("click", onButtonToBookClicked);
 
   new CreatingGroupElements("Time", "Book time", "time");
   new CreatingGroupElements("Brand", "Car brand", "text");
@@ -214,10 +214,10 @@ function renderMasterInToBook() {
   new CreatingGroupElements("CarMileage", "Car mileage", "number");
   new CreatingGroupElements("Price", "Price", "number");
 
-  htmlElement.divMaster.appendChild(htmlElement.divMasterInToBook);
-  htmlElement.divMasterInToBook.appendChild(htmlElement.h2MasterInToBook);
-  htmlElement.divMasterInToBook.appendChild(htmlElement.form);
-  htmlElement.form.appendChild(htmlElement.buttonToBook);
+  htmlElements.divMaster.appendChild(htmlElements.divMasterInToBook);
+  htmlElements.divMasterInToBook.appendChild(htmlElements.h2MasterInToBook);
+  htmlElements.divMasterInToBook.appendChild(htmlElements.form);
+  htmlElements.form.appendChild(htmlElements.buttonToBook);
 }
 
 function onButtonToBookClicked() {
@@ -253,8 +253,8 @@ function onButtonToBookClicked() {
     return 0;
   });
 
-  htmlElement.divMasterInToBook.innerText = null;
-  htmlElement.divMasterInToBook.classList.remove(
+  htmlElements.divMasterInToBook.innerText = null;
+  htmlElements.divMasterInToBook.classList.remove(
     "shadow-sm",
     "p-3",
     "mb-5",
@@ -283,7 +283,7 @@ function creatElement() {
 }
 
 function Book() {
-  htmlElement.h2MasterInfo.innerText = masterNameCategogy;
+  htmlElements.h2MasterInfo.innerText = masterNameCategogy;
   Clock.prototype.init();
   creatElement();
 }

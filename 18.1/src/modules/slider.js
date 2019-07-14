@@ -1,11 +1,10 @@
-const htmlElement = {
+const htmlElements = {
   body: document.querySelector("body")
 };
 
-
-function renderSlider(){
+function renderSlider() {
   // requestAnimationFrame(cheSlideBG);
-  htmlElement.body.classList.add("slide");
+  htmlElements.body.classList.add("slide");
 
   const slider = setInterval(cheSlideBG, 7000);
   let slide = 0;
@@ -15,7 +14,7 @@ function renderSlider(){
     if (slide >= 6) {
       return (slide = 0);
     }
-    htmlElement.body.classList.remove(
+    htmlElements.body.classList.remove(
       "slide",
       "slide1",
       "slide2",
@@ -23,7 +22,7 @@ function renderSlider(){
       "slide4",
       "slide5"
     );
-    htmlElement.body.classList.add(`slide${slide}`);
+    htmlElements.body.classList.add(`slide${slide}`);
   }
 }
 

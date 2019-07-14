@@ -1,40 +1,44 @@
 import { masterArray } from "./materDataBase.js";
-import {Book} from './book.js'
+import { Book } from "./book.js";
 
 export let masterNameCategogy;
 export let masterBook;
+let isLogged = false;
 
-const htmlElements = {
+const htmlElementss = {
   container: document.querySelector(".container"),
   tabs: document.querySelector(".tabs"),
-  divMaster:document.querySelector('.masterInfo'),
-  output:document.querySelector(".output"),
-  buttonLogout:document.querySelector(".masterInfo>.output>.row>input"),
- 
+  divMaster: document.querySelector(".masterInfo"),
+  output: document.querySelector(".output"),
+  buttonLogout: document.querySelector(".masterInfo>.output>.row>input")
 };
 
+htmlElementss.buttonLogout.addEventListener("click", onLogoutCuttonclick);
+function onLogoutCuttonclick() {
+  isLogged = false;
+  htmlElementss.divMasterInfo.classList.remove("hidden");
+  htmlElementss.output.classList.add("hidden");
+  //отрисовать статически забрать по другому!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  htmlElementss.inputLogin.value ="";
+ 
 
-htmlElements.buttonLogout.addEventListener('click', onLogoutCuttonclick);
-function onLogoutCuttonclick(){
-console.log(123);
 }
 
 function Login() {
   function createElement() {
-    htmlElements.divMasterInfo = document.createElement("div");
-    htmlElements.divMasterInfo.classList.add("col-md-auto", "mt-5");
-    htmlElements.divMasterInfo.dataMode = "masterInfo";
+    htmlElementss.divMasterInfo = document.createElement("div");
+    htmlElementss.divMasterInfo.classList.add("col-md-auto", "mt-5");
+    htmlElementss.divMasterInfo.dataMode = "masterInfo";
 
-    htmlElements.tabs.appendChild(htmlElements.divMaster);
-    htmlElements.divMaster.appendChild(htmlElements.divMasterInfo);
+    htmlElementss.tabs.appendChild(htmlElementss.divMaster);
+    htmlElementss.divMaster.appendChild(htmlElementss.divMasterInfo);
 
+    htmlElementss.h2MasterInfo = document.createElement("h2");
+    htmlElementss.h2MasterInfo.classList.add("text-center");
+    htmlElementss.h2MasterInfo.innerText = "Master Login";
 
-    htmlElements.h2MasterInfo = document.createElement("h2");
-    htmlElements.h2MasterInfo.classList.add("text-center");
-    htmlElements.h2MasterInfo.innerText = "Master Login";
-
-    htmlElements.formLogin = document.createElement("form");
-    htmlElements.formLogin.classList.add(
+    htmlElementss.formLogin = document.createElement("form");
+    htmlElementss.formLogin.classList.add(
       "col-md-8",
       "offset-md-2",
       "shadow-sm",
@@ -44,40 +48,39 @@ function Login() {
       "rounded"
     );
 
-    htmlElements.formButton = document.createElement("input");
-    htmlElements.formButton.type = "button";
-    htmlElements.formButton.classList.add("btn", "btn-primary", "col-md-12");
-    htmlElements.formButton.value = "Submit";
+    htmlElementss.formButton = document.createElement("input");
+    htmlElementss.formButton.type = "button";
+    htmlElementss.formButton.classList.add("btn", "btn-primary", "col-md-12");
+    htmlElementss.formButton.value = "Submit";
 
     function CreatingGroupElements(innerText, type) {
-      htmlElements.divFormgroup = document.createElement("div");
-      htmlElements.divFormgroup.classList.add("form-group");
+      htmlElementss.divFormgroup = document.createElement("div");
+      htmlElementss.divFormgroup.classList.add("form-group");
 
-      htmlElements.labelLogin = document.createElement("label");
-      htmlElements.labelLogin.htmlFor = `exampleInput${innerText}`;
-      htmlElements.labelLogin.innerText = innerText;
+      htmlElementss.labelLogin = document.createElement("label");
+      htmlElementss.labelLogin.htmlFor = `exampleInput${innerText}`;
+      htmlElementss.labelLogin.innerText = innerText;
 
-      htmlElements.inputLogin = document.createElement("input");
-      htmlElements.inputLogin.classList.add("form-control");
-      htmlElements.inputLogin.type = type;
-      htmlElements.inputLogin.id = `exampleInput${innerText}`;
-      htmlElements.inputLogin.placeholder = `Enter you ${innerText.toLowerCase()}`;
-      htmlElements.inputLogin.ariaDescribedby = "emailHelp";
+      htmlElementss.inputLogin = document.createElement("input");
+      htmlElementss.inputLogin.classList.add("form-control");
+      htmlElementss.inputLogin.type = type;
+      htmlElementss.inputLogin.id = `exampleInput${innerText}`;
+      htmlElementss.inputLogin.placeholder = `Enter you ${innerText.toLowerCase()}`;
+      htmlElementss.inputLogin.ariaDescribedby = "emailHelp";
 
-      htmlElements.formLogin.appendChild(htmlElements.divFormgroup);
-      htmlElements.divFormgroup.appendChild(htmlElements.labelLogin);
-      htmlElements.divFormgroup.appendChild(htmlElements.inputLogin);
+      htmlElementss.formLogin.appendChild(htmlElementss.divFormgroup);
+      htmlElementss.divFormgroup.appendChild(htmlElementss.labelLogin);
+      htmlElementss.divFormgroup.appendChild(htmlElementss.inputLogin);
     }
 
-    
-    htmlElements.divMasterInfo.appendChild(htmlElements.formLogin);
-    htmlElements.formLogin.appendChild(htmlElements.h2MasterInfo);
+    htmlElementss.divMasterInfo.appendChild(htmlElementss.formLogin);
+    htmlElementss.formLogin.appendChild(htmlElementss.h2MasterInfo);
 
     new CreatingGroupElements("Loggin", "text");
     new CreatingGroupElements("Password", "password");
 
-    htmlElements.formLogin.appendChild(htmlElements.formButton);
-    htmlElements.formButton.addEventListener("click", onButtonCheckPassword);
+    htmlElementss.formLogin.appendChild(htmlElementss.formButton);
+    htmlElementss.formButton.addEventListener("click", onButtonCheckPassword);
   }
 
   createElement();
@@ -89,7 +92,7 @@ function Login() {
     loginName.classList.remove("border-danger", "border-success");
     pasword.classList.remove("border-danger", "border-success");
 
-    let isLogged = false;
+  
 
     masterArray.forEach(function(item) {
       if (pasword.value === item.pasword && loginName.value === item.login) {
@@ -106,10 +109,9 @@ function Login() {
       pasword.classList.remove("border-danger");
       loginName.classList.add("border-success");
       pasword.classList.add("border-success");
-      htmlElements.divMasterInfo.classList.add("hidden");
-      htmlElements.output.classList.remove("hidden");
+      htmlElementss.divMasterInfo.classList.add("hidden");
+      htmlElementss.output.classList.remove("hidden");
       new Book();
-    
     } else {
       loginName.classList.add("border", "border-danger");
       pasword.classList.add("border", "border-danger");

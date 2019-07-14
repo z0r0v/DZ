@@ -1,18 +1,16 @@
-const htmlElement = {
-  outputClock:document.querySelector('.outputClock'),
-}
-
-
+const htmlElements = {
+  outputClock: document.querySelector(".outputClock")
+};
 
 function onClockNextTick() {
   const cirrentTime = new Date();
   const timeStrong = cirrentTime.toTimeString();
-  const timeShort = timeStrong.split(' ')[0];
-  htmlElement.outputClock.innerText = timeShort;
+  const timeShort = timeStrong.split(" ")[0];
+  htmlElements.outputClock.innerText = timeShort;
 }
 
-function Clock(){
-  console.log(htmlElement.outputClock);
+function Clock() {
+  console.log(htmlElements.outputClock);
 }
 
 Clock.prototype.init = function() {
@@ -20,4 +18,4 @@ Clock.prototype.init = function() {
   onClockNextTick();
 };
 
-export {Clock};
+export { Clock };
