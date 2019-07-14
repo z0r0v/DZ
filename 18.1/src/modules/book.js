@@ -1,5 +1,7 @@
 import { masterNameCategogy } from "./login.js";
-import { bookArray } from "./carDatabase.js";
+import { masterBook } from "./login.js";
+
+// import { bookArray1, bookArray2,} from "./carDatabase.js";
 import { Clock } from "./clock.js";
 
 const htmlElement = {
@@ -24,7 +26,8 @@ function CreatTh(text) {
 function renderBook() {
   htmlElement.bookTbody.innerText = "";
   let i = 0;
-  bookArray.forEach(function(element) {
+ 
+  masterBook.forEach(function(element) {
     creatBoofing(
       ++i,
       element.time,
@@ -143,7 +146,7 @@ function chengeWork() {
     const elements = htmlElement.bookTbody.getElementsByTagName("tr");
     const array = Array.from(elements);
     const index = array.indexOf(event.path[2]);
-    bookArray[index].work = htmlElement.cheInputWorke.value;
+    masterBook[index].work = htmlElement.cheInputWorke.value;
     renderBook();
   }
 }
@@ -152,7 +155,7 @@ function onButtonIcoClearClicked() {
   const elements = htmlElement.bookTbody.getElementsByTagName("tr");
   const array = Array.from(elements);
   const index = array.indexOf(event.path[2]);
-  bookArray.splice(index, 1);
+  masterBook.splice(index, 1);
   renderBook();
 }
 
@@ -229,7 +232,7 @@ function onButtonToBookClicked() {
   let carMileage = document.getElementById("formGroupExampleInputCarMileage")
     .value;
   let price = document.getElementById("formGroupExampleInputPrice").value;
-  bookArray.push({
+  masterBook.push({
     time,
     brand,
     phone,
@@ -240,7 +243,7 @@ function onButtonToBookClicked() {
     price
   });
 
-  bookArray.sort(function(a, b) {
+  masterBook.sort(function(a, b) {
     if (a.time > b.time) {
       return 1;
     }

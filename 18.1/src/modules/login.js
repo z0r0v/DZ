@@ -2,6 +2,7 @@ import { masterArray } from "./materDataBase.js";
 import {Book} from './book.js'
 
 export let masterNameCategogy;
+export let masterBook;
 
 
 const htmlElements = {
@@ -11,7 +12,6 @@ const htmlElements = {
   output:document.querySelector(".output"),
  
 };
-
 
 
 function Login() {
@@ -93,7 +93,8 @@ function Login() {
           item.LastName
         }. Category: ${item.category}`;
         isLogged = true;
-        return isLogged;
+        masterBook = item.book;
+        return isLogged, masterBook;
       }
     });
     if (isLogged) {

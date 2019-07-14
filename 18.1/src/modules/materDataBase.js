@@ -1,3 +1,7 @@
+import{bookArrayKshishtykov} from './carDatabase.js';
+import{bookArrayPetrovich} from './carDatabase.js';
+
+
 const masterArray = [
   {
     login: "a",
@@ -9,7 +13,8 @@ const masterArray = [
       masterArray[this].dateEmployment - new Date().getDate();
     },
     categoryHired: "3",
-    category: "3" //Придумать как поситать категорию;
+    category: "3", //Придумать как поситать категорию;
+    book:bookArrayKshishtykov
   },
   {
     login: "b",
@@ -21,7 +26,8 @@ const masterArray = [
       masterArray[this].dateEmployment - new Date().getDate();
     },
     categoryHired: "3",
-    category: "3" //Придумать как поситать категорию;
+    category: "3", //Придумать как поситать категорию;
+    book:bookArrayPetrovich
   }
 ];
 
