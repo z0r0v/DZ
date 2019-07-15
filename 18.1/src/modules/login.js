@@ -15,6 +15,7 @@ const htmlElementss = {
 };
 
 htmlElementss.buttonLogout.addEventListener("click", onLogoutCuttonclick);
+
 function onLogoutCuttonclick() {
   isLogged = false;
   htmlElementss.divMasterInfo.classList.remove("hidden");
@@ -22,8 +23,6 @@ function onLogoutCuttonclick() {
   htmlElementss.divMasterInToBook.classList.add("hidden");
   //отрисовать статически забрать по другому!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   htmlElementss.inputLogin.value ="";
- 
-
 }
 
 function Login() {
@@ -93,8 +92,6 @@ function Login() {
 
     loginName.classList.remove("border-danger", "border-success");
     pasword.classList.remove("border-danger", "border-success");
-
-  
 
     masterArray.forEach(function(item) {
       if (pasword.value === item.pasword && loginName.value === item.login) {
