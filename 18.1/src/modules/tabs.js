@@ -17,11 +17,8 @@ function Tabs() {
     });
 
     event.path[0].classList.add("disabled");
-
     const mode = event.path[0].dataset.mode;
-
     const master = htmlElements.tabs[0].children[2];
-
     const auto = htmlElements.tabs[0].children[0];
     const work = htmlElements.tabs[0].children[1];
     const arrayTabs = Array.from(htmlElements.tabs[0].children);

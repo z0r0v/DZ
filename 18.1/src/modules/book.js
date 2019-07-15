@@ -11,7 +11,9 @@ const htmlElements = {
   bookTable: document.querySelector(".table"),
   thead: document.querySelector(".table > thead"),
   bookTbody: document.querySelector(".table > tbody"),
-  tr: document.querySelector("thead > tr")
+  tr: document.querySelector("thead > tr"),
+  buttonBook:document.querySelector("form > input"),
+  divMasterInToBook:document.querySelector("div.shadow-sm.p-3.mb-5.bg-white.rounded.col-6.offset-3.mt-5"),
 };
 
 function CreatTh(text) {
@@ -159,66 +161,7 @@ function onButtonIcoClearClicked() {
   renderBook();
 }
 
-//Нужно вынести в другой модуль
-function CreatingGroupElements(value, innerText, type) {
-  htmlElements.divFormGroup = document.createElement("div");
-  htmlElements.divFormGroup.classList.add("form-group");
-
-  htmlElements.labelFormGroup = document.createElement("label");
-  htmlElements.labelFormGroup.htmlFor = `formGroupExampleInput${value}`;
-  htmlElements.labelFormGroup.innerText = innerText;
-
-  htmlElements.inputFormGroup = document.createElement("input");
-  htmlElements.inputFormGroup.type = type;
-  htmlElements.inputFormGroup.classList.add("form-control");
-  htmlElements.inputFormGroup.id = `formGroupExampleInput${value}`;
-  htmlElements.inputFormGroup.placeholder = `Enter ${innerText.toLowerCase()}`;
-  htmlElements.inputFormGroup.value = null;
-
-  htmlElements.divFormGroup.appendChild(htmlElements.labelFormGroup);
-  htmlElements.divFormGroup.appendChild(htmlElements.inputFormGroup);
-  htmlElements.form.appendChild(htmlElements.divFormGroup);
-}
-
-function renderMasterInToBook() {
-  htmlElements.divMasterInToBook = document.createElement("div");
-  htmlElements.divMasterInToBook.classList.add(
-    "shadow-sm",
-    "p-3",
-    "mb-5",
-    "bg-white",
-    "rounded",
-    "col-6",
-    "offset-3",
-    "mt-5"
-  );
-
-  htmlElements.divMasterInToBook.dataMode = "masterInToBook";
-  htmlElements.h2MasterInToBook = document.createElement("h2");
-  htmlElements.h2MasterInToBook.innerText = "Book To Master";
-  htmlElements.h2MasterInToBook.classList.add("text-center");
-
-  htmlElements.form = document.createElement("form");
-  htmlElements.buttonToBook = document.createElement("input");
-  htmlElements.buttonToBook.type = "button";
-  htmlElements.buttonToBook.classList.add("btn", "btn-primary");
-  htmlElements.buttonToBook.value = "Book";
-  htmlElements.buttonToBook.addEventListener("click", onButtonToBookClicked);
-
-  new CreatingGroupElements("Time", "Book time", "time");
-  new CreatingGroupElements("Brand", "Car brand", "text");
-  new CreatingGroupElements("Phone", "Owner's phone number", "tel");
-  new CreatingGroupElements("Name", "Owner name", "text");
-  new CreatingGroupElements("Work", "Type of work performed", "text");
-  new CreatingGroupElements("RegisterSign", "Register sign", "number");
-  new CreatingGroupElements("CarMileage", "Car mileage", "number");
-  new CreatingGroupElements("Price", "Price", "number");
-
-  htmlElements.divMaster.appendChild(htmlElements.divMasterInToBook);
-  htmlElements.divMasterInToBook.appendChild(htmlElements.h2MasterInToBook);
-  htmlElements.divMasterInToBook.appendChild(htmlElements.form);
-  htmlElements.form.appendChild(htmlElements.buttonToBook);
-}
+htmlElements.buttonBook.addEventListener("click", onButtonToBookClicked);
 
 function onButtonToBookClicked() {
   let time = document.getElementById("formGroupExampleInputTime").value;
@@ -253,38 +196,35 @@ function onButtonToBookClicked() {
     return 0;
   });
 
-  htmlElements.divMasterInToBook.innerText = null;
-  htmlElements.divMasterInToBook.classList.remove(
-    "shadow-sm",
-    "p-3",
-    "mb-5",
-    "bg-white",
-    "rounded",
-    "col-6",
-    "offset-3"
-  );
+  htmlElements.form = document.querySelector("div.shadow-sm.p-3 > form");
+  const f = htmlElements.form.getElementsByTagName('input');
+  const arrayInput = Array.from(f);
+  arrayInput.forEach((element)=>{
+    element.value = "";
+  })
+  htmlElements.buttonBook.value ="Book";
 
-  renderMasterInToBook();
   renderBook();
 }
 
+new CreatTh("№");
+new CreatTh("Time");
+new CreatTh("Brand");
+new CreatTh("Phone");
+new CreatTh("Name");
+new CreatTh("Work");
+new CreatTh("Submit");
+
 function creatElement() {
-  new CreatTh("№");
-  new CreatTh("Time");
-  new CreatTh("Brand");
-  new CreatTh("Phone");
-  new CreatTh("Name");
-  new CreatTh("Work");
-  new CreatTh("Submit");
   renderBook();
   //переодически нужно рендерить renderBook чтобы перекрашивался
   let renderBookInterval = setInterval(renderBook, 180000);
-  renderMasterInToBook();
 }
 
 function Book() {
   htmlElements.h2MasterInfo.innerText = masterNameCategogy;
   Clock.prototype.init();
+
   creatElement();
 }
 

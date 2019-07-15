@@ -10,7 +10,8 @@ const htmlElementss = {
   tabs: document.querySelector(".tabs"),
   divMaster: document.querySelector(".masterInfo"),
   output: document.querySelector(".output"),
-  buttonLogout: document.querySelector(".masterInfo>.output>.row>input")
+  buttonLogout: document.querySelector(".masterInfo>.output>.row>input"),
+  divMasterInToBook:document.querySelector("div.shadow-sm.p-3.mb-5.bg-white.rounded.col-6.offset-3.mt-5"),
 };
 
 htmlElementss.buttonLogout.addEventListener("click", onLogoutCuttonclick);
@@ -18,6 +19,7 @@ function onLogoutCuttonclick() {
   isLogged = false;
   htmlElementss.divMasterInfo.classList.remove("hidden");
   htmlElementss.output.classList.add("hidden");
+  htmlElementss.divMasterInToBook.classList.add("hidden");
   //отрисовать статически забрать по другому!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   htmlElementss.inputLogin.value ="";
  
@@ -111,6 +113,7 @@ function Login() {
       pasword.classList.add("border-success");
       htmlElementss.divMasterInfo.classList.add("hidden");
       htmlElementss.output.classList.remove("hidden");
+      htmlElementss.divMasterInToBook.classList.remove("hidden");
       new Book();
     } else {
       loginName.classList.add("border", "border-danger");
