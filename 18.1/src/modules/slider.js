@@ -26,7 +26,9 @@ function renderSlider() {
   }
 }
 
-function Slider() {
+function Slider() {}
+
+Slider.prototype.init = function(){
   renderSlider();
 }
 
