@@ -2,6 +2,8 @@ import {makeSyncDelay} from "./syncDelay.js";
 import {runSetTimeOut} from "./setTimeout.js";
 import runXhr from "./xmlHttpRequest.js";
 import {addEventListener} from "./buttonClick.js";
+import {MakePromise} from "./promise.js";
+
 
 
 const url1 = "https://jsonplaceholder.typicode.com/photos/1";
@@ -17,5 +19,9 @@ runXhr("url1", url1);
 runXhr("url2", url2);
 runXhr("url3", url3);
 addEventListener('btn');
+
+const promise = new MakePromise
+promise.init();
+
 
 console.log('sync code end');
