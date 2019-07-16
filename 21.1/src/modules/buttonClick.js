@@ -5,13 +5,14 @@ const htmlElements = {
 };
 
 const addEventListener = (name) => {
-  const before = new Date().getTime();
-  htmlElements.button.addEventListener('click', doSomething);
-
   const doSomething = () => {
     const after = new Date().getTime();
     log(name, before, after);
   }
+  
+  const before = new Date().getTime();
+  htmlElements.button.addEventListener('click', doSomething);
 };
+
 
 export {addEventListener};

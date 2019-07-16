@@ -4,7 +4,7 @@ const runSetTimeOut = (name, milliseconds)=>{
 
   const getLeadTime = ()=>{
     const after = new Date().getTime();
-    log(name, before, after, `putative:${milliseconds}`);
+    log(name, before, after, ` putative: ${milliseconds};`);
   }
 
   setTimeout(getLeadTime, milliseconds);
