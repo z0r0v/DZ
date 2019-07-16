@@ -1,0 +1,22 @@
+.container{
+  background-color: rgb(71, 69, 69);
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  max-width: 320px;
+  margin: 50px;
+  border-radius: 8px;
+  padding: 50px;
+  
+}
+.container a{
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  padding: 5px;
+  font-size: 25px;
+}
+
+.container a:hover{
+  text-decoration:underline;
+}
