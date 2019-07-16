@@ -1,27 +1,16 @@
 import log from "./logger.js";
+// ОПИСАТЬ ЗАМЫКАНИЯ
+const name = "promis";
 
-// makePromise closure in  module makePromise
-function MakePromise(name){
-   // before closure in  makePromise
-   const before = new Date().getTime();
-  return new Promise(function(resolve){
-      resolve(name)
+const before = new Date().getTime();
+const promise = new Promise(function(resolve){
+      resolve(name);
     })
-     // after closure in  makeSyncDelay
-
-
-}
-
-MakePromise.prototype.init = function(){
- 
-  makePromise("promise").then(function(ms) {
+    promise.then(function(name) {
+      const after = new Date().getTime();
     log(name, before, after);
   });
-  const after = new Date().getTime();
-
-}
 
 
 
-
-export {MakePromise};
+export {promise};

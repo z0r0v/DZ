@@ -2,7 +2,7 @@ import {makeSyncDelay} from "./syncDelay.js";
 import {runSetTimeOut} from "./setTimeout.js";
 import runXhr from "./xmlHttpRequest.js";
 import {addEventListener} from "./buttonClick.js";
-import {MakePromise} from "./promise.js";
+import {promise} from "./promise.js";
 
 
 
@@ -20,8 +20,7 @@ runXhr("url2", url2);
 runXhr("url3", url3);
 addEventListener('btn');
 
-const promise = new MakePromise
-promise.init();
+
 
 
 console.log('sync code end');
