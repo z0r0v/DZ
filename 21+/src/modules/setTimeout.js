@@ -1,6 +1,6 @@
 import log from "./logger.js";
 
-  // runSetTimeOut closure in  module runSetTimeOut
+  // runSetTimeOut closure in  module setTimeout
 const runSetTimeOut = (name, milliseconds) => {
     // before closure in runSetTimeOut
   const before = new Date().getTime();

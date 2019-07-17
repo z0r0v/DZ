@@ -1,14 +1,12 @@
 import log from './logger.js'
 
-   // htmlElements closure in  module addEventListener
+   // htmlElements closure in  module buttonClick
 
 const htmlElements = {
   button:document.querySelector("#button"),
 };
 
-   // addEventListener closure in  module addEventListener
 const addEventListener = (name) => {
-
    // doSomething closure in  addEventListener
   const doSomething = () => {
       // after closure in  doSomething

@@ -1,6 +1,6 @@
 import log from './logger.js'
 
-  // makeSyncDelay closure in  module makeSyncDelay
+  // makeSyncDelay closure in  module syncDelay
 const makeSyncDelay = (name, seconds)=>{
    // before closure in  makeSyncDelay
   const before = new Date().getTime();

@@ -4,6 +4,7 @@ import runXhr from "./xmlHttpRequest.js";
 import {addEventListener} from "./buttonClick.js";
 import {promise} from "./promise.js";
 import {makefetch} from "./fetch.js";
+import {jQuery} from "./jQuery.js";
 
 
 
@@ -22,6 +23,7 @@ runXhr("url 2:", url2);
 runXhr("url 3:", url3);
 addEventListener('btn');
 makefetch(url1);
+jQuery();
 
 
 

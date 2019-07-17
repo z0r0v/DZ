@@ -1,6 +1,6 @@
 import log from './logger.js'
 
-  // runXhr closure in  module runXhr
+  // runXhr closure in  module xmlHttpRequest
 
 const runXhr = (name, url) => {
   // before closure in runXhr
