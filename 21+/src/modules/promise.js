@@ -1,7 +1,7 @@
 import log from "./logger.js";
+
 // ОПИСАТЬ ЗАМЫКАНИЯ
 const name = "promis";
-
 const before = new Date().getTime();
 const promise = new Promise(function(resolve){
       resolve(name);
