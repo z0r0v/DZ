@@ -1,22 +1,24 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
 
-*{
-  font-family: 'Roboto', sans-serif;
+* {
+  font-family: "Roboto", sans-serif;
 }
 
-:root{
-  --may-color-bg1:ghostwhite;
-  --may-color-bg2:black;
+:root {
+  --may-color-bg1: ghostwhite;
+  --may-color-bg2: black;
 }
-.nav{
+.nav {
   /* margin-top: 20px; */
   background-color: white;
   border-radius: 5px;
   padding: 10px;
 }
 
-.table_scrol{
+.table_scrol {
   overflow-x: auto;
+  border-radius: 5px;
+  /* border: solid silver 1px; */
 }
 
 .fa-times-circle,
@@ -27,28 +29,39 @@
 .outputClock {
   font-size: 25px;
 }
-.masterInfo, .workPlan, .autoInfo {
+.masterInfo,
+.workPlan,
+.autoInfo {
   /* margin-top: 100px; */
 }
 
-.autoInfo{
+.autoInfo {
   background-color: var(--white);
   /* padding: 5%; */
   border-radius: 5px;
-} 
+}
 
 .output {
   background-color: var(--white);
   padding: 5%;
   border-radius: 5px;
 }
+.logOutClock {
+  border-radius: 5px;
+  border: solid silver 1px;
+}
 
-.slide, .slide1, .slide2, .slide3, .slide4, .slide5{
+.slide,
+.slide1,
+.slide2,
+.slide3,
+.slide4,
+.slide5 {
   background-attachment: fixed;
-  transition: background-image  .5s linear;
+  transition: background-image 0.5s linear;
 
-  background-position:center;
-  background-size:100%;
+  background-position: center;
+  background-size: 100%;
   background-repeat: no-repeat;
 }
 
@@ -76,8 +89,6 @@
   background-image: url(https://img2.akspic.ru/image/35494-chernyj_i_belyj-bmw_5_series-avtomobil-bmv_m5-bmw_3_series_e46-750x1334.jpg);
 }
 
-.hidden{
+.hidden {
   display: none;
 }
-
-
