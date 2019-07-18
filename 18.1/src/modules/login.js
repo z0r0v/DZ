@@ -6,16 +6,13 @@ export let masterBook;
 let isLogged = false;
 
 const htmlElementss = {
-  container: document.querySelector(".container"),
-  tabs: document.querySelector(".tabs"),
-  divMaster: document.querySelector(".masterInfo"),
   output: document.querySelector(".output"),
   buttonLogout: document.querySelector(".masterInfo>.output>.row>input"),
   divMasterInToBook:document.querySelector("div.shadow-sm.p-3.mb-5.bg-white.rounded.col-6.offset-3.mt-5"),
   formButton:document.querySelector("div.col-md-auto.mt-5 > form > input"),
   inputLogin:document.getElementById('exampleInputLoggin'),
   inputPasword:document.getElementById('exampleInputPassword'),
-  divMasterInfo:document.querySelector("div.masterInfo.col-sm-12.col-md-12.col-lg-12 > div.col-md-auto.mt-5 > form"),
+  divMasterInfo:document.querySelector("div.col-md-auto.mt-5 > form"),
 };
 
 
