@@ -3,7 +3,7 @@ import { masterBook } from "./login.js";
 import { Clock } from "./clock.js";
 
 const htmlElements = {
-  h2MasterInfo: document.querySelector("div>h2"),
+  h2MasterInfo: document.querySelector("div>div>h3"),
   bookTbody: document.querySelector(".table > tbody"),
   buttonBook:document.querySelector(".bookButton"),
 };
@@ -178,7 +178,7 @@ const onButtonToBookClicked = () => {
     return 0;
   });
 
-  htmlElements.form = document.querySelector("div.shadow-sm.p-3 > form");
+  htmlElements.form = document.querySelector(".bookForm");
   const f = htmlElements.form.getElementsByTagName('input');
   const arrayInput = Array.from(f);
   arrayInput.forEach((element)=>{

@@ -7,13 +7,15 @@ let isLogged = false;
 
 const htmlElements = {
   output: document.querySelector(".output"),
-  buttonLogout: document.querySelector(".masterInfo>.output>.row>input"),
-  divMasterInToBook:document.querySelector("div.shadow-sm.p-3.mb-5.bg-white.rounded.col-6.offset-3.mt-5"),
+  buttonLogout: document.querySelector(".logOut"),
+  divMasterInToBook:document.querySelector(".book"),
   formButton:document.querySelector("div.col-md-auto.mt-5 > form > input"),
   inputLogin:document.getElementById('exampleInputLoggin'),
   inputPasword:document.getElementById('exampleInputPassword'),
   divMasterInfo:document.querySelector("div.col-md-auto.mt-5 > form"),
-  divNav:document.querySelector(".divNav"),
+  divNav:document.querySelector("div.divNav"),
+  divLogin:document.querySelector(".login "),
+  masterInfo:document.querySelector(".masterInfo"),
 };
 
 
@@ -22,14 +24,14 @@ htmlElements.formButton.addEventListener("click", onButtonCheckPassword);
 
 function onLogoutCuttonclick() {
   isLogged = false;
-  htmlElements.divMasterInfo.classList.remove("hidden");
-  htmlElements.output.classList.add("hidden");
-  htmlElements.divMasterInToBook.classList.add("hidden");
+  htmlElements.divLogin.classList.remove("hidden");
+  htmlElements.masterInfo.classList.add("hidden");
+  htmlElements.divNav.classList.add("hidden");
+
   htmlElements.inputLogin.value = null;
   htmlElements.inputPasword.value = null;
   htmlElements.inputLogin.placeholder = "Enter you loggin";
   htmlElements.inputPasword.placeholder = "Enter you password";
-
 }
 
 function onButtonCheckPassword() {
@@ -53,10 +55,11 @@ function onButtonCheckPassword() {
     pasword.classList.remove("border-danger");
     loginName.classList.add("border-success");
     pasword.classList.add("border-success");
-    htmlElements.divMasterInfo.classList.add("hidden");
-    htmlElements.output.classList.remove("hidden");
-    htmlElements.divMasterInToBook.classList.remove("hidden");
+
+    htmlElements.divLogin.classList.add("hidden");
+    htmlElements.masterInfo.classList.remove("hidden");
     htmlElements.divNav.classList.remove("hidden");
+   
 
     new Book();
   } else {
