@@ -9,7 +9,7 @@
   --may-color-bg2: black;
 }
 .nav {
-  /* margin-top: 20px; */
+
   background-color: white;
   border-radius: 5px;
 }
@@ -33,15 +33,10 @@
 .outputClock {
   font-size: 25px;
 }
-.masterInfo,
-.workPlan,
-.autoInfo {
-  /* margin-top: 100px; */
-}
+
 
 .autoInfo {
   background-color: var(--white);
-  /* padding: 5%; */
   border-radius: 5px;
 }
 
