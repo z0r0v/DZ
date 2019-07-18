@@ -10,7 +10,6 @@ const newLogin = new Login();
 function init(){
   newLogin.init();
   newSlider.init();
-  // tabs.init();
 }
 
 init();

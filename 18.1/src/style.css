@@ -9,7 +9,7 @@
   --may-color-bg2:black;
 }
 .nav{
-  margin-top: 20px;
+  /* margin-top: 20px; */
   background-color: white;
   border-radius: 5px;
   padding: 10px;
@@ -28,8 +28,14 @@
   font-size: 25px;
 }
 .masterInfo, .workPlan, .autoInfo {
-  margin-top: 100px;
+  /* margin-top: 100px; */
 }
+
+.autoInfo{
+  background-color: var(--white);
+  /* padding: 5%; */
+  border-radius: 5px;
+} 
 
 .output {
   background-color: var(--white);
@@ -74,8 +80,4 @@
   display: none;
 }
 
-.autoInfo{
-  background-color: var(--white);
-  padding: 5%;
-  border-radius: 5px;
-} 
+

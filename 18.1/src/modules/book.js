@@ -5,8 +5,9 @@ import { Clock } from "./clock.js";
 const htmlElements = {
   h2MasterInfo: document.querySelector("div>h2"),
   bookTbody: document.querySelector(".table > tbody"),
-  buttonBook:document.querySelector("form > input"),
+  buttonBook:document.querySelector(".bookButton"),
 };
+
 
 const renderBook = () => {
   htmlElements.bookTbody.innerText = "";
@@ -143,20 +144,30 @@ const onButtonIcoClearClicked = () => {
 };
 
 
-
 const infoBook = {
-  time:document.getElementById("formGroupExampleInputTime").value,
-  brand:document.getElementById("formGroupExampleInputBrand").value,
-  phone:document.getElementById("formGroupExampleInputPhone").value,
-  name:document.getElementById("formGroupExampleInputName").value,
-  work:document.getElementById("formGroupExampleInputWork").value,
-  registerSign:document.getElementById("formGroupExampleInputRegisterSign").value,
-  carMileage:document.getElementById("formGroupExampleInputCarMileage").value,
-  price:document.getElementById("formGroupExampleInputPrice").value,
+  time:document.getElementById("formGroupExampleInputTime"),
+  brand:document.getElementById("formGroupExampleInputBrand"),
+  phone:document.getElementById("formGroupExampleInputPhone"),
+  name:document.getElementById("formGroupExampleInputName"),
+  work:document.getElementById("formGroupExampleInputWork"),
+  registerSign:document.getElementById("formGroupExampleInputRegisterSign"),
+  carMileage:document.getElementById("formGroupExampleInputCarMileage"),
+  price:document.getElementById("formGroupExampleInputPrice"),
 };
 
 const onButtonToBookClicked = () => {
-  masterBook.push(infoBook);
+  masterBook.push(
+    {
+    time:infoBook.time.value,
+    brand:infoBook.brand.value,
+    phone:infoBook.phone.value,
+    name:infoBook.name.value,
+    work:infoBook.work.value,
+    registerSign:infoBook.registerSign.value,
+    carMileage:infoBook.carMileage.value,
+    price:infoBook.price.value,
+  }
+  );
   masterBook.sort(function(a, b) {
     if (a.time > b.time) {
       return 1;
@@ -167,7 +178,6 @@ const onButtonToBookClicked = () => {
     return 0;
   });
 
- 
   htmlElements.form = document.querySelector("div.shadow-sm.p-3 > form");
   const f = htmlElements.form.getElementsByTagName('input');
   const arrayInput = Array.from(f);
@@ -175,7 +185,6 @@ const onButtonToBookClicked = () => {
     element.value = "";
   });
   htmlElements.buttonBook.value ="Book";
-
   renderBook();
 };
 
