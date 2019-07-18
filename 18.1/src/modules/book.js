@@ -3,22 +3,12 @@ import { masterBook } from "./login.js";
 import { Clock } from "./clock.js";
 
 const htmlElements = {
-  container: document.querySelector(".container"),
-  tabs: document.querySelector(".tabs"),
-  divMaster: document.querySelector(".masterInfo"),
-  output: document.querySelector(".output"),
   h2MasterInfo: document.querySelector("div>h2"),
-  bookTable: document.querySelector(".table"),
-  thead: document.querySelector(".table > thead"),
   bookTbody: document.querySelector(".table > tbody"),
-  tr: document.querySelector("thead > tr"),
   buttonBook:document.querySelector("form > input"),
-  divMasterInToBook:document.querySelector("div.shadow-sm.p-3.mb-5.bg-white.rounded.col-6.offset-3.mt-5"),
 };
 
-htmlElements.buttonBook.addEventListener("click", onButtonToBookClicked);
-
-function renderBook() {
+const renderBook = () => {
   htmlElements.bookTbody.innerText = "";
   masterBook.forEach(function(element, index) {
     creatBoofing(
@@ -30,7 +20,7 @@ function renderBook() {
       element.work
     );
   });
-}
+};
 
 
 const creatTable = () => {
@@ -45,7 +35,7 @@ const creatTable = () => {
   htmlElements.tdButtons.appendChild(htmlElements.buttonIcoClear);
   htmlElements.tdButtons.appendChild(htmlElements.buttonIcoCheck);
   htmlElements.trBookInfo.appendChild(htmlElements.tdButtons);
-}
+};
 
 const creatBoofing = (number, time, brand, phone, name, work) => {
   htmlElements.thNumber = document.createElement("th");
@@ -82,10 +72,10 @@ const creatBoofing = (number, time, brand, phone, name, work) => {
     onButtonIcoClearClicked
   );
   creatTable();
-}
+};
 
 ///перекраска тайма
-function onANavClicked() {
+const onANavClicked = () => {
   const cirrentTime = new Date();
   const timeStrong = cirrentTime.toTimeString();
   const timeShort = timeStrong.split(" ")[0];
@@ -111,11 +101,12 @@ function onANavClicked() {
       break;
     default:
       htmlElements.tdTime.classList.add("text-body");
-  }
-}
+  };
+};
 
 // Изменение контена для Work value
-function chengeWork() {
+const chengeWork = () => {
+  const workeCheTd = event.path[0];
   htmlElements.cheInputWorke = document.createElement("input");
   htmlElements.cheInputWorke.classList.add("col-md-12");
   htmlElements.cheButtontWorke = document.createElement("button");
@@ -128,7 +119,6 @@ function chengeWork() {
   );
   
   htmlElements.cheButtontWorke.addEventListener("click", aplayChengeWork);
-  const workeCheTd = event.path[0];
   htmlElements.cheInputWorke.value = workeCheTd.innerText;
   workeCheTd.innerText = "";
   workeCheTd.appendChild(htmlElements.cheInputWorke);
@@ -136,7 +126,7 @@ function chengeWork() {
   workeCheTd.removeEventListener("dblclick", chengeWork);
 };
 
-function aplayChengeWork() {
+const aplayChengeWork = () => {
   const elements = htmlElements.bookTbody.getElementsByTagName("tr");
   const array = Array.from(elements);
   const index = array.indexOf(event.path[2]);
@@ -144,13 +134,15 @@ function aplayChengeWork() {
   renderBook();
 };
 
-function onButtonIcoClearClicked() {
+const onButtonIcoClearClicked = () => {
   const elements = htmlElements.bookTbody.getElementsByTagName("tr");
   const array = Array.from(elements);
   const index = array.indexOf(event.path[2]);
   masterBook.splice(index, 1);
   renderBook();
 };
+
+
 
 const infoBook = {
   time:document.getElementById("formGroupExampleInputTime").value,
@@ -163,7 +155,7 @@ const infoBook = {
   price:document.getElementById("formGroupExampleInputPrice").value,
 };
 
-function onButtonToBookClicked() {
+const onButtonToBookClicked = () => {
   masterBook.push(infoBook);
   masterBook.sort(function(a, b) {
     if (a.time > b.time) {
@@ -175,17 +167,19 @@ function onButtonToBookClicked() {
     return 0;
   });
 
-
+ 
   htmlElements.form = document.querySelector("div.shadow-sm.p-3 > form");
   const f = htmlElements.form.getElementsByTagName('input');
   const arrayInput = Array.from(f);
   arrayInput.forEach((element)=>{
     element.value = "";
-  })
+  });
   htmlElements.buttonBook.value ="Book";
 
   renderBook();
-}
+};
+
+htmlElements.buttonBook.addEventListener("click", onButtonToBookClicked);
 
 function Book() {
   htmlElements.h2MasterInfo.innerText = masterNameCategogy;
