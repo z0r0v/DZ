@@ -72,8 +72,18 @@ const creatBoofing = (number, time, brand, phone, name, work) => {
     "click",
     onButtonIcoClearClicked
   );
+
+  htmlElements.buttonIcoCheck.addEventListener(
+    "click",
+    addInNewMasive
+  );
   creatTable();
 };
+
+const addInNewMasive = () =>{
+// тут берем дынные из масива и переносим в новый
+console.log(123);
+}
 
 ///перекраска тайма
 const onANavClicked = () => {

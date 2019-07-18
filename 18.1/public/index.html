@@ -77,7 +77,7 @@
             <div>
               <div class="output col-sm-12 col-md-12 col-lg-12 ">
                 <div class="logOutClock row col-sm-12 col-md-12 col-lg-12 p-3 m-0">
-                  <div class="outputClock col-md-4 col-lg-4 col-sm-12 text-center"></div>
+                   <div class="outputClock col-md-4 col-lg-4 col-sm-12 text-center"></div>
                   <input type="button" value="log out"
                     class="logOut btn btn-primary col-md-4 col-sm-4 offset-md-4 offset-lg-4"></button>
                 </div>
@@ -142,7 +142,7 @@
             </div>
           </div>
         </div>
-        <div class="autoInfo hidden col-sm-12 col-md-12 col-lg-12 mt-5 p-5">
+        <div class="autoInfo col-sm-12 col-md-12 col-lg-12 mt-5 p-5">
           <div>
             <h3>Марка: Фольквален Гольф 2005 год. </br>
               Пробег: 205 тыс.км </br>
@@ -150,11 +150,24 @@
               тел:+375 29 376 70 82</h3>
             <button class="btn btn-outline-primary col-3 offset-9">Распечатать</button>
             <h3>Выполняемый заказ:</h3>
-            <p>
-              Выполняемый заказ: Замена ремня ГРМ <span>00:40:01</span></br>
-              К ОПЛАТЕ: 150$
-            </p>
-            <table class="table">
+            <table class="table col-sm-12 col-md-12 col-lg-12 text-center">
+              <thead>
+                <tr>
+                  <th scope="col">Замена/ремонт</th>
+                  <th scope="col">Время в пути</th>
+                  <th scope="col">Общая стоимость</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>ГРМ</td>
+                  <td><span>00:40:01</span></td>
+                  <td>20$</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <table class="table col-sm-12 col-md-12 col-lg-12 text-center">
               <h4>Требует замены:</h4>
               <thead>
                 <tr>
@@ -190,7 +203,7 @@
                 </tr>
               </tbody>
             </table>
-            <table class="table">
+            <table class="table col-sm-12 col-md-12 col-lg-12 text-center">
               <h4>Ближайшая замена:</h4>
               <tbody>
                 <tr>
@@ -216,7 +229,7 @@
                 </tr>
               </tbody>
             </table>
-            <table class="table">
+            <table class="table col-sm-12 col-md-12 col-lg-12 text-center">
               <h4>Планируемая замена:</h4>
               <tbody>
                 <tr>
@@ -244,35 +257,73 @@
             </table>
           </div>
         </div>
-        <div class="workPlan col-sm-12 col-md-12 col-lg-12 mt-5 p-5 hidden">
-            <h3>Марка: Фольквален Гольф 2005 год. </br>
-              Пробег: 205 тыс.км </br>
-              Вдаделец: Игорь Константинович </br>
-              тел:+375 29 376 70 82</h3>
-            <form>
-                <div class="form-group">
-                  <label for="formGroupExampleInput">Пробег следующей замены</label>
-                  <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Пробег следующей замены">
-                </div>
-                <div class="form-group">
-                    <label for="formGroupExampleInput">Скоро нужна замена</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Пробег следующей замены">
-                  </div>
-                <div class="form-group">
-                  <label for="formGroupExampleInput2">Цена запчасти</label>
-                  <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Цена запчасти">
-                </div>
-                <div class="form-group">
-                    <label for="formGroupExampleInput2">Цена работ</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Цена работ">
-                  </div>
-                  <input type="button" class="bookButton btn btn-primary col-sm-12 col-md-6 col-lg-6 offset-md-3"
-                  value="Apllay">
-              </form>
+        <div class="workPlan col-sm-12 col-md-12 col-lg-12 mt-5 p-5">
+          <h3>Марка: Фольквален Гольф 2005 год. </br>
+            Пробег: 205 тыс.км </br>
+            Вдаделец: Игорь Константинович </br>
+            тел:+375 29 376 70 82</h3>
+          <form>
+            <div class="form-group">
+              <label for="formGroupExampleInput">Пробег следующей замены</label>
+              <input type="text" class="form-control" id="formGroupExampleInput1" placeholder="Пробег следующей замены">
+            </div>
+            <div class="form-group">
+              <label for="formGroupExampleInput">Скоро нужна замена</label>
+              <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Пробег следующей замены">
+            </div>
+            <div class="form-group">
+              <label for="formGroupExampleInput2">Цена запчасти</label>
+              <input type="text" class="form-control" id="formGroupExampleInput3" placeholder="Цена запчасти">
+            </div>
+            <div class="form-group">
+              <label for="formGroupExampleInput2">Цена работ</label>
+              <input type="text" class="form-control" id="formGroupExampleInput4" placeholder="Цена работ">
+            </div>
+            <input type="button" class="bookButton btn btn-primary col-sm-12 col-md-6 col-lg-6 offset-md-3"
+              value="Apllay">
+          </form>
 
-              таблица тут отображение че когда менялось
-              <button class="btn btn-outline-primary col-3 offset-9">Распечатать</button>
-           
+
+          <table class="table col-sm-12 col-md-12 col-lg-12 text-center">
+            <h4 class="mt-5">Заменены:</h4>
+            <thead>
+              <tr>
+                <th scope="col">№</th>
+                <th scope="col">Пробег</th>
+                <th scope="col">Дата</th>
+                <th scope="col">Запчать</th>
+                <th scope="col">Цена запчасти</th>
+                <th scope="col">Цена работы</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>205тыс.</td>
+                <td>22.04.2018</td>
+                <td>ГРМ</td>
+                <td>20$</td>
+                <td>20$</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>205тыс.</td>
+                <td>22.04.2018</td>
+                <td>ГРМ</td>
+                <td>20$</td>
+                <td>20$</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>205тыс.</td>
+                <td>22.04.2018</td>
+                <td>ГРМ</td>
+                <td>20$</td>
+                <td>20$</td>
+              </tr>
+            </tbody>
+          </table>
+          <button class="btn btn-outline-primary col-3 offset-9">Распечатать</button>
         </div>
       </div>
     </div>

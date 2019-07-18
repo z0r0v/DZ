@@ -6,7 +6,7 @@ function onClockNextTick() {
   const cirrentTime = new Date();
   const timeStrong = cirrentTime.toTimeString();
   const timeShort = timeStrong.split(" ")[0];
-  htmlElements.outputClock.innerText = timeShort;
+  htmlElements.outputClock.innerText = `Time: ${timeShort}`;
 }
 
 function Clock() {
