@@ -15,7 +15,9 @@
   padding: 10px;
 }
 
-
+.table_scrol{
+  overflow-x: auto;
+}
 
 .fa-times-circle,
 .fa-check-circle {

@@ -16,19 +16,13 @@ const htmlElements = {
   divMasterInToBook:document.querySelector("div.shadow-sm.p-3.mb-5.bg-white.rounded.col-6.offset-3.mt-5"),
 };
 
-function CreatTh(text) {
-  htmlElements.th = document.createElement("th");
-  htmlElements.th.scope = "col";
-  htmlElements.th.innerText = text;
-  htmlElements.tr.appendChild(htmlElements.th);
-}
+htmlElements.buttonBook.addEventListener("click", onButtonToBookClicked);
 
 function renderBook() {
   htmlElements.bookTbody.innerText = "";
-  let i = 0;
-  masterBook.forEach(function(element) {
+  masterBook.forEach(function(element, index) {
     creatBoofing(
-      ++i,
+      ++index,
       element.time,
       element.brand,
       element.phone,
@@ -38,51 +32,8 @@ function renderBook() {
   });
 }
 
-function creatBoofing(number, time, brand, phone, name, work) {
-  htmlElements.thNumber = document.createElement("th");
-  htmlElements.thNumber.innerText = number;
 
-  htmlElements.tdTime = document.createElement("td");
-  htmlElements.tdTime.innerText = time;
-  // перекраска таймера должна сейчас произойти
-  onANavClicked();
-
-  htmlElements.tdBrand = document.createElement("td");
-  htmlElements.tdBrand.innerText = brand;
-
-  htmlElements.tdPhone = document.createElement("td");
-  htmlElements.tdPhone.innerText = phone;
-
-  htmlElements.tdName = document.createElement("td");
-  htmlElements.tdName.innerText = name;
-
-  htmlElements.tdWork = document.createElement("td");
-  htmlElements.tdWork.innerText = work;
-
-  htmlElements.tdWork.addEventListener("dblclick", chengeWork);
-
-  htmlElements.tdButtons = document.createElement("td");
-
-  htmlElements.buttonIcoCheck = document.createElement("i");
-  htmlElements.buttonIcoCheck.classList.add(
-    "fa",
-    "fa-check-circle",
-    "fa-lg",
-    "text-success"
-  );
-
-  htmlElements.buttonIcoClear = document.createElement("i");
-  htmlElements.buttonIcoClear.classList.add(
-    "fa",
-    "fa-times-circle",
-    "fa-lg",
-    "text-danger"
-  );
-  htmlElements.buttonIcoClear.addEventListener(
-    "click",
-    onButtonIcoClearClicked
-  );
-
+const creatTable = () => {
   htmlElements.trBookInfo = document.createElement("tr");
   htmlElements.bookTbody.appendChild(htmlElements.trBookInfo);
   htmlElements.trBookInfo.appendChild(htmlElements.thNumber);
@@ -96,27 +47,66 @@ function creatBoofing(number, time, brand, phone, name, work) {
   htmlElements.trBookInfo.appendChild(htmlElements.tdButtons);
 }
 
+const creatBoofing = (number, time, brand, phone, name, work) => {
+  htmlElements.thNumber = document.createElement("th");
+  htmlElements.thNumber.innerText = number;
+  htmlElements.tdTime = document.createElement("td");
+  htmlElements.tdTime.innerText = time;
+  onANavClicked();
+  htmlElements.tdBrand = document.createElement("td");
+  htmlElements.tdBrand.innerText = brand;
+  htmlElements.tdPhone = document.createElement("td");
+  htmlElements.tdPhone.innerText = phone;
+  htmlElements.tdName = document.createElement("td");
+  htmlElements.tdName.innerText = name;
+  htmlElements.tdWork = document.createElement("td");
+  htmlElements.tdWork.innerText = work;
+  htmlElements.tdWork.addEventListener("dblclick", chengeWork);
+  htmlElements.tdButtons = document.createElement("td");
+  htmlElements.buttonIcoCheck = document.createElement("i");
+  htmlElements.buttonIcoCheck.classList.add(
+    "fa",
+    "fa-check-circle",
+    "fa-lg",
+    "text-success"
+  );
+  htmlElements.buttonIcoClear = document.createElement("i");
+  htmlElements.buttonIcoClear.classList.add(
+    "fa",
+    "fa-times-circle",
+    "fa-lg",
+    "text-danger"
+  );
+  htmlElements.buttonIcoClear.addEventListener(
+    "click",
+    onButtonIcoClearClicked
+  );
+  creatTable();
+}
+
 ///перекраска тайма
 function onANavClicked() {
   const cirrentTime = new Date();
   const timeStrong = cirrentTime.toTimeString();
   const timeShort = timeStrong.split(" ")[0];
   const arrayThisTime = timeShort.split(":");
-  let timeThis = arrayThisTime[0] * 3600000 + arrayThisTime[1] * 60000;
+  const hour = 3600000;
+  const minute = 60000;
+  let timeThis = arrayThisTime[0] * hour + arrayThisTime[1] * minute;
   const arrayBokeTime = htmlElements.tdTime.innerText.split(":");
-  let bookTime = arrayBokeTime[0] * 3600000 + arrayBokeTime[1] * 60000;
+  let bookTime = arrayBokeTime[0] * hour + arrayBokeTime[1] * minute;
   let difference = bookTime - timeThis;
+  const thirtyMinutes = 1800000;
+  const sixtyMinutes = 3600000;
 
   switch (true) {
     case difference <= 0:
       htmlElements.tdTime.classList.add("text-danger");
       break;
-    //30 Minets
-    case difference <= 1800000:
+    case difference <= thirtyMinutes:
       htmlElements.tdTime.classList.add("text-warning");
       break;
-    //60 Minets
-    case difference <= 3600000:
+    case difference <= sixtyMinutes:
       htmlElements.tdTime.classList.add("text-success");
       break;
     default:
@@ -138,21 +128,21 @@ function chengeWork() {
   );
   
   htmlElements.cheButtontWorke.addEventListener("click", aplayChengeWork);
+  const workeCheTd = event.path[0];
+  htmlElements.cheInputWorke.value = workeCheTd.innerText;
+  workeCheTd.innerText = "";
+  workeCheTd.appendChild(htmlElements.cheInputWorke);
+  workeCheTd.appendChild(htmlElements.cheButtontWorke);
+  workeCheTd.removeEventListener("dblclick", chengeWork);
+};
 
-  htmlElements.cheInputWorke.value = event.path[0].innerText;
-  event.path[0].innerText = "";
-  event.path[0].appendChild(htmlElements.cheInputWorke);
-  event.path[0].appendChild(htmlElements.cheButtontWorke);
-  event.path[0].removeEventListener("dblclick", chengeWork);
-
-  function aplayChengeWork() {
-    const elements = htmlElements.bookTbody.getElementsByTagName("tr");
-    const array = Array.from(elements);
-    const index = array.indexOf(event.path[2]);
-    masterBook[index].work = htmlElements.cheInputWorke.value;
-    renderBook();
-  }
-}
+function aplayChengeWork() {
+  const elements = htmlElements.bookTbody.getElementsByTagName("tr");
+  const array = Array.from(elements);
+  const index = array.indexOf(event.path[2]);
+  masterBook[index].work = htmlElements.cheInputWorke.value;
+  renderBook();
+};
 
 function onButtonIcoClearClicked() {
   const elements = htmlElements.bookTbody.getElementsByTagName("tr");
@@ -160,33 +150,21 @@ function onButtonIcoClearClicked() {
   const index = array.indexOf(event.path[2]);
   masterBook.splice(index, 1);
   renderBook();
-}
+};
 
-htmlElements.buttonBook.addEventListener("click", onButtonToBookClicked);
+const infoBook = {
+  time:document.getElementById("formGroupExampleInputTime").value,
+  brand:document.getElementById("formGroupExampleInputBrand").value,
+  phone:document.getElementById("formGroupExampleInputPhone").value,
+  name:document.getElementById("formGroupExampleInputName").value,
+  work:document.getElementById("formGroupExampleInputWork").value,
+  registerSign:document.getElementById("formGroupExampleInputRegisterSign").value,
+  carMileage:document.getElementById("formGroupExampleInputCarMileage").value,
+  price:document.getElementById("formGroupExampleInputPrice").value,
+};
 
 function onButtonToBookClicked() {
-  let time = document.getElementById("formGroupExampleInputTime").value;
-  let brand = document.getElementById("formGroupExampleInputBrand").value;
-  let phone = document.getElementById("formGroupExampleInputPhone").value;
-  let name = document.getElementById("formGroupExampleInputName").value;
-  let work = document.getElementById("formGroupExampleInputWork").value;
-  let registerSign = document.getElementById(
-    "formGroupExampleInputRegisterSign"
-  ).value;
-  let carMileage = document.getElementById("formGroupExampleInputCarMileage")
-    .value;
-  let price = document.getElementById("formGroupExampleInputPrice").value;
-  masterBook.push({
-    time,
-    brand,
-    phone,
-    name,
-    work,
-    registerSign,
-    carMileage,
-    price
-  });
-
+  masterBook.push(infoBook);
   masterBook.sort(function(a, b) {
     if (a.time > b.time) {
       return 1;
@@ -196,6 +174,7 @@ function onButtonToBookClicked() {
     }
     return 0;
   });
+
 
   htmlElements.form = document.querySelector("div.shadow-sm.p-3 > form");
   const f = htmlElements.form.getElementsByTagName('input');
@@ -208,25 +187,13 @@ function onButtonToBookClicked() {
   renderBook();
 }
 
-new CreatTh("№");
-new CreatTh("Time");
-new CreatTh("Brand");
-new CreatTh("Phone");
-new CreatTh("Name");
-new CreatTh("Work");
-new CreatTh("Submit");
-
-function creatElement() {
-  renderBook();
-  //переодически нужно рендерить renderBook чтобы перекрашивался
-  let renderBookInterval = setInterval(renderBook, 180000);
-}
-
 function Book() {
   htmlElements.h2MasterInfo.innerText = masterNameCategogy;
   Clock.prototype.init();
 
-  creatElement();
+  renderBook();
+   //переодически нужно рендерить renderBook чтобы перекрашивался
+  let renderBookInterval = setInterval(renderBook, 180000);
 }
 
 export { Book };

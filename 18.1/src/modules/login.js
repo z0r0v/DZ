@@ -12,82 +12,31 @@ const htmlElementss = {
   output: document.querySelector(".output"),
   buttonLogout: document.querySelector(".masterInfo>.output>.row>input"),
   divMasterInToBook:document.querySelector("div.shadow-sm.p-3.mb-5.bg-white.rounded.col-6.offset-3.mt-5"),
+  formButton:document.querySelector("div.col-md-auto.mt-5 > form > input"),
+  inputLogin:document.getElementById('exampleInputLoggin'),
+  inputPasword:document.getElementById('exampleInputPassword'),
+  divMasterInfo:document.querySelector("div.masterInfo.col-sm-12.col-md-12.col-lg-12 > div.col-md-auto.mt-5 > form"),
 };
 
+
 htmlElementss.buttonLogout.addEventListener("click", onLogoutCuttonclick);
+htmlElementss.formButton.addEventListener("click", onButtonCheckPassword);
 
 function onLogoutCuttonclick() {
   isLogged = false;
   htmlElementss.divMasterInfo.classList.remove("hidden");
   htmlElementss.output.classList.add("hidden");
   htmlElementss.divMasterInToBook.classList.add("hidden");
-  //отрисовать статически забрать по другому!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  htmlElementss.inputLogin.value ="";
-}
+  htmlElementss.inputLogin.value = null;
+  htmlElementss.inputPasword.value = null;
+  htmlElementss.inputLogin.placeholder = "Enter you loggin";
+  htmlElementss.inputPasword.placeholder = "Enter you password";
 
-
-function createElement() {
-  htmlElementss.divMasterInfo = document.createElement("div");
-  htmlElementss.divMasterInfo.classList.add("col-md-auto", "mt-5");
-  htmlElementss.divMasterInfo.dataMode = "masterInfo";
-
-  htmlElementss.tabs.appendChild(htmlElementss.divMaster);
-  htmlElementss.divMaster.appendChild(htmlElementss.divMasterInfo);
-
-  htmlElementss.h2MasterInfo = document.createElement("h2");
-  htmlElementss.h2MasterInfo.classList.add("text-center");
-  htmlElementss.h2MasterInfo.innerText = "Master Login";
-
-  htmlElementss.formLogin = document.createElement("form");
-  htmlElementss.formLogin.classList.add(
-    "col-md-8",
-    "offset-md-2",
-    "shadow-sm",
-    "p-3",
-    "mb-5",
-    "bg-white",
-    "rounded"
-  );
-
-  htmlElementss.formButton = document.createElement("input");
-  htmlElementss.formButton.type = "button";
-  htmlElementss.formButton.classList.add("btn", "btn-primary", "col-md-12");
-  htmlElementss.formButton.value = "Submit";
-
-  function CreatingGroupElements(innerText, type) {
-    htmlElementss.divFormgroup = document.createElement("div");
-    htmlElementss.divFormgroup.classList.add("form-group");
-
-    htmlElementss.labelLogin = document.createElement("label");
-    htmlElementss.labelLogin.htmlFor = `exampleInput${innerText}`;
-    htmlElementss.labelLogin.innerText = innerText;
-
-    htmlElementss.inputLogin = document.createElement("input");
-    htmlElementss.inputLogin.classList.add("form-control");
-    htmlElementss.inputLogin.type = type;
-    htmlElementss.inputLogin.id = `exampleInput${innerText}`;
-    htmlElementss.inputLogin.placeholder = `Enter you ${innerText.toLowerCase()}`;
-    htmlElementss.inputLogin.ariaDescribedby = "emailHelp";
-
-    htmlElementss.formLogin.appendChild(htmlElementss.divFormgroup);
-    htmlElementss.divFormgroup.appendChild(htmlElementss.labelLogin);
-    htmlElementss.divFormgroup.appendChild(htmlElementss.inputLogin);
-  }
-
-  htmlElementss.divMasterInfo.appendChild(htmlElementss.formLogin);
-  htmlElementss.formLogin.appendChild(htmlElementss.h2MasterInfo);
-
-  new CreatingGroupElements("Loggin", "text");
-  new CreatingGroupElements("Password", "password");
-
-  htmlElementss.formLogin.appendChild(htmlElementss.formButton);
-  htmlElementss.formButton.addEventListener("click", onButtonCheckPassword);
 }
 
 function onButtonCheckPassword() {
   const loginName = document.getElementById("exampleInputLoggin");
   const pasword = document.getElementById("exampleInputPassword");
-
   loginName.classList.remove("border-danger", "border-success");
   pasword.classList.remove("border-danger", "border-success");
 
@@ -124,7 +73,6 @@ function onButtonCheckPassword() {
 function Login() {}
 
 Login.prototype.init = function(){
-  createElement();
 }
 
 
