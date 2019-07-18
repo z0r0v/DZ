@@ -73,13 +73,7 @@ function onButtonCheckPassword() {
   return masterNameCategogy;
 }
 
-
-
 function Login() {}
-
-Login.prototype.init = function(){
-}
-
 
 
 export { Login };

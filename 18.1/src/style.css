@@ -54,9 +54,9 @@
   border-radius: 5px;
   border: solid silver 1px;
 }
-/* #accordion{
-  width: 100%;
-} */
+.workPlan{
+  background:white;
+}
 .slide,
 .slide1,
 .slide2,

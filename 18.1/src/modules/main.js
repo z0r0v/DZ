@@ -8,7 +8,7 @@ const newLogin = new Login();
 
 
 function init(){
-  newLogin.init();
+  // newLogin.init();
   newSlider.init();
 }
 

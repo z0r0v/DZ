@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -14,167 +15,269 @@
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script>
-  $( function() {
-    $( "#accordion" ).accordion(
-      {
-      collapsible: true,
-      heightStyle: "content",
-      collapsible: true,
-    }
-    );
-  } );
+    $(function () {
+      $("#accordion").accordion(
+        {
+          collapsible: true,
+          heightStyle: "content",
+          collapsible: true,
+        }
+      );
+    });
   </script>
 </head>
+
 <body>
   <!-- nav -->
-<section>
-  <div class="container">
-      <div class="divNav hidden">
-          <ul class="nav justify-content-center text-uppercase font-weight-bold col-12 mt-2">
-            <li class="nav-item col-sm-12 col-lg-4 col-md-4 text-center">
-              <a class="nav-link disabled" data-mode="Master" href="#">Master Info</a>
-            </li>
-            <li class="nav-item col-sm-12 col-lg-4 col-md-4 text-center">
-              <a class="nav-link" data-mode="Auto" href="#">Auto Info</a>
-            </li>
-            <li class="nav-item col-sm-12 col-lg-4 col-md-4 text-center">
-              <a class="nav-link" data-mode="Work" href="#">Work Plan</a>
-            </li>
-          </ul>
-        </div>
-  </div>
-</section>
-<!-- nav end -->
-<!-- Login -->
-<section>
-  <div class="container">
-      <div class="login col-md-auto mt-5">
-          <form class="col-md-8 offset-md-2 shadow-sm p-3 mb-5 bg-white rounded">
-            <h2 class="text-center">Master Login</h2>
-            <div class="form-group">
-              <label for="exampleInputLoggin">Loggin</label>
-              <input class="form-control" type="text" id="exampleInputLoggin" placeholder="Enter you loggin">
-            </div>
-            <div class="form-group">
-              <label for="exampleInputPassword">Password</label>
-              <input class="form-control" type="password" id="exampleInputPassword" placeholder="Enter you password">
-            </div>
-            <input type="button" class="btn btn-primary col-md-12" value="Submit">
-          </form>
-        </div>
-  </div>
-</section>
-<!-- Login end -->
-<!-- Login end -->
-<section>
+  <section>
     <div class="container">
-        <div class="tabs mt-sm-2 mt-lg-2 mt-md-2">
-          <div class="masterInfo col-sm-12 col-md-12 col-lg-12 hidden">
-              <div id="accordion" class="mt-5">
-                  <h3></h3>      
-                  <div>    
-                  <div class="output col-sm-12 col-md-12 col-lg-12 ">
-                          <div class="logOutClock row col-sm-12 col-md-12 col-lg-12 p-3 m-0">
-                            <div class="outputClock col-md-4 col-lg-4 col-sm-12 text-center"></div>
-                            <input type="button" value="log out" class="logOut btn btn-primary col-md-4 col-sm-4 offset-md-4 offset-lg-4"></button>
-                          </div>
-                          <div class="table_scrol p-3 mt-2">
-                            <table class="table col-sm-12 col-md-12 col-lg-12">
-                              <thead class="col-sm-12 col-md-12 col-lg-12">
-                                <tr class="col-sm-12 col-md-12 col-lg-12">
-                                  <th scope="col">№</th>
-                                  <th scope="col">Time</th>
-                                  <th scope="col">Brand</th>
-                                  <th scope="col">Phone</th>
-                                  <th scope="col">Name</th>
-                                  <th scope="col">Work</th>
-                                  <th scope="col">Submit</th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                              </tbody>
-                            </table>
-                          </div>
-                        </div>  
-                      </div>
-                  <h3>Book To Master</h3>
-                      <div class="book shadow-sm p-3 mb-5 bg-white rounded">
-                          <!-- <h2 class="text-center">Book To Master</h2> -->
-                          <form class="bookForm">
-                            <div class="form-group">
-                              <label for="formGroupExampleInputTime">Book time</label>
-                              <input type="time" class="form-control" id="formGroupExampleInputTime" placeholder="Enter book time">
-                            </div>
-                            <div class="form-group">
-                              <label for="formGroupExampleInputBrand">Car brand</label>
-                              <input type="text" class="form-control" id="formGroupExampleInputBrand" placeholder="Enter car brand">
-                            </div>
-                            <div class="form-group">
-                              <label for="formGroupExampleInputPhone">Owner's phone number</label>
-                              <input type="tel" class="form-control" id="formGroupExampleInputPhone"
-                                placeholder="Enter owner's phone number"></div>
-                            <div class="form-group">
-                              <label for="formGroupExampleInputName">Owner name</label>
-                              <input type="text" class="form-control" id="formGroupExampleInputName" placeholder="Enter owner name">
-                            </div>
-                            <div class="form-group">
-                              <label for="formGroupExampleInputWork">Type of work performed</label>
-                              <input type="text" class="form-control" id="formGroupExampleInputWork"
-                                placeholder="Enter type of work performed"></div>
-                            <div class="form-group">
-                              <label for="formGroupExampleInputRegisterSign">Register sign</label>
-                              <input type="number" class="form-control" id="formGroupExampleInputRegisterSign"
-                                placeholder="Enter register sign"></div>
-                            <div class="form-group">
-                              <label for="formGroupExampleInputCarMileage">Car mileage</label>
-                              <input type="number" class="form-control" id="formGroupExampleInputCarMileage"
-                                placeholder="Enter car mileage"></div>
-                            <div class="form-group">
-                              <label for="formGroupExampleInputPrice">Price</label>
-                              <input type="number" class="form-control" id="formGroupExampleInputPrice" placeholder="Enter price"></div>
-                            <input type="button" class="bookButton btn btn-primary col-sm-12 col-md-6 col-lg-6 offset-md-3" value="Book">
-                          </form>
-                        </div>                  
+      <div class="divNav hidden">
+        <ul class="nav justify-content-center text-uppercase font-weight-bold col-12 mt-2">
+          <li class="nav-item col-sm-12 col-lg-4 col-md-4 text-center">
+            <a class="nav-link disabled" data-mode="Master" href="#">Master Info</a>
+          </li>
+          <li class="nav-item col-sm-12 col-lg-4 col-md-4 text-center">
+            <a class="nav-link" data-mode="Auto" href="#">Auto Info</a>
+          </li>
+          <li class="nav-item col-sm-12 col-lg-4 col-md-4 text-center">
+            <a class="nav-link" data-mode="Work" href="#">Work Plan</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <!-- nav end -->
+  <!-- Login -->
+  <section>
+    <div class="container">
+      <div class="login col-md-auto mt-5">
+        <form class="col-md-8 offset-md-2 shadow-sm p-3 mb-5 bg-white rounded">
+          <h2 class="text-center">Master Login</h2>
+          <div class="form-group">
+            <label for="exampleInputLoggin">Loggin</label>
+            <input class="form-control" type="text" id="exampleInputLoggin" placeholder="Enter you loggin">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword">Password</label>
+            <input class="form-control" type="password" id="exampleInputPassword" placeholder="Enter you password">
+          </div>
+          <input type="button" class="btn btn-primary col-md-12" value="Submit">
+        </form>
+      </div>
+    </div>
+  </section>
+  <!-- Login end -->
+  <!-- Tabs -->
+  <section>
+    <div class="container">
+      <div class="tabs mt-sm-2 mt-lg-2 mt-md-2">
+        <div class="masterInfo col-sm-12 col-md-12 col-lg-12 hidden">
+          <div id="accordion" class="mt-5">
+            <h3></h3>
+            <div>
+              <div class="output col-sm-12 col-md-12 col-lg-12 ">
+                <div class="logOutClock row col-sm-12 col-md-12 col-lg-12 p-3 m-0">
+                  <div class="outputClock col-md-4 col-lg-4 col-sm-12 text-center"></div>
+                  <input type="button" value="log out"
+                    class="logOut btn btn-primary col-md-4 col-sm-4 offset-md-4 offset-lg-4"></button>
+                </div>
+                <div class="table_scrol p-3 mt-2">
+                  <table class="table col-sm-12 col-md-12 col-lg-12">
+                    <thead class="col-sm-12 col-md-12 col-lg-12">
+                      <tr class="col-sm-12 col-md-12 col-lg-12">
+                        <th scope="col">№</th>
+                        <th scope="col">Time</th>
+                        <th scope="col">Brand</th>
+                        <th scope="col">Phone</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Work</th>
+                        <th scope="col">Submit</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                  </table>
                 </div>
               </div>
-          <div class="autoInfo hidden col-sm-12 col-md-12 col-lg-12 mt-5 p-5">
-            <div>
-              <h2>Марка: Фольквален Гольф 2005 год. </br>
-                Пробег: 205 тыс.км </br>
-                Вдаделец: Игорь Константинович </br>
-                тел:+375 29 376 70 82</h2>
-              <button class="btn btn-outline-primary col-3 offset-9">Распечатать</button>
-              <h2>Выполняемый заказ:</h2>
-              <p>
-                Выполняемый заказ: Замена ремня ГРМ <span>00:40:01</span></br>
-                К ОПЛАТЕ: 150$
-              </p>
-              <h4>Требует замены:</h2>
-                <p>
-                  198тыс - Реемень ГРМ - Цена запчасти 180$ - Работы:100$;</br>
-                  198тыс - Наконечники тяги - Цена запчасти 33$ - Работы:10$;
-                </p>
-    
-                <h4>Ближайшая замена:</h2>
-                  <p>
-                    205тыс - Масло - Цена запчасти 40$ - Работы:10$;</br>
-                    205тыс - Наконечники тяги - Цена запчасти 33$ - Работы:10$;
-                  </p>
-    
-                  <h4>Планируемая замена:</h2>
-                    <p>
-                      300тыс - Стойки стабилизатора - Цена запчасти 40$ - Работы:10$;</br>
-                      300тыс - Фрион кондиционера - Цена запчасти 5$ - Работы:10$;
-                    </p>
+            </div>
+            <h3>Book To Master</h3>
+            <div class="book shadow-sm p-3 mb-5 bg-white rounded">
+              <!-- <h2 class="text-center">Book To Master</h2> -->
+              <form class="bookForm">
+                <div class="form-group">
+                  <label for="formGroupExampleInputTime">Book time</label>
+                  <input type="time" class="form-control" id="formGroupExampleInputTime" placeholder="Enter book time">
+                </div>
+                <div class="form-group">
+                  <label for="formGroupExampleInputBrand">Car brand</label>
+                  <input type="text" class="form-control" id="formGroupExampleInputBrand" placeholder="Enter car brand">
+                </div>
+                <div class="form-group">
+                  <label for="formGroupExampleInputPhone">Owner's phone number</label>
+                  <input type="tel" class="form-control" id="formGroupExampleInputPhone"
+                    placeholder="Enter owner's phone number"></div>
+                <div class="form-group">
+                  <label for="formGroupExampleInputName">Owner name</label>
+                  <input type="text" class="form-control" id="formGroupExampleInputName" placeholder="Enter owner name">
+                </div>
+                <div class="form-group">
+                  <label for="formGroupExampleInputWork">Type of work performed</label>
+                  <input type="text" class="form-control" id="formGroupExampleInputWork"
+                    placeholder="Enter type of work performed"></div>
+                <div class="form-group">
+                  <label for="formGroupExampleInputRegisterSign">Register sign</label>
+                  <input type="number" class="form-control" id="formGroupExampleInputRegisterSign"
+                    placeholder="Enter register sign"></div>
+                <div class="form-group">
+                  <label for="formGroupExampleInputCarMileage">Car mileage</label>
+                  <input type="number" class="form-control" id="formGroupExampleInputCarMileage"
+                    placeholder="Enter car mileage"></div>
+                <div class="form-group">
+                  <label for="formGroupExampleInputPrice">Price</label>
+                  <input type="number" class="form-control" id="formGroupExampleInputPrice" placeholder="Enter price">
+                </div>
+                <input type="button" class="bookButton btn btn-primary col-sm-12 col-md-6 col-lg-6 offset-md-3"
+                  value="Book">
+              </form>
             </div>
           </div>
-          <div class="workPlan hidden col-sm-12 col-md-12 col-lg-12">
+        </div>
+        <div class="autoInfo hidden col-sm-12 col-md-12 col-lg-12 mt-5 p-5">
+          <div>
+            <h3>Марка: Фольквален Гольф 2005 год. </br>
+              Пробег: 205 тыс.км </br>
+              Вдаделец: Игорь Константинович </br>
+              тел:+375 29 376 70 82</h3>
+            <button class="btn btn-outline-primary col-3 offset-9">Распечатать</button>
+            <h3>Выполняемый заказ:</h3>
+            <p>
+              Выполняемый заказ: Замена ремня ГРМ <span>00:40:01</span></br>
+              К ОПЛАТЕ: 150$
+            </p>
+            <table class="table">
+              <h4>Требует замены:</h4>
+              <thead>
+                <tr>
+                  <th scope="col">№</th>
+                  <th scope="col">Пробег</th>
+                  <th scope="col">Запчать</th>
+                  <th scope="col">Цена запчасти</th>
+                  <th scope="col">Цена работы</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>205тыс.</td>
+                  <td>ГРМ</td>
+                  <td>20$</td>
+                  <td>20$</td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>205тыс.</td>
+                  <td>Стойки стабилищзатора</td>
+                  <td>20$</td>
+                  <td>20$</td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>205тыс.</td>
+                  <td>Стойки стабилищзатора</td>
+                  <td>20$</td>
+                  <td>20$</td>
+                </tr>
+              </tbody>
+            </table>
+            <table class="table">
+              <h4>Ближайшая замена:</h4>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>205тыс.</td>
+                  <td>ГРМ</td>
+                  <td>20$</td>
+                  <td>20$</td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>205тыс.</td>
+                  <td>Стойки стабилищзатора</td>
+                  <td>20$</td>
+                  <td>20$</td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>205тыс.</td>
+                  <td>Стойки стабилищзатора</td>
+                  <td>20$</td>
+                  <td>20$</td>
+                </tr>
+              </tbody>
+            </table>
+            <table class="table">
+              <h4>Планируемая замена:</h4>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>205тыс.</td>
+                  <td>ГРМ</td>
+                  <td>20$</td>
+                  <td>20$</td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>205тыс.</td>
+                  <td>Стойки стабилищзатора</td>
+                  <td>20$</td>
+                  <td>20$</td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>205тыс.</td>
+                  <td>Стойки стабилищзатора</td>
+                  <td>20$</td>
+                  <td>20$</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
+        <div class="workPlan col-sm-12 col-md-12 col-lg-12 mt-5 p-5 hidden">
+            <h3>Марка: Фольквален Гольф 2005 год. </br>
+              Пробег: 205 тыс.км </br>
+              Вдаделец: Игорь Константинович </br>
+              тел:+375 29 376 70 82</h3>
+            <form>
+                <div class="form-group">
+                  <label for="formGroupExampleInput">Пробег следующей замены</label>
+                  <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Пробег следующей замены">
+                </div>
+                <div class="form-group">
+                    <label for="formGroupExampleInput">Скоро нужна замена</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Пробег следующей замены">
+                  </div>
+                <div class="form-group">
+                  <label for="formGroupExampleInput2">Цена запчасти</label>
+                  <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Цена запчасти">
+                </div>
+                <div class="form-group">
+                    <label for="formGroupExampleInput2">Цена работ</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Цена работ">
+                  </div>
+                  <input type="button" class="bookButton btn btn-primary col-sm-12 col-md-6 col-lg-6 offset-md-3"
+                  value="Apllay">
+              </form>
+
+              таблица тут отображение че когда менялось
+              <button class="btn btn-outline-primary col-3 offset-9">Распечатать</button>
+           
+        </div>
       </div>
-</section>
- 
- 
+    </div>
+  </section>
+  <!-- Tabs end-->
   <script type="module" src="../src/modules/main.js"></script>
 </body>
 
