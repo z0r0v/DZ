@@ -1,11 +1,19 @@
 import { masterNameCategogy } from "./login.js";
 import { masterBook } from "./login.js";
 import { Clock } from "./clock.js";
+import {AutoInfo} from './autoinfo.js'
+
+const autoInfo = new AutoInfo();
+
+let infoCar;
+let infoOrder;
+
 
 const htmlElements = {
   h2MasterInfo: document.querySelector("div>div>h3"),
   bookTbody: document.querySelector(".table > tbody"),
   buttonBook:document.querySelector(".bookButton"),
+  executedOrderTr:document.querySelector(".executedOrder > tr"),
 };
 
 
@@ -80,10 +88,86 @@ const creatBoofing = (number, time, brand, phone, name, work) => {
   creatTable();
 };
 
+
+
+
+
 const addInNewMasive = () =>{
-// тут берем дынные из масива и переносим в новый
-console.log(123);
-}
+  htmlElements.executedOrderTr.innerText = null;
+  const elements = htmlElements.bookTbody.getElementsByTagName("tr");
+  const array = Array.from(elements);
+  const index = array.indexOf(event.path[2]);
+
+
+
+
+
+
+// let differenceMilliseconds = 0;
+// const startTime = new Date().getTime();
+// let totalSecondsDifference = 0;
+// let differenceSeconds = 0;
+// // let time;
+
+// function runTime() {
+//   differenceMilliseconds = new Date().getTime() - startTime;
+//   differenceSeconds = Math.round(differenceMilliseconds / 1000) + totalSecondsDifference;
+
+//   let seconds = parseInt(differenceSeconds % 60);
+//   let minutes = parseInt((differenceSeconds / 60) % 60);
+//   let hours = parseInt((differenceSeconds / 3600) % 60);
+//   if (seconds < 10) {
+//     seconds = `0${seconds}`;
+//   }
+//   if (minutes < 10) {
+//     minutes = `0${minutes}`;
+//   }
+//   if (hours < 10) {
+//     hours = `0${hours}`;
+//   }
+//   htmlElements.time.innerText = `${hours}:${minutes}:${seconds}`;
+// }
+
+// function StopWotch(){}
+
+
+// StopWotch.prototype.init = function() {
+// setInterval(runTime, 1000);
+// runTime();
+// };
+
+
+
+
+
+  const masive = masterBook[index];
+  const brand = masive.brand;
+  const year = masive.yearIssue;
+  const mileage = masive.carMileage;
+  const owner = masive.name;
+
+  const phone = masive.phone;
+  const price = masive.priceWork + masive.priceParts;
+  const work = masive.work;
+
+  infoCar = `Brand: ${brand}, ${year}.\nMileage: ${mileage}km.\nOwner: ${owner}.\nTell: ${phone}`;
+
+  infoOrder = {
+    work:work,
+    price:price,
+  }
+  
+  autoInfo.creatTableOrder();
+
+
+  //теерь нужно добавить в масив наши данные из масива который и потом удалить
+  masterBook.splice(index, 1);
+  renderBook();
+};
+
+
+
+
 
 ///перекраска тайма
 const onANavClicked = () => {
@@ -162,7 +246,10 @@ const infoBook = {
   work:document.getElementById("formGroupExampleInputWork"),
   registerSign:document.getElementById("formGroupExampleInputRegisterSign"),
   carMileage:document.getElementById("formGroupExampleInputCarMileage"),
-  price:document.getElementById("formGroupExampleInputPrice"),
+  yearIssue:document.getElementById("formGroupExampleInputYearIssue"),
+  priceWorke:document.getElementById("formGroupExampleInputPriceWorke"),
+  priceParts:document.getElementById("formGroupExampleInputPriceParts"),
+
 };
 
 const onButtonToBookClicked = () => {
@@ -175,7 +262,10 @@ const onButtonToBookClicked = () => {
     work:infoBook.work.value,
     registerSign:infoBook.registerSign.value,
     carMileage:infoBook.carMileage.value,
-    price:infoBook.price.value,
+    yearIssue:infoBook.yearIssue.value,
+    priceWorke:infoBook.priceWorke.value,
+    priceParts:infoBook.priceParts.value,
+
   }
   );
   masterBook.sort(function(a, b) {
@@ -209,4 +299,4 @@ function Book() {
   let renderBookInterval = setInterval(renderBook, 180000);
 }
 
-export { Book };
+export { Book, infoCar, infoOrder };

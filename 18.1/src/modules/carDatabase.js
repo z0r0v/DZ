@@ -8,7 +8,9 @@ const bookArrayKshishtykov = [
     work:"Еiming belt replacement",
     registerSign: "7785AA-4",
     carMileage: 222000,
-    price:`${10}$`
+    yearIssue: new Date("2017").getFullYear(),
+    priceWork:10,
+    priceParts:10
   },
   {
     time: "16:00",
@@ -18,7 +20,9 @@ const bookArrayKshishtykov = [
     work:"Еiming belt replacement",
     registerSign: "7785AA-4",
     carMileage: 222000,
-    price:`${10}$`
+    yearIssue: new Date("2017").getFullYear(),
+    priceWork:10,
+    priceParts:10
   },
   {
     time: "16:00",
@@ -28,7 +32,9 @@ const bookArrayKshishtykov = [
     work:"Еiming belt replacement",
     registerSign: "7785AA-4",
     carMileage: 222000,
-    price:`${10}$`
+    yearIssue: new Date("2017").getFullYear(),
+    priceWork:10,
+    priceParts:10
   }
 ];
 
@@ -42,7 +48,9 @@ const bookArrayPetrovich = [
     work:"Еiming belt replacement",
     registerSign: "7785AA-4",
     carMileage: 222000,
-    price:`${10}$`
+    yearIssue: new Date("2017").getFullYear(),
+    priceWork:10,
+    priceParts:10
   },
   {
     time: "16:00",
@@ -52,7 +60,9 @@ const bookArrayPetrovich = [
     work:"Еiming belt replacement",
     registerSign: "7785AA-4",
     carMileage: 222000,
-    price:`${10}$`
+    yearIssue: new Date("2017").getFullYear(),
+    priceWork:10,
+    priceParts:10
   },
   {
     time: "16:00",
@@ -62,27 +72,32 @@ const bookArrayPetrovich = [
     work:"Еiming belt replacement",
     registerSign: "7785AA-4",
     carMileage: 222000,
-    price:`${10}$`
+    yearIssue: new Date("2017").getFullYear(),
+    priceWork:10,
+    priceParts:10
   }
 ];
 
-const arrayAllCars = [
+const carOwners = [
 { 
-  //master:masterArray.LastName,//как то текущего мастера
-  data:new Date(),
-  brand:"BMW",
-  phone:"+375293767082",
   name:"Vasiliy Petrovich",
-  work:"Еiming belt replacement",
-  registerSign: "7785AA-4",
-  carMileage: 222000,
-  price:`${10}$`
-}
+  phone:"+375293767082",
+     car:{
+      brand:"BMW",
+      carMileage: 222000,
+      registerSign: "7785AA-4",
+      replacementParts:
+      [
+      {
+        masterName:"Kshishtykov",
+        data:new Date("February 22, 2017 14:24:00"),
+        work:"Еiming belt replacement",
+        priceWork:10,
+        priceParts:10
+      },
+      ]
+    }
+  }
 ];
 
-export{bookArrayKshishtykov, bookArrayPetrovich, arrayAllCars};
-
-// Владелец (номер телефона)
-//                      машина
-//                         запчати когда и какие менялись сколько стоили и так далие когда менять след раз
-//                                                                                        мастер который менял
+export{bookArrayKshishtykov, bookArrayPetrovich, carOwners};

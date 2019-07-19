@@ -132,9 +132,17 @@
                   <label for="formGroupExampleInputCarMileage">Car mileage</label>
                   <input type="number" class="form-control" id="formGroupExampleInputCarMileage"
                     placeholder="Enter car mileage"></div>
+                    <div class="form-group">
+                      <label for="formGroupExampleInputCarMileage">Year of issue</label>
+                      <input type="number" class="form-control" id="formGroupExampleInputYearIssue"
+                        placeholder="Enter car mileage"></div>
                 <div class="form-group">
-                  <label for="formGroupExampleInputPrice">Price</label>
-                  <input type="number" class="form-control" id="formGroupExampleInputPrice" placeholder="Enter price">
+                  <label for="formGroupExampleInputPrice">Price worke</label>
+                  <input type="number" class="form-control" id="formGroupExampleInputPriceWorke" placeholder="Enter price">
+                </div>
+                <div class="form-group">
+                  <label for="formGroupExampleInputPrice">Price parts</label>
+                  <input type="number" class="form-control" id="formGroupExampleInputPriceParts" placeholder="Enter price">
                 </div>
                 <input type="button" class="bookButton btn btn-primary col-sm-12 col-md-6 col-lg-6 offset-md-3"
                   value="Book">
@@ -144,7 +152,7 @@
         </div>
         <div class="autoInfo col-sm-12 col-md-12 col-lg-12 mt-5 p-5">
           <div>
-            <h3>Марка: Фольквален Гольф 2005 год. </br>
+            <h3 class="carInfo">Марка: Фольквален Гольф 2005 год. </br>
               Пробег: 205 тыс.км </br>
               Вдаделец: Игорь Константинович </br>
               тел:+375 29 376 70 82</h3>
@@ -158,12 +166,13 @@
                   <th scope="col">Общая стоимость</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody class="executedOrder">
+
                 <tr>
-                  <td>ГРМ</td>
-                  <td><span>00:40:01</span></td>
-                  <td>20$</td>
+               
                 </tr>
+
+
               </tbody>
             </table>
 
