@@ -3,7 +3,7 @@ const htmlElements = {
   masterInfo: document.querySelector(".masterInfo"),
   tabs: document.querySelectorAll(".tabs"),
   autoInfo:document.querySelector(".autoInfo"),
-  workPlan:document.querySelector(".workPlan"),
+  // workPlan:document.querySelector(".workPlan"),
 };
 
 const onTabsClick = (event) => {
@@ -23,9 +23,6 @@ const onTabsClick = (event) => {
       break;
     case "Auto":
       htmlElements.autoInfo.classList.remove("hidden");
-      break;
-    case "Work":
-      htmlElements.workPlan.classList.remove("hidden");
       break;
   }
 }

@@ -1,21 +1,20 @@
 import { masterNameCategogy } from "./login.js";
 import { masterBook } from "./login.js";
 import { Clock } from "./clock.js";
-import {AutoInfo} from './autoinfo.js'
+import { AutoInfo } from "./autoinfo.js";
 
 const autoInfo = new AutoInfo();
 
 let infoCar;
 let infoOrder;
-
+let startTime;
 
 const htmlElements = {
   h2MasterInfo: document.querySelector("div>div>h3"),
   bookTbody: document.querySelector(".table > tbody"),
-  buttonBook:document.querySelector(".bookButton"),
-  executedOrderTr:document.querySelector(".executedOrder > tr"),
+  buttonBook: document.querySelector(".bookButton"),
+  executedOrderTr: document.querySelector(".executedOrder > tr")
 };
-
 
 const renderBook = () => {
   htmlElements.bookTbody.innerText = "";
@@ -30,7 +29,6 @@ const renderBook = () => {
     );
   });
 };
-
 
 const creatTable = () => {
   htmlElements.trBookInfo = document.createElement("tr");
@@ -81,64 +79,16 @@ const creatBoofing = (number, time, brand, phone, name, work) => {
     onButtonIcoClearClicked
   );
 
-  htmlElements.buttonIcoCheck.addEventListener(
-    "click",
-    addInNewMasive
-  );
+  htmlElements.buttonIcoCheck.addEventListener("click", addInNewMasive);
   creatTable();
 };
 
-
-
-
-
-const addInNewMasive = () =>{
+const addInNewMasive = () => {
+  startTime = new Date().getTime();
   htmlElements.executedOrderTr.innerText = null;
   const elements = htmlElements.bookTbody.getElementsByTagName("tr");
   const array = Array.from(elements);
   const index = array.indexOf(event.path[2]);
-
-
-
-
-
-
-// let differenceMilliseconds = 0;
-// const startTime = new Date().getTime();
-// let totalSecondsDifference = 0;
-// let differenceSeconds = 0;
-// // let time;
-
-// function runTime() {
-//   differenceMilliseconds = new Date().getTime() - startTime;
-//   differenceSeconds = Math.round(differenceMilliseconds / 1000) + totalSecondsDifference;
-
-//   let seconds = parseInt(differenceSeconds % 60);
-//   let minutes = parseInt((differenceSeconds / 60) % 60);
-//   let hours = parseInt((differenceSeconds / 3600) % 60);
-//   if (seconds < 10) {
-//     seconds = `0${seconds}`;
-//   }
-//   if (minutes < 10) {
-//     minutes = `0${minutes}`;
-//   }
-//   if (hours < 10) {
-//     hours = `0${hours}`;
-//   }
-//   htmlElements.time.innerText = `${hours}:${minutes}:${seconds}`;
-// }
-
-// function StopWotch(){}
-
-
-// StopWotch.prototype.init = function() {
-// setInterval(runTime, 1000);
-// runTime();
-// };
-
-
-
-
 
   const masive = masterBook[index];
   const brand = masive.brand;
@@ -150,24 +100,19 @@ const addInNewMasive = () =>{
   const price = masive.priceWork + masive.priceParts;
   const work = masive.work;
 
-  infoCar = `Brand: ${brand}, ${year}.\nMileage: ${mileage}km.\nOwner: ${owner}.\nTell: ${phone}`;
+  infoCar = `Brand: ${brand}, ${year} year.\nMileage: ${mileage} km.\nOwner: ${owner}.\nPhone: ${phone}.`;
 
   infoOrder = {
-    work:work,
-    price:price,
-  }
-  
+    work: work,
+    price: price
+  };
+
   autoInfo.creatTableOrder();
-
-
   //теерь нужно добавить в масив наши данные из масива который и потом удалить
+
   masterBook.splice(index, 1);
   renderBook();
 };
-
-
-
-
 
 ///перекраска тайма
 const onANavClicked = () => {
@@ -196,7 +141,7 @@ const onANavClicked = () => {
       break;
     default:
       htmlElements.tdTime.classList.add("text-body");
-  };
+  }
 };
 
 // Изменение контена для Work value
@@ -212,7 +157,7 @@ const chengeWork = () => {
     "btn-sm",
     "col-md-12"
   );
-  
+
   htmlElements.cheButtontWorke.addEventListener("click", aplayChengeWork);
   htmlElements.cheInputWorke.value = workeCheTd.innerText;
   workeCheTd.innerText = "";
@@ -237,37 +182,32 @@ const onButtonIcoClearClicked = () => {
   renderBook();
 };
 
-
 const infoBook = {
-  time:document.getElementById("formGroupExampleInputTime"),
-  brand:document.getElementById("formGroupExampleInputBrand"),
-  phone:document.getElementById("formGroupExampleInputPhone"),
-  name:document.getElementById("formGroupExampleInputName"),
-  work:document.getElementById("formGroupExampleInputWork"),
-  registerSign:document.getElementById("formGroupExampleInputRegisterSign"),
-  carMileage:document.getElementById("formGroupExampleInputCarMileage"),
-  yearIssue:document.getElementById("formGroupExampleInputYearIssue"),
-  priceWorke:document.getElementById("formGroupExampleInputPriceWorke"),
-  priceParts:document.getElementById("formGroupExampleInputPriceParts"),
-
+  time: document.getElementById("formGroupExampleInputTime"),
+  brand: document.getElementById("formGroupExampleInputBrand"),
+  phone: document.getElementById("formGroupExampleInputPhone"),
+  name: document.getElementById("formGroupExampleInputName"),
+  work: document.getElementById("formGroupExampleInputWork"),
+  registerSign: document.getElementById("formGroupExampleInputRegisterSign"),
+  carMileage: document.getElementById("formGroupExampleInputCarMileage"),
+  yearIssue: document.getElementById("formGroupExampleInputYearIssue"),
+  priceWorke: document.getElementById("formGroupExampleInputPriceWorke"),
+  priceParts: document.getElementById("formGroupExampleInputPriceParts")
 };
 
 const onButtonToBookClicked = () => {
-  masterBook.push(
-    {
-    time:infoBook.time.value,
-    brand:infoBook.brand.value,
-    phone:infoBook.phone.value,
-    name:infoBook.name.value,
-    work:infoBook.work.value,
-    registerSign:infoBook.registerSign.value,
-    carMileage:infoBook.carMileage.value,
-    yearIssue:infoBook.yearIssue.value,
-    priceWorke:infoBook.priceWorke.value,
-    priceParts:infoBook.priceParts.value,
-
-  }
-  );
+  masterBook.push({
+    time: infoBook.time.value,
+    brand: infoBook.brand.value,
+    phone: infoBook.phone.value,
+    name: infoBook.name.value,
+    work: infoBook.work.value,
+    registerSign: infoBook.registerSign.value,
+    carMileage: infoBook.carMileage.value,
+    yearIssue: infoBook.yearIssue.value,
+    priceWorke: infoBook.priceWorke.value,
+    priceParts: infoBook.priceParts.value
+  });
   masterBook.sort(function(a, b) {
     if (a.time > b.time) {
       return 1;
@@ -279,12 +219,12 @@ const onButtonToBookClicked = () => {
   });
 
   htmlElements.form = document.querySelector(".bookForm");
-  const f = htmlElements.form.getElementsByTagName('input');
+  const f = htmlElements.form.getElementsByTagName("input");
   const arrayInput = Array.from(f);
-  arrayInput.forEach((element)=>{
+  arrayInput.forEach(element => {
     element.value = "";
   });
-  htmlElements.buttonBook.value ="Book";
+  htmlElements.buttonBook.value = "Book";
   renderBook();
 };
 
@@ -295,8 +235,8 @@ function Book() {
   Clock.prototype.init();
 
   renderBook();
-   //переодически нужно рендерить renderBook чтобы перекрашивался
+  //переодически нужно рендерить renderBook чтобы перекрашивался
   let renderBookInterval = setInterval(renderBook, 180000);
 }
 
-export { Book, infoCar, infoOrder };
+export { Book, infoCar, infoOrder, startTime };

@@ -8,16 +8,16 @@ let isLogged = false;
 const htmlElements = {
   output: document.querySelector(".output"),
   buttonLogout: document.querySelector(".logOut"),
-  divMasterInToBook:document.querySelector(".book"),
-  formButton:document.querySelector("div.col-md-auto.mt-5 > form > input"),
-  inputLogin:document.getElementById('exampleInputLoggin'),
-  inputPasword:document.getElementById('exampleInputPassword'),
-  divMasterInfo:document.querySelector("div.col-md-auto.mt-5 > form"),
-  divNav:document.querySelector("div.divNav"),
-  divLogin:document.querySelector(".login "),
-  masterInfo:document.querySelector(".masterInfo"),
+  divMasterInToBook: document.querySelector(".book"),
+  formButton: document.querySelector("div.col-md-auto.mt-5 > form > input"),
+  inputLogin: document.getElementById("exampleInputLoggin"),
+  inputPasword: document.getElementById("exampleInputPassword"),
+  divMasterInfo: document.querySelector("div.col-md-auto.mt-5 > form"),
+  divNav: document.querySelector("div.divNav"),
+  divLogin: document.querySelector(".login "),
+  masterInfo: document.querySelector(".masterInfo"),
+  tr: document.querySelector(".executedOrder > tr")
 };
-
 
 htmlElements.buttonLogout.addEventListener("click", onLogoutCuttonclick);
 htmlElements.formButton.addEventListener("click", onButtonCheckPassword);
@@ -32,6 +32,8 @@ function onLogoutCuttonclick() {
   htmlElements.inputPasword.value = null;
   htmlElements.inputLogin.placeholder = "Enter you loggin";
   htmlElements.inputPasword.placeholder = "Enter you password";
+
+  htmlElements.tr.innerText = null;
 }
 
 function onButtonCheckPassword() {
@@ -59,7 +61,6 @@ function onButtonCheckPassword() {
     htmlElements.divLogin.classList.add("hidden");
     htmlElements.masterInfo.classList.remove("hidden");
     htmlElements.divNav.classList.remove("hidden");
-   
 
     new Book();
   } else {
@@ -74,6 +75,5 @@ function onButtonCheckPassword() {
 }
 
 function Login() {}
-
 
 export { Login };
