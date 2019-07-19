@@ -24,9 +24,11 @@ const runTime = () => {
   htmlElements.time.innerText = `${hours}:${minutes}:${seconds}`;
 };
 
+function StopWotch() {}
+
 StopWotch.prototype.init = function() {
   setInterval(runTime, 1000);
   runTime();
 };
-export function StopWotch() {}
+export {StopWotch};
 
