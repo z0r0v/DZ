@@ -1,7 +1,8 @@
-import { infoCar, infoOrder, startTime } from "./book.js";
+import { infoCar, infoOrder } from "./book.js";
 import { carOwners } from "./carDatabase.js";
+import { StopWotch } from "./differenceMilliseconds.js";
 
-const htmlElements = {
+export const htmlElements = {
   executedOrder: document.querySelector(".executedOrder"),
   carInfo: document.querySelector(".carInfo"),
   trExecutedOrder: document.querySelector(".executedOrder > tr"),
@@ -26,36 +27,6 @@ AutoInfo.prototype.creatTableOrder = () => {
   htmlElements.work.innerText = infoOrder.work;
   htmlElements.time.innerText = infoOrder.time;
   htmlElements.price.innerText = `${infoOrder.price}$`;
-};
-
-//Пока не допер как разнести на разные модули
-let differenceMilliseconds = 0;
-let totalSecondsDifference = 0;
-let differenceSeconds = 0;
-const runTime = () => {
-  differenceMilliseconds = new Date().getTime() - startTime;
-  differenceSeconds =
-    Math.round(differenceMilliseconds / 1000) + totalSecondsDifference;
-
-  let seconds = parseInt(differenceSeconds % 60);
-  let minutes = parseInt((differenceSeconds / 60) % 60);
-  let hours = parseInt((differenceSeconds / 3600) % 60);
-  if (seconds < 10) {
-    seconds = `0${seconds}`;
-  }
-  if (minutes < 10) {
-    minutes = `0${minutes}`;
-  }
-  if (hours < 10) {
-    hours = `0${hours}`;
-  }
-  //Не могу вынести элемент в другой модуль
-  htmlElements.time.innerText = `${hours}:${minutes}:${seconds}`;
-};
-function StopWotch() {}
-StopWotch.prototype.init = function() {
-  setInterval(runTime, 1000);
-  runTime();
 };
 
 htmlElements.carMileage = document.querySelector(
