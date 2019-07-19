@@ -23,8 +23,10 @@ const runTime = () => {
   //Не могу вынести элемент в другой модуль
   htmlElements.time.innerText = `${hours}:${minutes}:${seconds}`;
 };
-export function StopWotch() {}
+
 StopWotch.prototype.init = function() {
   setInterval(runTime, 1000);
   runTime();
 };
+export function StopWotch() {}
+
