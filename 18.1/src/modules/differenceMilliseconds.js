@@ -1,6 +1,6 @@
 import { startTime } from "./book.js";
 import { htmlElements } from "./autoinfo.js";
-//Пока не допер как разнести на разные модули
+
 let differenceMilliseconds = 0;
 let totalSecondsDifference = 0;
 let differenceSeconds = 0;
@@ -20,7 +20,6 @@ const runTime = () => {
   if (hours < 10) {
     hours = `0${hours}`;
   }
-  //Не могу вынести элемент в другой модуль
   htmlElements.time.innerText = `${hours}:${minutes}:${seconds}`;
 };
 
