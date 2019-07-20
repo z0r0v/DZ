@@ -6,4 +6,4 @@ const htmlElements = {
 htmlElements.myLink.addEventListener('click', (event) => {
   event.preventDefault();
   window.location.href = "http://google.com";
-})
+});
