@@ -3,11 +3,9 @@ import { masterBook } from "./login.js";
 import { Clock } from "./clock.js";
 import { AutoInfo } from "./autoinfo.js";
 
-const autoInfo = new AutoInfo();
-
 let infoCar;
 let infoOrder;
-let startTime;
+const autoInfo = new AutoInfo();
 
 const htmlElements = {
   h2MasterInfo: document.querySelector("div>div>h3"),
@@ -84,7 +82,8 @@ const creatBoofing = (number, time, brand, phone, name, work) => {
 };
 
 const addInNewMasive = () => {
-  startTime = new Date().getTime();
+  const startTime = new Date().getTime();
+
   htmlElements.executedOrderTr.innerText = null;
   const elements = htmlElements.bookTbody.getElementsByTagName("tr");
   const array = Array.from(elements);
@@ -107,7 +106,7 @@ const addInNewMasive = () => {
     price: price
   };
 
-  autoInfo.creatTableOrder();
+  autoInfo.creatTableOrder(startTime);
   //теерь нужно добавить в масив наши данные из масива который и потом удалить
 
   masterBook.splice(index, 1);
@@ -195,6 +194,8 @@ const infoBook = {
   priceParts: document.getElementById("formGroupExampleInputPriceParts")
 };
 
+
+
 const onButtonToBookClicked = () => {
   masterBook.push({
     time: infoBook.time.value,
@@ -239,4 +240,4 @@ function Book() {
   let renderBookInterval = setInterval(renderBook, 180000);
 }
 
-export { Book, infoCar, infoOrder, startTime };
+export { Book, infoCar, infoOrder };

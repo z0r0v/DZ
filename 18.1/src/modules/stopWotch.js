@@ -1,10 +1,9 @@
-import { startTime } from "./book.js";
-import { htmlElements } from "./autoinfo.js";
-
 let differenceMilliseconds = 0;
 let totalSecondsDifference = 0;
 let differenceSeconds = 0;
-const runTime = () => {
+
+
+const runTime = (element, startTime) => {
   differenceMilliseconds = new Date().getTime() - startTime;
   differenceSeconds =
     Math.round(differenceMilliseconds / 1000) + totalSecondsDifference;
@@ -20,14 +19,14 @@ const runTime = () => {
   if (hours < 10) {
     hours = `0${hours}`;
   }
-  htmlElements.time.innerText = `${hours}:${minutes}:${seconds}`;
+  element.innerText =`${hours}:${minutes}:${seconds}`;
 };
 
 function StopWotch() {}
 
-StopWotch.prototype.init = function() {
-  setInterval(runTime, 1000);
-  runTime();
+StopWotch.prototype.init = function(element, startTime) {
+  setInterval(()=>{runTime(element, startTime)}, 1000);
 };
+
 export {StopWotch};
 

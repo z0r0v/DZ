@@ -112,6 +112,35 @@ const carOwners = [
           priceWork: 150,
           priceParts: 800
         }
+      ],
+      futureWorkPlan: [
+        {
+          masterName: "Kshishtykov",
+          replacementMileage: 105000,
+          
+          work: "Thrust Tip Replacement",
+          nextReplacementMileage: 200000,
+          priceWork: 20,
+          priceParts: 35
+        },
+        {
+          masterName: "Kshishtykov",
+          replacementMileage: 120000,
+         
+          work: "Needle shaft replacement",
+          nextReplacementMileage: 200000,
+          priceWork: 150,
+          priceParts: 200
+        },
+        {
+          masterName: "Kshishtykov",
+          replacementMileage: 140000,
+          
+          work: "Clutch replacement",
+          nextReplacementMileage: 250000,
+          priceWork: 150,
+          priceParts: 800
+        }
       ]
     }
   }

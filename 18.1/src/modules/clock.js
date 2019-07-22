@@ -9,9 +9,7 @@ function onClockNextTick() {
   htmlElements.outputClock.innerText = `Time: ${timeShort}`;
 }
 
-function Clock() {
-  console.log(htmlElements.outputClock);
-}
+function Clock() {}
 
 Clock.prototype.init = function() {
   setInterval(onClockNextTick, 1000);

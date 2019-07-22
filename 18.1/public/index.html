@@ -42,7 +42,7 @@
   <!-- nav -->
   <section>
     <div class="container">
-      <div class="divNav hidden">
+      <div class="divNav "><!-- hidden -->
         <ul class="nav justify-content-center text-uppercase font-weight-bold col-12 mt-2">
           <li class="nav-item col-sm-12 col-lg-4 col-md-4 text-center">
             <a class="nav-link disabled" data-mode="Master" href="#">Master Info</a>
@@ -79,7 +79,7 @@
   <section>
     <div class="container">
       <div class="tabs mt-sm-2 mt-lg-2 mt-md-2">
-        <div class="masterInfo col-sm-12 col-md-12 col-lg-12 hidden">
+        <div class="masterInfo col-sm-12 col-md-12 col-lg-12"><!-- hidden -->
           <div id="accordion" class="mt-5">
             <h3></h3>
             <div>
@@ -159,7 +159,7 @@
             </div>
           </div>
         </div>
-        <div class="autoInfo col-sm-12 col-md-12 col-lg-12 mt-5 hidden">
+        <div class="autoInfo col-sm-12 col-md-12 col-lg-12 mt-5"><!-- hidden -->
           <div id="accordion2" class="mt-5">
             <h3>Executed order</h3>
             <div>
@@ -233,30 +233,18 @@
             </div>
             <h3>Future work plan</h3>
             <div>
-              <table class="table col-sm-12 col-md-12 col-lg-12 text-center">
+              <table class="table futureWorkPlan col-sm-12 col-md-12 col-lg-12 text-center">
                 <h4>Future work plan:</h4>
+                <thead>
+                  <tr>
+                    <th scope="col">№</th>
+                    <th scope="col">Пробег</th>
+                    <th scope="col"></th>
+                    <th scope="col">Запчать</th>
+                    <th scope="col">Цена запчасти</th>
+                    <th scope="col">Цена работы</th>
+                  </tr>
                 <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>205тыс.</td>
-                    <td>ГРМ</td>
-                    <td>20$</td>
-                    <td>20$</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>205тыс.</td>
-                    <td>Стойки стабилищзатора</td>
-                    <td>20$</td>
-                    <td>20$</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>205тыс.</td>
-                    <td>Стойки стабилищзатора</td>
-                    <td>20$</td>
-                    <td>20$</td>
-                  </tr>
                 </tbody>
               </table>
             </div>
