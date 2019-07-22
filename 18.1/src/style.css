@@ -24,6 +24,10 @@
   .table_scrol{
     font-size: 12px;
   }
+
+  .table{
+    font-size:12px; 
+   }
 }
 
 .fa-times-circle,
@@ -46,4 +50,6 @@
 }
 .workPlan{
   background:white;
+}
+
 }

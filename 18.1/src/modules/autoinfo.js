@@ -59,13 +59,14 @@ const creatReplaced = (
   priceParts,
   priceWork,
 ) => {
-
   htmlElements.trReplaced = document.createElement("tr");
   htmlElements.thIndex = document.createElement("th");
   htmlElements.thIndex.scope = "row";
   htmlElements.thIndex.innerText = index;
   htmlElements.tdCarMileage = document.createElement("td");
-  htmlElements.tdCarMileage.innerText = carMileage;
+  const topThree = carMileage.toString().substring(0,3);
+  const secondTrike = carMileage.toString().substring(3)
+  htmlElements.tdCarMileage.innerText =`${topThree} ${secondTrike} km`;
   htmlElements.tdDate = document.createElement("td");
   htmlElements.tdDate.innerText = date;
   htmlElements.tdWork = document.createElement("td");
