@@ -9,8 +9,9 @@ const htmlElements = {
   td: document.querySelectorAll(".executedOrder > tr > td"),
   replaced: document.querySelector(".replaced > tbody"),
   futureWorkPlan: document.querySelector(".futureWorkPlan > tbody"),
-
+  requiresReplacement: document.querySelector(".requiresReplacement > tbody"),
 };
+
 
 function AutoInfo() {}
 
@@ -94,26 +95,61 @@ const renderReplaced = array => {
 };
 
 
-const renderFutureWorkPlan = array => {
+// const renderFutureWorkPlan = array => {
+//   htmlElements.futureWorkPlan.innerText = null;
+//   array.forEach(function(element, index) {
+    
+//   });
+// };
+// console.log(carOwners[0].car.carMileage);
+
+// console.log(carOwners[0].car.replacementParts[0].replacementMileage);
+console.log(carOwners[0].car.replacementParts[0].checkMileageCompare);
+
+const renderReplacementExpired = array => {
   htmlElements.futureWorkPlan.innerText = null;
+  htmlElements.requiresReplacement.innerText = null;
   array.forEach(function(element, index) {
-    creatReplaced(
-      ++index,
-      element.nextReplacementMileage,
-      null,
-      element.work,
-      element.priceWork,
-      element.priceParts
-    );
-    createTable(htmlElements.futureWorkPlan);
+
+    if(true){
+
+      creatReplaced(
+        ++index,
+        element.nextReplacementMileage,
+        null,
+        element.work,
+        element.priceWork,
+        element.priceParts
+      );
+
+      createTable(htmlElements.requiresReplacement);
+
+    }else{
+      creatReplaced(
+        ++index,
+        element.nextReplacementMileage,
+        null,
+        element.work,
+        element.priceWork,
+        element.priceParts
+      );
+      createTable(htmlElements.futureWorkPlan);
+    }
+    
   });
 };
+
 
 //придумать как суда передавать именно этот масив
 renderReplaced(carOwners[0].car.replacementParts);
 
 //придумать как суда передавать именно этот масив
-renderFutureWorkPlan(carOwners[0].car.futureWorkPlan);
+// renderFutureWorkPlan(carOwners[0].car.futureWorkPlan);
+
+
+//придумать как суда передавать именно этот масив
+renderReplacementExpired(carOwners[0].car.futureWorkPlan);
+
 
 
 export { AutoInfo };

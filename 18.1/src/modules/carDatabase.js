@@ -76,6 +76,19 @@ const bookArrayPetrovich = [
   }
 ];
 
+// const checkMileageCompare = ()=>{
+
+// }
+
+
+function CheckMileageCompare(){
+  if(this.carMileage >= this.nextReplacementMileage){
+    return true;
+  }else{
+    return false;
+  }
+}
+
 const carOwners = [
   {
     name: "Vasiliy Petrovich",
@@ -91,6 +104,16 @@ const carOwners = [
           data: new Date("December 01, 2016").toLocaleString().split(",")[0],
           work: "Thrust Tip Replacement",
           nextReplacementMileage: 200000,
+
+          
+          get checkMileageCompare() {
+            if(carMileage >= nextReplacementMileage){
+              return true;
+            }else{
+              return false;
+            }
+          },
+
           priceWork: 20,
           priceParts: 35
         },
@@ -117,7 +140,6 @@ const carOwners = [
         {
           masterName: "Kshishtykov",
           replacementMileage: 105000,
-          
           work: "Thrust Tip Replacement",
           nextReplacementMileage: 200000,
           priceWork: 20,
@@ -126,16 +148,14 @@ const carOwners = [
         {
           masterName: "Kshishtykov",
           replacementMileage: 120000,
-         
           work: "Needle shaft replacement",
-          nextReplacementMileage: 200000,
+          nextReplacementMileage: 250000,
           priceWork: 150,
           priceParts: 200
         },
         {
           masterName: "Kshishtykov",
           replacementMileage: 140000,
-          
           work: "Clutch replacement",
           nextReplacementMileage: 250000,
           priceWork: 150,
