@@ -94,39 +94,25 @@ const renderReplaced = array => {
   });
 };
 
-
-// const renderFutureWorkPlan = array => {
-//   htmlElements.futureWorkPlan.innerText = null;
-//   array.forEach(function(element, index) {
-    
-//   });
-// };
-// console.log(carOwners[0].car.carMileage);
-
-// console.log(carOwners[0].car.replacementParts[0].replacementMileage);
-console.log(carOwners[0].car.replacementParts[0].checkMileageCompare);
-
 const renderReplacementExpired = array => {
   htmlElements.futureWorkPlan.innerText = null;
   htmlElements.requiresReplacement.innerText = null;
   array.forEach(function(element, index) {
-
-    if(true){
-
+    if(!array[index].checkMileageCompare){
       creatReplaced(
-        ++index,
+        //потом разобраться что сделать номер индексуеться по общему списку? пока отключены номера
+        null,
         element.nextReplacementMileage,
         null,
         element.work,
         element.priceWork,
         element.priceParts
       );
-
       createTable(htmlElements.requiresReplacement);
-
     }else{
       creatReplaced(
-        ++index,
+         //потом разобраться что сделать номер индексуеться по общему списку? пока отключены номера
+         null,
         element.nextReplacementMileage,
         null,
         element.work,
@@ -135,17 +121,12 @@ const renderReplacementExpired = array => {
       );
       createTable(htmlElements.futureWorkPlan);
     }
-    
   });
 };
 
 
 //придумать как суда передавать именно этот масив
 renderReplaced(carOwners[0].car.replacementParts);
-
-//придумать как суда передавать именно этот масив
-// renderFutureWorkPlan(carOwners[0].car.futureWorkPlan);
-
 
 //придумать как суда передавать именно этот масив
 renderReplacementExpired(carOwners[0].car.futureWorkPlan);

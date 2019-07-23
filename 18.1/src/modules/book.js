@@ -1,7 +1,10 @@
 import { masterNameCategogy } from "./login.js";
-import { masterBook } from "./login.js";
+import { id } from "./login.js";
+import { books } from "./carDatabase.js";
 import { Clock } from "./clock.js";
 import { AutoInfo } from "./autoinfo.js";
+
+// import { carOwners } from "./carDatabase.js";
 
 let infoCar;
 let infoOrder;
@@ -16,7 +19,8 @@ const htmlElements = {
 
 const renderBook = () => {
   htmlElements.bookTbody.innerText = "";
-  masterBook.forEach(function(element, index) {
+
+  books.getByMasterId(id).forEach(function(element, index) {
     creatBoofing(
       ++index,
       element.time,
@@ -108,7 +112,9 @@ const addInNewMasive = () => {
 
   autoInfo.creatTableOrder(startTime);
   //теерь нужно добавить в масив наши данные из масива который и потом удалить
-
+  // carOwners.car.push(masive);
+  // carOwners.push(masive);
+  //   console.log(carOwners);
   masterBook.splice(index, 1);
   renderBook();
 };
@@ -173,11 +179,15 @@ const aplayChengeWork = () => {
   renderBook();
 };
 
-const onButtonIcoClearClicked = () => {
+const onButtonIcoClearClicked = (val) => {
   const elements = htmlElements.bookTbody.getElementsByTagName("tr");
   const array = Array.from(elements);
+  console.log(array);
   const index = array.indexOf(event.path[2]);
-  masterBook.splice(index, 1);
+  console.log(index);
+
+  // delete books.books[index];
+  // masterBook.splice(index, 1);
   renderBook();
 };
 
@@ -194,10 +204,9 @@ const infoBook = {
   priceParts: document.getElementById("formGroupExampleInputPriceParts")
 };
 
-
-
 const onButtonToBookClicked = () => {
   masterBook.push({
+//Добавлять обьекты теперь по другому
     time: infoBook.time.value,
     brand: infoBook.brand.value,
     phone: infoBook.phone.value,
@@ -208,6 +217,7 @@ const onButtonToBookClicked = () => {
     yearIssue: infoBook.yearIssue.value,
     priceWorke: infoBook.priceWorke.value,
     priceParts: infoBook.priceParts.value
+
   });
   masterBook.sort(function(a, b) {
     if (a.time > b.time) {

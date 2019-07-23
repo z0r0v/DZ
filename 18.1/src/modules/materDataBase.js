@@ -1,52 +1,61 @@
-import { bookArrayKshishtykov } from "./carDatabase.js";
-import { bookArrayPetrovich } from "./carDatabase.js";
+// import { bookArrayKshishtykov } from "./carDatabase.js";
+// import { bookArrayPetrovich } from "./carDatabase.js";
 
+class Master {
+  id;
+  login;
+  pasword;
+  firstName;
+  LastName;
+  dateEmployment;
+  categoryHired;
+  book;
+  category = ()=> {
+    const yers = Math.floor((Date.now() - this.dateEmployment) / 31536000000);
+    const preliminaryCategory = this.categoryHired + yers;
+    if (preliminaryCategory >= 5) {
+      return 5;
+    } else {
+      return preliminaryCategory;
+    }
+  };
+}
 
-const masterArray = [
-  {
-    login: "a",
-    pasword: "123",
-    firstName: "Vasiliy",
-    LastName: "Kshishtykov",
-    dateEmployment: new Date("February 22, 2017 14:24:00"),
-    categoryHired: 1,
-    book: bookArrayKshishtykov,
-    get category() {
-      const yers = Math.floor(
-        (Date.now() - this.dateEmployment) / 31536000000
-      );
-  
-      const preliminaryCategory = this.categoryHired + yers;
-      if (preliminaryCategory >= 5) {
-        return 5;
-      } else {
-        return preliminaryCategory;
+class Masters {
+  masters = [];
+  getById(id) {
+    let result = null;
+    this.masters.forEach(function(master) {
+      if (master.id === id) {
+        result = master;
+        return;
       }
-    }
-  },
-  {
-    login: "b",
-    pasword: "321",
-    firstName: "Genady",
-    LastName: "Petrovich",
-    dateEmployment: new Date("July 18, 2016 14:24:00"),
-    get workExperience() {
-      return this.dateEmployment - new Date().getDate();
-    },
-    categoryHired: 2,
-    book: bookArrayPetrovich,
-    get category() {
-      const yers = Math.floor(
-        (Date.now() - this.dateEmployment) / 31536000000
-      );
-      const preliminaryCategory = this.categoryHired + yers;
-      if (preliminaryCategory >= 5) {
-        return 5;
-      } else {
-        return preliminaryCategory;
-      }
-    }
+    });
+    return result;
   }
-];
+}
 
-export { masterArray };
+const master1 = new Master();
+master1.id = 1;
+master1.login = "";//Изменить на не пустое
+master1.pasword = "";//Изменить на не пустое
+master1.firstName ="Vasiliy";
+master1.LastName ="Kshishtykov";
+master1.dateEmployment =new Date("February 22, 2017 14:24:00");
+master1.categoryHired =1;
+
+const master2 = new Master();
+master2.id = 2;
+master2.login = "b";
+master2.pasword = "321";
+master2.firstName = "Genady";
+master2.LastName = "Petrovich";
+master2.dateEmployment = new Date("July 18, 2016 14:24:00");
+master2.categoryHired =2;
+
+const masters = new Masters();
+masters.masters.push(master1);
+masters.masters.push(master2);
+
+export { masters };
+

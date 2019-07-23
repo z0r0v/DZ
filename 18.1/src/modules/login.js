@@ -1,8 +1,9 @@
-import { masterArray } from "./materDataBase.js";
+import { masters } from "./materDataBase.js";
 import { Book } from "./book.js";
 
 export let masterNameCategogy;
-export let masterBook;
+// export let masterBook;
+export let id;
 let isLogged = false;
 
 const htmlElements = {
@@ -32,7 +33,6 @@ function onLogoutCuttonclick() {
   htmlElements.inputPasword.value = null;
   htmlElements.inputLogin.placeholder = "Enter you loggin";
   htmlElements.inputPasword.placeholder = "Enter you password";
-
   htmlElements.tr.innerText = null;
 }
 
@@ -41,15 +41,15 @@ function onButtonCheckPassword() {
   const pasword = document.getElementById("exampleInputPassword");
   loginName.classList.remove("border-danger", "border-success");
   pasword.classList.remove("border-danger", "border-success");
-
-  masterArray.forEach(function(item) {
-    if (pasword.value === item.pasword && loginName.value === item.login) {
-      masterNameCategogy = `Master : ${item.firstName} ${
-        item.LastName
-      }. Category: ${item.category}`;
+  masters.masters.forEach(function(master) {
+    if (pasword.value === master.pasword && loginName.value === master.login) {
+      masterNameCategogy = `Master : ${master.firstName} ${
+        master.LastName
+      }. Category: ${master.category()}`;
       isLogged = true;
-      masterBook = item.book;
-      return isLogged, masterBook;
+      // masterBook = master.book;
+      id = master.id
+      return isLogged, id;
     }
   });
   if (isLogged) {
