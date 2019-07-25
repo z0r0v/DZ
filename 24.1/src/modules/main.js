@@ -23,16 +23,17 @@ class Main{
     ];
     SyncDelay1.seconds = 2;
     const syncConstructors = [SyncDelay1];
-    this.runAsync(syncConstructors);
+    this.runAsync(asyncConstructors);
     this.runSync(syncConstructors);
   };
 
-  runAsync = (constructors) =>{
+  runAsync = (constructors) => {
     constructors.forEach(Constructor => {
-      new constructor(Constructor.name)
+      new Constructor(Constructor.name)
       .run(this.url)
       .then(logger => logger.logInfo())
-      .catch(error => {console.log(error);
+      .catch(error => {
+        console.log(error);
       });
     });
   };
