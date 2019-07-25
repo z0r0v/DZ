@@ -3,12 +3,13 @@ import { Logger } from './logger.js';
 class SyncDelay1{
     constructor(name){
         this.name = name;
-        // this.seconds = 2;
     };
+
     run = () => {
      if(SyncDelay1.seconds === undefined){
          throw new Error('SyncDelay1.seconds is not defined');
      };
+
      const seconds = SyncDelay1.seconds
      const before = new Date().getTime();
 

@@ -4,7 +4,7 @@ class Xhr1{
     constructor(name){
         this.name = name;
     };
-    run = (url)=>{
+    run = url => {
         const before = new Date().getTime();
         return new Promise((resolve, reject)=>{
             const _self = this;

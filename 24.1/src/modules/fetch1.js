@@ -4,7 +4,7 @@ class Fetch1 {
   constructor(name) {
     this.name = name;
   }
-  run = (url) => {
+  run = url => {
     const before = new Date().getTime();
     return fetch(url).then(() => {
       const after = new Date().getTime();

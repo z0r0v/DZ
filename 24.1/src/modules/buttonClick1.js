@@ -5,7 +5,7 @@ class ButtonClick1 {
     this.name = name;
     this.htmlElements = { btn: document.querySelector("button") };
   }
-  run = url => {
+  run = () => {
     const before = new Date().getTime();
     return new Promise((resolve, reject) => {
       this.htmlElements.btn.addEventListener("click", () => {
