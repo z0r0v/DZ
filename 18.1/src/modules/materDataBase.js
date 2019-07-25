@@ -1,6 +1,3 @@
-// import { bookArrayKshishtykov } from "./carDatabase.js";
-// import { bookArrayPetrovich } from "./carDatabase.js";
-
 class Master {
   id;
   login;

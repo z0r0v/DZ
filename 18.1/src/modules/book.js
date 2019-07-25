@@ -179,7 +179,7 @@ const aplayChengeWork = () => {
   renderBook();
 };
 
-const onButtonIcoClearClicked = (val) => {
+const onButtonIcoClearClicked = () => {
   const elements = htmlElements.bookTbody.getElementsByTagName("tr");
   const array = Array.from(elements);
   console.log(array);
