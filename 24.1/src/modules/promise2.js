@@ -1,6 +1,6 @@
 import { Logger } from "./logger.js";
 
-class promise2 {
+class Promise2 {
   constructor(name) {
     this.name = name;
   }
@@ -20,4 +20,4 @@ class promise2 {
   };
 }
 
-export { promise2 };
+export { Promise2 };

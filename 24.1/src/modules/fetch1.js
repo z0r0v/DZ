@@ -1,4 +1,4 @@
-import { Logger } from "./logger";
+import { Logger } from "./logger.js";
 
 class Fetch1 {
   constructor(name) {
