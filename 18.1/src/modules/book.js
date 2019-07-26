@@ -1,6 +1,6 @@
 import { masterNameCategogy } from "./login.js";
-import { id } from "./login.js";
-import { books } from "./carDatabase.js";
+import { master_id } from "./login.js";
+import { books, Book } from "./carDatabase.js";
 import { Clock } from "./clock.js";
 import { AutoInfo } from "./autoinfo.js";
 
@@ -14,26 +14,28 @@ const htmlElements = {
   h2MasterInfo: document.querySelector("div>div>h3"),
   bookTbody: document.querySelector(".table > tbody"),
   buttonBook: document.querySelector(".bookButton"),
-  executedOrderTr: document.querySelector(".executedOrder > tr")
+  executedOrderTr: document.querySelector(".executedOrder > tr"),
+  form: document.querySelector(".bookForm"),
 };
 
 const renderBook = () => {
   htmlElements.bookTbody.innerText = "";
-
-  books.getByMasterId(id).forEach(function(element, index) {
+  books.getByMasterId(master_id).forEach(function(element, index) {
     creatBoofing(
       ++index,
       element.time,
       element.brand,
       element.phone,
       element.name,
-      element.work
+      element.work,
+      element.id
     );
   });
 };
 
-const creatTable = () => {
+const creatTable = (idBook) => {
   htmlElements.trBookInfo = document.createElement("tr");
+  htmlElements.trBookInfo.id = idBook;
   htmlElements.bookTbody.appendChild(htmlElements.trBookInfo);
   htmlElements.trBookInfo.appendChild(htmlElements.thNumber);
   htmlElements.trBookInfo.appendChild(htmlElements.tdTime);
@@ -46,7 +48,7 @@ const creatTable = () => {
   htmlElements.trBookInfo.appendChild(htmlElements.tdButtons);
 };
 
-const creatBoofing = (number, time, brand, phone, name, work) => {
+const creatBoofing = (number, time, brand, phone, name, work, idBook) => {
   htmlElements.thNumber = document.createElement("th");
   htmlElements.thNumber.innerText = number;
   htmlElements.tdTime = document.createElement("td");
@@ -82,7 +84,7 @@ const creatBoofing = (number, time, brand, phone, name, work) => {
   );
 
   htmlElements.buttonIcoCheck.addEventListener("click", addInNewMasive);
-  creatTable();
+  creatTable(idBook);
 };
 
 const addInNewMasive = () => {
@@ -179,15 +181,15 @@ const aplayChengeWork = () => {
   renderBook();
 };
 
-const onButtonIcoClearClicked = () => {
-  const elements = htmlElements.bookTbody.getElementsByTagName("tr");
-  const array = Array.from(elements);
-  console.log(array);
-  const index = array.indexOf(event.path[2]);
-  console.log(index);
+const onButtonIcoClearClicked = function() {
+  const idElement = this.parentNode.parentNode.id;
+  console.log("idElement:", this.parentNode.parentNode.id);
+  const index = books.books.indexOf(idElement);
+  console.log("index:",index);
+  console.log();
 
+  //Правим тута
   // delete books.books[index];
-  // masterBook.splice(index, 1);
   renderBook();
 };
 
@@ -204,22 +206,18 @@ const infoBook = {
   priceParts: document.getElementById("formGroupExampleInputPriceParts")
 };
 
-const onButtonToBookClicked = () => {
-  masterBook.push({
-//Добавлять обьекты теперь по другому
-    time: infoBook.time.value,
-    brand: infoBook.brand.value,
-    phone: infoBook.phone.value,
-    name: infoBook.name.value,
-    work: infoBook.work.value,
-    registerSign: infoBook.registerSign.value,
-    carMileage: infoBook.carMileage.value,
-    yearIssue: infoBook.yearIssue.value,
-    priceWorke: infoBook.priceWorke.value,
-    priceParts: infoBook.priceParts.value
 
+function formClear(){
+  const f = htmlElements.form.getElementsByTagName("input");
+  const arrayInput = Array.from(f);
+  arrayInput.forEach(element => {
+    element.value = "";
+    htmlElements.buttonBook.value = "Book";
   });
-  masterBook.sort(function(a, b) {
+};
+
+function sortBook(){
+  books.books.sort(function(a, b) {
     if (a.time > b.time) {
       return 1;
     }
@@ -228,20 +226,33 @@ const onButtonToBookClicked = () => {
     }
     return 0;
   });
+};
 
-  htmlElements.form = document.querySelector(".bookForm");
-  const f = htmlElements.form.getElementsByTagName("input");
-  const arrayInput = Array.from(f);
-  arrayInput.forEach(element => {
-    element.value = "";
-  });
-  htmlElements.buttonBook.value = "Book";
+const onButtonToBookClicked = () => {
+  const newBook = new Book;
+  newBook.id = books.books.length;
+  newBook.master_id = master_id;
+  newBook.time = infoBook.time.value;
+  newBook.brand = infoBook.brand.value;
+  newBook.phone = infoBook.phone.value;
+  newBook.name = infoBook.name.value;
+  newBook.work = infoBook.work.value;
+  newBook.registerSign = infoBook.registerSign.value;
+  newBook.carMileage = infoBook.carMileage.value;
+  newBook.registerSign = infoBook.yearIssue.value,
+  newBook.priceWork = infoBook.priceWorke.value,
+  newBook.priceParts = infoBook.priceParts.value
+  books.books.push(newBook);
+  console.log("newBook",newBook);
+  console.log("books.books",books.books);
+  sortBook();
+  formClear();
   renderBook();
 };
 
 htmlElements.buttonBook.addEventListener("click", onButtonToBookClicked);
 
-function Book() {
+function BooksTable() {
   htmlElements.h2MasterInfo.innerText = masterNameCategogy;
   Clock.prototype.init();
 
@@ -250,4 +261,4 @@ function Book() {
   let renderBookInterval = setInterval(renderBook, 180000);
 }
 
-export { Book, infoCar, infoOrder };
+export { BooksTable, infoCar, infoOrder };

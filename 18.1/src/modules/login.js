@@ -1,9 +1,9 @@
 import { masters } from "./materDataBase.js";
-import { Book } from "./book.js";
+import { BooksTable } from "./book.js";
 
 export let masterNameCategogy;
 // export let masterBook;
-export let id;
+export let master_id;
 let isLogged = false;
 
 const htmlElements = {
@@ -48,8 +48,8 @@ function onButtonCheckPassword() {
       }. Category: ${master.category()}`;
       isLogged = true;
       // masterBook = master.book;
-      id = master.id
-      return isLogged, id;
+      master_id = master.id
+      return isLogged, master_id;
     }
   });
   if (isLogged) {
@@ -62,7 +62,7 @@ function onButtonCheckPassword() {
     htmlElements.masterInfo.classList.remove("hidden");
     htmlElements.divNav.classList.remove("hidden");
 
-    new Book();
+    new BooksTable();
   } else {
     loginName.classList.add("border", "border-danger");
     pasword.classList.add("border", "border-danger");

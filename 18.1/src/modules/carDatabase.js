@@ -295,4 +295,4 @@ const carOwners = [
   }
 ];
 
-export { carOwners, books };
+export { carOwners, books, Book };
