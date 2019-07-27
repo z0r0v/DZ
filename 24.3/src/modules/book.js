@@ -88,12 +88,21 @@ const creatBoofing = (number, time, brand, phone, name, work, idBook) => {
 };
 
 const addInNewMasive = () => {
+
+////Кнопка check in v!!!!!!!!!!
+
   const startTime = new Date().getTime();
 
   htmlElements.executedOrderTr.innerText = null;
+
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+//переписать  можно переиспользовать функции выше 
+
+// тут опать должна быть переиспользуемая функция {
   const elements = htmlElements.bookTbody.getElementsByTagName("tr");
   const array = Array.from(elements);
   const index = array.indexOf(event.path[2]);
+  // тут опать должна быть переиспользуемая функция }
 
   const masive = masterBook[index];
   const brand = masive.brand;
@@ -173,26 +182,32 @@ const chengeWork = () => {
   workeCheTd.removeEventListener("dblclick", chengeWork);
 };
 
-const aplayChengeWork = () => {
-  const elements = htmlElements.bookTbody.getElementsByTagName("tr");
-  const array = Array.from(elements);
-  const index = array.indexOf(event.path[2]);
-  masterBook[index].work = htmlElements.cheInputWorke.value;
+const aplayChengeWork = function(){
+  const idElement = this.parentNode.parentNode.id;
+
+// Переиспользвать эдентичная функция{
+  const i = books.books.filter(function(a){ return a.id == idElement })[0];
+  const index = books.books.indexOf(i);
+// Переиспользвать эдентичная функция }
+  books.books[index].work = htmlElements.cheInputWorke.value;
   renderBook();
 };
 
 const onButtonIcoClearClicked = function() {
   const idElement = this.parentNode.parentNode.id;
-  console.log("idElement:", this.parentNode.parentNode.id);
-  const index = books.books.indexOf(idElement);
-  console.log("index:",index);
-  console.log();
+  //Два дня мучался
+  //Метод который позволяет найти индекс елемента в масиве
 
-  //Правим тута
-  // delete books.books[index];
+// Переиспользвать эдентичная функция{
+  const i = books.books.filter(function(a){ return a.id == idElement })[0];
+  const index = books.books.indexOf(i);
+// Переиспользвать эдентичная функция }
+
+  delete books.books[index];
   renderBook();
 };
 
+//переделать на класс будет удобней выглядеть !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 const infoBook = {
   time: document.getElementById("formGroupExampleInputTime"),
   brand: document.getElementById("formGroupExampleInputBrand"),
