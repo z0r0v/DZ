@@ -4,7 +4,6 @@ import { books, Book } from "./carDatabase.js";
 import { Clock } from "./clock.js";
 import { AutoInfo } from "./autoinfo.js";
 
-// import { carOwners } from "./carDatabase.js";
 
 let infoCar;
 let infoOrder;
@@ -130,6 +129,23 @@ const addInNewMasive = () => {
   renderBook();
 };
 
+
+const changeTimeCondition = () => {
+  switch (true) {
+    case difference <= 0:
+      htmlElements.tdTime.classList.add("text-danger");
+      break;
+    case difference <= thirtyMinutes:
+      htmlElements.tdTime.classList.add("text-warning");
+      break;
+    case difference <= sixtyMinutes:
+      htmlElements.tdTime.classList.add("text-success");
+      break;
+    default:
+      htmlElements.tdTime.classList.add("text-body");
+  }
+}
+
 ///перекраска тайма
 const onANavClicked = () => {
   const cirrentTime = new Date();
@@ -144,20 +160,7 @@ const onANavClicked = () => {
   let difference = bookTime - timeThis;
   const thirtyMinutes = 1800000;
   const sixtyMinutes = 3600000;
-
-  switch (true) {
-    case difference <= 0:
-      htmlElements.tdTime.classList.add("text-danger");
-      break;
-    case difference <= thirtyMinutes:
-      htmlElements.tdTime.classList.add("text-warning");
-      break;
-    case difference <= sixtyMinutes:
-      htmlElements.tdTime.classList.add("text-success");
-      break;
-    default:
-      htmlElements.tdTime.classList.add("text-body");
-  }
+  changeTimeCondition();
 };
 
 // Изменение контена для Work value
@@ -218,9 +221,37 @@ const infoBook = {
   carMileage: document.getElementById("formGroupExampleInputCarMileage"),
   yearIssue: document.getElementById("formGroupExampleInputYearIssue"),
   priceWorke: document.getElementById("formGroupExampleInputPriceWorke"),
-  priceParts: document.getElementById("formGroupExampleInputPriceParts")
+  priceParts: document.getElementById("formGroupExampleInputPriceParts"),
+};
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+const obj123 = ["time", "brand", "phone", "name", "work", "registerSign", "carMileage", "yearIssue", "priceWorke", "priceParts"];
+
+const idParam = (param) => {
+  return document.getElementById(`formGroupExampleInput${param}`);
 };
 
+class InfoBook{
+  constructor(time, brand, phone, name, work, registerSign, carMileage, yearIssue, priceWorke, priceParts){
+     // .toLocaleString().split(",")[0]
+    this.time = idParam(time);
+    this.brand = idParam(brand);
+    this.phone = idParam(phone);
+    this.name = idParam(name);
+    this.work = idParam(work);
+    this.registerSign = idParam(registerSign);
+    this.carMileage = idParam(carMileage);
+    this.yearIssue = idParam(yearIssue);
+    this.priceWorke = idParam(priceWorke);
+    this.priceParts = idParam(priceParts);
+   
+  };
+};
+
+const newTime = new InfoBook("time", "brand", "phone", "name", "work", "registerSign", "carMileage", "yearIssue", "priceWorke", "priceParts");
+console.log(newTime);
+
+
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 function formClear(){
   const f = htmlElements.form.getElementsByTagName("input");

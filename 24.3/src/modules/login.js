@@ -2,8 +2,8 @@ import { masters } from "./materDataBase.js";
 import { BooksTable } from "./book.js";
 
 export let masterNameCategogy;
-// export let masterBook;
 export let master_id;
+
 let isLogged = false;
 
 const htmlElements = {
@@ -25,6 +25,7 @@ htmlElements.formButton.addEventListener("click", onButtonCheckPassword);
 
 function onLogoutCuttonclick() {
   isLogged = false;
+  //В таких местах сделать хелпер !!!!!!!!!!!!!!!
   htmlElements.divLogin.classList.remove("hidden");
   htmlElements.masterInfo.classList.add("hidden");
   htmlElements.divNav.classList.add("hidden");
@@ -47,7 +48,6 @@ function onButtonCheckPassword() {
         master.LastName
       }. Category: ${master.category()}`;
       isLogged = true;
-      // masterBook = master.book;
       master_id = master.id
       return isLogged, master_id;
     }
