@@ -130,7 +130,7 @@ const addInNewMasive = () => {
 };
 
 
-const changeTimeCondition = () => {
+const changeTimeCondition = (difference, thirtyMinutes, sixtyMinutes) => {
   switch (true) {
     case difference <= 0:
       htmlElements.tdTime.classList.add("text-danger");
@@ -160,7 +160,7 @@ const onANavClicked = () => {
   let difference = bookTime - timeThis;
   const thirtyMinutes = 1800000;
   const sixtyMinutes = 3600000;
-  changeTimeCondition();
+  changeTimeCondition(difference, thirtyMinutes, sixtyMinutes);
 };
 
 // Изменение контена для Work value
@@ -185,27 +185,23 @@ const chengeWork = () => {
   workeCheTd.removeEventListener("dblclick", chengeWork);
 };
 
-const aplayChengeWork = function(){
-  const idElement = this.parentNode.parentNode.id;
-
-// Переиспользвать эдентичная функция{
+const findElement = (_slfe) => {
+  const idElement = _slfe.parentNode.parentNode.id;
   const i = books.books.filter(function(a){ return a.id == idElement })[0];
   const index = books.books.indexOf(i);
-// Переиспользвать эдентичная функция }
+  return index;
+}
+
+const aplayChengeWork = function()  {
+  const _slfe = this;
+  const index = findElement(_slfe);
   books.books[index].work = htmlElements.cheInputWorke.value;
   renderBook();
 };
 
-const onButtonIcoClearClicked = function() {
-  const idElement = this.parentNode.parentNode.id;
-  //Два дня мучался
-  //Метод который позволяет найти индекс елемента в масиве
-
-// Переиспользвать эдентичная функция{
-  const i = books.books.filter(function(a){ return a.id == idElement })[0];
-  const index = books.books.indexOf(i);
-// Переиспользвать эдентичная функция }
-
+const onButtonIcoClearClicked = function(){
+  const _slfe = this;
+  const index = findElement(_slfe);
   delete books.books[index];
   renderBook();
 };
@@ -227,6 +223,7 @@ const infoBook = {
 const obj123 = ["time", "brand", "phone", "name", "work", "registerSign", "carMileage", "yearIssue", "priceWorke", "priceParts"];
 
 const idParam = (param) => {
+  console.log(param.toLocaleString().split(",")[0]);
   return document.getElementById(`formGroupExampleInput${param}`);
 };
 
@@ -248,7 +245,8 @@ class InfoBook{
 };
 
 const newTime = new InfoBook("time", "brand", "phone", "name", "work", "registerSign", "carMileage", "yearIssue", "priceWorke", "priceParts");
-console.log(newTime);
+
+// console.log(newTime);
 
 
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -289,8 +287,8 @@ const onButtonToBookClicked = () => {
   newBook.priceWork = infoBook.priceWorke.value,
   newBook.priceParts = infoBook.priceParts.value
   books.books.push(newBook);
-  console.log("newBook",newBook);
-  console.log("books.books",books.books);
+  // console.log("newBook",newBook);
+  // console.log("books.books",books.books);
   sortBook();
   formClear();
   renderBook();
