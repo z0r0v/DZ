@@ -17,6 +17,8 @@ const htmlElements = {
   form: document.querySelector(".bookForm"),
 };
 
+htmlElements.buttonBook.addEventListener("click", onButtonToBookClicked);
+
 const renderBook = () => {
   htmlElements.bookTbody.innerText = "";
   books.getByMasterId(master_id).forEach(function(element, index) {
@@ -86,46 +88,32 @@ const creatBoofing = (number, time, brand, phone, name, work, idBook) => {
   creatTable(idBook);
 };
 
-const addInNewMasive = () => {
+function addInNewMasive() {
 
 ////Кнопка check in v!!!!!!!!!!
-
   const startTime = new Date().getTime();
-
   htmlElements.executedOrderTr.innerText = null;
-
-// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-//переписать  можно переиспользовать функции выше 
-
-// тут опать должна быть переиспользуемая функция {
-  const elements = htmlElements.bookTbody.getElementsByTagName("tr");
-  const array = Array.from(elements);
-  const index = array.indexOf(event.path[2]);
-  // тут опать должна быть переиспользуемая функция }
-
-  const masive = masterBook[index];
+  const _slfe = this;
+  const index = findElement(_slfe);
+  const masive = books.books[index];
   const brand = masive.brand;
   const year = masive.yearIssue;
   const mileage = masive.carMileage;
   const owner = masive.name;
-
   const phone = masive.phone;
   const price = masive.priceWork + masive.priceParts;
   const work = masive.work;
-
   infoCar = `Brand: ${brand}, ${year} year.\nMileage: ${mileage} km.\nOwner: ${owner}.\nPhone: ${phone}.`;
-
   infoOrder = {
     work: work,
     price: price
   };
-
   autoInfo.creatTableOrder(startTime);
   //теерь нужно добавить в масив наши данные из масива который и потом удалить
   // carOwners.car.push(masive);
   // carOwners.push(masive);
   //   console.log(carOwners);
-  masterBook.splice(index, 1);
+  books.books.splice(index, 1);
   renderBook();
 };
 
@@ -272,7 +260,8 @@ function sortBook(){
   });
 };
 
-const onButtonToBookClicked = () => {
+
+function onButtonToBookClicked() {
   const newBook = new Book;
   newBook.id = books.books.length;
   newBook.master_id = master_id;
@@ -287,14 +276,12 @@ const onButtonToBookClicked = () => {
   newBook.priceWork = infoBook.priceWorke.value,
   newBook.priceParts = infoBook.priceParts.value
   books.books.push(newBook);
-  // console.log("newBook",newBook);
-  // console.log("books.books",books.books);
   sortBook();
   formClear();
   renderBook();
 };
 
-htmlElements.buttonBook.addEventListener("click", onButtonToBookClicked);
+
 
 function BooksTable() {
   htmlElements.h2MasterInfo.innerText = masterNameCategogy;
