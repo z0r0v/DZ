@@ -1,9 +1,8 @@
 import { masters } from "./materDataBase.js";
 import { BooksTable } from "./book.js";
 
-export let masterNameCategogy;
-export let master_id;
-
+let masterNameCategogy;
+let master_id;
 let isLogged = false;
 
 const htmlElements = {
@@ -20,12 +19,12 @@ const htmlElements = {
   tr: document.querySelector(".executedOrder > tr")
 };
 
+
 htmlElements.buttonLogout.addEventListener("click", onLogoutCuttonclick);
 htmlElements.formButton.addEventListener("click", onButtonCheckPassword);
 
 function onLogoutCuttonclick() {
   isLogged = false;
-  //В таких местах сделать хелпер !!!!!!!!!!!!!!!
   htmlElements.divLogin.classList.remove("hidden");
   htmlElements.masterInfo.classList.add("hidden");
   htmlElements.divNav.classList.add("hidden");
@@ -40,8 +39,10 @@ function onLogoutCuttonclick() {
 function onButtonCheckPassword() {
   const loginName = document.getElementById("exampleInputLoggin");
   const pasword = document.getElementById("exampleInputPassword");
+
   loginName.classList.remove("border-danger", "border-success");
   pasword.classList.remove("border-danger", "border-success");
+
   masters.masters.forEach(function(master) {
     if (pasword.value === master.pasword && loginName.value === master.login) {
       masterNameCategogy = `Master : ${master.firstName} ${
@@ -61,7 +62,6 @@ function onButtonCheckPassword() {
     htmlElements.divLogin.classList.add("hidden");
     htmlElements.masterInfo.classList.remove("hidden");
     htmlElements.divNav.classList.remove("hidden");
-
     new BooksTable();
   } else {
     loginName.classList.add("border", "border-danger");
@@ -76,4 +76,4 @@ function onButtonCheckPassword() {
 
 function Login() {}
 
-export { Login };
+export { Login, masterNameCategogy,  master_id};

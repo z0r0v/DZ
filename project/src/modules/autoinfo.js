@@ -1,6 +1,7 @@
 import { infoCar, infoOrder } from "./book.js";
 import { carOwners } from "./carDatabase.js";
 import { StopWotch } from "./stopWotch.js";
+import { apendHelpper } from "./apendHelpper.js";
 
 const htmlElements = {
   executedOrder: document.querySelector(".executedOrder"),
@@ -12,34 +13,26 @@ const htmlElements = {
   requiresReplacement: document.querySelector(".requiresReplacement > tbody"),
 };
 
-
 function AutoInfo() {}
-
-const creatTableOrders = () => {
-  htmlElements.executedOrder.appendChild(htmlElements.trExecutedOrder);
-  htmlElements.trExecutedOrder.appendChild(htmlElements.work);
-  htmlElements.trExecutedOrder.appendChild(htmlElements.time);
-  htmlElements.trExecutedOrder.appendChild(htmlElements.price);
-}
 
 const createTable = (element) =>{
   element.appendChild(htmlElements.trReplaced);
-  htmlElements.trReplaced.appendChild(htmlElements.thIndex);
-  htmlElements.trReplaced.appendChild(htmlElements.tdCarMileage);
-  htmlElements.trReplaced.appendChild(htmlElements.tdDate);
-  htmlElements.trReplaced.appendChild(htmlElements.tdWork);
-  htmlElements.trReplaced.appendChild(htmlElements.tdpriceParts);
-  htmlElements.trReplaced.appendChild(htmlElements.tdPriceWork);
-}
-
+  const arayElements = [htmlElements.thIndex, htmlElements.tdCarMileage, htmlElements.tdDate,htmlElements.tdWork, htmlElements.tdpriceParts,htmlElements.tdPriceWork];
+  apendHelpper(htmlElements.trReplaced, arayElements);
+};
 
 AutoInfo.prototype.creatTableOrder = (startTime) => {
+  
   htmlElements.carInfo.innerText = infoCar;
   htmlElements.work = document.createElement("td");
   htmlElements.work.classList.add("text-left");
   htmlElements.time = document.createElement("td");
   htmlElements.price = document.createElement("td");
-  creatTableOrders();
+
+  htmlElements.executedOrder.appendChild(htmlElements.trExecutedOrder);
+  const arayElements = [htmlElements.work, htmlElements.time, htmlElements.price];
+  apendHelpper(htmlElements.trExecutedOrder, arayElements);
+
   const element =  htmlElements.time;
   const stopWotch = new StopWotch();
   stopWotch.init(element, startTime);
@@ -78,7 +71,7 @@ const creatReplaced = (
   htmlElements.tdPriceWork.innerText = `${priceWork}$`;
 };
 
-
+//Можно и нужно переиспользовать с render();
 const renderReplaced = array => {
   htmlElements.replaced.innerText = null;
   array.forEach(function(element, index) {

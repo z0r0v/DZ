@@ -3,7 +3,6 @@ const htmlElements = {
   masterInfo: document.querySelector(".masterInfo"),
   tabs: document.querySelectorAll(".tabs"),
   autoInfo:document.querySelector(".autoInfo"),
-  // workPlan:document.querySelector(".workPlan"),
 };
 
 const onTabsClick = (event) => {

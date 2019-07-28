@@ -3,11 +3,15 @@ import { master_id } from "./login.js";
 import { books, Book } from "./carDatabase.js";
 import { Clock } from "./clock.js";
 import { AutoInfo } from "./autoinfo.js";
+import { infoBook } from "./infoBook.js";
+import { apendHelpper } from "./apendHelpper.js";
+
 
 
 let infoCar;
 let infoOrder;
 const autoInfo = new AutoInfo();
+
 
 const htmlElements = {
   h2MasterInfo: document.querySelector("div>div>h3"),
@@ -16,6 +20,7 @@ const htmlElements = {
   executedOrderTr: document.querySelector(".executedOrder > tr"),
   form: document.querySelector(".bookForm"),
 };
+
 
 htmlElements.buttonBook.addEventListener("click", onButtonToBookClicked);
 
@@ -34,63 +39,53 @@ const renderBook = () => {
   });
 };
 
-const creatTable = (idBook) => {
-  htmlElements.trBookInfo = document.createElement("tr");
-  htmlElements.trBookInfo.id = idBook;
-  htmlElements.bookTbody.appendChild(htmlElements.trBookInfo);
-  htmlElements.trBookInfo.appendChild(htmlElements.thNumber);
-  htmlElements.trBookInfo.appendChild(htmlElements.tdTime);
-  htmlElements.trBookInfo.appendChild(htmlElements.tdBrand);
-  htmlElements.trBookInfo.appendChild(htmlElements.tdPhone);
-  htmlElements.trBookInfo.appendChild(htmlElements.tdName);
-  htmlElements.trBookInfo.appendChild(htmlElements.tdWork);
-  htmlElements.tdButtons.appendChild(htmlElements.buttonIcoClear);
-  htmlElements.tdButtons.appendChild(htmlElements.buttonIcoCheck);
-  htmlElements.trBookInfo.appendChild(htmlElements.tdButtons);
+
+function createBookHelper(array, trBookInfo){
+  array.forEach((element)=>{
+    const objTd = document.createElement("td");
+    objTd.innerText = element;
+    trBookInfo.appendChild(objTd);
+  });
+};
+
+function creatButtons(tdButtons, className, colorClass, callback){
+  const button = document.createElement("i");
+  tdButtons.appendChild(button);
+  button.classList.add("fa", `${className}`,`${colorClass}`, "fa-lg");
+  button.addEventListener("click", callback);
+  };
+
+const creatElementsBook = (element, arayElement, idBook, number) => {
+const trBookInfo = document.createElement("tr");
+trBookInfo.id = idBook;
+element.appendChild(trBookInfo);
+
+const thNumber = document.createElement("th");
+thNumber.innerText = number;
+trBookInfo.appendChild(thNumber);
+createBookHelper(arayElement, trBookInfo);
+
+const checkCircle = "fa-check-circle";
+const timesCircle = "fa-times-circle";
+const success = "text-success";
+const danger = "text-danger";
+
+const tdButtons = document.createElement("td");
+trBookInfo.appendChild(tdButtons);
+
+creatButtons(tdButtons, checkCircle, success, addInNewMasive);
+creatButtons(tdButtons, timesCircle, danger, onButtonIcoClearClicked);
 };
 
 const creatBoofing = (number, time, brand, phone, name, work, idBook) => {
-  htmlElements.thNumber = document.createElement("th");
-  htmlElements.thNumber.innerText = number;
-  htmlElements.tdTime = document.createElement("td");
-  htmlElements.tdTime.innerText = time;
+  const arayElement = [time, brand, phone, name, work];
+  creatElementsBook(htmlElements.bookTbody, arayElement, idBook, number);
   onANavClicked();
-  htmlElements.tdBrand = document.createElement("td");
-  htmlElements.tdBrand.innerText = brand;
-  htmlElements.tdPhone = document.createElement("td");
-  htmlElements.tdPhone.innerText = phone;
-  htmlElements.tdName = document.createElement("td");
-  htmlElements.tdName.innerText = name;
-  htmlElements.tdWork = document.createElement("td");
-  htmlElements.tdWork.innerText = work;
-  htmlElements.tdWork.addEventListener("dblclick", chengeWork);
-  htmlElements.tdButtons = document.createElement("td");
-  htmlElements.buttonIcoCheck = document.createElement("i");
-  htmlElements.buttonIcoCheck.classList.add(
-    "fa",
-    "fa-check-circle",
-    "fa-lg",
-    "text-success"
-  );
-  htmlElements.buttonIcoClear = document.createElement("i");
-  htmlElements.buttonIcoClear.classList.add(
-    "fa",
-    "fa-times-circle",
-    "fa-lg",
-    "text-danger"
-  );
-  htmlElements.buttonIcoClear.addEventListener(
-    "click",
-    onButtonIcoClearClicked
-  );
-
-  htmlElements.buttonIcoCheck.addEventListener("click", addInNewMasive);
-  creatTable(idBook);
 };
 
 function addInNewMasive() {
-
 ////Кнопка check in v!!!!!!!!!!
+
   const startTime = new Date().getTime();
   htmlElements.executedOrderTr.innerText = null;
   const _slfe = this;
@@ -104,6 +99,7 @@ function addInNewMasive() {
   const price = masive.priceWork + masive.priceParts;
   const work = masive.work;
   infoCar = `Brand: ${brand}, ${year} year.\nMileage: ${mileage} km.\nOwner: ${owner}.\nPhone: ${phone}.`;
+  
   infoOrder = {
     work: work,
     price: price
@@ -115,26 +111,27 @@ function addInNewMasive() {
   //   console.log(carOwners);
   books.books.splice(index, 1);
   renderBook();
+
 };
 
 
-const changeTimeCondition = (difference, thirtyMinutes, sixtyMinutes) => {
+const changeTimeCondition = (difference, thirtyMinutes, sixtyMinutes, elementTr) => {
   switch (true) {
     case difference <= 0:
-      htmlElements.tdTime.classList.add("text-danger");
+        elementTr.classList.add("text-danger");
       break;
     case difference <= thirtyMinutes:
-      htmlElements.tdTime.classList.add("text-warning");
+        elementTr.classList.add("text-warning");
       break;
     case difference <= sixtyMinutes:
-      htmlElements.tdTime.classList.add("text-success");
+        elementTr.classList.add("text-success");
       break;
     default:
-      htmlElements.tdTime.classList.add("text-body");
-  }
-}
+        elementTr.classList.add("text-body");
+  };
+};
 
-///перекраска тайма
+//перекраска тайма
 const onANavClicked = () => {
   const cirrentTime = new Date();
   const timeStrong = cirrentTime.toTimeString();
@@ -143,12 +140,19 @@ const onANavClicked = () => {
   const hour = 3600000;
   const minute = 60000;
   let timeThis = arrayThisTime[0] * hour + arrayThisTime[1] * minute;
-  const arrayBokeTime = htmlElements.tdTime.innerText.split(":");
-  let bookTime = arrayBokeTime[0] * hour + arrayBokeTime[1] * minute;
-  let difference = bookTime - timeThis;
-  const thirtyMinutes = 1800000;
-  const sixtyMinutes = 3600000;
-  changeTimeCondition(difference, thirtyMinutes, sixtyMinutes);
+  htmlElements.tdTime = htmlElements.bookTbody.getElementsByTagName('tr');
+  const arrayTr = Array.from(htmlElements.tdTime);
+
+  arrayTr.forEach((element)=>{
+    const elementTr = element.childNodes[1];
+    let elementTrSplit = elementTr.innerText.split(":");
+    let bookTime = elementTrSplit[0] * hour + elementTrSplit[1] * minute;
+    let difference = bookTime - timeThis;
+    const thirtyMinutes = 1800000;
+    const sixtyMinutes = 3600000;
+    changeTimeCondition(difference, thirtyMinutes, sixtyMinutes, elementTr);
+  });
+
 };
 
 // Изменение контена для Work value
@@ -168,8 +172,7 @@ const chengeWork = () => {
   htmlElements.cheButtontWorke.addEventListener("click", aplayChengeWork);
   htmlElements.cheInputWorke.value = workeCheTd.innerText;
   workeCheTd.innerText = "";
-  workeCheTd.appendChild(htmlElements.cheInputWorke);
-  workeCheTd.appendChild(htmlElements.cheButtontWorke);
+  apendHelpper(workeCheTd, [htmlElements.cheInputWorke, htmlElements.cheButtontWorke]);
   workeCheTd.removeEventListener("dblclick", chengeWork);
 };
 
@@ -193,51 +196,6 @@ const onButtonIcoClearClicked = function(){
   delete books.books[index];
   renderBook();
 };
-
-//переделать на класс будет удобней выглядеть !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-const infoBook = {
-  time: document.getElementById("formGroupExampleInputTime"),
-  brand: document.getElementById("formGroupExampleInputBrand"),
-  phone: document.getElementById("formGroupExampleInputPhone"),
-  name: document.getElementById("formGroupExampleInputName"),
-  work: document.getElementById("formGroupExampleInputWork"),
-  registerSign: document.getElementById("formGroupExampleInputRegisterSign"),
-  carMileage: document.getElementById("formGroupExampleInputCarMileage"),
-  yearIssue: document.getElementById("formGroupExampleInputYearIssue"),
-  priceWorke: document.getElementById("formGroupExampleInputPriceWorke"),
-  priceParts: document.getElementById("formGroupExampleInputPriceParts"),
-};
-// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-// const obj123 = ["time", "brand", "phone", "name", "work", "registerSign", "carMileage", "yearIssue", "priceWorke", "priceParts"];
-
-// const idParam = (param) => {
-//   console.log(param.toLocaleString().split(",")[0]);
-//   return document.getElementById(`formGroupExampleInput${param}`);
-// };
-
-// class InfoBook{
-//   constructor(time, brand, phone, name, work, registerSign, carMileage, yearIssue, priceWorke, priceParts){
-//      // .toLocaleString().split(",")[0]
-//     this.time = idParam(time);
-//     this.brand = idParam(brand);
-//     this.phone = idParam(phone);
-//     this.name = idParam(name);
-//     this.work = idParam(work);
-//     this.registerSign = idParam(registerSign);
-//     this.carMileage = idParam(carMileage);
-//     this.yearIssue = idParam(yearIssue);
-//     this.priceWorke = idParam(priceWorke);
-//     this.priceParts = idParam(priceParts);
-   
-//   };
-// };
-
-// const newTime = new InfoBook("time", "brand", "phone", "name", "work", "registerSign", "carMileage", "yearIssue", "priceWorke", "priceParts");
-
-// console.log(newTime);
-
-
-// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 function formClear(){
   const f = htmlElements.form.getElementsByTagName("input");
@@ -286,7 +244,6 @@ function onButtonToBookClicked() {
 function BooksTable() {
   htmlElements.h2MasterInfo.innerText = masterNameCategogy;
   Clock.prototype.init();
-
   renderBook();
   //переодически нужно рендерить renderBook чтобы перекрашивался
   let renderBookInterval = setInterval(renderBook, 180000);

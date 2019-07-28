@@ -54,6 +54,8 @@ const masters = new Masters();
 masters.masters.push(master1);
 masters.masters.push(master2);
 
+// console.log(JSON.stringify(masters));
+
 
 export { masters };
 
