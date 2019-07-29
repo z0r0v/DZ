@@ -1,5 +1,4 @@
-import {UserService} from "./user.service.js";
-
+import { UserService } from "./user.service.js";
 
 class Master {
   id;
@@ -9,8 +8,7 @@ class Master {
   lastName;
   dateEmployment;
   categoryHired;
-  book;
-  category = ()=> {
+  category = () => {
     const yers = Math.floor((Date.now() - this.dateEmployment) / 31536000000);
     const preliminaryCategory = this.categoryHired + yers;
     if (preliminaryCategory >= 5) {
@@ -19,7 +17,7 @@ class Master {
       return preliminaryCategory;
     }
   };
-};
+}
 
 class Masters {
   masters = [];
@@ -35,52 +33,30 @@ class Masters {
   };
 };
 
+class MasterCeate {
+  constructor(data) {
+    data.forEach(element => {
+      const master = new Master();
+      master.id = element.id;
+      master.login = element.login; //Изменить на не пустое
+      master.pasword = element.pasword; //Изменить на не пустое
+      master.firstName = element.firstName;
+      master.lastName = element.lastName;
+      master.dateEmployment = new Date(element.dateEmployment);
+      master.categoryHired = element.categoryHired;
+      masters.masters.push(master);
+    });
+  };
+};
+
 const masters = new Masters();
 
-new UserService().getFetch().then(data=>{
-  const master1 = new Master();
-  master1.id = data.id;
-  master1.login = data.login;//Изменить на не пустое
-  master1.pasword = data.pasword;//Изменить на не пустое
-  master1.firstName = data.firstName;
-  master1.lastName = data.lastName;
-  master1.dateEmployment =new Date(data.dateEmployment);
-  master1.categoryHired =data.categoryHired;
-  masters.masters.push(master1);
-  console.log("master1:", master1);
-  console.log("data:", data);
+new UserService().getFetch().then(data => {
+  new MasterCeate(data);
 });
 
-new UserService().getHXMhttp().then(data=>{
-  //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  const master2 = new Master();
-  master2.id = 2;
-  master2.login = "b";
-  master2.pasword = "321";
-  master2.firstName = "Genady";
-  master2.lastName = "Petrovich";
-  master2.dateEmployment = new Date("July 18, 2016 14:24:00");
-  master2.categoryHired =2;
-  masters.masters.push(master2);
-  console.log("master2:", master2);
-  console.log("data:", data);
+new UserService().getHXMhttp().then(data => {
+  // new MasterCeate(data);
 });
-
-
-
-
-
-
-
-
-//тут будем забирать мастеров из json
-
-
-
-
-
-
-
 
 export { masters };
-

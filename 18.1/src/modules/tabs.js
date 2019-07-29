@@ -7,12 +7,15 @@ const htmlElements = {
 };
 
 const onTabsClick = (event) => {
+
   arrayElements.forEach(element => {
     element.classList.remove("disabled");
   });
+  
   event.srcElement.classList.add("disabled");
   const mode = event.srcElement.dataset.mode;
   const arrayTabs = Array.from(htmlElements.tabs[0].children);
+
   arrayTabs.forEach(element => {
     element.classList.add("hidden");
   });

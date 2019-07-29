@@ -4,6 +4,8 @@ import { BooksTable } from "./book.js";
 let masterNameCategogy;
 let master_id;
 let isLogged = false;
+const loginName = document.getElementById("exampleInputLoggin");
+const pasword = document.getElementById("exampleInputPassword");
 
 const htmlElements = {
   output: document.querySelector(".output"),
@@ -34,11 +36,15 @@ function onLogoutCuttonclick() {
   htmlElements.inputLogin.placeholder = "Enter you loggin";
   htmlElements.inputPasword.placeholder = "Enter you password";
   htmlElements.tr.innerText = null;
-}
+};
+
+
+const danger = "border-danger";
+const incorrectly = "Password or login is entered incorrectly!";
+
 
 function onButtonCheckPassword() {
-  const loginName = document.getElementById("exampleInputLoggin");
-  const pasword = document.getElementById("exampleInputPassword");
+  
 
   loginName.classList.remove("border-danger", "border-success");
   pasword.classList.remove("border-danger", "border-success");
@@ -50,30 +56,42 @@ function onButtonCheckPassword() {
       }. Category: ${master.category()}`;
       isLogged = true;
       master_id = master.id
+
       // в LocalStorage!!!!!!!!!!!!!!!!!!!!!
+      // localStorage.setItem("stateLogIn", isLogged);
+
+      
       return isLogged, master_id;
-    }
+    };
   });
+
   if (isLogged) {
-    loginName.classList.remove("border-danger");
-    pasword.classList.remove("border-danger");
+
+    loginName.classList.remove(danger);
+    pasword.classList.remove(danger);
+
     loginName.classList.add("border-success");
     pasword.classList.add("border-success");
 
     htmlElements.divLogin.classList.add("hidden");
     htmlElements.masterInfo.classList.remove("hidden");
     htmlElements.divNav.classList.remove("hidden");
+
+    
     new BooksTable();
-  } else {
-    loginName.classList.add("border", "border-danger");
-    pasword.classList.add("border", "border-danger");
-    loginName.value = "";
-    pasword.value = "";
-    loginName.placeholder = "Password or login is entered incorrectly!";
-    pasword.placeholder = "Password or login is entered incorrectly!";
-  }
+
+  };
+    loginName.classList.add("border", danger);
+    pasword.classList.add("border", danger);
+    loginName.value = null;
+    pasword.value = null;
+    loginName.placeholder = incorrectly;
+    pasword.placeholder = incorrectly;
+
   return masterNameCategogy;
-}
+};
+
+
 
 function Login() {}
 
