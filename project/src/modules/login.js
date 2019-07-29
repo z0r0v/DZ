@@ -1,11 +1,19 @@
-import { masters } from "./materDataBase.js";
-import { BooksTable } from "./book.js";
+import { masters } from "./reexport.js";
+import { BooksTable } from "./reexport.js";
+import { ClassHelper } from "./reexport.js";
 
 let masterNameCategogy;
-let master_id;
+let masterId;
 let isLogged = false;
 const loginName = document.getElementById("exampleInputLoggin");
 const pasword = document.getElementById("exampleInputPassword");
+const danger = "border-danger";
+const success = "border-success";
+const incorrectly = "Password or login is entered incorrectly!";
+const log = "loggin";
+const pass = "password";
+const passPlac = "Enter you ";
+const hidd = "hidden";
 
 const htmlElements = {
   output: document.querySelector(".output"),
@@ -21,78 +29,55 @@ const htmlElements = {
   tr: document.querySelector(".executedOrder > tr")
 };
 
-
 htmlElements.buttonLogout.addEventListener("click", onLogoutCuttonclick);
 htmlElements.formButton.addEventListener("click", onButtonCheckPassword);
 
+class Authentication{
+  constructor(){
+    if (isLogged) {
+      new ClassHelper().removeClass([loginName, pasword], danger);
+      new ClassHelper().addClass([loginName, pasword, htmlElements.divLogin], hidd);
+      new ClassHelper().removeClass([htmlElements.masterInfo, htmlElements.divNav], hidd);
+      new BooksTable();
+    }else{
+      new ClassHelper().addClass([loginName, pasword], danger, "border");
+      new ClassHelper().addNullValue([loginName, pasword]);
+      loginName.placeholder = incorrectly;
+      pasword.placeholder = incorrectly;
+    };
+  };
+};
+
 function onLogoutCuttonclick() {
   isLogged = false;
-  htmlElements.divLogin.classList.remove("hidden");
-  htmlElements.masterInfo.classList.add("hidden");
-  htmlElements.divNav.classList.add("hidden");
-
-  htmlElements.inputLogin.value = null;
-  htmlElements.inputPasword.value = null;
-  htmlElements.inputLogin.placeholder = "Enter you loggin";
-  htmlElements.inputPasword.placeholder = "Enter you password";
+  htmlElements.divLogin.classList.remove(hidd);
+  new ClassHelper().addClass([htmlElements.masterInfo, htmlElements.divNav], hidd);
+  new ClassHelper().addNullValue([htmlElements.inputLogin,  htmlElements.inputPasword]);
+  htmlElements.inputLogin.placeholder = `${passPlac}${log}`;
+  htmlElements.inputPasword.placeholder = `${passPlac}${pass}`;
   htmlElements.tr.innerText = null;
 };
 
-
-const danger = "border-danger";
-const incorrectly = "Password or login is entered incorrectly!";
-
-
 function onButtonCheckPassword() {
-  
-
-  loginName.classList.remove("border-danger", "border-success");
-  pasword.classList.remove("border-danger", "border-success");
+  new ClassHelper().removeClass([loginName, pasword], danger, success);
 
   masters.masters.forEach(function(master) {
     if (pasword.value === master.pasword && loginName.value === master.login) {
       masterNameCategogy = `Master : ${master.firstName} ${
-        master.lastName
-      }. Category: ${master.category()}`;
+        master.lastName}. Category: ${master.category()}`;
       isLogged = true;
-      master_id = master.id
+      masterId = master.id
 
       // в LocalStorage!!!!!!!!!!!!!!!!!!!!!
       // localStorage.setItem("stateLogIn", isLogged);
-
       
-      return isLogged, master_id;
+      return isLogged, masterId;
     };
   });
-
-  if (isLogged) {
-
-    loginName.classList.remove(danger);
-    pasword.classList.remove(danger);
-
-    loginName.classList.add("border-success");
-    pasword.classList.add("border-success");
-
-    htmlElements.divLogin.classList.add("hidden");
-    htmlElements.masterInfo.classList.remove("hidden");
-    htmlElements.divNav.classList.remove("hidden");
-
-    
-    new BooksTable();
-
-  };
-    loginName.classList.add("border", danger);
-    pasword.classList.add("border", danger);
-    loginName.value = null;
-    pasword.value = null;
-    loginName.placeholder = incorrectly;
-    pasword.placeholder = incorrectly;
-
+  new Authentication(isLogged);
   return masterNameCategogy;
 };
 
-
-
 function Login() {}
 
-export { Login, masterNameCategogy,  master_id};
+export { Login, masterNameCategogy,  masterId};

@@ -55,3 +55,7 @@
 .requiresReplacement > tbody > tr> td:nth-child(2){
   color: red;
 }
+
+.hidden{
+  display: none;
+}

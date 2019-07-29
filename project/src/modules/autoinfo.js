@@ -1,7 +1,7 @@
-import { infoCar, infoOrder } from "./book.js";
-import { carOwners } from "./carDatabase.js";
-import { StopWotch } from "./stopWotch.js";
-import { apendHelpper } from "./apendHelpper.js";
+import { infoCar, infoOrder } from "./reexport.js";
+import { carOwners } from "./reexport.js";
+import { StopWotch } from "./reexport.js";
+import { apendHelpper } from "./reexport.js";
 
 const htmlElements = {
   executedOrder: document.querySelector(".executedOrder"),

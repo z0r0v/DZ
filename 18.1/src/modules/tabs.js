@@ -37,4 +37,16 @@ arrayElements.forEach(element => {
 
 function Tabs() {}
 
+// const modeList = {
+//   "Master":htmlElements.masterInfo.classList.remove("hidden"),
+//   "Auto": htmlElements.autoInfo.classList.remove("hidden"),
+//   };
+
+
+// if(elementDataAttribute in modeList) {
+//   modeList[elementDataAttribute];
+// }else{
+//   throw new Error('Error in onTabsClick module tabs str 33')
+// };
+
 export { Tabs };

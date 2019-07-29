@@ -1,17 +1,19 @@
-import { masterNameCategogy } from "./login.js";
-import { master_id } from "./login.js";
-import { books, Book } from "./carDatabase.js";
-import { Clock } from "./clock.js";
-import { AutoInfo } from "./autoinfo.js";
-import { infoBook } from "./infoBook.js";
-import { apendHelpper } from "./apendHelpper.js";
-
-
+import { masterNameCategogy } from "./reexport.js";
+import { masterId } from "./reexport.js";
+import { books, Book } from "./reexport.js";
+import { Clock } from "./reexport.js";
+import { AutoInfo } from "./reexport.js";
+import { infoBook } from "./reexport.js";
+import { apendHelpper } from "./reexport.js";
 
 let infoCar;
 let infoOrder;
 const autoInfo = new AutoInfo();
 
+const btn = "btn";
+const btnPrimary = "btn-outline-primary";
+const btnSm = "btn-sm";
+const colMd12 = "col-md-12";
 
 const htmlElements = {
   h2MasterInfo: document.querySelector("div>div>h3"),
@@ -21,12 +23,11 @@ const htmlElements = {
   form: document.querySelector(".bookForm"),
 };
 
-
 htmlElements.buttonBook.addEventListener("click", onButtonToBookClicked);
 
 const renderBook = () => {
   htmlElements.bookTbody.innerText = "";
-  books.getByMasterId(master_id).forEach(function(element, index) {
+  books.getByMasterId(masterId).forEach(function(element, index) {
     creatBoofing(
       ++index,
       element.time,
@@ -34,16 +35,20 @@ const renderBook = () => {
       element.phone,
       element.name,
       element.work,
-      element.id
+      element.id,
     );
   });
 };
 
 
 function createBookHelper(array, trBookInfo){
-  array.forEach((element)=>{
+  array.forEach((element, index)=>{
     const objTd = document.createElement("td");
     objTd.innerText = element;
+    //повесил изменение только туда кудам не нужно в цикле
+    if(index === 4){
+      objTd.addEventListener("dblclick", chengeWork);
+    };
     trBookInfo.appendChild(objTd);
   });
 };
@@ -80,13 +85,14 @@ creatButtons(tdButtons, timesCircle, danger, onButtonIcoClearClicked);
 const creatBoofing = (number, time, brand, phone, name, work, idBook) => {
   const arayElement = [time, brand, phone, name, work];
   creatElementsBook(htmlElements.bookTbody, arayElement, idBook, number);
+ 
   onANavClicked();
 };
 
 function addInNewMasive() {
 ////Кнопка check in v!!!!!!!!!!
 
-  const startTime = new Date().getTime();
+  const startTime = Date.now();
   htmlElements.executedOrderTr.innerText = null;
   const _slfe = this;
   const index = findElement(_slfe);
@@ -104,6 +110,7 @@ function addInNewMasive() {
     work: work,
     price: price
   };
+
   autoInfo.creatTableOrder(startTime);
   //теерь нужно добавить в масив наши данные из масива который и потом удалить
   // carOwners.car.push(masive);
@@ -116,6 +123,7 @@ function addInNewMasive() {
 
 
 const changeTimeCondition = (difference, thirtyMinutes, sixtyMinutes, elementTr) => {
+  // тут заменить на обьект
   switch (true) {
     case difference <= 0:
         elementTr.classList.add("text-danger");
@@ -162,13 +170,7 @@ const chengeWork = () => {
   htmlElements.cheInputWorke.classList.add("col-md-12");
   htmlElements.cheButtontWorke = document.createElement("button");
   htmlElements.cheButtontWorke.innerText = "apply";
-  htmlElements.cheButtontWorke.classList.add(
-    "btn",
-    "btn-outline-primary",
-    "btn-sm",
-    "col-md-12"
-  );
-
+  htmlElements.cheButtontWorke.classList.add(btn, btnPrimary, btnSm, colMd12);
   htmlElements.cheButtontWorke.addEventListener("click", aplayChengeWork);
   htmlElements.cheInputWorke.value = workeCheTd.innerText;
   workeCheTd.innerText = "";
@@ -218,11 +220,11 @@ function sortBook(){
   });
 };
 
-
+//Тут нужно класс
 function onButtonToBookClicked() {
   const newBook = new Book;
   newBook.id = books.books.length;
-  newBook.master_id = master_id;
+  newBook.masterId = masterId;
   newBook.time = infoBook.time.value;
   newBook.brand = infoBook.brand.value;
   newBook.phone = infoBook.phone.value;
@@ -230,7 +232,7 @@ function onButtonToBookClicked() {
   newBook.work = infoBook.work.value;
   newBook.registerSign = infoBook.registerSign.value;
   newBook.carMileage = infoBook.carMileage.value;
-  newBook.registerSign = infoBook.yearIssue.value,
+  newBook.yearIssue = infoBook.yearIssue.value,
   newBook.priceWork = infoBook.priceWorke.value,
   newBook.priceParts = infoBook.priceParts.value
   books.books.push(newBook);
@@ -239,14 +241,12 @@ function onButtonToBookClicked() {
   renderBook();
 };
 
-
-
 function BooksTable() {
   htmlElements.h2MasterInfo.innerText = masterNameCategogy;
   Clock.prototype.init();
   renderBook();
   //переодически нужно рендерить renderBook чтобы перекрашивался
-  let renderBookInterval = setInterval(renderBook, 180000);
+  setInterval(renderBook, 180000);
 }
 
 export { BooksTable, infoCar, infoOrder };

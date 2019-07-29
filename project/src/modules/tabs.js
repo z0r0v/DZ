@@ -1,51 +1,23 @@
-import { switchCase } from "./switchCase.js";
-
-const disClass = "disabled";
+import { SwitchCase } from "./reexport.js";
 
 const htmlElements = {
-  autoInfo:document.querySelector(".autoInfo"),
- masterInfo: document.querySelector(".masterInfo"),
-
-  navA: document.querySelectorAll("ul>li>a"),
   tabs: document.querySelectorAll(".tabs"),
-
+  navA: document.querySelectorAll("ul>li>a"),
 };
 
+const classDis = "disabled";
+
 const onTabsClick = (event) => {
-
   arrayElements.forEach(element => {
-    element.classList.remove(disClass);
+    element.classList.remove(classDis);
   });
-
-  event.srcElement.classList.add(disClass);
-
+  event.srcElement.classList.add(classDis);
   const elementDataAttribute = event.target.dataset.mode;
-  console.log(elementDataAttribute);
-
   const arrayTabs = Array.from(htmlElements.tabs[0].children);
-
-
   arrayTabs.forEach(element => {
     element.classList.add("hidden");
   });
-
-  ///////// НЕ ЗАРАБОТАТАЛО !!!!!!!!!!!!!!!!!!!!
-  
-  const modeList = {
-    "Master":htmlElements.masterInfo.classList.remove("hidden"),
-    "Auto": htmlElements.autoInfo.classList.remove("hidden"),
-    };
-
-
-  if(elementDataAttribute in modeList) {
-    modeList[elementDataAttribute];
-  }else{
-    throw new Error('Error in onTabsClick module tabs str 33')
-  };
-
-
-  // new switchCase(elementDataAttribute);
-
+    new SwitchCase(elementDataAttribute);
 };
 
 const arrayElements = Array.from(htmlElements.navA);
@@ -54,5 +26,4 @@ arrayElements.forEach(element => {
 });
 
 function Tabs() {}
-
 export { Tabs };

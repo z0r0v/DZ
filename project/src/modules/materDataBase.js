@@ -1,4 +1,4 @@
-import { UserService } from "./user.service.js";
+import { UserService } from "./reexport.js";
 
 class Master {
   id;
@@ -38,8 +38,8 @@ class MasterCeate {
     data.forEach(element => {
       const master = new Master();
       master.id = element.id;
-      master.login = element.login; //Изменить на не пустое
-      master.pasword = element.pasword; //Изменить на не пустое
+      master.login = element.login;
+      master.pasword = element.pasword;
       master.firstName = element.firstName;
       master.lastName = element.lastName;
       master.dateEmployment = new Date(element.dateEmployment);

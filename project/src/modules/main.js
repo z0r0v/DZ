@@ -1,6 +1,6 @@
-import {Login} from './login.js';
-import {Slider} from './slider.js';
-import {Tabs} from './tabs.js';
+import {Login} from './reexport.js';
+import {Slider} from './reexport.js';
+import {Tabs} from './reexport.js';
 
 
 const tabs = new Tabs();
