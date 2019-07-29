@@ -46,10 +46,11 @@ function onButtonCheckPassword() {
   masters.masters.forEach(function(master) {
     if (pasword.value === master.pasword && loginName.value === master.login) {
       masterNameCategogy = `Master : ${master.firstName} ${
-        master.LastName
+        master.lastName
       }. Category: ${master.category()}`;
       isLogged = true;
       master_id = master.id
+      // в LocalStorage!!!!!!!!!!!!!!!!!!!!!
       return isLogged, master_id;
     }
   });
