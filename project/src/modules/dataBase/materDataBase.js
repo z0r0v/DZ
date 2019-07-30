@@ -1,4 +1,4 @@
-import { UserService } from "./reexport.js";
+import { UserService } from "../reexport.js";
 
 const oneYearMs = 31536000000;
 

@@ -1,15 +1,15 @@
 //переделать на класс будет удобней выглядеть !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 const infoBook = {
-  time: document.getElementById("formGroupExampleInputTime"),
-  brand: document.getElementById("formGroupExampleInputBrand"),
-  phone: document.getElementById("formGroupExampleInputPhone"),
-  name: document.getElementById("formGroupExampleInputName"),
-  work: document.getElementById("formGroupExampleInputWork"),
-  registerSign: document.getElementById("formGroupExampleInputRegisterSign"),
-  carMileage: document.getElementById("formGroupExampleInputCarMileage"),
-  yearIssue: document.getElementById("formGroupExampleInputYearIssue"),
-  priceWorke: document.getElementById("formGroupExampleInputPriceWorke"),
-  priceParts: document.getElementById("formGroupExampleInputPriceParts"),
+  time: document.getElementById("time"),
+  brand: document.getElementById("brand"),
+  phone: document.getElementById("phone"),
+  name: document.getElementById("name"),
+  work: document.getElementById("work"),
+  registerSign: document.getElementById("registerSign"),
+  carMileage: document.getElementById("carMileage"),
+  yearIssue: document.getElementById("yearIssue"),
+  priceWorke: document.getElementById("priceWorke"),
+  priceParts: document.getElementById("priceParts")
 };
 
 export { infoBook };

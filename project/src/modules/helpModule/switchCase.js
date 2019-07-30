@@ -31,7 +31,7 @@ class SwitchCase2 {
     if (elementDataAttribute in modeList2) {
       elementTr.classList.remove(modeList2[elementDataAttribute]);
     } else {
-      throw new Error("Error in onTabsClick module tabs str 33");
+      throw new Error("Error in onTabsClick module book str 139");
     };
   };
 };

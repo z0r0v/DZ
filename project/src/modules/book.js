@@ -6,6 +6,7 @@ import { AutoInfo } from "./reexport.js";
 import { infoBook } from "./reexport.js";
 import { apendHelpper } from "./reexport.js";
 import { SwitchCase2 } from "./reexport.js";
+import { ValidationForm } from "./reexport.js";
 
 
 let infoCar;
@@ -16,6 +17,9 @@ const btn = "btn";
 const btnPrimary = "btn-outline-primary";
 const btnSm = "btn-sm";
 const colMd12 = "col-md-12";
+const danger = "border-danger";
+
+
 
 const htmlElements = {
   h2MasterInfo: document.querySelector("div>div>h3"),
@@ -94,23 +98,12 @@ const creatBoofing = (number, time, brand, phone, name, work, idBook) => {
 
 function addInNewMasive() {
 ////Кнопка check in v!!!!!!!!!!
-
   const startTime = Date.now();
   htmlElements.executedOrderTr.innerText = null;
   const thisContext = this;
   const index = findElement(thisContext);
 
   const array = books.books[index];
-  //Удалить если ничего не потечет !!!!!!!!!э
-
-  // const brand = array.brand;
-  // const yearIssue = array.yearIssue;
-  // const carMileage = array.carMileage;
-  // const name = array.name;
-  // const phone = array.phone;
-  // const work = array.work;
-
-
   //деструктуризация
   const {brand, yearIssue, carMileage, name, phone, work} = array;
   const price = array.priceWork + array.priceParts;
@@ -135,23 +128,8 @@ function addInNewMasive() {
 
 
 const changeTimeCondition = (difference, thirtyMinutes, sixtyMinutes, elementTr) => {
+
 new SwitchCase2(true, difference, thirtyMinutes, sixtyMinutes, elementTr);
-
-//Удалить если не будет логать !!!!!!!
-  // switch (true) {
-  //   case difference <= 0:
-  //       elementTr.classList.add("text-danger");
-  //     break;
-  //   case difference <= thirtyMinutes:
-  //       elementTr.classList.add("text-warning");
-  //     break;
-  //   case difference <= sixtyMinutes:
-  //       elementTr.classList.add("text-success");
-  //     break;
-  //   default:
-  //       elementTr.classList.add("text-body");
-  // };
-
 };
 
 //перекраска тайма
@@ -223,6 +201,8 @@ function formClear(){
   });
 };
 
+
+
 function sortBook(){
   books.books.sort(function(a, b) {
     if (a.time > b.time) {
@@ -235,29 +215,46 @@ function sortBook(){
   });
 };
 
+
 //не воркает по лехиному методу
 // function sortBook(){
 //   books.books.sort((a, b) => b.time - a.time);
 // };
 
 
-//Тут нужно класс
 function onButtonToBookClicked() {
+  //Добавление элементов в очередь 
 
-  const newBook = new Book;
-  newBook.id = books.books.length;
-  newBook.masterId = masterId;
-  newBook.time = infoBook.time.value;
-  newBook.brand = infoBook.brand.value;
-  newBook.phone = infoBook.phone.value;
-  newBook.name = infoBook.name.value;
-  newBook.work = infoBook.work.value;
-  newBook.registerSign = infoBook.registerSign.value;
-  newBook.carMileage = infoBook.carMileage.value;
-  newBook.yearIssue = infoBook.yearIssue.value,
-  newBook.priceWork = infoBook.priceWorke.value,
-  newBook.priceParts = infoBook.priceParts.value
-  books.books.push(newBook);
+const newBook = new Book;
+newBook.id = books.books.length;
+newBook.masterId = masterId;
+
+//нужен класс
+newBook.time = infoBook.time.value;
+newBook.brand = infoBook.brand.value;
+newBook.phone = infoBook.phone.value;
+newBook.name = infoBook.name.value;
+newBook.work = infoBook.work.value;
+newBook.registerSign = infoBook.registerSign.value;
+newBook.carMileage = infoBook.carMileage.value;
+newBook.yearIssue = infoBook.yearIssue.value,
+newBook.priceWork = infoBook.priceWorke.value,
+newBook.priceParts = infoBook.priceParts.value
+
+const array = [
+  infoBook.time, 
+  infoBook.brand, 
+  infoBook.phone, 
+  infoBook.name, 
+  infoBook.work, 
+  infoBook.registerSign,
+  infoBook.carMileage,
+  infoBook.yearIssue,
+  infoBook.priceWorke,
+  infoBook.priceParts,
+];
+
+new ValidationForm(array, danger, books.books, newBook);
 
   sortBook();
   formClear();
