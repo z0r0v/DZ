@@ -4,7 +4,7 @@ let differenceSeconds = 0;
 
 
 const runTime = (element, startTime) => {
-  differenceMilliseconds = new Date().getTime() - startTime;
+  differenceMilliseconds = Date.now() - startTime;
   differenceSeconds =
     Math.round(differenceMilliseconds / 1000) + totalSecondsDifference;
   let seconds = parseInt(differenceSeconds % 60);

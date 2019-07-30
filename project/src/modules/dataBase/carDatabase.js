@@ -108,7 +108,7 @@ class Books {
     this.books.forEach(function(book) {
       if (book.masterId === id) {
         result.push(book);
-      }
+      };
     });
 
     return result;
@@ -173,11 +173,14 @@ const carOwners = [
           nextReplacementMileage: 190000,
 
           get checkMileageCompare() {
-            if (this.carMileage >= this.nextReplacementMileage) {
-              return true;
-            } else {
-              return false;
-            }
+            return this.carMileage>=this.nextReplacementMileage;
+
+            // if (this.carMileage >= this.nextReplacementMileage) {
+            //   return true;
+            // } else {
+            //   return false;
+            // }
+
           },
           priceWork: 20,
           priceParts: 35
@@ -189,11 +192,14 @@ const carOwners = [
           work: "Needle shaft replacement",
           nextReplacementMileage: 195000,
           get checkMileageCompare() {
-            if (this.carMileage >= this.nextReplacementMileage) {
-              return true;
-            } else {
-              return false;
-            }
+            return this.carMileage>=this.nextReplacementMileage;
+
+            // if (this.carMileage >= this.nextReplacementMileage) {
+            //   return true;
+            // } else {
+            //   return false;
+            // }
+
           },
           priceWork: 150,
           priceParts: 200
@@ -205,11 +211,14 @@ const carOwners = [
           work: "Clutch replacement",
           nextReplacementMileage: 250000,
           get checkMileageCompare() {
-            if (this.carMileage >= this.nextReplacementMileage) {
-              return true;
-            } else {
-              return false;
-            }
+            return this.carMileage>=this.nextReplacementMileage;
+
+            // if (this.carMileage >= this.nextReplacementMileage) {
+            //   return true;
+            // } else {
+            //   return false;
+            // }
+
           },
           priceWork: 150,
           priceParts: 800

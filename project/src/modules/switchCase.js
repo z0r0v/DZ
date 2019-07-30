@@ -19,4 +19,21 @@ class SwitchCase {
   };
 };
 
-export { SwitchCase };
+
+class SwitchCase2 {
+  constructor(elementDataAttribute, difference, thirtyMinutes, sixtyMinutes, elementTr) {
+    const modeList2 = {
+      [difference <= 0]: "text-danger",
+      [difference <= thirtyMinutes]: "text-warning",
+      [difference <= sixtyMinutes]: "text-success",
+      [difference > sixtyMinutes]: "text-body",
+    };
+    if (elementDataAttribute in modeList2) {
+      elementTr.classList.remove(modeList2[elementDataAttribute]);
+    } else {
+      throw new Error("Error in onTabsClick module tabs str 33");
+    };
+  };
+};
+
+export { SwitchCase, SwitchCase2 };

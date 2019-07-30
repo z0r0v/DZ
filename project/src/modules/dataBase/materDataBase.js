@@ -1,5 +1,7 @@
 import { UserService } from "./reexport.js";
 
+const oneYearMs = 31536000000;
+
 class Master {
   id;
   login;
@@ -9,13 +11,18 @@ class Master {
   dateEmployment;
   categoryHired;
   category = () => {
-    const yers = Math.floor((Date.now() - this.dateEmployment) / 31536000000);
+    const yers = Math.floor((Date.now() - this.dateEmployment) / oneYearMs);
     const preliminaryCategory = this.categoryHired + yers;
-    if (preliminaryCategory >= 5) {
-      return 5;
-    } else {
-      return preliminaryCategory;
-    }
+    preliminaryCategory >= 5 ? preliminaryCategory = 5: preliminaryCategory;
+    return preliminaryCategory;
+
+    //Убрать если не порвет логику !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    // if (preliminaryCategory >= 5) {
+    //   return 5;
+    // } else {
+    //   return preliminaryCategory;
+    // }
+
   };
 }
 

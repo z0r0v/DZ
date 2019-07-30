@@ -5,6 +5,8 @@ import { Clock } from "./reexport.js";
 import { AutoInfo } from "./reexport.js";
 import { infoBook } from "./reexport.js";
 import { apendHelpper } from "./reexport.js";
+import { SwitchCase2 } from "./reexport.js";
+
 
 let infoCar;
 let infoOrder;
@@ -25,6 +27,7 @@ const htmlElements = {
 
 htmlElements.buttonBook.addEventListener("click", onButtonToBookClicked);
 
+// можно вынести в отдельный класс потом навешать методов под разные функции
 const renderBook = () => {
   htmlElements.bookTbody.innerText = "";
   books.getByMasterId(masterId).forEach(function(element, index) {
@@ -94,17 +97,25 @@ function addInNewMasive() {
 
   const startTime = Date.now();
   htmlElements.executedOrderTr.innerText = null;
-  const _slfe = this;
-  const index = findElement(_slfe);
-  const masive = books.books[index];
-  const brand = masive.brand;
-  const year = masive.yearIssue;
-  const mileage = masive.carMileage;
-  const owner = masive.name;
-  const phone = masive.phone;
-  const price = masive.priceWork + masive.priceParts;
-  const work = masive.work;
-  infoCar = `Brand: ${brand}, ${year} year.\nMileage: ${mileage} km.\nOwner: ${owner}.\nPhone: ${phone}.`;
+  const thisContext = this;
+  const index = findElement(thisContext);
+
+  const array = books.books[index];
+  //Удалить если ничего не потечет !!!!!!!!!э
+
+  // const brand = array.brand;
+  // const yearIssue = array.yearIssue;
+  // const carMileage = array.carMileage;
+  // const name = array.name;
+  // const phone = array.phone;
+  // const work = array.work;
+
+
+  //деструктуризация
+  const {brand, yearIssue, carMileage, name, phone, work} = array;
+  const price = array.priceWork + array.priceParts;
+
+  infoCar = `Brand: ${brand}, ${yearIssue} year.\nMileage: ${carMileage} km.\nOwner: ${name}.\nPhone: ${phone}.`;
   
   infoOrder = {
     work: work,
@@ -122,21 +133,25 @@ function addInNewMasive() {
 };
 
 
+
 const changeTimeCondition = (difference, thirtyMinutes, sixtyMinutes, elementTr) => {
-  // тут заменить на обьект
-  switch (true) {
-    case difference <= 0:
-        elementTr.classList.add("text-danger");
-      break;
-    case difference <= thirtyMinutes:
-        elementTr.classList.add("text-warning");
-      break;
-    case difference <= sixtyMinutes:
-        elementTr.classList.add("text-success");
-      break;
-    default:
-        elementTr.classList.add("text-body");
-  };
+new SwitchCase2(true, difference, thirtyMinutes, sixtyMinutes, elementTr);
+
+//Удалить если не будет логать !!!!!!!
+  // switch (true) {
+  //   case difference <= 0:
+  //       elementTr.classList.add("text-danger");
+  //     break;
+  //   case difference <= thirtyMinutes:
+  //       elementTr.classList.add("text-warning");
+  //     break;
+  //   case difference <= sixtyMinutes:
+  //       elementTr.classList.add("text-success");
+  //     break;
+  //   default:
+  //       elementTr.classList.add("text-body");
+  // };
+
 };
 
 //перекраска тайма
@@ -167,7 +182,7 @@ const onANavClicked = () => {
 const chengeWork = () => {
   const workeCheTd = event.path[0];
   htmlElements.cheInputWorke = document.createElement("input");
-  htmlElements.cheInputWorke.classList.add("col-md-12");
+  htmlElements.cheInputWorke.classList.add(colMd12);
   htmlElements.cheButtontWorke = document.createElement("button");
   htmlElements.cheButtontWorke.innerText = "apply";
   htmlElements.cheButtontWorke.classList.add(btn, btnPrimary, btnSm, colMd12);
@@ -178,30 +193,30 @@ const chengeWork = () => {
   workeCheTd.removeEventListener("dblclick", chengeWork);
 };
 
-const findElement = (_slfe) => {
-  const idElement = _slfe.parentNode.parentNode.id;
-  const i = books.books.filter(function(a){ return a.id == idElement })[0];
-  const index = books.books.indexOf(i);
+const findElement = (thisContext) => {
+  const idElement = thisContext.parentNode.parentNode.id;
+  const neadArrayElement = books.books.filter(function(a){ return a.id == idElement })[0];
+  const index = books.books.indexOf(neadArrayElement);
   return index;
 }
 
 const aplayChengeWork = function()  {
-  const _slfe = this;
-  const index = findElement(_slfe);
+  const thisContext = this;
+  const index = findElement(thisContext);
   books.books[index].work = htmlElements.cheInputWorke.value;
   renderBook();
 };
 
 const onButtonIcoClearClicked = function(){
-  const _slfe = this;
-  const index = findElement(_slfe);
+  const thisContext = this;
+  const index = findElement(thisContext);
   delete books.books[index];
   renderBook();
 };
 
 function formClear(){
-  const f = htmlElements.form.getElementsByTagName("input");
-  const arrayInput = Array.from(f);
+  const inputColection = htmlElements.form.getElementsByTagName("input");
+  const arrayInput = Array.from(inputColection);
   arrayInput.forEach(element => {
     element.value = "";
     htmlElements.buttonBook.value = "Book";
@@ -220,8 +235,15 @@ function sortBook(){
   });
 };
 
+//не воркает по лехиному методу
+// function sortBook(){
+//   books.books.sort((a, b) => b.time - a.time);
+// };
+
+
 //Тут нужно класс
 function onButtonToBookClicked() {
+
   const newBook = new Book;
   newBook.id = books.books.length;
   newBook.masterId = masterId;
@@ -236,6 +258,7 @@ function onButtonToBookClicked() {
   newBook.priceWork = infoBook.priceWorke.value,
   newBook.priceParts = infoBook.priceParts.value
   books.books.push(newBook);
+
   sortBook();
   formClear();
   renderBook();
@@ -246,7 +269,8 @@ function BooksTable() {
   Clock.prototype.init();
   renderBook();
   //переодически нужно рендерить renderBook чтобы перекрашивался
-  setInterval(renderBook, 180000);
+  const threeMinutes = 180000;
+  setInterval(renderBook, threeMinutes);
 }
 
 export { BooksTable, infoCar, infoOrder };
