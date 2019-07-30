@@ -10,19 +10,25 @@ const htmlElements = {
   td: document.querySelectorAll(".executedOrder > tr > td"),
   replaced: document.querySelector(".replaced > tbody"),
   futureWorkPlan: document.querySelector(".futureWorkPlan > tbody"),
-  requiresReplacement: document.querySelector(".requiresReplacement > tbody"),
+  requiresReplacement: document.querySelector(".requiresReplacement > tbody")
 };
 
 function AutoInfo() {}
 
-const createTable = (element) =>{
+const createTable = element => {
   element.appendChild(htmlElements.trReplaced);
-  const arayElements = [htmlElements.thIndex, htmlElements.tdCarMileage, htmlElements.tdDate,htmlElements.tdWork, htmlElements.tdpriceParts,htmlElements.tdPriceWork];
+  const arayElements = [
+    htmlElements.thIndex,
+    htmlElements.tdCarMileage,
+    htmlElements.tdDate,
+    htmlElements.tdWork,
+    htmlElements.tdpriceParts,
+    htmlElements.tdPriceWork
+  ];
   apendHelpper(htmlElements.trReplaced, arayElements);
 };
 
-AutoInfo.prototype.creatTableOrder = (startTime) => {
-  
+AutoInfo.prototype.creatTableOrder = startTime => {
   htmlElements.carInfo.innerText = infoCar;
   htmlElements.work = document.createElement("td");
   htmlElements.work.classList.add("text-left");
@@ -30,10 +36,14 @@ AutoInfo.prototype.creatTableOrder = (startTime) => {
   htmlElements.price = document.createElement("td");
 
   htmlElements.executedOrder.appendChild(htmlElements.trExecutedOrder);
-  const arayElements = [htmlElements.work, htmlElements.time, htmlElements.price];
+  const arayElements = [
+    htmlElements.work,
+    htmlElements.time,
+    htmlElements.price
+  ];
   apendHelpper(htmlElements.trExecutedOrder, arayElements);
 
-  const element =  htmlElements.time;
+  const element = htmlElements.time;
   const stopWotch = new StopWotch();
   stopWotch.init(element, startTime);
   htmlElements.work.innerText = infoOrder.work;
@@ -44,23 +54,24 @@ htmlElements.carMileage = document.querySelector(
   ".requiresReplacement > tbody> tr >td"
 );
 
-
 const creatReplaced = (
   index,
   carMileage,
   date,
   work,
   priceParts,
-  priceWork,
+  priceWork
 ) => {
   htmlElements.trReplaced = document.createElement("tr");
   htmlElements.thIndex = document.createElement("th");
   htmlElements.thIndex.scope = "row";
   htmlElements.thIndex.innerText = index;
   htmlElements.tdCarMileage = document.createElement("td");
-  const topThree = carMileage.toString().substring(0,3);
-  const secondTrike = carMileage.toString().substring(3)
-  htmlElements.tdCarMileage.innerText =`${topThree} ${secondTrike} km`;
+
+  const topThree = carMileage.toString().substring(0, 3);
+  const secondTrike = carMileage.toString().substring(3);
+
+  htmlElements.tdCarMileage.innerText = `${topThree} ${secondTrike} km`;
   htmlElements.tdDate = document.createElement("td");
   htmlElements.tdDate.innerText = date;
   htmlElements.tdWork = document.createElement("td");
@@ -91,7 +102,7 @@ const renderReplacementExpired = array => {
   htmlElements.futureWorkPlan.innerText = null;
   htmlElements.requiresReplacement.innerText = null;
   array.forEach(function(element, index) {
-    if(!array[index].checkMileageCompare){
+    if (!array[index].checkMileageCompare) {
       creatReplaced(
         //потом разобраться что сделать номер индексуеться по общему списку? пока отключены номера
         null,
@@ -102,10 +113,10 @@ const renderReplacementExpired = array => {
         element.priceParts
       );
       createTable(htmlElements.requiresReplacement);
-    }else{
+    } else {
       creatReplaced(
-         //потом разобраться что сделать номер индексуеться по общему списку? пока отключены номера
-         null,
+        //потом разобраться что сделать номер индексуеться по общему списку? пока отключены номера
+        null,
         element.nextReplacementMileage,
         null,
         element.work,
@@ -117,13 +128,10 @@ const renderReplacementExpired = array => {
   });
 };
 
-
 //придумать как суда передавать именно этот масив
 renderReplaced(carOwners[0].car.replacementParts);
 
 //придумать как суда передавать именно этот масив
 renderReplacementExpired(carOwners[0].car.futureWorkPlan);
-
-
 
 export { AutoInfo };

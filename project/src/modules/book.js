@@ -8,7 +8,6 @@ import { apendHelpper } from "./reexport.js";
 import { SwitchCase2 } from "./reexport.js";
 import { ValidationForm } from "./reexport.js";
 
-
 let infoCar;
 let infoOrder;
 const autoInfo = new AutoInfo();
@@ -18,8 +17,6 @@ const btnPrimary = "btn-outline-primary";
 const btnSm = "btn-sm";
 const colMd12 = "col-md-12";
 const danger = "border-danger";
-
-
 
 const htmlElements = {
   h2MasterInfo: document.querySelector("div>div>h3"),

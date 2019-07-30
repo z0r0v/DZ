@@ -1,4 +1,4 @@
-import { UserService } from "../reexport.js";
+import { UserServiceFetch, UserServiceHXMhttp  } from "../reexport.js";
 
 const oneYearMs = 31536000000;
 
@@ -15,14 +15,6 @@ class Master {
     const preliminaryCategory = this.categoryHired + yers;
     preliminaryCategory >= 5 ? preliminaryCategory = 5: preliminaryCategory;
     return preliminaryCategory;
-
-    //Убрать если не порвет логику !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    // if (preliminaryCategory >= 5) {
-    //   return 5;
-    // } else {
-    //   return preliminaryCategory;
-    // }
-
   };
 }
 
@@ -58,12 +50,23 @@ class MasterCeate {
 
 const masters = new Masters();
 
-new UserService().getFetch().then(data => {
+//ES6 Fetch
+
+new UserServiceFetch().getFetch().then(data => {
   new MasterCeate(data);
 });
 
-new UserService().getHXMhttp().then(data => {
-  // new MasterCeate(data);
-});
+//ES6 Fetch
+
+// new UserServiceFetch().getHXMhttp().then(
+//   data => {
+//   new MasterCeate(data);
+// });
+
+//ES5 HXMhttp
+
+// new UserServiceHXMhttp().getHXMhttp().then(  data => {
+//   new MasterCeate(data);
+// });
 
 export { masters };

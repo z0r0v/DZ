@@ -1,4 +1,4 @@
-export { UserService } from "./serviceServer/user.service.js";
+export { UserServiceFetch, UserServiceHXMhttp } from "./serviceServer/user.service.js";
 export { masters } from "./dataBase/materDataBase.js";
 export { books, Book, carOwners } from "./dataBase/carDatabase.js";
 
