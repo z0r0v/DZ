@@ -20,7 +20,9 @@ const htmlElements = {
   requiresReplacement: document.querySelector(".requiresReplacement > tbody")
 };
 
-function AutoInfo() {}
+class AutoInfo{
+  
+};
 
 const createTable = element => {
   element.appendChild(htmlElements.trReplaced);
