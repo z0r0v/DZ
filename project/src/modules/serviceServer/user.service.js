@@ -1,13 +1,16 @@
-const url = "https://my-server-dz25.herokuapp.com/masters";
 
 const method = "GET";
 
 class UserServiceFetch {
-  getFetch() {
+  constructor(url){
+    this.url = url;
+  };
+
+  getFetch(url) {
     return fetch(url).then(response => response.json());
   }
 
-  getHXMhttp() {
+  getHXMhttp(url) {
     return new Promise((resolve, reject) => {
       let xhr = new XMLHttpRequest();
       xhr.open(method, url);
@@ -24,7 +27,7 @@ function UserServiceHXMhttp(url) {
   this.url = url;
 }
 
-UserServiceHXMhttp.prototype.getHXMhttp = function() {
+UserServiceHXMhttp.prototype.getHXMhttp = function(url) {
   return new Promise((resolve, reject) => {
     let xhr = new XMLHttpRequest();
     xhr.open(method, url);

@@ -1,5 +1,5 @@
 import { UserServiceFetch, UserServiceHXMhttp  } from "../reexport.js";
-
+const url = "https://my-server-dz25.herokuapp.com/masters";
 const oneYearMs = 31536000000;
 
 class Master {
@@ -49,24 +49,23 @@ class MasterCeate {
 };
 
 const masters = new Masters();
-
 //ES6 Fetch
 
-new UserServiceFetch().getFetch().then(data => {
-  new MasterCeate(data);
-});
+// new UserServiceFetch().getFetch(url).then(data => {
+//   new MasterCeate(data);
+// });
 
 //ES6 Fetch
-
-// new UserServiceFetch().getHXMhttp().then(
+// new UserServiceFetch().getHXMhttp(url).then(
 //   data => {
 //   new MasterCeate(data);
 // });
 
 //ES5 HXMhttp
+new UserServiceHXMhttp().getHXMhttp(url).then(  data => {
+  new MasterCeate(data);
+});
 
-// new UserServiceHXMhttp().getHXMhttp().then(  data => {
-//   new MasterCeate(data);
-// });
+console.log(masters);
 
 export { masters };

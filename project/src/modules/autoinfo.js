@@ -1,7 +1,14 @@
 import { infoCar, infoOrder } from "./reexport.js";
-import { carOwners } from "./reexport.js";
+import { carsOwners } from "./reexport.js";
 import { StopWotch } from "./reexport.js";
 import { apendHelpper } from "./reexport.js";
+
+
+//временно 
+import { RenderBook } from "./reexport.js";
+import { books, Book } from "./reexport.js";
+import { masterId } from "./reexport.js";
+
 
 const htmlElements = {
   executedOrder: document.querySelector(".executedOrder"),
@@ -62,15 +69,14 @@ const creatReplaced = (
   priceParts,
   priceWork
 ) => {
+  const topThree = carMileage.toString().substring(0, 3);
+  const secondTrike = carMileage.toString().substring(3);
+
   htmlElements.trReplaced = document.createElement("tr");
   htmlElements.thIndex = document.createElement("th");
   htmlElements.thIndex.scope = "row";
   htmlElements.thIndex.innerText = index;
   htmlElements.tdCarMileage = document.createElement("td");
-
-  const topThree = carMileage.toString().substring(0, 3);
-  const secondTrike = carMileage.toString().substring(3);
-
   htmlElements.tdCarMileage.innerText = `${topThree} ${secondTrike} km`;
   htmlElements.tdDate = document.createElement("td");
   htmlElements.tdDate.innerText = date;
@@ -128,10 +134,12 @@ const renderReplacementExpired = array => {
   });
 };
 
-//придумать как суда передавать именно этот масив
-renderReplaced(carOwners[0].car.replacementParts);
 
-//придумать как суда передавать именно этот масив
-renderReplacementExpired(carOwners[0].car.futureWorkPlan);
+// new RenderBook().strBook(htmlElements.futureWorkPlan, books, masterId);
+// //придумать как суда передавать именно этот масив
+// renderReplaced(carsOwners.carsOwners[0].car[0].replacementParts);
+
+// //придумать как суда передавать именно этот масив
+// renderReplacementExpired(carsOwners.carsOwners[0].car[0].futureWorkPlan);
 
 export { AutoInfo };

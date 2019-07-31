@@ -1,6 +1,6 @@
 class ValidationForm{
   //можно дописать валидацию по интересней
-  constructor(array, classList, bookAray, newBook){
+  constructor(array, classList, actionAfter){
     let isValid;
     array.forEach((element) => {
       if(element.value === ""){
@@ -12,7 +12,7 @@ class ValidationForm{
       };
     });
     if(isValid){
-      bookAray.push(newBook);
+      actionAfter();
     };
   };
 };
