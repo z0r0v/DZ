@@ -105,4 +105,4 @@ new Relog(isLogged, masterNameCategogy, masterId);
 class Loggin{};
 
 
-export { Loggin };
+export { Loggin, masterId };

@@ -5,6 +5,8 @@ import { infoBook } from "./reexport.js";
 import { apendHelpper } from "./reexport.js";
 import { SwitchCase2 } from "./reexport.js";
 import { ValidationForm } from "./reexport.js";
+import { masterId } from "./reexport.js";
+
 
 let infoCar;
 let infoOrder;
@@ -102,7 +104,7 @@ function addInNewMasive() {
 
   books.books.splice(index, 1);
   new RenderBook().strBook(htmlElements.bookTbody, books, masterId);
-}
+};
 
 const changeTimeCondition = (
   difference,

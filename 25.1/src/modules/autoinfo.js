@@ -49,10 +49,10 @@ const creatReplaced = (
 };
 
 
+
 const createTable = element => {
   console.log(htmlElements.trReplaced);
   element.appendChild(htmlElements.trReplaced);
-  
   const arayElements = [
     htmlElements.thIndex,
     htmlElements.tdCarMileage,
@@ -61,22 +61,14 @@ const createTable = element => {
     htmlElements.tdpriceParts,
     htmlElements.tdPriceWork
   ];
-
   apendHelpper(htmlElements.trReplaced, arayElements);
 };
-
-
-
-
-
 
 //Можно и нужно переиспользовать с render();
 
 const renderReplaced = array => {
   htmlElements.replaced.innerText = null;
-
   array.forEach(function(element, index) {
-
     creatReplaced(
       ++index,
       element.replacementMileage,
@@ -85,7 +77,6 @@ const renderReplaced = array => {
       element.priceWork,
       element.priceParts
     );
-
     createTable(htmlElements.replaced);
 
   });
