@@ -30,9 +30,6 @@ const htmlElements = {
 
 htmlElements.buttonBook.addEventListener("click", onButtonToBookClicked);
 
-
-
-
 function createBookHelper(array, trBookInfo) {
   array.forEach((element, index) => {
     const objTd = document.createElement("td");
@@ -107,7 +104,7 @@ function addInNewMasive() {
   //   console.log(carOwners);
   books.books.splice(index, 1);
   new RenderBook().strBook(htmlElements.bookTbody, books, masterId);
-};
+}
 
 const changeTimeCondition = (
   difference,
@@ -173,8 +170,8 @@ class chooseСontent {
     const index = findElement(thisContext);
     callback(index);
     new RenderBook().strBook(htmlElements.bookTbody, books, masterId);
-  };
-};
+  }
+}
 
 const aplayChengeWork = function() {
   const thisContext = this;
@@ -254,26 +251,28 @@ function onButtonToBookClicked() {
     sortBook();
     new RenderBook().strBook(htmlElements.bookTbody, books, masterId);
   });
-};
+}
 
-
-class RenderBook{
-  constructor(){};
-  strBook(element, array, masterId){
-  element.innerText = null;
-    array.getByMasterId(masterId).forEach((element, index)=>{
-      creatBoofing(  
+class RenderBook {
+  constructor() {}
+  strBook(element, array, masterId) {
+    element.innerText = null;
+    array.getByMasterId(masterId).forEach((element, index) => {
+      creatBoofing(
         ++index,
         element.time,
         element.brand,
         element.phone,
         element.name,
         element.work,
-        element.id);
+        element.id
+      );
     });
-};
-};
-
+  }
+  srtAutoInfo() {
+    console.log(123);
+  }
+}
 
 function BooksTable() {
   htmlElements.h2MasterInfo.innerText = masterNameCategogy;
@@ -281,9 +280,9 @@ function BooksTable() {
   new RenderBook().strBook(htmlElements.bookTbody, books, masterId);
   //переодически нужно рендерить renderBook чтобы перекрашивался
   const threeMinutes = 180000;
-  setInterval(()=>{
+  setInterval(() => {
     new RenderBook().strBook(htmlElements.bookTbody, books, masterId);
   }, threeMinutes);
-};
+}
 
 export { BooksTable, infoCar, infoOrder, RenderBook };

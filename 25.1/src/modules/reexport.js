@@ -1,7 +1,7 @@
 export { UserServiceFetch, UserServiceHXMhttp } from "./serviceServer/user.service.js";
 export { masters } from "./dataBase/materDataBase.js";
 export { books, Book} from "./dataBase/carDatabase.js";
-export { carsOwners } from "./dataBase/carOwners.js";
+export { carsOwners, CarsOwnersCeate } from "./dataBase/carOwners.js";
 
 export { AutoInfo } from "./autoinfo.js";
 

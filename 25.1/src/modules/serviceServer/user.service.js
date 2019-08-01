@@ -7,8 +7,10 @@ class UserServiceFetch {
   };
 
   getFetch(url) {
-    return fetch(url).then(response => response.json());
-  }
+    return fetch(url)
+    .then(response => response.json())
+    .catch(error => "eror UserServiceFetch");
+  };
 
   getHXMhttp(url) {
     return new Promise((resolve, reject) => {
@@ -20,12 +22,12 @@ class UserServiceFetch {
       };
       xhr.send();
     });
-  }
-}
+  };
+};
 
 function UserServiceHXMhttp(url) {
   this.url = url;
-}
+};
 
 UserServiceHXMhttp.prototype.getHXMhttp = function(url) {
   return new Promise((resolve, reject) => {

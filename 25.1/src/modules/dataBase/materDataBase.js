@@ -65,7 +65,4 @@ const masters = new Masters();
 new UserServiceHXMhttp().getHXMhttp(url).then(  data => {
   new MasterCeate(data);
 });
-
-console.log(masters);
-
 export { masters };

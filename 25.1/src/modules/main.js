@@ -1,7 +1,9 @@
+import './helpModule/jquery-accordion.js'; 
 import {Login} from './reexport.js';
 import {Slider} from './reexport.js';
 import {Tabs} from './reexport.js';
 import { MaskPhone } from './reexport.js';
+
 
 new Tabs();
 new Slider().init();
