@@ -8,12 +8,10 @@ export { AutoInfoGetOder } from "./autoInfoGetOder.js";
 export { infoCar, infoOrder, BooksTable, RenderBook } from "./book.js";
 export { StopWotch } from "./stopWotch.js";
 export { apendHelpper } from "./helpModule/apendHelpper.js";
-
 export { Loggin, masterId} from "./login.js";
-
 export { infoBook } from "./infoBook.js";
-export {Slider} from './slider.js';
-export {Tabs} from './tabs.js';
+export { Slider } from './slider.js';
+export { Tabs } from './tabs.js';
 export { SwitchCase, SwitchCase2 } from "./helpModule/switchCase.js";
 export { ValidationForm } from "./validation.js";
 export { MaskPhone } from "./helpModule/maskPhone.js";
