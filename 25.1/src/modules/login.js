@@ -30,8 +30,11 @@ const htmlElements = {
   tr: document.querySelector(".executedOrder > tr")
 };
 
+
+
 htmlElements.buttonLogout.addEventListener("click", onLogoutCuttonclick);
 htmlElements.formButton.addEventListener("click", onButtonCheckPassword);
+
 
 function onLogoutCuttonclick() {
   isLogged = false;
@@ -85,26 +88,21 @@ function onButtonCheckPassword() {
 };
 
 
+class Relog{
+  constructor(isLogged, masterNameCategogy, masterId){
+    if(isLogged){ 
+    new ValidRender(isLogged, masterNameCategogy, masterId);
+    };
+  };
+};
+
 isLogged = localStorage.getItem("stateLogIn", isLogged);
 masterId = localStorage.getItem("stateMaster", masterId);
 masterNameCategogy = localStorage.getItem("stateMasterNameCategogy", masterNameCategogy);
 
-
-class Relog{
-  constructor(isLogged, masterNameCategogy, masterId){
-  console.log("masterNameCategogy in Relog:", masterNameCategogy);
-  console.log("isLogged in Relog:",isLogged);
-  console.log("masterId in Relog:",masterId);
-  // debugger;
-    isLogged ? new ValidRender(isLogged, masterNameCategogy, masterId):"";
-    return isLogged, masterId;
-  };
-};
-
 new Relog(isLogged, masterNameCategogy, masterId);
 
+class Loggin{};
 
 
-function Login() {}
-
-export { Login };
+export { Loggin };

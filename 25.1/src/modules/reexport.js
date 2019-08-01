@@ -12,7 +12,7 @@ export { infoCar, infoOrder, BooksTable, RenderBook } from "./book.js";
 export { StopWotch } from "./stopWotch.js";
 export { apendHelpper } from "./helpModule/apendHelpper.js";
 
-export { Login } from "./login.js";
+export { Loggin } from "./login.js";
 
 
 export { infoBook } from "./infoBook.js";

@@ -8,8 +8,6 @@ import { ValidationForm } from "./reexport.js";
 
 let infoCar;
 let infoOrder;
-
-
 const btn = "btn";
 const btnPrimary = "btn-outline-primary";
 const btnSm = "btn-sm";
@@ -251,11 +249,9 @@ class RenderBook {
   strBook(element, array, masterId) {
     element.innerText = null;
 
-    console.log("before forEach");
+ 
+
     array.getByMasterId(masterId).forEach((element, index) => {
-
-      console.log("in forEach"),
-
       creatBoofing(
         ++index,
         element.time,
@@ -266,6 +262,7 @@ class RenderBook {
         element.id
       );
     });
+
   };
 
   srtAutoInfo(element, array, callback, callback2) {
@@ -278,25 +275,15 @@ class RenderBook {
 };
 
 function BooksTable(masterNameCategogy, masterId) {
-  console.log("before h2MasterInfo");
-
-  console.log("masterId in BooksTable:",masterId);
-
   htmlElements.h2MasterInfo.innerText = masterNameCategogy;
-  console.log("before Clock");
   Clock.prototype.init();
-  console.log("before RenderBook");
   new RenderBook().strBook(htmlElements.bookTbody, books, masterId);
-
-  console.log("after RenderBook");
-
   //переодически нужно рендерить renderBook чтобы перекрашивался
   const threeMinutes = 180000;
   setInterval(() => {
     new RenderBook().strBook(htmlElements.bookTbody, books, masterId);
   }, threeMinutes);
-
-  console.log("End BooksTable");
+  
 };
 
 
