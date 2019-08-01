@@ -1,74 +1,24 @@
-import { UserServiceFetch, UserServiceHXMhttp } from "./reexport.js";
-
-import { infoCar, infoOrder } from "./reexport.js";
+import { UserServiceFetch} from "./reexport.js";
 import { carsOwners, CarsOwnersCeate } from "./reexport.js";
-import { StopWotch } from "./reexport.js";
 import { apendHelpper } from "./reexport.js";
 
 
 //временно 
 import { RenderBook } from "./reexport.js";
-import { books, Book } from "./reexport.js";
-import { masterId } from "./reexport.js";
+// import { books, Book } from "./reexport.js";
+// import { masterId } from "./reexport.js";
+
+
+
 
 const htmlElements = {
-  executedOrder: document.querySelector(".executedOrder"),
-  carInfo: document.querySelector(".carInfo"),
-  trExecutedOrder: document.querySelector(".executedOrder > tr"),
   td: document.querySelectorAll(".executedOrder > tr > td"),
   replaced: document.querySelector(".replaced > tbody"),
   futureWorkPlan: document.querySelector(".futureWorkPlan > tbody"),
-  requiresReplacement: document.querySelector(".requiresReplacement > tbody")
+  requiresReplacement: document.querySelector(".requiresReplacement > tbody"),
+  trReplaced:document.querySelector(".replaced > tbody > tr"),
+  carMileage:document.querySelector(".requiresReplacement > tbody> tr >td")
 };
-
-
-class AutoInfo{
-  constructor(){};
-  creatTableOrder(startTime){
-    htmlElements.carInfo.innerText = infoCar;
-    htmlElements.work = document.createElement("td");
-    htmlElements.work.classList.add("text-left");
-    htmlElements.time = document.createElement("td");
-    htmlElements.price = document.createElement("td");
-
-    htmlElements.executedOrder.appendChild(htmlElements.trExecutedOrder);
-
-    const arayElements = [
-      htmlElements.work,
-      htmlElements.time,
-      htmlElements.price
-    ];
-
-    apendHelpper(htmlElements.trExecutedOrder, arayElements);
-
-    const element = htmlElements.time;
-    const stopWotch = new StopWotch();
-    stopWotch.init(element, startTime);
-    htmlElements.work.innerText = infoOrder.work;
-    htmlElements.price.innerText = `${infoOrder.price}$`;
-  };
-};
-
-
-const createTable = element => {
-  element.appendChild(htmlElements.trReplaced);
-
-  const arayElements = [
-    htmlElements.thIndex,
-    htmlElements.tdCarMileage,
-    htmlElements.tdDate,
-    htmlElements.tdWork,
-    htmlElements.tdpriceParts,
-    htmlElements.tdPriceWork
-  ];
-
-  apendHelpper(htmlElements.trReplaced, arayElements);
-};
-
-
-htmlElements.carMileage = document.querySelector(
-  ".requiresReplacement > tbody> tr >td"
-);
 
 const creatReplaced = (
   index,
@@ -78,7 +28,7 @@ const creatReplaced = (
   priceParts,
   priceWork
 ) => {
-  
+
   const topThree = carMileage.toString().substring(0, 3);
   const secondTrike = carMileage.toString().substring(3);
 
@@ -98,10 +48,35 @@ const creatReplaced = (
   htmlElements.tdPriceWork.innerText = `${priceWork}$`;
 };
 
+
+const createTable = element => {
+  console.log(htmlElements.trReplaced);
+  element.appendChild(htmlElements.trReplaced);
+  
+  const arayElements = [
+    htmlElements.thIndex,
+    htmlElements.tdCarMileage,
+    htmlElements.tdDate,
+    htmlElements.tdWork,
+    htmlElements.tdpriceParts,
+    htmlElements.tdPriceWork
+  ];
+
+  apendHelpper(htmlElements.trReplaced, arayElements);
+};
+
+
+
+
+
+
 //Можно и нужно переиспользовать с render();
+
 const renderReplaced = array => {
   htmlElements.replaced.innerText = null;
+
   array.forEach(function(element, index) {
+
     creatReplaced(
       ++index,
       element.replacementMileage,
@@ -110,11 +85,15 @@ const renderReplaced = array => {
       element.priceWork,
       element.priceParts
     );
+
     createTable(htmlElements.replaced);
+
   });
 };
 
+
 const renderReplacementExpired = array => {
+
   htmlElements.futureWorkPlan.innerText = null;
   htmlElements.requiresReplacement.innerText = null;
 
@@ -145,31 +124,28 @@ const renderReplacementExpired = array => {
   });
 };
 
+class AutoInfo{
+  constructor(){};
 
+  init(){
+    const url = "https://my-server-dz25.herokuapp.com/carsOwners";
+    new UserServiceFetch().getFetch(url).then(data => {
+      new CarsOwnersCeate(data);
+    
+    const arra1 = carsOwners.carsOwners[0].car[0].replacementParts;
+    new RenderBook().srtAutoInfo(
+      htmlElements.replaced, 
+      arra1, 
+      creatReplaced, 
+      createTable(htmlElements.replaced));
+    //   // //придумать как суда передавать именно этот масив
+    // renderReplaced(carsOwners.carsOwners[0].car[0].replacementParts);
 
-const url = "https://my-server-dz25.herokuapp.com/carsOwners";
-new UserServiceFetch().getFetch(url).then(data => {
-  new CarsOwnersCeate(data);
-
-// new RenderBook().srtAutoInfo(
-//   htmlElements.futureWorkPlan, 
-//   carsOwners.carsOwners[0].car[0].replacementParts, 
-//   masterId
-
-//   );
-
-
-//   // //придумать как суда передавать именно этот масив
-// renderReplaced(carsOwners.carsOwners[0].car[0].replacementParts);
-
-
-// // //придумать как суда передавать именно этот масив
-// renderReplacementExpired(carsOwners.carsOwners[0].car[0].futureWorkPlan);
-
-});
-
-
-
+    // // //придумать как суда передавать именно этот масив
+    renderReplacementExpired(carsOwners.carsOwners[0].car[0].futureWorkPlan);
+    });
+  };
+};
 
 
 export { AutoInfo };

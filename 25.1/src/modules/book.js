@@ -1,18 +1,14 @@
-import { masterNameCategogy } from "./reexport.js";
-import { masterId } from "./reexport.js";
-import { AutoInfo } from "./reexport.js";
+import { AutoInfoGetOder } from "./reexport.js";
 import { books, Book } from "./reexport.js";
 import { Clock } from "./reexport.js";
-
 import { infoBook } from "./reexport.js";
-
 import { apendHelpper } from "./reexport.js";
 import { SwitchCase2 } from "./reexport.js";
 import { ValidationForm } from "./reexport.js";
 
 let infoCar;
 let infoOrder;
-const autoInfo = new AutoInfo();
+
 
 const btn = "btn";
 const btnPrimary = "btn-outline-primary";
@@ -21,7 +17,7 @@ const colMd12 = "col-md-12";
 const danger = "border-danger";
 
 const htmlElements = {
-  h2MasterInfo: document.querySelector("div>div>h3"),
+  h2MasterInfo: document.querySelector("summary"),
   bookTbody: document.querySelector(".table > tbody"),
   buttonBook: document.querySelector(".bookButton"),
   executedOrderTr: document.querySelector(".executedOrder > tr"),
@@ -96,12 +92,16 @@ function addInNewMasive() {
     price: price
   };
 
-  autoInfo.creatTableOrder(startTime);
+  new AutoInfoGetOder().creatTableOrder(startTime);
+
+  //@!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   //теерь нужно добавить в масив наши данные из масива который и потом удалить
 
   // carOwners.car.push(masive);
   // carOwners.push(masive);
   //   console.log(carOwners);
+
+
   books.books.splice(index, 1);
   new RenderBook().strBook(htmlElements.bookTbody, books, masterId);
 }
@@ -206,21 +206,14 @@ function sortBook() {
     }
     return 0;
   });
-}
-
-//не воркает по лехиному методу
-// function sortBook(){
-//   books.books.sort((a, b) => b.time - a.time);
-// };
+};
 
 function onButtonToBookClicked() {
   //Добавление элементов в очередь
-
   const newBook = new Book();
   newBook.id = books.books.length;
   newBook.masterId = masterId;
 
-  //нужен класс
   newBook.time = infoBook.time.value;
   newBook.brand = infoBook.brand.value;
   newBook.phone = infoBook.phone.value;
@@ -228,9 +221,9 @@ function onButtonToBookClicked() {
   newBook.work = infoBook.work.value;
   newBook.registerSign = infoBook.registerSign.value;
   newBook.carMileage = infoBook.carMileage.value;
-  (newBook.yearIssue = infoBook.yearIssue.value),
-    (newBook.priceWork = infoBook.priceWorke.value),
-    (newBook.priceParts = infoBook.priceParts.value);
+  newBook.yearIssue = infoBook.yearIssue.value;
+  newBook.priceWork = infoBook.priceWorke.value;
+  newBook.priceParts = infoBook.priceParts.value;
 
   const array = [
     infoBook.time,
@@ -257,7 +250,12 @@ class RenderBook {
   constructor() {}
   strBook(element, array, masterId) {
     element.innerText = null;
+
+    console.log("before forEach");
     array.getByMasterId(masterId).forEach((element, index) => {
+
+      console.log("in forEach"),
+
       creatBoofing(
         ++index,
         element.time,
@@ -268,21 +266,39 @@ class RenderBook {
         element.id
       );
     });
-  }
-  srtAutoInfo() {
-    console.log(123);
-  }
-}
+  };
 
-function BooksTable() {
+  srtAutoInfo(element, array, callback, callback2) {
+    element.innerText = null;
+    array.forEach(function(element, index) {
+      callback(element, index);
+      callback2();
+    });
+  };
+};
+
+function BooksTable(masterNameCategogy, masterId) {
+  console.log("before h2MasterInfo");
+
+  console.log("masterId in BooksTable:",masterId);
+
   htmlElements.h2MasterInfo.innerText = masterNameCategogy;
+  console.log("before Clock");
   Clock.prototype.init();
+  console.log("before RenderBook");
   new RenderBook().strBook(htmlElements.bookTbody, books, masterId);
+
+  console.log("after RenderBook");
+
   //переодически нужно рендерить renderBook чтобы перекрашивался
   const threeMinutes = 180000;
   setInterval(() => {
     new RenderBook().strBook(htmlElements.bookTbody, books, masterId);
   }, threeMinutes);
-}
+
+  console.log("End BooksTable");
+};
+
+
 
 export { BooksTable, infoCar, infoOrder, RenderBook };
