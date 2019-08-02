@@ -1,4 +1,4 @@
-
+import { UserServiceFetch } from "./reexport.js";
 import { AutoInfoGetOder } from "./reexport.js";
 import { books, Book } from "./reexport.js";
 import { Clock } from "./reexport.js";
@@ -9,10 +9,8 @@ import { ValidationForm } from "./reexport.js";
 import { masterId } from "./reexport.js";
 import { masters } from "./reexport.js";
 
-
-import { carsOwners, ReplacementParts} from "./reexport.js";
+import { carsOwners, ReplacementParts } from "./reexport.js";
 import { GetTodayDate } from "./reexport.js";
-
 
 let infoCar;
 let infoOrder;
@@ -102,45 +100,73 @@ function addInNewMasive() {
   };
 
   new AutoInfoGetOder().creatTableOrder(startTime);
-  
-    
 
-console.log(carsOwners.carsOwners);
-const owner = carsOwners.carsOwners.filter(function(a) {
-  return a.phone == phone;
-})[0];
+  console.log(carsOwners.carsOwners);
 
+  class FindOrAddToServer {
+    constructor() {
 
-if(owner === undefined){
-  // нужно сервисом лить на сервак !!!!!!!!!!!!!!!!!!
-  console.log("Добавить владельца");
-}else{
-  const cars = owner.car;
-  const car = cars.filter(function(a) {
-    return a.brand == brand;
-  })[0];
+      // Можно вынести в другой модуль но чуча будет головняка, а сроки ГОРЯТ АГНЕМ СИНИМ !!!!!!!! 
+      
+      ///Дофига параметров придеться принять или через this
 
-  if(cars === undefined){
-  // нужно сервисом лить на сервак !!!!!!!!!!!!!!!!!!!!!!!!
-  console.log("Добавить тачку");
+      const owner = carsOwners.carsOwners.filter(function(a) {
+        return a.phone == phone;
+      })[0];
 
-  }else{
-    car.carMileage = carMileage;
-    const data = GetTodayDate();
-    const master = masters.getById(masterId).lastName;
-    const newReplacement = new ReplacementParts();
-    newReplacement.masterName = master;
-    newReplacement.data = data;
-    newReplacement.replacementMileage = carMileage;
-    newReplacement.work = work;
-    car.replacementParts.push(newReplacement);
-  };
-}; 
+      if (owner === undefined) {
+        const newIdForJsone =
+          carsOwners.carsOwners[carsOwners.carsOwners.length - 1].id + 1;
+        const url = "https://my-server-dz25.herokuapp.com/carsOwners";
 
+        new UserServiceFetch().add(
+          url,
+          {
+            id: newIdForJsone,
+            name: name,
+            phone: phone,
+            car: []
+          }
+          //Нужна функция которая добавит тачку
+        );
+
+        console.log("Добавить владельца и запустить с начала");
+      } else {
+        const cars = owner.car;
+        const car = cars.filter(function(a) {
+          return a.brand == brand;
+        })[0];
+
+        if (cars === undefined) {
+          console.log("Добавить тачку и запустить сначала ");
+
+          //Нужна функция которая добавит тачку переисвользовать !!!!!
+          //Переипользовать функцию которая дабавляет работы!!
+        } else {
+          //Переипользовать функцию которая дабавляет работы!!
+
+          //записать это на сервак !!!!! ФУнкция котора добавляет работы!!
+          car.carMileage = carMileage;
+          const data = GetTodayDate();
+          const master = masters.getById(masterId).lastName;
+          const newReplacement = new ReplacementParts();
+          newReplacement.masterName = master;
+          newReplacement.data = data;
+          newReplacement.replacementMileage = carMileage;
+          newReplacement.work = work;
+          car.replacementParts.push(newReplacement);
+        }
+
+        //Метод который будет добавлять данные о следующей замене!!!!!
+      }
+    }
+  }
+
+  new FindOrAddToServer();
 
   books.books.splice(index, 1);
   new RenderBook().strBook(htmlElements.bookTbody, books, masterId);
-};
+}
 
 const changeTimeCondition = (
   difference,
@@ -242,7 +268,7 @@ function sortBook() {
     }
     return 0;
   });
-};
+}
 
 function onButtonToBookClicked() {
   //Добавление элементов в очередь
@@ -298,8 +324,7 @@ class RenderBook {
         element.id
       );
     });
-
-  };
+  }
 
   srtAutoInfo(element, array, callback, callback2) {
     element.innerText = null;
@@ -307,26 +332,24 @@ class RenderBook {
       callback(element, index);
       callback2();
     });
-  };
-};
+  }
+}
 
-class BooksTable{
-constructor(masterNameCategogy, masterId, array){
+class BooksTable {
+  constructor(masterNameCategogy, masterId, array) {
+    htmlElements.h2MasterInfo.innerText = masterNameCategogy;
 
-  htmlElements.h2MasterInfo.innerText = masterNameCategogy;
+    Clock.prototype.init();
 
-  Clock.prototype.init();
-
-  new RenderBook().strBook(htmlElements.bookTbody, array, masterId);
-
-  //переодически нужно рендерить renderBook чтобы перекрашивался
-  const threeMinutes = 180000;
-
-  setInterval(() => {
     new RenderBook().strBook(htmlElements.bookTbody, array, masterId);
-  }, threeMinutes);
 
-};
-};
+    //переодически нужно рендерить renderBook чтобы перекрашивался
+    const threeMinutes = 180000;
+
+    setInterval(() => {
+      new RenderBook().strBook(htmlElements.bookTbody, array, masterId);
+    }, threeMinutes);
+  }
+}
 
 export { BooksTable, infoCar, infoOrder, RenderBook };

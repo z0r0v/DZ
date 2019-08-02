@@ -24,6 +24,21 @@ class UserServiceFetch {
       xhr.send();
     });
   };
+
+  
+  add(url,name) {
+    
+    console.log(JSON.stringify(name));
+
+    return fetch(url, {
+      method: "POST",
+      body: JSON.stringify(name ),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    }).then(response => response.json());
+  };
+
 };
 
 function UserServiceHXMhttp(url) {

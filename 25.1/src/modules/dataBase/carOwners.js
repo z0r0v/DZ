@@ -46,16 +46,19 @@ class CarsOwnersCeate {
     data.forEach(element => {
       const own = new carOwn();
       carsOwners.carsOwners.push(own);
+      own.id = element.id;
       own.name = element.name;
       own.phone = element.phone;
       element.car.forEach(element => {
         const ownCar = new Car();
+        ownCar.id = element.id;
         ownCar.brand = element.brand;
         ownCar.carMileage = element.carMileage;
         ownCar.registerSign = element.registerSign;
         own.car.push(ownCar);
         element.replacementParts.forEach(element => {
           const newReplacement = new ReplacementParts();
+          newReplacement.id = element.id;
           newReplacement.masterName = element.masterName;
           newReplacement.replacementMileage = element.replacementMileage;
           newReplacement.data = element.data;
@@ -68,6 +71,7 @@ class CarsOwnersCeate {
         });
         element.futureWorkPlan.forEach(element => {
           const futureWork = new FutureWork();
+          futureWork.id = element.id;
           futureWork.carMileage = element.carMileage;
           futureWork.masterName = element.masterName;
           futureWork.replacementMileage = element.replacementMileage;
