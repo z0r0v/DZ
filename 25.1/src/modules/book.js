@@ -107,7 +107,7 @@ function addInNewMasive() {
     constructor() {
 
       // Можно вынести в другой модуль но чуча будет головняка, а сроки ГОРЯТ АГНЕМ СИНИМ !!!!!!!! 
-      
+
       ///Дофига параметров придеться принять или через this
 
       const owner = carsOwners.carsOwners.filter(function(a) {
@@ -158,12 +158,13 @@ function addInNewMasive() {
         }
 
         //Метод который будет добавлять данные о следующей замене!!!!!
-      }
-    }
-  }
+      };
+    };
+  };
+
+  //Обьект который будет ищет по масиву на серваке и записывает!
 
   new FindOrAddToServer();
-
   books.books.splice(index, 1);
   new RenderBook().strBook(htmlElements.bookTbody, books, masterId);
 }
