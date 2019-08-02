@@ -30,8 +30,6 @@ const htmlElements = {
   tr: document.querySelector(".executedOrder > tr")
 };
 
-
-
 htmlElements.buttonLogout.addEventListener("click", onLogoutCuttonclick);
 htmlElements.formButton.addEventListener("click", onButtonCheckPassword);
 
@@ -63,6 +61,17 @@ class ValidRender{
   };
 };
 
+class LocalStorHelp{
+set(aItem, bItem, cItem){
+  localStorage.setItem("aItem", aItem);
+  localStorage.setItem("bItem", bItem);
+  localStorage.setItem("cItem", cItem);
+};
+};
+
+
+
+
 class Authentication{
   constructor(){
     masters.masters.forEach(function(master) {
@@ -71,6 +80,8 @@ class Authentication{
           master.lastName}. Category: ${master.category()}`;
         isLogged = true;
         masterId = master.id
+        new LocalStorHelp().set(isLogged, masterId, masterNameCategogy);
+
         return isLogged, masterId;
       };
     });
@@ -81,24 +92,33 @@ function onButtonCheckPassword() {
   new ClassHelper().removeClass([loginName, pasword], danger, success);
   new Authentication();
   new ValidRender(isLogged, masterNameCategogy, masterId);
-  localStorage.setItem("stateMasterNameCategogy", masterNameCategogy);
-  localStorage.setItem("stateLogIn", isLogged);
-  localStorage.setItem("stateMaster", masterId);
+
+  
+ 
   return masterNameCategogy;
 };
+
+//get
+isLogged = localStorage.getItem("aItem", isLogged);
+masterId = localStorage.getItem("bItem", masterId);
+masterNameCategogy = localStorage.getItem("cItem", masterNameCategogy);
+
+
+
+
 
 
 class Relog{
   constructor(isLogged, masterNameCategogy, masterId){
+ 
     if(isLogged){ 
     new ValidRender(isLogged, masterNameCategogy, masterId);
     };
   };
 };
 
-isLogged = localStorage.getItem("stateLogIn", isLogged);
-masterId = localStorage.getItem("stateMaster", masterId);
-masterNameCategogy = localStorage.getItem("stateMasterNameCategogy", masterNameCategogy);
+
+
 
 new Relog(isLogged, masterNameCategogy, masterId);
 
