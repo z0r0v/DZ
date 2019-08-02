@@ -12,6 +12,7 @@ class UserServiceFetch {
     .catch(error => "eror UserServiceFetch");
   };
 
+
   getHXMhttp(url) {
     return new Promise((resolve, reject) => {
       let xhr = new XMLHttpRequest();
