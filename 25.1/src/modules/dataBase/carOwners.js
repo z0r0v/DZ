@@ -1,3 +1,5 @@
+import { UserServiceFetch } from "../reexport.js";
+
 class CarsOwners {
   carsOwners = [];
 };
@@ -42,19 +44,16 @@ class FutureWork {
 class CarsOwnersCeate {
   constructor(data) {
     data.forEach(element => {
-
       const own = new carOwn();
       carsOwners.carsOwners.push(own);
       own.name = element.name;
       own.phone = element.phone;
-
       element.car.forEach(element => {
         const ownCar = new Car();
         ownCar.brand = element.brand;
         ownCar.carMileage = element.carMileage;
         ownCar.registerSign = element.registerSign;
         own.car.push(ownCar);
-
         element.replacementParts.forEach(element => {
           const newReplacement = new ReplacementParts();
           newReplacement.masterName = element.masterName;
@@ -67,7 +66,6 @@ class CarsOwnersCeate {
           newReplacement.priceParts = element.priceParts;
           ownCar.replacementParts.push(newReplacement);
         });
-
         element.futureWorkPlan.forEach(element => {
           const futureWork = new FutureWork();
           futureWork.carMileage = element.carMileage;
@@ -80,10 +78,15 @@ class CarsOwnersCeate {
           ownCar.futureWorkPlan.push(futureWork);
         });
       });
-  
     });
   };
 };
-const carsOwners = new CarsOwners();
 
-export { carsOwners, CarsOwnersCeate };
+
+const carsOwners = new CarsOwners();
+const url = "https://my-server-dz25.herokuapp.com/carsOwners";
+    new UserServiceFetch().getFetch(url).then(data => {
+      new CarsOwnersCeate(data);
+});
+
+export { carsOwners, CarsOwnersCeate, ReplacementParts};

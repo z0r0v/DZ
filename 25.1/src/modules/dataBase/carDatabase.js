@@ -17,9 +17,9 @@ const book1 = new Book();
 
 book1.id = 0;
 book1.masterId = 1;
-book1.time = "16:00";
-book1.brand = "1Lada";
-book1.phone = "+375293767082";
+book1.time = "12:00";
+book1.brand = "BMW";
+book1.phone = "+375291111111";
 book1.name = "Vasiliy Petrovich";
 book1.work = "Еiming belt replacement";
 book1.registerSign = "7785AA-4";
@@ -110,10 +110,10 @@ class Books {
         result.push(book);
       };
     });
-
     return result;
-  }
-}
+  };
+};
+
 
 const books = new Books();
 

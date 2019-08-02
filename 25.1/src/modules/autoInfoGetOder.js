@@ -1,8 +1,6 @@
 import { infoCar, infoOrder } from "./reexport.js";
 import { apendHelpper } from "./reexport.js";
 import { StopWotch } from "./reexport.js";
-import { AutoInfo } from "./reexport.js";
-
 
 const htmlElements = {
   carInfo: document.querySelector(".carInfo"),
@@ -10,12 +8,9 @@ const htmlElements = {
   executedOrder: document.querySelector(".executedOrder"),
 };
 
-class AutoInfoGetOder{
-  
-  constructor(){
-    new AutoInfo().init();
-  };
 
+class AutoInfoGetOder{
+  constructor(){};
   creatTableOrder(startTime){
     htmlElements.carInfo.innerText = infoCar;
     htmlElements.work = document.createElement("td");
@@ -37,4 +32,12 @@ class AutoInfoGetOder{
   };
 };
 
-export { AutoInfoGetOder };
+
+class CreateTable{
+  constructor(element, elementTo, apendElemetnTo, arayElements){
+    element.appendChild(elementTo);
+    apendHelpper(apendElemetnTo, arayElements);
+  };
+};
+
+export { AutoInfoGetOder, CreateTable };

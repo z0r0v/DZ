@@ -1,3 +1,4 @@
+
 import { AutoInfoGetOder } from "./reexport.js";
 import { books, Book } from "./reexport.js";
 import { Clock } from "./reexport.js";
@@ -6,6 +7,11 @@ import { apendHelpper } from "./reexport.js";
 import { SwitchCase2 } from "./reexport.js";
 import { ValidationForm } from "./reexport.js";
 import { masterId } from "./reexport.js";
+import { masters } from "./reexport.js";
+
+
+import { carsOwners, ReplacementParts} from "./reexport.js";
+import { GetTodayDate } from "./reexport.js";
 
 
 let infoCar;
@@ -81,6 +87,9 @@ function addInNewMasive() {
   const index = findElement(thisContext);
 
   const array = books.books[index];
+
+  console.log(array);
+
   //деструктуризация
   const { brand, yearIssue, carMileage, name, phone, work } = array;
   const price = array.priceWork + array.priceParts;
@@ -93,13 +102,40 @@ function addInNewMasive() {
   };
 
   new AutoInfoGetOder().creatTableOrder(startTime);
+  
+    
 
-  //@!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  //теерь нужно добавить в масив наши данные из масива который и потом удалить
+console.log(carsOwners.carsOwners);
+const owner = carsOwners.carsOwners.filter(function(a) {
+  return a.phone == phone;
+})[0];
 
-  // carOwners.car.push(masive);
-  // carOwners.push(masive);
-  //   console.log(carOwners);
+
+if(owner === undefined){
+  // нужно сервисом лить на сервак !!!!!!!!!!!!!!!!!!
+  console.log("Добавить владельца");
+}else{
+  const cars = owner.car;
+  const car = cars.filter(function(a) {
+    return a.brand == brand;
+  })[0];
+
+  if(cars === undefined){
+  // нужно сервисом лить на сервак !!!!!!!!!!!!!!!!!!!!!!!!
+  console.log("Добавить тачку");
+
+  }else{
+    car.carMileage = carMileage;
+    const data = GetTodayDate();
+    const master = masters.getById(masterId).lastName;
+    const newReplacement = new ReplacementParts();
+    newReplacement.masterName = master;
+    newReplacement.data = data;
+    newReplacement.replacementMileage = carMileage;
+    newReplacement.work = work;
+    car.replacementParts.push(newReplacement);
+  };
+}; 
 
 
   books.books.splice(index, 1);
@@ -249,10 +285,8 @@ function onButtonToBookClicked() {
 class RenderBook {
   constructor() {}
   strBook(element, array, masterId) {
+    // debugger;
     element.innerText = null;
-
- 
-
     array.getByMasterId(masterId).forEach((element, index) => {
       creatBoofing(
         ++index,
@@ -276,18 +310,23 @@ class RenderBook {
   };
 };
 
-function BooksTable(masterNameCategogy, masterId) {
+class BooksTable{
+constructor(masterNameCategogy, masterId, array){
+
   htmlElements.h2MasterInfo.innerText = masterNameCategogy;
+
   Clock.prototype.init();
-  new RenderBook().strBook(htmlElements.bookTbody, books, masterId);
+
+  new RenderBook().strBook(htmlElements.bookTbody, array, masterId);
+
   //переодически нужно рендерить renderBook чтобы перекрашивался
   const threeMinutes = 180000;
+
   setInterval(() => {
-    new RenderBook().strBook(htmlElements.bookTbody, books, masterId);
+    new RenderBook().strBook(htmlElements.bookTbody, array, masterId);
   }, threeMinutes);
-  
+
 };
-
-
+};
 
 export { BooksTable, infoCar, infoOrder, RenderBook };

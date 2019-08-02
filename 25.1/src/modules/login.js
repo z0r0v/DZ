@@ -1,6 +1,8 @@
 import { masters } from "./reexport.js";
 import { BooksTable, RenderBook } from "./reexport.js";
 import { ClassHelper } from "./reexport.js";
+import { books } from "./reexport.js";
+import { LocalStorHelp } from "./reexport.js";
 
 let masterNameCategogy;
 let masterId;
@@ -33,26 +35,38 @@ const htmlElements = {
 htmlElements.buttonLogout.addEventListener("click", onLogoutCuttonclick);
 htmlElements.formButton.addEventListener("click", onButtonCheckPassword);
 
-
 function onLogoutCuttonclick() {
   isLogged = false;
   htmlElements.divLogin.classList.remove(hidd);
-  new ClassHelper().addClass([htmlElements.masterInfo, htmlElements.divNav], hidd);
-  new ClassHelper().addNullValue([htmlElements.inputLogin,  htmlElements.inputPasword]);
+  new ClassHelper().addClass(
+    [htmlElements.masterInfo, htmlElements.divNav],
+    hidd
+  );
+
+  new ClassHelper().addNullValue([
+    htmlElements.inputLogin,
+    htmlElements.inputPasword
+  ]);
+  
   htmlElements.inputLogin.placeholder = `${passPlac}${log}`;
   htmlElements.inputPasword.placeholder = `${passPlac}${pass}`;
   htmlElements.tr.innerText = null;
 };
 
-
-class ValidRender{
-  constructor(isLogged, masterNameCategogy, masterId){
+class ValidRender {
+  constructor(isLogged, masterNameCategogy, masterId) {
     if (isLogged) {
-      new BooksTable(masterNameCategogy, masterId);
+      new BooksTable(masterNameCategogy, masterId, books);
       new ClassHelper().removeClass([loginName, pasword], danger);
-      new ClassHelper().addClass([loginName, pasword, htmlElements.divLogin], hidd);
-      new ClassHelper().removeClass([htmlElements.masterInfo, htmlElements.divNav], hidd);
-    }else{
+      new ClassHelper().addClass(
+        [loginName, pasword, htmlElements.divLogin],
+        hidd
+      );
+      new ClassHelper().removeClass(
+        [htmlElements.masterInfo, htmlElements.divNav],
+        hidd
+      );
+    } else {
       new ClassHelper().addClass([loginName, pasword], danger, "border");
       new ClassHelper().addNullValue([loginName, pasword]);
       loginName.placeholder = incorrectly;
@@ -61,29 +75,21 @@ class ValidRender{
   };
 };
 
-class LocalStorHelp{
-set(aItem, bItem, cItem){
-  localStorage.setItem("aItem", aItem);
-  localStorage.setItem("bItem", bItem);
-  localStorage.setItem("cItem", cItem);
-};
-};
-
-
-
-
-class Authentication{
-  constructor(){
+class Authentication {
+  constructor() {
     masters.masters.forEach(function(master) {
-      if (pasword.value === master.pasword && loginName.value === master.login) {
+      if (
+        pasword.value === master.pasword &&
+        loginName.value === master.login
+      ) {
         masterNameCategogy = `Master : ${master.firstName} ${
-          master.lastName}. Category: ${master.category()}`;
+          master.lastName
+        }. Category: ${master.category()}`;
         isLogged = true;
-        masterId = master.id
+        masterId = master.id;
         new LocalStorHelp().set(isLogged, masterId, masterNameCategogy);
-
         return isLogged, masterId;
-      };
+      }
     });
   };
 };
@@ -92,37 +98,25 @@ function onButtonCheckPassword() {
   new ClassHelper().removeClass([loginName, pasword], danger, success);
   new Authentication();
   new ValidRender(isLogged, masterNameCategogy, masterId);
-
-  
- 
   return masterNameCategogy;
 };
 
 //get
 isLogged = localStorage.getItem("aItem", isLogged);
-masterId = localStorage.getItem("bItem", masterId);
+//из сторадж приходит строка а в принимающей функции строгое равенство!!
+masterId = Number(localStorage.getItem("bItem", masterId));
 masterNameCategogy = localStorage.getItem("cItem", masterNameCategogy);
 
-
-
-
-
-
-class Relog{
-  constructor(isLogged, masterNameCategogy, masterId){
- 
-    if(isLogged){ 
-    new ValidRender(isLogged, masterNameCategogy, masterId);
+class Relog {
+  constructor(isLogged, masterNameCategogy, masterId) {
+    if (isLogged) {
+      new ValidRender(isLogged, masterNameCategogy, masterId);
     };
   };
 };
 
-
-
-
 new Relog(isLogged, masterNameCategogy, masterId);
 
-class Loggin{};
-
+class Loggin {}
 
 export { Loggin, masterId };
