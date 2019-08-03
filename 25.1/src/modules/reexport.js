@@ -3,7 +3,7 @@ export { ClassHelper } from "./helpModule/classHelper.js";
 export { GetTodayDate } from "./helpModule/getDateDdMmYy.js";
 export { SwitchCase, SwitchCase2 } from "./helpModule/switchCase.js";
 export { LocalStorHelp } from "./helpModule/localStorHelp.js";
-export { AutoInfo } from "./autoInfo.js";
+export { AutoInfo } from "./autoinfo.js";
 export { Clock } from "./clock.js";
 export { masters } from "./dataBase/materDataBase.js";
 export { books, Book} from "./dataBase/carDatabase.js";
