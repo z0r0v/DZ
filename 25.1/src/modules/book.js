@@ -89,7 +89,7 @@ function addInNewMasive() {
   console.log(array);
 
   //деструктуризация
-  const { brand, yearIssue, carMileage, name, phone, work } = array;
+  const { brand, yearIssue, carMileage, name, phone, work, registerSign } = array;
   const price = array.priceWork + array.priceParts;
 
   infoCar = `Brand: ${brand}, ${yearIssue} year.\nMileage: ${carMileage} km.\nOwner: ${name}.\nPhone: ${phone}.`;
@@ -113,24 +113,29 @@ function addInNewMasive() {
       const owner = carsOwners.carsOwners.filter(function(a) {
         return a.phone == phone;
       })[0];
+      
 
       if (owner === undefined) {
-        const newIdForJsone =
-          carsOwners.carsOwners[carsOwners.carsOwners.length - 1].id + 1;
+        const newIdForJsone = carsOwners.carsOwners[carsOwners.carsOwners.length - 1].id + 1;
         const url = "https://my-server-dz25.herokuapp.com/carsOwners";
-
         new UserServiceFetch().add(
           url,
           {
             id: newIdForJsone,
             name: name,
             phone: phone,
-            car: []
+            car: [
+              {
+                id:newIdForJsone,
+                brand:array.brand,
+                carMileage:array.carMileage,
+                registerSign: array.registerSign,
+                replacementParts:[],
+                futureWorkPlan:[],
+              }
+            ]
           }
-          //Нужна функция которая добавит тачку
         );
-
-        console.log("Добавить владельца и запустить с начала");
       } else {
         const cars = owner.car;
         const car = cars.filter(function(a) {
@@ -146,7 +151,7 @@ function addInNewMasive() {
           //Переипользовать функцию которая дабавляет работы!!
 
           //записать это на сервак !!!!! ФУнкция котора добавляет работы!!
-          car.carMileage = carMileage;
+          car.carMileage = array.carMileage;
           const data = GetTodayDate();
           const master = masters.getById(masterId).lastName;
           const newReplacement = new ReplacementParts();
