@@ -1,22 +1,79 @@
-GET https://my-json-server.typicode.com/z0r0v/xhr/masters HTTP/1.1;
-###
-GET https://my-json-server.typicode.com/z0r0v/xhr/masters/2 HTTP/1.1;
-###
-POST https://my-json-server.typicode.com/z0r0v/xhr/masters/ HTTP/1.1
+//Запрос данных
+GET https://my-server-dz25.herokuapp.com/carsOwners HTTP/1.1;
 
-content-type: application/json
+
+###
+//Отправка вызывает изменения
+POST https://my-server-dz25.herokuapp.com/carsOwners HTTP/1.1;
+content-type: application/json;
+
+
+
+{
+    "id": 3,
+    "name": "Vasiliy Petrovich",
+    "phone": "+375293767082",
+    "car": [
+      {
+        "id": 1,
+        "brand": "2Lada",
+        "carMileage": 222000,
+        "registerSign": "7785AA-4",
+        "replacementParts": [
+          {
+            "id": 1,
+            "masterName": "Kshishtykov",
+            "replacementMileage": 222000,
+            "data": "07.07.2019",
+            "work": "Еiming belt replacement",
+            "priceWork": 10,
+            "priceParts": 10
+          }
+        ],
+        "futureWorkPlan": []
+      }
+    ]
+  }
+
+
+###
+//PATCH используется для частичного изменения ресурса.
+PATCH https://my-server-dz25.herokuapp.com/carsOwners HTTP/1.1;
+content-type: application/json;
+ 
+
+###
+# DELETE удаляет указанный ресурс.
+DELETE https://my-server-dz25.herokuapp.com/carsOwners/4 HTTP/1.1;
+
+
+###
+//PUT заменяет все текущие представления ресурса данными запроса.
+PUT https://my-server-dz25.herokuapp.com/carsOwners/3 HTTP/1.1;
+content-type: application/json;
 
 {
   "id": 3,
-  "login": "c",
-  "pasword": "621",
-  "firstName": "Anton",
-  "LastName": "Vasilevsli",
-  "dateEmployment": "2016-07-18T11:24:00.000Z",
-  "categoryHired": 3,
+  "name": "Vasiliy Petrovich",
+  "phone": "+375293767082",
+  "car": [
+    {
+      "id": 1,
+      "brand": "2La231da",
+      "carMileage": 222000,
+      "registerSign": "7785AA-4",
+      "replacementParts": [
+        {
+          "id": 1,
+          "masterName": "Kshishtykov",
+          "replacementMileage": 222000,
+          "data": "07.07.2019",
+          "work": "Еiming belt replacement",
+          "priceWork": 10,
+          "priceParts": 10
+        }
+      ],
+      "futureWorkPlan": []
+    }
+  ]
 }
-
-
-
-
-

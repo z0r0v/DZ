@@ -28,7 +28,7 @@ class UserServiceFetch {
   
   add(url,name) {
     
-    console.log(JSON.stringify(name));
+    // console.log(JSON.stringify(name));
 
     return fetch(url, {
       method: "POST",
@@ -38,6 +38,21 @@ class UserServiceFetch {
       }
     }).then(response => response.json());
   };
+
+  chenge(url,name) {
+    
+    console.log(JSON.stringify(name));
+
+    return fetch(url, {
+      method: "PATCH",
+      body: JSON.stringify(name ),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    }).then(response => response.json());
+  };
+
+
 
 };
 

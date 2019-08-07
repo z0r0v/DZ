@@ -101,7 +101,6 @@ function addInNewMasive() {
 
   new AutoInfoGetOder().creatTableOrder(startTime);
 
-  console.log(carsOwners.carsOwners);
 
   class FindOrAddToServer {
     constructor() {
@@ -113,55 +112,170 @@ function addInNewMasive() {
       const owner = carsOwners.carsOwners.filter(function(a) {
         return a.phone == phone;
       })[0];
-      
+
+
+      const data = GetTodayDate();
+      const master = masters.getById(masterId).lastName;
+      let idCar;
+      let idPeplacementParts;
+      const url = "https://my-server-dz25.herokuapp.com/carsOwners";
+    
 
       if (owner === undefined) {
-        const newIdForJsone = carsOwners.carsOwners[carsOwners.carsOwners.length - 1].id + 1;
-        const url = "https://my-server-dz25.herokuapp.com/carsOwners";
+        console.log(carsOwners.carsOwners);
+        idCar = 1;
+        idPeplacementParts = 1;
+        const newIdForJsone = carsOwners.carsOwners.length + 1;
+
         new UserServiceFetch().add(
           url,
           {
-            id: newIdForJsone,
+            id:newIdForJsone,
             name: name,
             phone: phone,
             car: [
-              {
-                id:newIdForJsone,
-                brand:array.brand,
-                carMileage:array.carMileage,
-                registerSign: array.registerSign,
-                replacementParts:[],
-                futureWorkPlan:[],
-              }
+              // {
+              //   id:idCar,
+              //   brand:array.brand,
+              //   carMileage:array.carMileage,
+              //   registerSign: array.registerSign,
+              //   replacementParts:[
+              //     {
+              //       id:idPeplacementParts,
+              //       masterName:master,
+              //       replacementMileage:carMileage,
+              //       data:data,
+              //       work:work,
+              //       nextReplacementMileage:undefined,
+              //       priceWork:array.priceWork,
+              //       priceParts:array.priceParts,
+              //     }
+              //   ],
+              //   futureWorkPlan:[],
+              // }
             ]
           }
         );
-      } else {
-        const cars = owner.car;
-        const car = cars.filter(function(a) {
+      } 
+      else {
+        
+        const cars = owner.car.filter(function(a) {
           return a.brand == brand;
         })[0];
 
+
         if (cars === undefined) {
-          console.log("Добавить тачку и запустить сначала ");
+          const newIdForJsone = owner.id;
+          idCar = 1;
+          idPeplacementParts = 1;
 
-          //Нужна функция которая добавит тачку переисвользовать !!!!!
-          //Переипользовать функцию которая дабавляет работы!!
+          new UserServiceFetch().chenge(
+            url,
+              {
+                id:newIdForJsone,
+                name: name,
+                phone: phone,
+                car: [
+                  {
+                    id:idCar,
+                    brand:array.brand,
+                    carMileage:array.carMileage,
+                    registerSign: array.registerSign,
+                    replacementParts:[
+                      // {
+                      //   id:idPeplacementParts,
+                      //   masterName:master,
+                      //   replacementMileage:carMileage,
+                      //   data:data,
+                      //   work:work,
+                      //   nextReplacementMileage:undefined,
+                      //   priceWork:array.priceWork,
+                      //   priceParts:array.priceParts,
+                      // }
+                    ],
+                    futureWorkPlan:[],
+                  }
+                ]
+              }
+          );
+          // new UserServiceFetch().che(
+          //     url,
+          //     {
+          //       id:newIdForJsone,
+          //       name: name,
+          //       phone: phone,
+          //       car: [
+          //         {
+          //           id:idCar,
+          //           brand:array.brand,
+          //           carMileage:array.carMileage,
+          //           registerSign: array.registerSign,
+          //           replacementParts:[
+          //             {
+          //               id:idPeplacementParts,
+          //               masterName:master,
+          //               replacementMileage:carMileage,
+          //               data:data,
+          //               work:work,
+          //               nextReplacementMileage:undefined,
+          //               priceWork:array.priceWork,
+          //               priceParts:array.priceParts,
+          //             }
+          //           ],
+          //           futureWorkPlan:[],
+          //         }
+          //       ]
+          //     }
+          //     );
+
+
+
+
+
+          // new UserServiceFetch().add(
+          //   url,
+          //   {
+          //     id:idCar,
+          //     brand:array.brand,
+          //     carMileage:array.carMileage,
+          //     registerSign: array.registerSign,
+          //     replacementParts:[
+          //       {
+          //         id:1,
+          //         masterName:master,
+          //         replacementMileage:carMileage,
+          //         data:data,
+          //         work:work,
+          //         nextReplacementMileage:123123123,
+          //         priceWork:array.priceWork,
+          //         priceParts:array.priceParts,
+          //       }
+          //     ],
+          //     futureWorkPlan:[],
+          //   }
+          // );
+
         } else {
-          //Переипользовать функцию которая дабавляет работы!!
 
-          //записать это на сервак !!!!! ФУнкция котора добавляет работы!!
-          car.carMileage = array.carMileage;
-          const data = GetTodayDate();
-          const master = masters.getById(masterId).lastName;
-          const newReplacement = new ReplacementParts();
-          newReplacement.masterName = master;
-          newReplacement.data = data;
-          newReplacement.replacementMileage = carMileage;
-          newReplacement.work = work;
-          car.replacementParts.push(newReplacement);
-        }
+          // const cars = owner.car;
+          // const car = cars.filter(function(a) {
+          //   return a.brand == brand;
+          // })[0];
 
+          // console.log(car);
+          // console.log(owner.car.replacementParts);
+          // const idReplacementPart = owner.car.replacementParts[owner.car.replacementParts.length - 1];
+          // owner.car.replacementParts.push({
+          //     id:idReplacementPart,
+          //     masterName:master,
+          //     replacementMileage:carMileage,
+          //     data:data,
+          //     work:work,
+          //     nextReplacementMileage:123123123,
+          //     priceWork:array.priceWork,
+          //     priceParts:array.priceParts,
+          // });
+        };
         //Метод который будет добавлять данные о следующей замене!!!!!
       };
     };
