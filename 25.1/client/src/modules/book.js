@@ -104,17 +104,15 @@ function addInNewMasive() {
 
   class FindOrAddToServer {
     constructor() {
-
-      // Можно вынести в другой модуль но чуча будет головняка, а сроки ГОРЯТ АГНЕМ СИНИМ !!!!!!!! 
-
-      ///Дофига параметров придеться принять или через this
-
       const owner = carsOwners.carsOwners.filter(function(a) {
         return a.phone == phone;
       })[0];
 
 
       const data = GetTodayDate();
+
+    
+
       const master = masters.getById(masterId).lastName;
       let idCar;
       let idPeplacementParts;
