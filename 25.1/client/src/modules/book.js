@@ -1,5 +1,8 @@
 import { UserServiceFetch } from "./reexport.js";
 import { AutoInfoGetOder } from "./reexport.js";
+
+import { AutoInfo } from "./reexport.js";
+
 import { books, Book } from "./reexport.js";
 import { Clock } from "./reexport.js";
 import { infoBook } from "./reexport.js";
@@ -9,7 +12,7 @@ import { ValidationForm } from "./reexport.js";
 import { masterId } from "./reexport.js";
 import { masters } from "./reexport.js";
 
-import { carsOwners, ReplacementParts } from "./reexport.js";
+import { carsOwners, ReplacementParts, Car } from "./reexport.js";
 import { GetTodayDate } from "./reexport.js";
 
 let infoCar;
@@ -19,6 +22,7 @@ const btnPrimary = "btn-outline-primary";
 const btnSm = "btn-sm";
 const colMd12 = "col-md-12";
 const danger = "border-danger";
+let owner;
 
 const htmlElements = {
   h2MasterInfo: document.querySelector("summary"),
@@ -77,23 +81,25 @@ const creatBoofing = (number, time, brand, phone, name, work, idBook) => {
   onANavClicked();
 };
 
-function addInNewMasive() {
   ////Кнопка check in v!!!!!!!!!!
+function addInNewMasive() {
   const startTime = Date.now();
   htmlElements.executedOrderTr.innerText = null;
   const thisContext = this;
   const index = findElement(thisContext);
-
   const array = books.books[index];
-
-  console.log(array);
-
   //деструктуризация
-  const { brand, yearIssue, carMileage, name, phone, work, registerSign } = array;
+  const {
+    brand,
+    yearIssue,
+    carMileage,
+    name,
+    phone,
+    work,
+    registerSign
+  } = array;
   const price = array.priceWork + array.priceParts;
-
   infoCar = `Brand: ${brand}, ${yearIssue} year.\nMileage: ${carMileage} km.\nOwner: ${name}.\nPhone: ${phone}.`;
-
   infoOrder = {
     work: work,
     price: price
@@ -101,190 +107,102 @@ function addInNewMasive() {
 
   new AutoInfoGetOder().creatTableOrder(startTime);
 
-
   class FindOrAddToServer {
     constructor() {
-      const owner = carsOwners.carsOwners.filter(function(a) {
+      owner = carsOwners.carsOwners.filter(function(a) {
         return a.phone == phone;
       })[0];
-
-
       const data = GetTodayDate();
-
-    
-
       const master = masters.getById(masterId).lastName;
       let idCar;
       let idPeplacementParts;
-      const url = "https://my-server-dz25.herokuapp.com/carsOwners";
-    
-
       if (owner === undefined) {
-        console.log(carsOwners.carsOwners);
+        const url = "https://my-server-dz25.herokuapp.com/carsOwners";
         idCar = 1;
         idPeplacementParts = 1;
-        const newIdForJsone = carsOwners.carsOwners.length + 1;
+        let newIdForJsone = carsOwners.carsOwners.length + 1;
 
-        new UserServiceFetch().add(
-          url,
-          {
-            id:newIdForJsone,
-            name: name,
-            phone: phone,
-            car: [
-              // {
-              //   id:idCar,
-              //   brand:array.brand,
-              //   carMileage:array.carMileage,
-              //   registerSign: array.registerSign,
-              //   replacementParts:[
-              //     {
-              //       id:idPeplacementParts,
-              //       masterName:master,
-              //       replacementMileage:carMileage,
-              //       data:data,
-              //       work:work,
-              //       nextReplacementMileage:undefined,
-              //       priceWork:array.priceWork,
-              //       priceParts:array.priceParts,
-              //     }
-              //   ],
-              //   futureWorkPlan:[],
-              // }
-            ]
-          }
-        );
-      } 
-      else {
-        
+        new UserServiceFetch().add(url, {
+          id: newIdForJsone,
+          name: name,
+          phone: phone,
+          car: [
+            {
+              id: idCar,
+              brand: array.brand,
+              carMileage: array.carMileage,
+              registerSign: array.registerSign,
+              replacementParts: [
+                {
+                  id: idPeplacementParts,
+                  masterName: master,
+                  replacementMileage: carMileage,
+                  data: data,
+                  work: work,
+                  nextReplacementMileage: undefined,
+                  priceWork: array.priceWork,
+                  priceParts: array.priceParts
+                }
+              ],
+              futureWorkPlan: []
+            }
+          ]
+        });
+      } else {
         const cars = owner.car.filter(function(a) {
           return a.brand == brand;
         })[0];
-
+        const newIdForJsone = owner.id;
 
         if (cars === undefined) {
-          const newIdForJsone = owner.id;
-          idCar = 1;
-          idPeplacementParts = 1;
-
-          new UserServiceFetch().chenge(
-            url,
-              {
-                id:newIdForJsone,
-                name: name,
-                phone: phone,
-                car: [
-                  {
-                    id:idCar,
-                    brand:array.brand,
-                    carMileage:array.carMileage,
-                    registerSign: array.registerSign,
-                    replacementParts:[
-                      // {
-                      //   id:idPeplacementParts,
-                      //   masterName:master,
-                      //   replacementMileage:carMileage,
-                      //   data:data,
-                      //   work:work,
-                      //   nextReplacementMileage:undefined,
-                      //   priceWork:array.priceWork,
-                      //   priceParts:array.priceParts,
-                      // }
-                    ],
-                    futureWorkPlan:[],
-                  }
-                ]
-              }
-          );
-          // new UserServiceFetch().che(
-          //     url,
-          //     {
-          //       id:newIdForJsone,
-          //       name: name,
-          //       phone: phone,
-          //       car: [
-          //         {
-          //           id:idCar,
-          //           brand:array.brand,
-          //           carMileage:array.carMileage,
-          //           registerSign: array.registerSign,
-          //           replacementParts:[
-          //             {
-          //               id:idPeplacementParts,
-          //               masterName:master,
-          //               replacementMileage:carMileage,
-          //               data:data,
-          //               work:work,
-          //               nextReplacementMileage:undefined,
-          //               priceWork:array.priceWork,
-          //               priceParts:array.priceParts,
-          //             }
-          //           ],
-          //           futureWorkPlan:[],
-          //         }
-          //       ]
-          //     }
-          //     );
-
-
-
-
-
-          // new UserServiceFetch().add(
-          //   url,
-          //   {
-          //     id:idCar,
-          //     brand:array.brand,
-          //     carMileage:array.carMileage,
-          //     registerSign: array.registerSign,
-          //     replacementParts:[
-          //       {
-          //         id:1,
-          //         masterName:master,
-          //         replacementMileage:carMileage,
-          //         data:data,
-          //         work:work,
-          //         nextReplacementMileage:123123123,
-          //         priceWork:array.priceWork,
-          //         priceParts:array.priceParts,
-          //       }
-          //     ],
-          //     futureWorkPlan:[],
-          //   }
-          // );
-
+          idCar = owner.car.length + 1;
+          const car = new Car();
+          car.id = idCar;
+          car.brand = array.brand;
+          car.carMileage = array.carMileage;
+          car.registerSign = array.registerSign;
+          car.replacementParts = [
+            {
+              id: idCar,
+              masterName: master,
+              replacementMileage: carMileage,
+              data: data,
+              work: work,
+              nextReplacementMileage: undefined,
+              priceWork: array.priceWork,
+              priceParts: array.priceParts
+            }
+          ];
+          owner.car.push(car);
+          const url = `https://my-server-dz25.herokuapp.com/carsOwners/${newIdForJsone}`;
+          new UserServiceFetch().chenge(url, owner);
         } else {
-
-          // const cars = owner.car;
-          // const car = cars.filter(function(a) {
-          //   return a.brand == brand;
-          // })[0];
-
-          // console.log(car);
-          // console.log(owner.car.replacementParts);
-          // const idReplacementPart = owner.car.replacementParts[owner.car.replacementParts.length - 1];
-          // owner.car.replacementParts.push({
-          //     id:idReplacementPart,
-          //     masterName:master,
-          //     replacementMileage:carMileage,
-          //     data:data,
-          //     work:work,
-          //     nextReplacementMileage:123123123,
-          //     priceWork:array.priceWork,
-          //     priceParts:array.priceParts,
-          // });
+          const url = `https://my-server-dz25.herokuapp.com/carsOwners/${newIdForJsone}`;
+          const idPeplacementParts = cars.replacementParts.length + 1;
+          const replacementParts = new ReplacementParts();
+          replacementParts.id = idPeplacementParts;
+          replacementParts.masterName = master;
+          replacementParts.replacementMileage = carMileage;
+          replacementParts.nextReplacementMileage = undefined;
+          replacementParts.priceWork = array.priceWork;
+          replacementParts.priceParts = array.priceParts;
+          replacementParts.data = data;
+          replacementParts.work = work;
+          cars.replacementParts.push(replacementParts);
+          new UserServiceFetch().chenge(url, owner);
         };
-        //Метод который будет добавлять данные о следующей замене!!!!!
+        new AutoInfo().future(cars.replacementParts);
+        
+        //Фьючер плана еще не существует
+        new AutoInfo().requires(cars.futureWorkPlan);
       };
     };
   };
 
-  //Обьект который будет ищет по масиву на серваке и записывает!
-
   new FindOrAddToServer();
   books.books.splice(index, 1);
   new RenderBook().strBook(htmlElements.bookTbody, books, masterId);
-}
+};
 
 const changeTimeCondition = (
   difference,
@@ -304,14 +222,15 @@ const onANavClicked = () => {
   const hour = 3600000;
   const minute = 60000;
   let timeThis = arrayThisTime[0] * hour + arrayThisTime[1] * minute;
+
   htmlElements.tdTime = htmlElements.bookTbody.getElementsByTagName("tr");
   const arrayTr = Array.from(htmlElements.tdTime);
-
   arrayTr.forEach(element => {
     const elementTr = element.childNodes[1];
     let elementTrSplit = elementTr.innerText.split(":");
     let bookTime = elementTrSplit[0] * hour + elementTrSplit[1] * minute;
     let difference = bookTime - timeThis;
+
     const thirtyMinutes = 1800000;
     const sixtyMinutes = 3600000;
     changeTimeCondition(difference, thirtyMinutes, sixtyMinutes, elementTr);
@@ -429,7 +348,6 @@ function onButtonToBookClicked() {
 class RenderBook {
   constructor() {}
   strBook(element, array, masterId) {
-    // debugger;
     element.innerText = null;
     array.getByMasterId(masterId).forEach((element, index) => {
       creatBoofing(
@@ -442,15 +360,7 @@ class RenderBook {
         element.id
       );
     });
-  }
-
-  srtAutoInfo(element, array, callback, callback2) {
-    element.innerText = null;
-    array.forEach(function(element, index) {
-      callback(element, index);
-      callback2();
-    });
-  }
+  };
 }
 
 class BooksTable {

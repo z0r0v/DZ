@@ -41,7 +41,7 @@ class UserServiceFetch {
 
   chenge(url,name) {
     
-    console.log(JSON.stringify(name));
+    // console.log(JSON.stringify(name));
 
     return fetch(url, {
       method: "PATCH",

@@ -93,4 +93,4 @@ const url = "https://my-server-dz25.herokuapp.com/carsOwners";
       new CarsOwnersCeate(data);
 });
 
-export { carsOwners, CarsOwnersCeate, ReplacementParts};
+export { carsOwners, CarsOwnersCeate, ReplacementParts, Car};

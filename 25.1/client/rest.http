@@ -1,36 +1,20 @@
 //Запрос данных
-GET https://my-server-dz25.herokuapp.com/carsOwners HTTP/1.1;
+GET https://my-server-dz25.herokuapp.com/carsOwners
 
 
 ###
 //Отправка вызывает изменения
 POST https://my-server-dz25.herokuapp.com/carsOwners;
-content-type: application/json;
-
-{
-    "name": "Vasiliy Petrovich",
-    "phone": "+375293767082"
-  }
-
-###
-
-POST https://jsonplaceholder.typicode.com/posts
-content-type: application/json;
-
-{
-    "userId": 1,
-    "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
-    "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
-  }
+Content-Type: application/json
 
 
 ###
 //PATCH используется для частичного изменения ресурса.
-PATCH https://my-server-dz25.herokuapp.com/carsOwners/3 HTTP/1.1;
-content-type: application/json;
+PATCH https://my-server-dz25.herokuapp.com/carsOwners/3
+Content-Type: application/json
  
 {
-    "name": "Vasiliy Petrovich 1",
+    "name": "Vasiliy Petrovich 1231",
     "phone": "+375293767082",
     "car": [
       {
@@ -56,13 +40,13 @@ content-type: application/json;
 
 ###
 # DELETE удаляет указанный ресурс.
-DELETE https://my-server-dz25.herokuapp.com/carsOwners/3 HTTP/1.1;
+DELETE https://my-server-dz25.herokuapp.com/carsOwners/3 
 
 
 ###
 //PUT заменяет все текущие представления ресурса данными запроса.
-PUT https://my-server-dz25.herokuapp.com/carsOwners/3 HTTP/1.1;
-content-type: application/json;
+PUT https://my-server-dz25.herokuapp.com/carsOwners/3
+Content-Type: application/json
 
 {
   "id": 3,

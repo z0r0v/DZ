@@ -1,8 +1,4 @@
-import { UserServiceFetch} from "./reexport.js";
-import { carsOwners, CarsOwnersCeate } from "./reexport.js";
-
 import { RenderBook } from "./reexport.js";
-
 
 const htmlElements = {
   td: document.querySelectorAll(".executedOrder > tr > td"),
@@ -13,47 +9,82 @@ const htmlElements = {
   carMileage:document.querySelector(".requiresReplacement > tbody> tr >td")
 };
 
-const renderReplacementExpired = array => {
 
-  htmlElements.futureWorkPlan.innerText = null;
-  htmlElements.requiresReplacement.innerText = null;
+const element = htmlElements.futureWorkPlan;
+const element2 = htmlElements.requiresReplacement;
 
-  array.forEach(function(element, index) {
-    if (!array[index].checkMileageCompare) {
+const arrayParam = ["replacementMileage","data","work","priceParts","priceWork"];
 
-      creatReplaced(
-        //потом разобраться что сделать номер индексуеться по общему списку? пока отключены номера
-        null,
-        element.nextReplacementMileage,
-        null,
-        element.work,
-        element.priceWork,
-        element.priceParts
-      );
-      createTable(htmlElements.requiresReplacement);
-      
-    } else {
-      creatReplaced(
-        //потом разобраться что сделать номер индексуеться по общему списку? пока отключены номера
-        null,
-        element.nextReplacementMileage,
-        null,
-        element.work,
-        element.priceWork,
-        element.priceParts
-      );
-      createTable(htmlElements.futureWorkPlan, htmlElements.trReplaced);
-    }
+const creatAuroInfo = (element, arayElement, idBook, number) => {
+
+  ////ПРЕПСИВАТЬ ЭТУ ЧАСТЬ ПОД ТОЧ ТО БУДЕТ РИСОВАТЬ НАШИ ФОРМЫ !!!!!
+
+    // const trBookInfo = document.createElement("tr");
+    // trBookInfo.id = idBook;
+    // element.appendChild(trBookInfo);
+  
+    // const thNumber = document.createElement("th");
+    // thNumber.innerText = number;
+    // trBookInfo.appendChild(thNumber);
+    // createBookHelper(arayElement, trBookInfo);
+  
+    // const checkCircle = "fa-check-circle";
+    // const timesCircle = "fa-times-circle";
+    // const success = "text-success";
+    // const danger = "text-danger";
+  
+    // const tdButtons = document.createElement("td");
+    // trBookInfo.appendChild(tdButtons);
+  
+    // creatButtons(tdButtons, checkCircle, success, addInNewMasive);
+    // creatButtons(tdButtons, timesCircle, danger, onButtonIcoClearClicked);
+
+
+
+  };
+
+class SrtAutoInfo{
+  constructor(element, array, arrayParam){
+    element.innerText = null;
+    array.forEach(function(element, index) {
+    //   creatAuroInfo(
+    //   ++index,
+    //   element[arrayParam[0]],
+    //   element[arrayParam[1]],
+    //   element[arrayParam[2]],
+    //   element[arrayParam[3]],
+    //   element[arrayParam[4]],
+    //   element[arrayParam[5]]
+    // )
   });
-};
-
-class AutoInfo{
-  constructor(){};
-
-  init(){
-    
   };
 };
+
+
+class AutoInfo{
+  constructor(owner){
+    this.array = owner;
+    this.element = element;
+    this.element2 = element2;
+    this.arrayParam = arrayParam;
+  };
+// Два метода под отрисовку планов !!!!!!!
+  future(cars){
+    new SrtAutoInfo(this.element, cars, this.arrayParam);
+    console.log(cars);
+    console.log(this.element);
+  };
+
+  requires(cars){
+    // new RenderBook().srtAutoInfo(this.element2, this.array, this.arrayParam);
+    // console.log(cars);
+    // console.log(this.element2);
+  };
+};
+
+ 
+
+
 
 
 export { AutoInfo };

@@ -22,16 +22,18 @@ class SwitchCase {
 
 class SwitchCase2 {
   constructor(elementDataAttribute, difference, thirtyMinutes, sixtyMinutes, elementTr) {
-    const modeList2 = {
-      [difference <= 0]: "text-danger",
-      [difference <= thirtyMinutes]: "text-warning",
-      [difference <= sixtyMinutes]: "text-success",
-      [difference > sixtyMinutes]: "text-body",
+    if(difference <= 0){
+      elementTr.classList.add("text-danger");
     };
-    if (elementDataAttribute in modeList2) {
-      elementTr.classList.remove(modeList2[elementDataAttribute]);
-    } else {
-      throw new Error("Error in onTabsClick module book str 139");
+    if(difference <= thirtyMinutes){
+      elementTr.classList.add("text-warning");
+    };
+
+    if(difference <= sixtyMinutes){
+      elementTr.classList.add("text-success");
+    };
+    if (difference > sixtyMinutes){
+      elementTr.classList.add("text-success");
     };
   };
 };
