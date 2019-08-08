@@ -1,4 +1,4 @@
- function GetTodayDate() {
+function GetTodayDate() {
   let tdate = new Date();
   let dd = tdate.getDate(); //yields day
   let MM = tdate.getMonth(); //yields month
@@ -17,7 +17,6 @@
   var currentDate = `${dd}.${MM}.${yyyy}`;
   return currentDate;
 };
-
 
 
 export { GetTodayDate };

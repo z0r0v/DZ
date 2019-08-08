@@ -268,6 +268,10 @@ class chooseСontent {
   constructor(thisContext, callback) {
     const index = findElement(thisContext);
     callback(index);
+
+    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!constant
+    //При каждом получении из локал сторадж!!!!!!!!!!!!!!!
+    // books = localStorage.getItem("books", books);
     new RenderBook().strBook(htmlElements.bookTbody, books, masterId);
   }
 }
@@ -283,6 +287,10 @@ const onButtonIcoClearClicked = function() {
   const thisContext = this;
   new chooseСontent(thisContext, index => {
     delete books.books[index];
+
+    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    //при удалении записать масив в локал сторадж при перезагрузке ссчитать
+    // localStorage.setItem("books", books);
   });
 };
 
@@ -361,7 +369,8 @@ class RenderBook {
       );
     });
   };
-}
+};
+
 
 class BooksTable {
   constructor(masterNameCategogy, masterId, array) {

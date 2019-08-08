@@ -37,6 +37,8 @@ htmlElements.formButton.addEventListener("click", onButtonCheckPassword);
 
 function onLogoutCuttonclick() {
   isLogged = false;
+  localStorage.clear();
+
   htmlElements.divLogin.classList.remove(hidd);
   new ClassHelper().addClass(
     [htmlElements.masterInfo, htmlElements.divNav],
@@ -57,6 +59,7 @@ class ValidRender {
   constructor(isLogged, masterNameCategogy, masterId) {
     if (isLogged) {
       new BooksTable(masterNameCategogy, masterId, books);
+
       new ClassHelper().removeClass([loginName, pasword], danger);
       new ClassHelper().addClass(
         [loginName, pasword, htmlElements.divLogin],
@@ -102,6 +105,7 @@ function onButtonCheckPassword() {
 };
 
 //get
+
 isLogged = localStorage.getItem("aItem", isLogged);
 //из сторадж приходит строка а в принимающей функции строгое равенство!!
 masterId = Number(localStorage.getItem("bItem", masterId));
@@ -110,6 +114,7 @@ masterNameCategogy = localStorage.getItem("cItem", masterNameCategogy);
 class Relog {
   constructor(isLogged, masterNameCategogy, masterId) {
     if (isLogged) {
+
       new ValidRender(isLogged, masterNameCategogy, masterId);
     };
   };

@@ -1,7 +1,5 @@
+const sum = require('../sum');
 
-// импорт не хочет работать 
-const GetTodayDate = require('./data');
-
-
-  //userTest экспорт
-  module.exports = GetTodayDate;
+test('(5 * 2 + 3)/4', () => {
+  expect(sum(5,2,3,4)).toBe(3.25);
+});
