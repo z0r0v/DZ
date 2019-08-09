@@ -1,6 +1,8 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
 @import './css/slider.css';
 @import './css/accordion.css';
+@import './css/spinner.css';
+
 
 
 * {

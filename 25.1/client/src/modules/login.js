@@ -1,12 +1,18 @@
+
+import { Clock } from "./reexport.js";
 import { masters } from "./reexport.js";
-import { BooksTable, RenderBook } from "./reexport.js";
+import { RenderBook } from "./reexport.js";
 import { ClassHelper } from "./reexport.js";
-import { books } from "./reexport.js";
+import { books, sortBook } from "./reexport.js";
 import { LocalStorHelp } from "./reexport.js";
+
+
+
 
 let masterNameCategogy;
 let masterId;
 let isLogged = false;
+let master;
 
 const loginName = document.getElementById("exampleInputLoggin");
 const pasword = document.getElementById("exampleInputPassword");
@@ -29,11 +35,15 @@ const htmlElements = {
   divNav: document.querySelector("div.divNav"),
   divLogin: document.querySelector(".login "),
   masterInfo: document.querySelector(".masterInfo"),
-  tr: document.querySelector(".executedOrder > tr")
+  tr: document.querySelector(".executedOrder > tr"),
+  h2MasterInfo: document.querySelector("summary"),
+  bookTbody: document.querySelector(".table > tbody"),
+  spinner: document.querySelector(".lds-dual-ring"),
 };
 
 htmlElements.buttonLogout.addEventListener("click", onLogoutCuttonclick);
 htmlElements.formButton.addEventListener("click", onButtonCheckPassword);
+
 
 function onLogoutCuttonclick() {
   isLogged = false;
@@ -55,10 +65,21 @@ function onLogoutCuttonclick() {
   htmlElements.tr.innerText = null;
 };
 
+
 class ValidRender {
-  constructor(isLogged, masterNameCategogy, masterId) {
+  constructor(isLogged, masterNameCategogy, masterId, array) {
     if (isLogged) {
-      new BooksTable(masterNameCategogy, masterId, books);
+      htmlElements.h2MasterInfo.innerText = masterNameCategogy;
+      Clock.prototype.init();
+      // debugger;
+      sortBook();
+      new RenderBook().strBook(htmlElements.bookTbody, array, masterId);
+
+      const threeMinutes = 180000;
+      setInterval(() => {
+        new RenderBook().strBook(htmlElements.bookTbody, array, masterId);
+      }, threeMinutes);
+
 
       new ClassHelper().removeClass([loginName, pasword], danger);
       new ClassHelper().addClass(
@@ -79,8 +100,8 @@ class ValidRender {
 };
 
 class Authentication {
-  constructor() {
-    masters.masters.forEach(function(master) {
+  constructor(masters) {
+    masters.forEach(function(master) {
       if (
         pasword.value === master.pasword &&
         loginName.value === master.login
@@ -91,37 +112,52 @@ class Authentication {
         isLogged = true;
         masterId = master.id;
         new LocalStorHelp().set(isLogged, masterId, masterNameCategogy);
-        return isLogged, masterId;
+        master = master.lastName;
+        return isLogged, masterId, master;
       }
     });
   };
 };
 
+
 function onButtonCheckPassword() {
   new ClassHelper().removeClass([loginName, pasword], danger, success);
-  new Authentication();
-  new ValidRender(isLogged, masterNameCategogy, masterId);
+  new Authentication(masters.masters);
+  new ValidRender(isLogged, masterNameCategogy, masterId, books);
   return masterNameCategogy;
 };
 
-//get
-
-isLogged = localStorage.getItem("aItem", isLogged);
-//из сторадж приходит строка а в принимающей функции строгое равенство!!
-masterId = Number(localStorage.getItem("bItem", masterId));
-masterNameCategogy = localStorage.getItem("cItem", masterNameCategogy);
 
 class Relog {
-  constructor(isLogged, masterNameCategogy, masterId) {
+  constructor(books) {
+    htmlElements.divLogin.classList.add(hidd);
+    isLogged = localStorage.getItem("aItem", isLogged);
+    masterId = localStorage.getItem("bItem", masterId);
+    masterNameCategogy = localStorage.getItem("cItem", masterNameCategogy);
     if (isLogged) {
-
-      new ValidRender(isLogged, masterNameCategogy, masterId);
+      htmlElements.spinner.classList.remove(hidd);
+      new Promise(function(resolve, reject) {
+        setTimeout(()=>{
+          new ClassHelper().removeClass(
+            [htmlElements.masterInfo, htmlElements.divNav],
+            hidd
+          );
+          if(books){
+            htmlElements.spinner.classList.add(hidd);
+            resolve(new ValidRender(isLogged, masterNameCategogy, masterId, books));
+          };
+        }, 800);
+      });
+    }else{
+      htmlElements.divLogin.classList.remove(hidd);
     };
   };
 };
 
-new Relog(isLogged, masterNameCategogy, masterId);
+
+  new Relog(books);
+
 
 class Loggin {}
 
-export { Loggin, masterId };
+export { Loggin, masterId, master };

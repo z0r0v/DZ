@@ -1,19 +1,18 @@
-import { UserServiceFetch } from "./reexport.js";
+import { ClassHelper } from "./reexport.js";
+import { UserServiceFetch, UserServiceHXMhttp } from "./reexport.js";
 import { AutoInfoGetOder } from "./reexport.js";
-
-import { AutoInfo } from "./reexport.js";
-
-import { books, Book } from "./reexport.js";
-import { Clock } from "./reexport.js";
+import { books, Book, CreateBooks } from "./reexport.js";
 import { infoBook } from "./reexport.js";
 import { apendHelpper } from "./reexport.js";
 import { SwitchCase2 } from "./reexport.js";
 import { ValidationForm } from "./reexport.js";
-import { masterId } from "./reexport.js";
-import { masters } from "./reexport.js";
-
+import { masterId,  } from "./reexport.js";
+import { masters, master } from "./reexport.js";
 import { carsOwners, ReplacementParts, Car } from "./reexport.js";
 import { GetTodayDate } from "./reexport.js";
+import { InfoAuto } from "./reexport.js";
+import { url } from "./reexport.js";
+
 
 let infoCar;
 let infoOrder;
@@ -23,13 +22,16 @@ const btnSm = "btn-sm";
 const colMd12 = "col-md-12";
 const danger = "border-danger";
 let owner;
+const hidd = "hidden";
+
 
 const htmlElements = {
   h2MasterInfo: document.querySelector("summary"),
   bookTbody: document.querySelector(".table > tbody"),
   buttonBook: document.querySelector(".bookButton"),
   executedOrderTr: document.querySelector(".executedOrder > tr"),
-  form: document.querySelector(".bookForm")
+  form: document.querySelector(".bookForm"),
+  spinner: document.querySelector(".lds-dual-ring"),
 };
 
 htmlElements.buttonBook.addEventListener("click", onButtonToBookClicked);
@@ -98,7 +100,7 @@ function addInNewMasive() {
     work,
     registerSign
   } = array;
-  const price = array.priceWork + array.priceParts;
+  const price = parseInt(array.priceWork) + parseInt(array.priceParts);
   infoCar = `Brand: ${brand}, ${yearIssue} year.\nMileage: ${carMileage} km.\nOwner: ${name}.\nPhone: ${phone}.`;
   infoOrder = {
     work: work,
@@ -107,22 +109,24 @@ function addInNewMasive() {
 
   new AutoInfoGetOder().creatTableOrder(startTime);
 
+
+
   class FindOrAddToServer {
     constructor() {
       owner = carsOwners.carsOwners.filter(function(a) {
         return a.phone == phone;
       })[0];
+      
       const data = GetTodayDate();
-      const master = masters.getById(masterId).lastName;
       let idCar;
       let idPeplacementParts;
       if (owner === undefined) {
-        const url = "https://my-server-dz25.herokuapp.com/carsOwners";
+        const urlG = `${url}carsOwners`;
         idCar = 1;
         idPeplacementParts = 1;
         let newIdForJsone = carsOwners.carsOwners.length + 1;
 
-        new UserServiceFetch().add(url, {
+        new UserServiceFetch().add(urlG, {
           id: newIdForJsone,
           name: name,
           phone: phone,
@@ -174,10 +178,10 @@ function addInNewMasive() {
             }
           ];
           owner.car.push(car);
-          const url = `https://my-server-dz25.herokuapp.com/carsOwners/${newIdForJsone}`;
-          new UserServiceFetch().chenge(url, owner);
+          const urlG = `${url}carsOwners/${newIdForJsone}`;
+          new UserServiceFetch().chenge(urlG, owner);
         } else {
-          const url = `https://my-server-dz25.herokuapp.com/carsOwners/${newIdForJsone}`;
+          const urlG = `${url}carsOwners/${newIdForJsone}`;
           const idPeplacementParts = cars.replacementParts.length + 1;
           const replacementParts = new ReplacementParts();
           replacementParts.id = idPeplacementParts;
@@ -189,17 +193,21 @@ function addInNewMasive() {
           replacementParts.data = data;
           replacementParts.work = work;
           cars.replacementParts.push(replacementParts);
-          new UserServiceFetch().chenge(url, owner);
+          new UserServiceFetch().chenge(urlG, owner);
+
+          new InfoAuto().replaced(cars.replacementParts);
         };
-        new AutoInfo().future(cars.replacementParts);
-        
-        //Фьючер плана еще не существует
-        new AutoInfo().requires(cars.futureWorkPlan);
       };
     };
   };
 
-  new FindOrAddToServer();
+  setTimeout(()=>{
+    new FindOrAddToServer();
+  }, 2000);
+
+  
+  const urlG = `${url}books/${books.books[index].id}`
+  new UserServiceHXMhttp().sincDell(urlG);
   books.books.splice(index, 1);
   new RenderBook().strBook(htmlElements.bookTbody, books, masterId);
 };
@@ -268,10 +276,6 @@ class chooseСontent {
   constructor(thisContext, callback) {
     const index = findElement(thisContext);
     callback(index);
-
-    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!constant
-    //При каждом получении из локал сторадж!!!!!!!!!!!!!!!
-    // books = localStorage.getItem("books", books);
     new RenderBook().strBook(htmlElements.bookTbody, books, masterId);
   }
 }
@@ -279,6 +283,24 @@ class chooseСontent {
 const aplayChengeWork = function() {
   const thisContext = this;
   new chooseСontent(thisContext, index => {
+    const obj1 = books.books[index];
+    const urlG = `${url}books/${books.books[index].id}`
+    
+    new UserServiceHXMhttp().patch(urlG,
+      {
+        masterId: obj1.masterId,
+        time: obj1.time,
+        brand: obj1.brand,
+        phone: obj1.phone,
+        name: obj1.name,
+        work: htmlElements.cheInputWorke.value,
+        registerSign:obj1.registerSign,
+        carMileage: obj1.carMileage,
+        yearIssue:obj1.yearIssue,
+        priceWork:obj1.priceWork,
+        priceParts:obj1.priceParts,
+      }
+      );
     books.books[index].work = htmlElements.cheInputWorke.value;
   });
 };
@@ -286,11 +308,9 @@ const aplayChengeWork = function() {
 const onButtonIcoClearClicked = function() {
   const thisContext = this;
   new chooseСontent(thisContext, index => {
+    const urlG = `${url}books/${books.books[index].id}`
+    new UserServiceHXMhttp().sincDell(urlG);
     delete books.books[index];
-
-    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    //при удалении записать масив в локал сторадж при перезагрузке ссчитать
-    // localStorage.setItem("books", books);
   });
 };
 
@@ -347,17 +367,21 @@ function onButtonToBookClicked() {
 
   new ValidationForm(array, danger, () => {
     formClear();
-    books.books.push(newBook);
-    sortBook();
-    new RenderBook().strBook(htmlElements.bookTbody, books, masterId);
+    const urlG = `${url}books`;
+    new UserServiceFetch().add(urlG, newBook);
+     new UserServiceHXMhttp().sincGetHXMhttp(urlG, sortBook, ()=>{
+        new RenderBook().strBook(htmlElements.bookTbody, books, masterId);
+      }
+      );
   });
-}
+};
 
 class RenderBook {
-  constructor() {}
+  constructor() {};
   strBook(element, array, masterId) {
+
     element.innerText = null;
-    array.getByMasterId(masterId).forEach((element, index) => {
+   array.getByMasterId(masterId).forEach((element, index) => {
       creatBoofing(
         ++index,
         element.time,
@@ -366,27 +390,10 @@ class RenderBook {
         element.name,
         element.work,
         element.id
-      );
+      )
     });
+
   };
 };
 
-
-class BooksTable {
-  constructor(masterNameCategogy, masterId, array) {
-    htmlElements.h2MasterInfo.innerText = masterNameCategogy;
-
-    Clock.prototype.init();
-
-    new RenderBook().strBook(htmlElements.bookTbody, array, masterId);
-
-    //переодически нужно рендерить renderBook чтобы перекрашивался
-    const threeMinutes = 180000;
-
-    setInterval(() => {
-      new RenderBook().strBook(htmlElements.bookTbody, array, masterId);
-    }, threeMinutes);
-  }
-}
-
-export { BooksTable, infoCar, infoOrder, RenderBook };
+export { infoCar, infoOrder, RenderBook, sortBook };

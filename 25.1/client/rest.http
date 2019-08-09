@@ -1,42 +1,47 @@
 //Запрос данных
-GET https://my-server-dz25.herokuapp.com/carsOwners
+GET https://firebasestorage.googleapis.com/v0/b/aliakseizhorau.appspot.com/o/ex.json?alt=media&token=a40e9995-b297-4165-a016-0d76a83390c7
 
 
 ###
 //Отправка вызывает изменения
-POST https://my-server-dz25.herokuapp.com/carsOwners;
+POST https://firebasestorage.googleapis.com/v0/b/aliakseizhorau.appspot.com/o/ex.json?alt=media&token=a40e9995-b297-4165-a016-0d76a83390c7;
 Content-Type: application/json
+
+{
+    "name": "sample23 ds",
+    "time": "Wed, 21 Oct 2015 18:27:50 GMTsfsefse"
+},
+{
+    "name": "sample23 ds",
+    "time": "Wed, 21 Oct 2015 18:27:50 GMTsfsefse"
+},
+{
+    "name": "sample23 ds",
+    "time": "Wed, 21 Oct 2015 18:27:50 GMTsfsefse"
+}
+
 
 
 ###
 //PATCH используется для частичного изменения ресурса.
-PATCH https://my-server-dz25.herokuapp.com/carsOwners/3
+PATCH  https://firebasestorage.googleapis.com/v0/b/aliakseizhorau.appspot.com/o/ex.json?alt=media&token=a40e9995-b297-4165-a016-0d76a83390c7;
 Content-Type: application/json
  
-{
-    "name": "Vasiliy Petrovich 1231",
-    "phone": "+375293767082",
-    "car": [
-      {
-        "id": 1,
-        "brand": "2Lada",
-        "carMileage": 222000,
-        "registerSign": "7785AA-4",
-        "replacementParts": [
-          {
-            "id": 1,
-            "masterName": "Kshishtykov",
-            "replacementMileage": 222000,
-            "data": "07.07.2019",
-            "work": "Еiming belt replacement",
-            "priceWork": 10,
-            "priceParts": 10
-          }
-        ],
-        "futureWorkPlan": []
-      }
-    ]
+  {
+    "masterId": 1,
+    "time": "13:12",
+    "brand": "BMW",
+    "phone": "+375291111111",
+    "name": "Vasiliy Petrovich",
+    "work": "Еiming belt replacement",
+    "registerSign": "7785AA-4",
+    "carMileage": 222000,
+    "yearIssue": 2017,
+    "priceWork": 10,
+    "priceParts": 10
   }
+ 
+
 
 ###
 # DELETE удаляет указанный ресурс.
@@ -45,31 +50,19 @@ DELETE https://my-server-dz25.herokuapp.com/carsOwners/3
 
 ###
 //PUT заменяет все текущие представления ресурса данными запроса.
-PUT https://my-server-dz25.herokuapp.com/carsOwners/3
+PUT https://my-server-dz25.herokuapp.com/books/0
 Content-Type: application/json
 
 {
-  "id": 3,
-  "name": "Vasiliy Petrovich",
-  "phone": "+375293767082",
-  "car": [
-    {
-      "id": 1,
-      "brand": "2La231da",
-      "carMileage": 222000,
-      "registerSign": "7785AA-4",
-      "replacementParts": [
-        {
-          "id": 1,
-          "masterName": "Kshishtykov",
-          "replacementMileage": 222000,
-          "data": "07.07.2019",
-          "work": "Еiming belt replacement",
-          "priceWork": 10,
-          "priceParts": 10
-        }
-      ],
-      "futureWorkPlan": []
-    }
-  ]
-}
+    "masterId": 1,
+    "time": "13:12",
+    "brand": "BMW",
+    "phone": "+375291111111",
+    "name": "Vasiliy Petrovich",
+    "work": "Еiming belt replacement",
+    "registerSign": "7785AA-4",
+    "carMileage": 222000,
+    "yearIssue": 2017,
+    "priceWork": 10,
+    "priceParts": 10
+  }

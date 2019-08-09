@@ -24,15 +24,10 @@ class UserServiceFetch {
       xhr.send();
     });
   };
-
-  
   add(url,name) {
-    
-    // console.log(JSON.stringify(name));
-
     return fetch(url, {
       method: "POST",
-      body: JSON.stringify(name ),
+      body: JSON.stringify(name),
       headers: {
         "Content-Type": "application/json"
       }
@@ -40,9 +35,6 @@ class UserServiceFetch {
   };
 
   chenge(url,name) {
-    
-    // console.log(JSON.stringify(name));
-
     return fetch(url, {
       method: "PATCH",
       body: JSON.stringify(name ),
@@ -51,9 +43,6 @@ class UserServiceFetch {
       }
     }).then(response => response.json());
   };
-
-
-
 };
 
 function UserServiceHXMhttp(url) {
@@ -71,6 +60,36 @@ UserServiceHXMhttp.prototype.getHXMhttp = function(url) {
     xhr.send();
   });
 };
+
+UserServiceHXMhttp.prototype.sincGetHXMhttp = function(url, fun1, fun2) {
+    let xhr = new XMLHttpRequest();
+    xhr.open(method, url);
+    xhr.onload = () => {
+      const request = JSON.parse(xhr.response);
+      fun1();
+      fun2();
+    };
+    xhr.send();
+};
+
+UserServiceHXMhttp.prototype.sincDell = function(url) {
+  let xhr = new XMLHttpRequest();
+  xhr.open("DELETE", url);
+  xhr.onload = () => {};
+  xhr.send();
+};
+
+
+UserServiceHXMhttp.prototype.patch = function(url, element) {
+  let xhr = new XMLHttpRequest();
+  xhr.open("PATCH", url);
+  xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+  xhr.onload = () => {
+  };
+  xhr.send(JSON.stringify(element));
+  
+};
+
 
 
 
