@@ -1,5 +1,5 @@
 //Запрос данных
-GET https://firebasestorage.googleapis.com/v0/b/aliakseizhorau.appspot.com/o/ex.json?alt=media&token=a40e9995-b297-4165-a016-0d76a83390c7
+GET https://firebasestorage.googleapis.com/v0/b/aliakseizhorau.appspot.com/o/db.json?alt=media&token=26c41fcc-b429-4364-8346-f97245ae180c/masters
 
 
 ###

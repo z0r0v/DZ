@@ -19,8 +19,11 @@ export { ValidationForm } from "./validation.js";
 export { MaskPhone } from "./helpModule/maskPhone.js";
 export { InfoAuto } from "./infoauto.js";
 
+
 export const url = "https://my-server-dz25.herokuapp.com/";
-// export const url = "https://my-server-dz25.herokuapp.com/";
+
+//альтернативный json
+//export const url = "https://firebasestorage.googleapis.com/v0/b/aliakseizhorau.appspot.com/o/db.json?alt=media&token=26c41fcc-b429-4364-8346-f97245ae180c/";
 
 
 
