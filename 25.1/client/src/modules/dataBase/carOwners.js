@@ -2,13 +2,13 @@ import { UserServiceFetch } from "../reexport.js";
 
 class CarsOwners {
   carsOwners = [];
-};
+}
 
 class carOwn {
   name;
   phone;
   car = [];
-};
+}
 
 class Car {
   brand;
@@ -16,7 +16,7 @@ class Car {
   registerSign;
   replacementParts = [];
   futureWorkPlan = [];
-};
+}
 
 class ReplacementParts {
   masterName;
@@ -26,7 +26,7 @@ class ReplacementParts {
   nextReplacementMileage;
   priceWork;
   priceParts;
-};
+}
 
 class FutureWork {
   carMileage;
@@ -39,7 +39,7 @@ class FutureWork {
   }
   priceWork;
   priceParts;
-};
+}
 
 class CarsOwnersCeate {
   constructor(data) {
@@ -83,14 +83,13 @@ class CarsOwnersCeate {
         });
       });
     });
-  };
-};
-
+  }
+}
 
 const carsOwners = new CarsOwners();
 const url = "https://my-server-dz25.herokuapp.com/carsOwners";
-    new UserServiceFetch().getFetch(url).then(data => {
-      new CarsOwnersCeate(data);
+new UserServiceFetch().getFetch(url).then(data => {
+  new CarsOwnersCeate(data);
 });
 
-export { carsOwners, CarsOwnersCeate, ReplacementParts, Car};
+export { carsOwners, CarsOwnersCeate, ReplacementParts, Car };

@@ -13,7 +13,7 @@ class Book {
   yearIssue;
   priceWork;
   priceParts;
-};
+}
 
 class Books {
   books = [];
@@ -22,16 +22,16 @@ class Books {
     this.books.forEach(function(book) {
       if (book.masterId == id) {
         result.push(book);
-      };
+      }
     });
     return result;
-  };
-};
+  }
+}
 
-class CreateBooks{
-  constructor(data){
+class CreateBooks {
+  constructor(data) {
     books.books = [];
-    data.forEach((item)=>{
+    data.forEach(item => {
       const book = new Book();
       book.id = item.id;
       book.masterId = item.masterId;
@@ -47,9 +47,8 @@ class CreateBooks{
       book.priceParts = item.priceParts;
       books.books.push(book);
     });
-  };
-};
-
+  }
+}
 
 let books = new Books();
 

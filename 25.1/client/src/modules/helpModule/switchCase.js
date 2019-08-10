@@ -5,8 +5,8 @@ const htmlElements = {
 };
 
 const modeList = {
-  "Master": htmlElements.masterInfo,
-  "Auto": htmlElements.autoInfo
+  Master: htmlElements.masterInfo,
+  Auto: htmlElements.autoInfo
 };
 
 class SwitchCase {
@@ -15,27 +15,32 @@ class SwitchCase {
       modeList[elementDataAttribute].classList.remove("hidden");
     } else {
       throw new Error("Error in onTabsClick module tabs str 33");
-    };
-  };
-};
-
+    }
+  }
+}
 
 class SwitchCase2 {
-  constructor(elementDataAttribute, difference, thirtyMinutes, sixtyMinutes, elementTr) {
-    if(difference <= 0){
+  constructor(
+    elementDataAttribute,
+    difference,
+    thirtyMinutes,
+    sixtyMinutes,
+    elementTr
+  ) {
+    if (difference <= 0) {
       elementTr.classList.add("text-danger");
-    };
-    if(difference <= thirtyMinutes){
+    }
+    if (difference <= thirtyMinutes) {
       elementTr.classList.add("text-warning");
-    };
+    }
 
-    if(difference <= sixtyMinutes){
+    if (difference <= sixtyMinutes) {
       elementTr.classList.add("text-success");
-    };
-    if (difference > sixtyMinutes){
+    }
+    if (difference > sixtyMinutes) {
       elementTr.classList.add("text-success");
-    };
-  };
-};
+    }
+  }
+}
 
 export { SwitchCase, SwitchCase2 };

@@ -1,4 +1,4 @@
-import { UserServiceFetch, UserServiceHXMhttp  } from "../reexport.js";
+import { UserServiceFetch, UserServiceHXMhttp } from "../reexport.js";
 const url = "https://my-server-dz25.herokuapp.com/masters";
 const oneYearMs = 31536000000;
 
@@ -13,7 +13,7 @@ class Master {
   category = () => {
     const yers = Math.floor((Date.now() - this.dateEmployment) / oneYearMs);
     const preliminaryCategory = this.categoryHired + yers;
-    preliminaryCategory >= 5 ? preliminaryCategory = 5: preliminaryCategory;
+    preliminaryCategory >= 5 ? (preliminaryCategory = 5) : preliminaryCategory;
     return preliminaryCategory;
   };
 }
@@ -29,8 +29,8 @@ class Masters {
       }
     });
     return result;
-  };
-};
+  }
+}
 
 class MasterCeate {
   constructor(data) {
@@ -45,8 +45,8 @@ class MasterCeate {
       master.categoryHired = element.categoryHired;
       masters.masters.push(master);
     });
-  };
-};
+  }
+}
 
 const masters = new Masters();
 //ES6 Fetch
@@ -62,7 +62,7 @@ const masters = new Masters();
 // });
 
 //ES5 HXMhttp
-new UserServiceHXMhttp().getHXMhttp(url).then(  data => {
+new UserServiceHXMhttp().getHXMhttp(url).then(data => {
   new MasterCeate(data);
 });
 export { masters };

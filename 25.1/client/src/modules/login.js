@@ -1,13 +1,9 @@
-
 import { Clock } from "./reexport.js";
 import { masters } from "./reexport.js";
 import { RenderBook } from "./reexport.js";
 import { ClassHelper } from "./reexport.js";
 import { books, sortBook } from "./reexport.js";
 import { LocalStorHelp } from "./reexport.js";
-
-
-
 
 let masterNameCategogy;
 let masterId;
@@ -38,12 +34,11 @@ const htmlElements = {
   tr: document.querySelector(".executedOrder > tr"),
   h2MasterInfo: document.querySelector("summary"),
   bookTbody: document.querySelector(".table > tbody"),
-  spinner: document.querySelector(".lds-dual-ring"),
+  spinner: document.querySelector(".lds-dual-ring")
 };
 
 htmlElements.buttonLogout.addEventListener("click", onLogoutCuttonclick);
 htmlElements.formButton.addEventListener("click", onButtonCheckPassword);
-
 
 function onLogoutCuttonclick() {
   isLogged = false;
@@ -59,12 +54,11 @@ function onLogoutCuttonclick() {
     htmlElements.inputLogin,
     htmlElements.inputPasword
   ]);
-  
+
   htmlElements.inputLogin.placeholder = `${passPlac}${log}`;
   htmlElements.inputPasword.placeholder = `${passPlac}${pass}`;
   htmlElements.tr.innerText = null;
-};
-
+}
 
 class ValidRender {
   constructor(isLogged, masterNameCategogy, masterId, array) {
@@ -80,7 +74,6 @@ class ValidRender {
         new RenderBook().strBook(htmlElements.bookTbody, array, masterId);
       }, threeMinutes);
 
-
       new ClassHelper().removeClass([loginName, pasword], danger);
       new ClassHelper().addClass(
         [loginName, pasword, htmlElements.divLogin],
@@ -95,9 +88,9 @@ class ValidRender {
       new ClassHelper().addNullValue([loginName, pasword]);
       loginName.placeholder = incorrectly;
       pasword.placeholder = incorrectly;
-    };
-  };
-};
+    }
+  }
+}
 
 class Authentication {
   constructor(masters) {
@@ -116,17 +109,15 @@ class Authentication {
         return isLogged, masterId, master;
       }
     });
-  };
-};
-
+  }
+}
 
 function onButtonCheckPassword() {
   new ClassHelper().removeClass([loginName, pasword], danger, success);
   new Authentication(masters.masters);
   new ValidRender(isLogged, masterNameCategogy, masterId, books);
   return masterNameCategogy;
-};
-
+}
 
 class Relog {
   constructor(books) {
@@ -137,26 +128,26 @@ class Relog {
     if (isLogged) {
       htmlElements.spinner.classList.remove(hidd);
       new Promise(function(resolve, reject) {
-        setTimeout(()=>{
+        setTimeout(() => {
           new ClassHelper().removeClass(
             [htmlElements.masterInfo, htmlElements.divNav],
             hidd
           );
-          if(books){
+          if (books) {
             htmlElements.spinner.classList.add(hidd);
-            resolve(new ValidRender(isLogged, masterNameCategogy, masterId, books));
-          };
+            resolve(
+              new ValidRender(isLogged, masterNameCategogy, masterId, books)
+            );
+          }
         }, 800);
       });
-    }else{
+    } else {
       htmlElements.divLogin.classList.remove(hidd);
-    };
-  };
-};
+    }
+  }
+}
 
-
-  new Relog(books);
-
+new Relog(books);
 
 class Loggin {}
 

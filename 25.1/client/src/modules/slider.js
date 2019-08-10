@@ -5,7 +5,7 @@ const htmlElements = {
 function renderSlider() {
   // requestAnimationFrame(cheSlideBG);
   htmlElements.body.classList.add("slide");
-  const second =  7000;
+  const second = 7000;
   const slider = setInterval(cheSlideBG, second);
   let slide = 0;
 
@@ -13,15 +13,15 @@ function renderSlider() {
     slide++;
     if (slide >= 6) {
       return (slide = 0);
-    };
-    htmlElements.body.className = '';
+    }
+    htmlElements.body.className = "";
     htmlElements.body.classList.add(`slide${slide}`);
-  };
-};
+  }
+}
 
-function Slider() {};
+function Slider() {}
 
-Slider.prototype.init = function(){
+Slider.prototype.init = function() {
   renderSlider();
 };
 

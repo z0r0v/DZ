@@ -6,13 +6,12 @@ import { infoBook } from "./reexport.js";
 import { apendHelpper } from "./reexport.js";
 import { SwitchCase2 } from "./reexport.js";
 import { ValidationForm } from "./reexport.js";
-import { masterId,  } from "./reexport.js";
+import { masterId } from "./reexport.js";
 import { masters, master } from "./reexport.js";
 import { carsOwners, ReplacementParts, Car } from "./reexport.js";
 import { GetTodayDate } from "./reexport.js";
 import { InfoAuto } from "./reexport.js";
 import { url } from "./reexport.js";
-
 
 let infoCar;
 let infoOrder;
@@ -24,14 +23,13 @@ const danger = "border-danger";
 let owner;
 const hidd = "hidden";
 
-
 const htmlElements = {
   h2MasterInfo: document.querySelector("summary"),
   bookTbody: document.querySelector(".table > tbody"),
   buttonBook: document.querySelector(".bookButton"),
   executedOrderTr: document.querySelector(".executedOrder > tr"),
   form: document.querySelector(".bookForm"),
-  spinner: document.querySelector(".lds-dual-ring"),
+  spinner: document.querySelector(".lds-dual-ring")
 };
 
 htmlElements.buttonBook.addEventListener("click", onButtonToBookClicked);
@@ -83,7 +81,7 @@ const creatBoofing = (number, time, brand, phone, name, work, idBook) => {
   onANavClicked();
 };
 
-  ////Кнопка check in v!!!!!!!!!!
+////Кнопка check in v!!!!!!!!!!
 function addInNewMasive() {
   const startTime = Date.now();
   htmlElements.executedOrderTr.innerText = null;
@@ -109,14 +107,12 @@ function addInNewMasive() {
 
   new AutoInfoGetOder().creatTableOrder(startTime);
 
-
-
   class FindOrAddToServer {
     constructor() {
       owner = carsOwners.carsOwners.filter(function(a) {
         return a.phone == phone;
       })[0];
-      
+
       const data = GetTodayDate();
       let idCar;
       let idPeplacementParts;
@@ -196,21 +192,20 @@ function addInNewMasive() {
           new UserServiceFetch().chenge(urlG, owner);
 
           new InfoAuto().replaced(cars.replacementParts);
-        };
-      };
-    };
-  };
+        }
+      }
+    }
+  }
 
-  setTimeout(()=>{
+  setTimeout(() => {
     new FindOrAddToServer();
   }, 2000);
 
-  
-  const urlG = `${url}books/${books.books[index].id}`
+  const urlG = `${url}books/${books.books[index].id}`;
   new UserServiceHXMhttp().sincDell(urlG);
   books.books.splice(index, 1);
   new RenderBook().strBook(htmlElements.bookTbody, books, masterId);
-};
+}
 
 const changeTimeCondition = (
   difference,
@@ -284,23 +279,21 @@ const aplayChengeWork = function() {
   const thisContext = this;
   new chooseСontent(thisContext, index => {
     const obj1 = books.books[index];
-    const urlG = `${url}books/${books.books[index].id}`
-    
-    new UserServiceHXMhttp().patch(urlG,
-      {
-        masterId: obj1.masterId,
-        time: obj1.time,
-        brand: obj1.brand,
-        phone: obj1.phone,
-        name: obj1.name,
-        work: htmlElements.cheInputWorke.value,
-        registerSign:obj1.registerSign,
-        carMileage: obj1.carMileage,
-        yearIssue:obj1.yearIssue,
-        priceWork:obj1.priceWork,
-        priceParts:obj1.priceParts,
-      }
-      );
+    const urlG = `${url}books/${books.books[index].id}`;
+
+    new UserServiceHXMhttp().patch(urlG, {
+      masterId: obj1.masterId,
+      time: obj1.time,
+      brand: obj1.brand,
+      phone: obj1.phone,
+      name: obj1.name,
+      work: htmlElements.cheInputWorke.value,
+      registerSign: obj1.registerSign,
+      carMileage: obj1.carMileage,
+      yearIssue: obj1.yearIssue,
+      priceWork: obj1.priceWork,
+      priceParts: obj1.priceParts
+    });
     books.books[index].work = htmlElements.cheInputWorke.value;
   });
 };
@@ -308,7 +301,7 @@ const aplayChengeWork = function() {
 const onButtonIcoClearClicked = function() {
   const thisContext = this;
   new chooseСontent(thisContext, index => {
-    const urlG = `${url}books/${books.books[index].id}`
+    const urlG = `${url}books/${books.books[index].id}`;
     new UserServiceHXMhttp().sincDell(urlG);
     delete books.books[index];
   });
@@ -369,19 +362,17 @@ function onButtonToBookClicked() {
     formClear();
     const urlG = `${url}books`;
     new UserServiceFetch().add(urlG, newBook);
-     new UserServiceHXMhttp().sincGetHXMhttp(urlG, sortBook, ()=>{
-        new RenderBook().strBook(htmlElements.bookTbody, books, masterId);
-      }
-      );
+    new UserServiceHXMhttp().sincGetHXMhttp(urlG, sortBook, () => {
+      new RenderBook().strBook(htmlElements.bookTbody, books, masterId);
+    });
   });
-};
+}
 
 class RenderBook {
-  constructor() {};
+  constructor() {}
   strBook(element, array, masterId) {
-
     element.innerText = null;
-   array.getByMasterId(masterId).forEach((element, index) => {
+    array.getByMasterId(masterId).forEach((element, index) => {
       creatBoofing(
         ++index,
         element.time,
@@ -390,10 +381,9 @@ class RenderBook {
         element.name,
         element.work,
         element.id
-      )
+      );
     });
-
-  };
-};
+  }
+}
 
 export { infoCar, infoOrder, RenderBook, sortBook };

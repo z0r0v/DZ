@@ -5,13 +5,12 @@ import { StopWotch } from "./reexport.js";
 const htmlElements = {
   carInfo: document.querySelector(".carInfo"),
   trExecutedOrder: document.querySelector(".executedOrder > tr"),
-  executedOrder: document.querySelector(".executedOrder"),
+  executedOrder: document.querySelector(".executedOrder")
 };
 
-
-class AutoInfoGetOder{
-  constructor(){};
-  creatTableOrder(startTime){
+class AutoInfoGetOder {
+  constructor() {}
+  creatTableOrder(startTime) {
     htmlElements.carInfo.innerText = infoCar;
     htmlElements.work = document.createElement("td");
     htmlElements.work.classList.add("text-left");
@@ -29,15 +28,14 @@ class AutoInfoGetOder{
     stopWotch.init(element, startTime);
     htmlElements.work.innerText = infoOrder.work;
     htmlElements.price.innerText = `${infoOrder.price}$`;
-  };
-};
+  }
+}
 
-
-class CreateTable{
-  constructor(element, elementTo, apendElemetnTo, arayElements){
+class CreateTable {
+  constructor(element, elementTo, apendElemetnTo, arayElements) {
     element.appendChild(elementTo);
     apendHelpper(apendElemetnTo, arayElements);
-  };
-};
+  }
+}
 
 export { AutoInfoGetOder, CreateTable };

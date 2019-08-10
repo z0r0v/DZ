@@ -1,17 +1,15 @@
-
 const method = "GET";
 
 class UserServiceFetch {
-  constructor(url){
+  constructor(url) {
     this.url = url;
-  };
+  }
 
   getFetch(url) {
     return fetch(url)
-    .then(response => response.json())
-    .catch(error => "eror UserServiceFetch");
-  };
-
+      .then(response => response.json())
+      .catch(error => "eror UserServiceFetch");
+  }
 
   getHXMhttp(url) {
     return new Promise((resolve, reject) => {
@@ -23,8 +21,8 @@ class UserServiceFetch {
       };
       xhr.send();
     });
-  };
-  add(url,name) {
+  }
+  add(url, name) {
     return fetch(url, {
       method: "POST",
       body: JSON.stringify(name),
@@ -32,22 +30,22 @@ class UserServiceFetch {
         "Content-Type": "application/json"
       }
     }).then(response => response.json());
-  };
+  }
 
-  chenge(url,name) {
+  chenge(url, name) {
     return fetch(url, {
       method: "PATCH",
-      body: JSON.stringify(name ),
+      body: JSON.stringify(name),
       headers: {
         "Content-Type": "application/json"
       }
     }).then(response => response.json());
-  };
-};
+  }
+}
 
 function UserServiceHXMhttp(url) {
   this.url = url;
-};
+}
 
 UserServiceHXMhttp.prototype.getHXMhttp = function(url) {
   return new Promise((resolve, reject) => {
@@ -62,14 +60,14 @@ UserServiceHXMhttp.prototype.getHXMhttp = function(url) {
 };
 
 UserServiceHXMhttp.prototype.sincGetHXMhttp = function(url, fun1, fun2) {
-    let xhr = new XMLHttpRequest();
-    xhr.open(method, url);
-    xhr.onload = () => {
-      const request = JSON.parse(xhr.response);
-      fun1();
-      fun2();
-    };
-    xhr.send();
+  let xhr = new XMLHttpRequest();
+  xhr.open(method, url);
+  xhr.onload = () => {
+    const request = JSON.parse(xhr.response);
+    fun1();
+    fun2();
+  };
+  xhr.send();
 };
 
 UserServiceHXMhttp.prototype.sincDell = function(url) {
@@ -79,18 +77,12 @@ UserServiceHXMhttp.prototype.sincDell = function(url) {
   xhr.send();
 };
 
-
 UserServiceHXMhttp.prototype.patch = function(url, element) {
   let xhr = new XMLHttpRequest();
   xhr.open("PATCH", url);
-  xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
-  xhr.onload = () => {
-  };
+  xhr.setRequestHeader("Content-type", "application/json; charset=utf-8");
+  xhr.onload = () => {};
   xhr.send(JSON.stringify(element));
-  
 };
-
-
-
 
 export { UserServiceFetch, UserServiceHXMhttp };

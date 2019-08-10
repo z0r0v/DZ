@@ -2,7 +2,6 @@ let differenceMilliseconds = 0;
 let totalSecondsDifference = 0;
 let differenceSeconds = 0;
 
-
 const runTime = (element, startTime) => {
   differenceMilliseconds = Date.now() - startTime;
   differenceSeconds =
@@ -19,14 +18,15 @@ const runTime = (element, startTime) => {
   if (hours < 10) {
     hours = `0${hours}`;
   }
-  element.innerText =`${hours}:${minutes}:${seconds}`;
+  element.innerText = `${hours}:${minutes}:${seconds}`;
 };
 
 function StopWotch() {}
 
 StopWotch.prototype.init = function(element, startTime) {
-  setInterval(()=>{runTime(element, startTime)}, 1000);
+  setInterval(() => {
+    runTime(element, startTime);
+  }, 1000);
 };
 
-export {StopWotch};
-
+export { StopWotch };

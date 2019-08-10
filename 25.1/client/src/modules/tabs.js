@@ -2,12 +2,12 @@ import { SwitchCase } from "./reexport.js";
 
 const htmlElements = {
   tabs: document.querySelectorAll(".tabs"),
-  navA: document.querySelectorAll("ul>li>a"),
+  navA: document.querySelectorAll("ul>li>a")
 };
 
 const classDis = "disabled";
 
-const onTabsClick = (event) => {
+const onTabsClick = event => {
   arrayElements.forEach(element => {
     element.classList.remove(classDis);
   });
@@ -17,7 +17,7 @@ const onTabsClick = (event) => {
   arrayTabs.forEach(element => {
     element.classList.add("hidden");
   });
-    new SwitchCase(elementDataAttribute);
+  new SwitchCase(elementDataAttribute);
 };
 
 const arrayElements = Array.from(htmlElements.navA);

@@ -1,20 +1,20 @@
-class ValidationForm{
+class ValidationForm {
   //можно дописать валидацию по интересней
-  constructor(array, classList, actionAfter){
+  constructor(array, classList, actionAfter) {
     let isValid;
-    array.forEach((element) => {
-      if(element.value === ""){
+    array.forEach(element => {
+      if (element.value === "") {
         element.classList.add(classList);
-        return isValid = false;
-      }else{
+        return (isValid = false);
+      } else {
         element.classList.remove(classList);
-        return isValid = true;
-      };
+        return (isValid = true);
+      }
     });
-    if(isValid){
+    if (isValid) {
       actionAfter();
-    };
-  };
-};
+    }
+  }
+}
 
-export{ ValidationForm };
+export { ValidationForm };
