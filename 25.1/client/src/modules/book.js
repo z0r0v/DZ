@@ -363,6 +363,8 @@ function onButtonToBookClicked() {
     const urlG = `${url}books`;
     new UserServiceFetch().add(urlG, newBook);
     new UserServiceHXMhttp().sincGetHXMhttp(urlG, sortBook, () => {
+      //мне пришлось спровоцировать перезагрузку страницы
+      location.reload();
       new RenderBook().strBook(htmlElements.bookTbody, books, masterId);
     });
   });

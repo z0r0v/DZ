@@ -4,22 +4,22 @@ GET https://firebasestorage.googleapis.com/v0/b/aliakseizhorau.appspot.com/o/db.
 
 ###
 //Отправка вызывает изменения
-POST https://firebasestorage.googleapis.com/v0/b/aliakseizhorau.appspot.com/o/ex.json?alt=media&token=a40e9995-b297-4165-a016-0d76a83390c7;
+POST https://my-server-dz25.herokuapp.com/books;
 Content-Type: application/json
-
 {
-    "name": "sample23 ds",
-    "time": "Wed, 21 Oct 2015 18:27:50 GMTsfsefse"
-},
-{
-    "name": "sample23 ds",
-    "time": "Wed, 21 Oct 2015 18:27:50 GMTsfsefse"
-},
-{
-    "name": "sample23 ds",
-    "time": "Wed, 21 Oct 2015 18:27:50 GMTsfsefse"
+    "id": 6,
+    "masterId": 2,
+    "time": "16:00",
+    "brand": "Porshe",
+    "phone": "+375293767082",
+    "name": "Vasiliy Petrovich",
+    "work": "Еiming belt replacement",
+    "registerSign": "7785AA-4",
+    "carMileage": 222000,
+    "yearIssue": 2017,
+    "priceWork": 10,
+    "priceParts": 10
 }
-
 
 
 ###

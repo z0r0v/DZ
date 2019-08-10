@@ -27,7 +27,7 @@ class UserServiceFetch {
       method: "POST",
       body: JSON.stringify(name),
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type":"application/json; charset=utf-8"
       }
     }).then(response => response.json());
   }
@@ -39,7 +39,9 @@ class UserServiceFetch {
       headers: {
         "Content-Type": "application/json"
       }
-    }).then(response => response.json());
+    }).then(response => {
+      // console.log(JSON.stringify(name));
+      response.json()});
   }
 }
 

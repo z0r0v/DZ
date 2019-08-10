@@ -30,23 +30,23 @@ class Books {
 
 class CreateBooks {
   constructor(data) {
-    books.books = [];
-    data.forEach(item => {
-      const book = new Book();
-      book.id = item.id;
-      book.masterId = item.masterId;
-      book.time = item.time;
-      book.brand = item.brand;
-      book.phone = item.phone;
-      book.name = item.name;
-      book.work = item.work;
-      book.registerSign = item.registerSign;
-      book.carMileage = item.carMileage;
-      book.yearIssue = item.yearIssue;
-      book.priceWork = item.priceWork;
-      book.priceParts = item.priceParts;
-      books.books.push(book);
-    });
+  books.books = [];
+  data.forEach(item => {
+    const book = new Book();
+    book.id = item.id;
+    book.masterId = item.masterId;
+    book.time = item.time;
+    book.brand = item.brand;
+    book.phone = item.phone;
+    book.name = item.name;
+    book.work = item.work;
+    book.registerSign = item.registerSign;
+    book.carMileage = item.carMileage;
+    book.yearIssue = item.yearIssue;
+    book.priceWork = item.priceWork;
+    book.priceParts = item.priceParts;
+    books.books.push(book);
+  });
   }
 }
 
@@ -56,5 +56,6 @@ const url = "https://my-server-dz25.herokuapp.com/books";
 new UserServiceFetch().getFetch(url).then(data => {
   new CreateBooks(data);
 });
+
 
 export { books, Book, CreateBooks };
