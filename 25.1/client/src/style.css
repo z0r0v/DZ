@@ -63,3 +63,13 @@
 .hidden{
   display: none;
 }
+
+.help{
+border: 1px solid red;
+margin-top: 20px;
+}
+
+.help > h3, p{
+padding-left: 10px;
+padding-top: 10px;
+}
