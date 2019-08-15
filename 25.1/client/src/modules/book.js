@@ -361,7 +361,21 @@ function onButtonToBookClicked() {
   new ValidationForm(array, danger, () => {
     formClear();
     const urlG = `${url}books`;
-    new UserServiceFetch().add(urlG, newBook);
+    new UserServiceFetch().add(urlG, 
+      {
+      masterId: newBook.masterId,
+      time: newBook.time,
+      brand: newBook.brand,
+      phone: newBook.phone,
+      name: newBook.name,
+      work: newBook.work,
+      registerSign:newBook.registerSign,
+      carMileage: newBook.carMileage,
+      yearIssue: newBook.yearIssue,
+      priceWork: newBook.priceWork,
+      priceParts: newBook.priceParts
+      }
+      );
     new UserServiceHXMhttp().sincGetHXMhttp(urlG, sortBook, () => {
       //мне пришлось спровоцировать перезагрузку страницы
       location.reload();
